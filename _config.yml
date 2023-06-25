@@ -13,20 +13,22 @@ baseurl: ""
 lang: en
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: "Asia/Seoul"
+timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
 title: Life Log # the main title
 
-tagline: Recording Life # it will display as the sub-title
+tagline: >- # it will display as the sub-title
+  Sungchan Yi.<br/>
+  CSE & Math & Life
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Recording Life.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://blog.zxcvber.com"
 
 github:
   username: calofmijuck # change to your github username
