@@ -19,8 +19,11 @@ github_title: "2022-04-08-thoughts-on-studying-math"
   
 딱히 특별한 내용은 없고 기본 개념 설명 되어있는 것 같아서 어디가 특별하냐고 했더니 예시로 한 부분을 보여줬는데, $x = a$ 에 대하여 대칭인 함수를 적분하는 방법, 점 대칭인 함수를 적분하는 방법에 대해 소개하고 있었다.  
   
-> 1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 $x = m$ 에 대하여 대칭일 때, $$\int_{m-a}^{m+a} f(x)\,dx = 2 \int_{m}^{m+a} f(x)\,dx\quad (a \in \mathbb{R})$$  
-> 2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 점 $(m, n)$에 대하여 대칭일 때, $$\int_{m-a}^{m+a} f(x)\,dx = 2an \quad (a \in \mathbb{R})$$  
+1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 $x = m$ 에 대하여 대칭일 때,   
+$$\int_{m-a}^{m+a} f(x)\,dx = 2 \int_{m}^{m+a} f(x)\,dx.\quad (a \in \mathbb{R})$$  
+  
+2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 점 $(m, n)$에 대하여 대칭일 때,   
+$$\int_{m-a}^{m+a} f(x)\,dx = 2an. \quad (a \in \mathbb{R})$$  
   
 보자마자 막 엄청 특별한 내용은 아니라는 것을 깨달았고, 이런 내용은 특별하게 누가 정리해주지 않아도 공부를 지엽적으로 하지 않고 충분히 생각을 많이 하면 알 수 있다고 얘기했다. 그렇다고 모르는게 이상하다는 의미는 절대 아니다.  
   
@@ -32,8 +35,11 @@ github_title: "2022-04-08-thoughts-on-studying-math"
   
 적분 파트에서 \[우함수와 기함수의 적분\]은 기본 개념으로 대부분의 책이 가르친다고 가정한다.  
   
-> 1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$가 우함수일 때, $$\int_{-a}^{a} f(x)\,dx = 2 \int_{0}^{a} f(x)\,dx\quad (a \in \mathbb{R})$$  
-> 2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 기함수일 때, $$\int_{-a}^{a} f(x)\,dx = 0 \quad (a \in \mathbb{R})$$  
+1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$가 우함수일 때,   
+$$\int_{-a}^{a} f(x)\,dx = 2 \int_{0}^{a} f(x)\,dx. \quad (a \in \mathbb{R})$$  
+  
+2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 기함수일 때,   
+$$\int_{-a}^{a} f(x)\,dx = 0. \quad (a \in \mathbb{R})$$  
   
 ### 개념 공부 하면서 스스로 일반화 해보기  
   
