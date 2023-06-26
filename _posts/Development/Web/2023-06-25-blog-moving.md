@@ -63,7 +63,7 @@ github_title: "2023-06-25-blog-moving"
   
 Obsidian을 Github과 연동하기 위해 [Obsidian Github Publisher](https://github.com/ObsidianPublisher/obsidian-github-publisher) 플러그인을 사용할 수 있다.  
   
-![github-publisher.png](../../../assets/img/posts/github-publisher.png) {: .shadow } _플러그인 설정 화면: 어느 폴더에 어떤 이름으로 파일을 업로드할지 설정할 수 있다._  
+![github-publisher.png](../../../assets/img/posts/github-publisher.png){: .shadow } _플러그인 설정 화면: 어느 폴더에 어떤 이름으로 파일을 업로드할지 설정할 수 있다._  
   
 이 플러그인을 사용하면 Obsidian의 문서 중에서 `share: true` 로 마킹된 문서들을 레포에 저장할 수 있게 된다. 그렇다면 블로그 글을 Obsidian에서 작성하고, 플러그인을 이용해 레포에 push하게 되면, 자동으로 빌드/배포가 이뤄져서 블로그에 반영되는 것을 확인할 수 있을 것이다.  
   
@@ -84,8 +84,8 @@ Git은 version control system이기 때문에, 이미지가 버전에 따라 영
 - GitHub Pages source repositories have a recommended limit of 1 GB.  
 - Published GitHub Pages sites may be no larger than 1 GB.  
 - GitHub Pages deployments will timeout if they take longer than 10 minutes.  
-- GitHub Pages sites have a _soft_ bandwidth limit of 100 GB per month.  
-- GitHub Pages sites have a _soft_ limit of 10 builds per hour. This limit does not apply if you build and publish your site with a custom GitHub Actions workflow  
+- GitHub Pages sites have a soft bandwidth limit of 100 GB per month.  
+- GitHub Pages sites have a soft limit of 10 builds per hour. This limit does not apply if you build and publish your site with a custom GitHub Actions workflow  
 - In order to provide consistent quality of service for all GitHub Pages sites, rate limits may apply.  
   
 이것 때문에 개인 서버 머신에 블로그를 배포할지 고민하기도 했고, 사진만 따로 AWS S3 + CloudFront 조합을 이용해볼까 고민하기도 했다. 요금제까지 알아봤다![^2]  
@@ -98,7 +98,7 @@ Git은 version control system이기 때문에, 이미지가 버전에 따라 영
   
 이렇게 하여 Obsidian + Github Publisher + Github Pages로 새로운 블로그를 세팅해 봤다. `calofmijuck.github.io` 는 이미 교양수학 기출문제로 활용되고 있기 때문에 이 블로그는 `calofmijuck.github.io/blog` 주소가 할당되어야 했으나, custom domain을 적용하여 `blog.zxcvber.com` 이 되었다. 괜찮은 것 같다.  
   
-시간될 때 댓글 기능도 붙이고 테마도 더 수정할 계획이다.  
+시간될 때 댓글 기능도 붙이고, 과거 글도 몇 개 복원하고, 테마도 더 수정할 계획이다.  
   
 [^1]: 공부 빼고 다 재미있을 시기 아니겠는가?  
 [^2]: S3는 $0.025/GB라서 부담되는 가격이 아니고, CloudFront는 매달 데이터 전송 1TB까지 무료였다.
