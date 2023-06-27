@@ -2,7 +2,6 @@
 ---
 
 @import '{{ site.theme }}';
-
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
 
 /* append your custom style below */
@@ -11,6 +10,14 @@ footer p:last-child::before {
     content: none;
 }
 
-* {
+*, h1 {
     font-family: Pretendard;
+}
+
+.post-content {
+    font-size: 110%;
+}
+
+.MathJax {
+    font-size: 90%;
 }
