@@ -1,0 +1,2 @@
+mathjax:
+  js: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js
