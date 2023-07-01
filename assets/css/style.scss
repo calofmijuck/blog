@@ -10,8 +10,12 @@ footer p:last-child::before {
     content: none;
 }
 
-*, h1 {
+body, h1 {
     font-family: Pretendard;
+}
+
+div.highlight {
+    font-family: monospace!important;
 }
 
 .post-content {
