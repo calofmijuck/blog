@@ -6,11 +6,9 @@ tags: [kubernetes, sre, devops, docker]
 title: "01. Introducing Kubernetes"  
 date: "2021-02-28"  
 github_title: "2021-02-28-01-introducing-kubernetes"  
-attachment:  
-  folder: assets/img/posts/k8s  
 ---  
   
-![k8s-01.jpeg](../../../../assets/img/posts/k8s/k8s-01.jpeg) _Overview of Kubernetes Architecture (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-1)_  
+![k8s-01.jpeg](../../../assets/img/posts/k8s-01.jpeg) _Overview of Kubernetes Architecture (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-1)_  
   
 기존에는 소프트웨어가 커다란 덩어리였지만 최근에는 독립적으로 작동하는 작은 **마이크로서비스**(microservice)로 나뉘고 있다. 이들은 독립적으로 동작하기 때문에, 개발하고 배포하거나 스케일링을 따로 해줄 수 있다는 장점이 있으며, 이 장점은 빠르게 변화하는 소프트웨어의 요구사항을 반영하기에 적합하다.  
   

@@ -6,11 +6,9 @@ tags: [kubernetes, sre, devops, docker]
 title: "02. First Steps with Docker and Kubernetes"  
 date: "2021-03-07"  
 github_title: "2021-03-07-02-first-steps-with-docker-and-kubernetes"  
-attachment:  
-  folder: assets/img/posts/k8s  
 ---  
   
-![k8s-02.jpeg](../../../../assets/img/posts/k8s/k8s-02.jpeg) _Running a container image in Kubernetes (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-2)_  
+![k8s-02.jpeg](../../../assets/img/posts/k8s-02.jpeg) _Running a container image in Kubernetes (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-2)_  
   
 도커와 쿠버네티스를 사용하여 간단한 애플리케이션을 배포해 보자!  
   
