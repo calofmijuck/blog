@@ -6,6 +6,8 @@ tags: [kubernetes, sre, devops, docker]
 title: "02. First Steps with Docker and Kubernetes"  
 date: "2021-03-07"  
 github_title: "2021-03-07-02-first-steps-with-docker-and-kubernetes"  
+image:  
+  path: /assets/img/posts/k8s-02.jpeg  
 ---  
   
 ![k8s-02.jpeg](../../../assets/img/posts/k8s-02.jpeg) _Running a container image in Kubernetes (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-2)_  
