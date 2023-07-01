@@ -6,6 +6,8 @@ tags: [kubernetes, sre, devops, docker]
 title: "01. Introducing Kubernetes"  
 date: "2021-02-28"  
 github_title: "2021-02-28-01-introducing-kubernetes"  
+image:  
+  path: /assets/img/posts/k8s-01.jpeg  
 ---  
   
 ![k8s-01.jpeg](../../../assets/img/posts/k8s-01.jpeg) _Overview of Kubernetes Architecture (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-1)_  
