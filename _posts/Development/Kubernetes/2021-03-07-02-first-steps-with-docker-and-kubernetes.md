@@ -1,0 +1,314 @@
+---  
+share: true  
+toc: true  
+categories: [Development, Kubernetes]  
+tags: [kubernetes, sre, devops, docker]  
+title: "02. First Steps with Docker and Kubernetes"  
+date: "2021-03-07"  
+github_title: "2021-03-07-02-first-steps-with-docker-and-kubernetes"  
+image:  
+  path: /assets/img/posts/k8s-02.jpeg  
+---  
+  
+![k8s-02.jpeg](../../../assets/img/posts/k8s-02.jpeg) _Running a container image in Kubernetes (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-2)_  
+  
+도커와 쿠버네티스를 사용하여 간단한 애플리케이션을 배포해 보자!  
+  
+## 2.1 컨테이너 이미지 생성, 실행, 공유하기  
+---  
+  
+### 2.1.1 도커 설치  
+  
+도커 공식 홈페이지에 있는 대로 설치한다!  
+  
+- Mac 이나 Windows 를 쓰면 도커가 VM을 세팅하고 VM 안에서 도커 데몬이 실행된다.  
+  
+#### 컨테이너 실행  
+  
+```bash  
+$ docker run <IMAGE>:[TAG] [COMMAND]  
+```  
+  
+- 이미지를 다운받고 실행해주는 명령  
+  
+예시로 `docker run busybox echo "Hello world"` 가 있는데, 별거 아닌 것 같아 보여도 한 줄로 앱이 통째로 설치되고 실행이 되고 있기 때문에 생각보다 대단한 것이다!  
+  
+#### `docker run` 이 실행될 때...  
+  
+- 우선 해당 이미지의 latest version (`IMAGE:latest`) 가 로컬에 있는지 확인한다. 없으면 Docker Hub 에서 다운받는다.  
+- 이미지로부터 컨테이너를 생성하고 `[COMMAND]` 를 실행한다.  
+  
+매 번 `docker run` 을 할 때마다 실행할 명령을 입력하는 것은 불편하므로 보통은 Dockerfile 을 사용해서 실행할 명령을 이미지 생성 과정에 포함시킨다.   
+       
+이미지도 업데이트 될 수 있기 때문에, 이름은 유지한 채 tag 를 업데이트하여 버전을 관리한다. `latest` 태그는 당연히 이미지의 최신 버전을 가리킨다.  
+  
+### 2.1.2 Creating a trivial Node.js app  
+  
+HTTP 요청을 받으면 실행 중인 머신의 hostname 을 포함하여 응답을 돌려주는 앱을 node.js 로 만들고 Docker 이미지로 패키징 한다.  
+  
+패키징 후 컨테이너를 실행하여 HTTP 요청을 날려보면 응답에 포함된 hostname 을 확인하면 컨테이너 내에서 독립적인 hostname 을 갖는다는 것을 확인할 수 있을 것이다.  
+  
+(Docker 가 실행 중인 머신의 hostname 이 아닌 다른 결과가 나올 것)  
+  
+### 2.1.3 Dockerfile 만들기  
+  
+애플리케이션을 이미지로 패키징하려면 Dockerfile 에 이미지를 만들 때 실행해야 하는 명령들을 넣어주면 된다.  
+  
+- `FROM` : 베이스 이미지로 사용할 이미지를 정한다. `FROM ubuntu:20.04` 라고 하면 ubuntu 20.04 환경에서 시작한다.  
+- `ADD <src> <dst>` : 로컬의 `src` 경로의 파일을 컨테이너 내 `dst` 경로로 복사한다.  
+- `ENTRYPOINT ["executable", "param1", "param2"]` : 컨테이너 내부 shell 에서 `$ executable param1 param2` 를 실행하는 것과 동일하다. 다만 Dockerfile 전체에서 가장 마지막 `ENTRYPOINT` 명령만 실행되므로 한 번만 사용할 수 있다.  
+  
+### 2.1.4 컨테이너 이미지 빌드  
+  
+'이미지를 빌드한다'는 것은 Dockerfile 에 있는 명령을 실행한다고 생각하면 될 것이다. 물론 Dockerfile 없이 빌드 할 수 있다. 깃헙에서 commit changes 하듯이, 컨테이너 내부에서 명령을 직접 실행한 뒤 컨테이너의 상태를 저장 할 수 있다. 하지만 당연히 직접 실행하는 것보다는 파일로 관리하는 것이 편할 것이다.  
+  
+```bash  
+$ docker build -t <TAG> <PATH>  
+```  
+  
+- `-t` 옵션은 이미지의 태그를 지정해준다.  
+- `PATH` 에 있는 Dockerfile 을 이용하여 이미지를 빌드한다.  
+  
+이미지 빌드시 `PATH` 의 모든 파일이 도커 데몬에 옮겨진 다음 그 곳에서 이미지를 빌드한다.  
+  
+#### 이미지 레이어  
+  
+이미지는 여러 레이어로 구성이 되어있다. `docker build` 를 해보면 step 별로 진행 되는 것을 볼 수 있는데 각 step 마다 layer 가 하나 생성된다. Dockerfile 명령 한 줄마다 layer 하나를 쓰게 된다.  
+  
+다만 `&&` 를 사용해서 Dockerfile 의 line 수를 줄이면, 나중에 명령을 수정할 때 만들어 둔 layer 를 재사용하지 못하게 되는 경우가 있다. 그러면 이미지 빌드가 느려진다.  
+  
+이미지는 용량을 많이 차지하게 될 수 있으므로 한 번만 저장하고 같은 레이어는 재사용하게 된다.  
+  
+```bash  
+$ docker images  
+```  
+  
+- 로컬에 있는 이미지 목록을 보여준다.  
+  
+### 2.1.5 컨테이너 실행  
+  
+```bash  
+$ docker run [OPTIONS] <IMAGE> # 기본형  
+$ docker run --name <CONTAINER_NAME> -p <HOST_PORT>:<CONTAINER_PORT> -d <IMAGE>  
+```  
+  
+- `IMAGE` 로부터 컨테이너를 실행한다.  
+- `--name` 옵션은 실행된 컨테이너에 `CONTAINER_NAME` 으로 이름을 부여한다.  
+- `-p` (`--publish`) 옵션은 호스트의 포트를 이용하여 컨테이너의 포트에 접근할 수 있도록 한다. 컨테이너의 포트를 호스트 포트로 publish 한다.  
+- `-d` (`--detach`) 옵션은 background 에서 작업이 수행되도록 한다.  
+  
+```bash  
+$ docker ps  
+```  
+  
+- 실행 중인 컨테이너의 목록과 간략한 정보를 확인한다.  
+- 컨테이너 ID, 이름, 컨테이너 생성에 사용된 이미지, 컨테이너 내부에서 실행 중인 명령을 확인할 수 있다.  
+- 자세히 보고 싶으면 `docker inspect <CONTAINER>` 를 사용하여 JSON 으로 자세한 정보를 확인한다.  
+  
+### 2.1.6 컨테이너 내부 들여다보기  
+  
+안에서 명령을 실행할 일이 분명 생긴다.  
+  
+```bash  
+$ docker exec [OPTIONS] <CONTAINER> <COMMAND> [ARGS] # 기본형  
+$ docker exec -it <CONTAINER> <COMMAND>  
+```  
+  
+- `exec` 는 `CONTAINER` 내에서 `COMMAND` 를 실행하라는 의미이다.  
+- `-i` (`--interactive`) 는 STDIN (표준 입력)을 열어준다.  
+- `-t` (`--tty`) 는 pseudo-TTY (유사 터미널)을 열어준다.  
+  
+그러므로 `docker exec -it <CONTAINER> bash` 를 하게 되면 컨테이너 내부에서 `bash` 명령이 터미널 내에서 실행되고, 표준 입력이 연결되어 있으므로 명령을 입력할 수 있게 된다. (쉘을 딸 수 있다는 것이다)  
+  
+#### 독립된 공간  
+  
+컨테이너 내에서 `ps aux` 를 입력하면 호스트 머신에서 돌아가는 프로세스들은 보이지 않는다. 한편 호스트 머신에서 `ps aux` 를 입력한후 `grep` 으로 프로세스를 찾아보면 컨테이너 내에서 동작 중인 프로세스가 목록에 있음을 확인할 수 있다.  
+  
+즉 독립적인 공간에서 실행되는 것처럼 환경을 제공하지만, 실제로는 호스트의 프로세스인 것임을 확인할 수 있다.  
+  
+마찬가지로 `ls` 명령을 쳐보면 내부에 독립적인 파일시스템을 갖고 있음을 확인할 수 있다. (물론 Dockerfile 에서 직접 추가한 파일이 있을 수도 있고, 특정 디렉토리를 마운트 한 경우 공유가 되기도 한다.)  
+  
+### 2.1.7 컨테이너 정지 및 삭제  
+  
+```bash  
+$ docker stop <CONTAINER> # 정지  
+$ docker rm <CONTAINER> # 삭제  
+```  
+  
+컨테이너를 정지하게 되면 그 잔해가 남아있게 되는데, `rm` 을 이용해 삭제해주면 완전히 제거된다.  
+  
+정지한 컨테이너는 `docker ps` 로 확인이 불가능하므로 (실행 중인 컨테이너만 보인다), `docker ps -a` 로 확인한다.   
+  
+### 2.1.8 이미지 레지스트리에 이미지 push 하기  
+  
+주의사항: Docker Hub 에 push 하려면 이미지의 레포지토리 이름이 Docker Hub ID 로 시작해야 한다.  
+  
+#### 이미지 태그  
+  
+```bash  
+$ docker tag <SOURCE_IMAGE:TAG> <TARGET_IMAGE:TAG>  
+```  
+  
+- 새로운 태그 `TARGET_IMAGE` 를 만들어서 `SOURCE_IMAGE` 를 가리키게 한다.  
+- Alias 를 만든다. 이미지를 복사하는 것이 아니다. `docker images` 로 확인하면 `SOURCE_IMAGE` 가 이름이 바뀐게 아니라 새로 생겼음을 확인할 수 있다. (메모리 낭비 금지)  
+  
+`docker login` 으로 로그인 한 뒤, `docker push <NAME:TAG>` 으로 이미지를 push 할 수 있다. 당연히 그 반대인 `docker pull` 도 가능하다.  
+  
+## 2.2 쿠버네티스 클러스터 설정  
+---  
+  
+일단 로컬에서 하려면 Minikube 를 설치하면 된다.  
+  
+### 2.2.1 Minikube 를 이용한 단일 노드 클러스터  
+  
+- Minikube 를 설치하고, `kubectl` 을 설치하면 된다.  
+- `minikube start` 하고 `kubectl cluster-info` 하면 클러스터가 생성된 것을 확인할 수 있다.  
+  
+개인적으로 oh-my-zsh 를 사용하는데 `kubectl` 까지 치면 옆에 현재 context 가 나와서 참 좋다.  
+  
+### 2.2.2 Google Kubernetes Engine (GKE)  
+  
+- 세팅은 패스 (요새 무료 크레딧도 주던데...)  
+  
+```bash  
+$ gcloud container clusters create <NAME> --num-nodes <NUM> --machine-type <MACHINE_TYPE>  
+```  
+  
+- 쿠버네티스 클러스터 (노드의 집합)를 생성한다.  
+- 클러스터 내에 몇 개의 노드가 있는지 설정할 수 있다.  
+- `--machine-type` 옵션으로 얼마나 비싼 기계를 쓸지 고를 수 있다.  
+  
+각 worker 노드에서는 Docker, Kubelet, kube-proxy 가 실행되고 있고, 마스터 노드가 이들을 관리하게 된다.  
+`kubectl` 을 이용하면 마스터 노드에 있는 REST API 서버를 호출하여 작업하게 된다.  
+  
+노드를 생성했으니 노드의 목록을 확인하는 방법을 알아보자.  
+  
+```bash  
+$ kubectl get nodes  
+```  
+  
+- 노드 목록을 보여준다.  
+  
+사실 `kubectl get` 은 docs 에도 나와 있듯이 '하나 이상의 리소스를 나열'한다. 더 자세히 보고싶으면,  
+  
+```bash  
+$ kubectl describe node <NAME>  
+```  
+  
+으로 확인하면 된다.  
+  
+### 2.2.3 Alias for `kubectl`  
+  
+솔직히 `kubectl` 매번 입력하기 귀찮다. 적당히 자주 쓰는 명령 alias 해둔다.  
+  
+`bash-completion` 을 사용하면 편리하다고 한다.  
+  
+  
+## 2.3 Kubernetes 에서 앱 실행하기  
+---  
+  
+### 2.3.1 Node.js 앱 배포하기  
+  
+```bash  
+$ kubectl run [NAME] --image=[IMAGE] --port=[PORT] --generator=run/v1  
+```  
+  
+- 설정 파일 (`.yaml`) 없이도 실행할 수 있게 해준다.  
+- `--image` 옵션으로 사용할 이미지를 설정할 수 있다.  
+- `--port` 옵션으로 포트를 개방할 수 있다.  
+- `--generator` 는 *ReplicationController* 를 생성하기 위함이라고 한다.  
+  
+쿠버네티스는 컨테이너를 개별적으로 다루지는 않는 편이다. 대신 함께 존재하는 여러 컨테이너들을 다룬다. 이러한 컨테이너의 묶음을 **pod** 라고 한다.  
+  
+Pod 안에 여러 개의 컨테이너가 존재할 수 있고, 그 컨테이너는 모두 같은 worker 노드에서 실행되며, Linux namespace 를 공유한다. 각 pod 는 마치 개별적인 머신처럼 동작하여 IP, hostname, 프로세스 등을 개별적으로 갖게 된다.  
+  
+당연히, pod 를 가져오는 명령은  
+  
+```bash  
+$ kubectl get pods  
+```  
+  
+이다. `READY` 열을 보면 컨테이너가 실행 대기 중인 경우 `0/1` 과 같이 나올 수도 있다.  
+  
+#### 무슨 일이 일어났나요?  
+  
+- `kubectl run` 을 실행하면 Kubernetes API 서버에 REST HTTP 요청을 보낸다.  
+- Kubernetes API 서버는 요청을 받아 새로운 ReplicationController 오브젝트를 생성한다.  
+- ReplicationController 가 새로운 pod 를 생성하게 되고, 이는 Scheduler 에 의해 어떤 worker 노드에 할당된다.  
+- Kubelet 이 동작하여 Docker 를 실행하게 하고 Docker 가 컨테이너를 실행한다.   
+  
+### 2.3.2 애플리케이션에 접근하기  
+  
+배포한 앱은 pod 에서 실행되므로 IP가 할당되는데, 이 IP는 클러스터 내부에서 사용되는 IP이므로 외부에서 접속이 불가능하다. Service 오브젝트를 사용하여 외부로 공개해야 한다.  
+  
+`LoadBalancer`-type service 를 생성하면 이 load balancer 의 공개 IP를 이용하여 pod 에 접근할 수 있게 된다.  
+  
+```bash  
+$ kubectl expose rc <RC_NAME> --type=LoadBalancer --name <SERVICE_NAME>  
+```  
+  
+- `expose` 에서 외부로 공개한다는 의미를 알 수 있다.  
+- `rc` 는 `ReplicationController` 의 약자다.  
+  
+서비스 오브젝트를 생성했다면 서비스 목록을 확인한다.  
+  
+```bash  
+$ kubectl get services  
+```  
+  
+- 실행 중인 서비스 목록을 확인한다.  
+- `EXTERNAL-IP` 에 공개 IP가 적혀있다. 서비스 생성에 시간이 걸릴 수 있으니 IP가 할당되려면 조금 기다려야 할지도?  
+  
+### 2.3.3 The logical parts of your system  
+  
+#### Pod  
+  
+Kubernetes 의 basic building block 은 pod 이다! Pod 안에는 여러 개의 컨테이너가 실행될 수 있고, pod 는 각각 IP 주소와 hostname 을 갖는다.  
+  
+#### ReplicationController  
+  
+Pod 를 만든 것은 ReplicationController 인데, 얘는 pod 의 개수를 조절하고 관리한다. Pod 를 한 개 만들라고 했다면 정확히 1개가 유지되도록 한다. 오류가 나서 종료되더라도 다시 시작시켜 준다. 또 서비스가 굉장히 커져서 pod 하나만으로는 트래픽을 감당할 수 없다면, pod 를 여러 개 복제하여 실행하는데 사용할 수 있다.  
+  
+#### Service  
+  
+Pod 의 경우 오류가 나거나 로드 밸런싱이나 효율적인 시스템 자원의 활용을 위해 중지되거나 다른 노드로 옮겨가는 등 수시로 생겼다 사라졌다 할 수 있다. 이 때마다 (내부) IP가 바뀌게 되므로 이를 효율적으로 관리해주는 service 가 필요하게 된다. 공개 IP를 하나 설정하여 외부에서 접근이 가능하도록 한다.  
+  
+### 2.3.4 Horizontal Scaling  
+  
+```bash  
+$ kubectl get replicationcontorllers  
+```  
+  
+- 존재하는 ReplicationController 를 확인한다.  
+- `DESIRED` 와 `CURRENT` 열에서 있어야 하는 pod 개수와 현재 pod 개수를 확인할 수 있다.  
+  
+```bash  
+$ kubectl scale rc <RC_NAME> --replica=<NUM>  
+```  
+  
+- `DESIRED` 값을 `NUM` 으로 설정한다.  
+- 그러면 ReplicationController 가 알아서 개수를 맞춰준다.  
+  
+변경사항이 있다면 `kubectl get rc` 와 `kubectl get pods` 로 `DESIRED` / `CURRENT` 값이 변경 되었고 pod 가 실행 중인지 확인하면 된다. Kubernetes 없이 복제하려 했으면 얼마나 번거로웠을까?  
+  
+위의 node.js 앱을 배포한 상태에서 pod 가 여러 개 생겼으니 외부에서 HTTP 요청을 보내보면, 안에서 load balancing 이 동작하고 있기 때문에 꼭 같은 hostname 을 반환하지는 않는다.  
+  
+### 2.3.5 앱이 실행 중인 노드 확인  
+  
+보통 어느 노드에서 실행 중인지 중요하지는 않지만 확인할 수 있긴 하다. 보통은 할당된 노드의 자원 (CPU 사용량, 메모리) 등을 확인해야 하긴 한다.  
+  
+```bash  
+$ kubectl get pods -o wide # 더 많은 정보 출력  
+$ kubectl describe pod <POD_NAME> # 상세 정보 출력  
+```  
+  
+### 2.3.6 Kubernetes Dashboard  
+  
+GUI 도 지원해 준다.  
+  
+```bash  
+$ kubectl cluster-info | grep dashboard  
+```  
+  
+- 대시보드가 실행 중인 주소를 알려줄 것이다.  
+- Minikube 의 경우 `minikube dashboard`.
