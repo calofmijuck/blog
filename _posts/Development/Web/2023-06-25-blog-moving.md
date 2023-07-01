@@ -7,7 +7,7 @@ title: "블로그 이주 이야기"
 date: "2023-06-25"  
 github_title: "2023-06-25-blog-moving"  
 image:  
-  path: /assets/img/posts/blog-logo.jpeg  
+  path: /assets/img/posts/blog-logo.png  
 ---  
   
 ![blog-logo.png](../../../assets/img/posts/blog-logo.png) _New blog logo_  
