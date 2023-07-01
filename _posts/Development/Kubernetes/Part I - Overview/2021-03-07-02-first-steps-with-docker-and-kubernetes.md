@@ -4,8 +4,8 @@ toc: true
 categories: [Development, Kubernetes]  
 tags: [kubernetes, sre, devops, docker]  
 title: "02. First Steps with Docker and Kubernetes"  
-date: "2021-02-28"  
-github_title: "2021-02-28-02-first-steps-with-docker-and-kubernetes"  
+date: "2021-03-07"  
+github_title: "2021-03-07-02-first-steps-with-docker-and-kubernetes"  
 ---  
   
 ![k8s-02.jpeg](../../../../assets/img/posts/k8s-02.jpeg) _Running a container image in Kubernetes (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-2)_  
@@ -23,7 +23,7 @@ github_title: "2021-02-28-02-first-steps-with-docker-and-kubernetes"
   
 #### 컨테이너 실행  
   
-```  
+```bash  
 $ docker run <IMAGE>:[TAG] [COMMAND]  
 ```  
   
@@ -60,7 +60,7 @@ HTTP 요청을 받으면 실행 중인 머신의 hostname 을 포함하여 응�
   
 '이미지를 빌드한다'는 것은 Dockerfile 에 있는 명령을 실행한다고 생각하면 될 것이다. 물론 Dockerfile 없이 빌드 할 수 있다. 깃헙에서 commit changes 하듯이, 컨테이너 내부에서 명령을 직접 실행한 뒤 컨테이너의 상태를 저장 할 수 있다. 하지만 당연히 직접 실행하는 것보다는 파일로 관리하는 것이 편할 것이다.  
   
-```  
+```bash  
 $ docker build -t <TAG> <PATH>  
 ```  
   
@@ -77,7 +77,7 @@ $ docker build -t <TAG> <PATH>
   
 이미지는 용량을 많이 차지하게 될 수 있으므로 한 번만 저장하고 같은 레이어는 재사용하게 된다.  
   
-```  
+```bash  
 $ docker images  
 ```  
   
@@ -95,7 +95,7 @@ $ docker run --name <CONTAINER_NAME> -p <HOST_PORT>:<CONTAINER_PORT> -d <IMAGE>
 - `-p` (`--publish`) 옵션은 호스트의 포트를 이용하여 컨테이너의 포트에 접근할 수 있도록 한다. 컨테이너의 포트를 호스트 포트로 publish 한다.  
 - `-d` (`--detach`) 옵션은 background 에서 작업이 수행되도록 한다.  
   
-```  
+```bash  
 $ docker ps  
 ```  
   
@@ -143,7 +143,7 @@ $ docker rm <CONTAINER> # 삭제
   
 #### 이미지 태그  
   
-```  
+```bash  
 $ docker tag <SOURCE_IMAGE:TAG> <TARGET_IMAGE:TAG>  
 ```  
   
@@ -168,7 +168,7 @@ $ docker tag <SOURCE_IMAGE:TAG> <TARGET_IMAGE:TAG>
   
 - 세팅은 패스 (요새 무료 크레딧도 주던데...)  
   
-```  
+```bash  
 $ gcloud container clusters create <NAME> --num-nodes <NUM> --machine-type <MACHINE_TYPE>  
 ```  
   
@@ -181,14 +181,15 @@ $ gcloud container clusters create <NAME> --num-nodes <NUM> --machine-type <MACH
   
 노드를 생성했으니 노드의 목록을 확인하는 방법을 알아보자.  
   
-```  
+```bash  
 $ kubectl get nodes  
 ```  
+  
 - 노드 목록을 보여준다.  
   
 사실 `kubectl get` 은 docs 에도 나와 있듯이 '하나 이상의 리소스를 나열'한다. 더 자세히 보고싶으면,  
   
-```  
+```bash  
 $ kubectl describe node <NAME>  
 ```  
   
@@ -206,7 +207,7 @@ $ kubectl describe node <NAME>
   
 ### 2.3.1 Node.js 앱 배포하기  
   
-```  
+```bash  
 $ kubectl run [NAME] --image=[IMAGE] --port=[PORT] --generator=run/v1  
 ```  
   
@@ -221,7 +222,7 @@ Pod 안에 여러 개의 컨테이너가 존재할 수 있고, 그 컨테이너�
   
 당연히, pod 를 가져오는 명령은  
   
-```  
+```bash  
 $ kubectl get pods  
 ```  
   
@@ -240,17 +241,19 @@ $ kubectl get pods
   
 `LoadBalancer`-type service 를 생성하면 이 load balancer 의 공개 IP를 이용하여 pod 에 접근할 수 있게 된다.  
   
-```  
+```bash  
 $ kubectl expose rc <RC_NAME> --type=LoadBalancer --name <SERVICE_NAME>  
 ```  
+  
 - `expose` 에서 외부로 공개한다는 의미를 알 수 있다.  
 - `rc` 는 `ReplicationController` 의 약자다.  
   
 서비스 오브젝트를 생성했다면 서비스 목록을 확인한다.  
   
-```  
+```bash  
 $ kubectl get services  
 ```  
+  
 - 실행 중인 서비스 목록을 확인한다.  
 - `EXTERNAL-IP` 에 공개 IP가 적혀있다. 서비스 생성에 시간이 걸릴 수 있으니 IP가 할당되려면 조금 기다려야 할지도?  
   
@@ -270,14 +273,14 @@ Pod 의 경우 오류가 나거나 로드 밸런싱이나 효율적인 시스템
   
 ### 2.3.4 Horizontal Scaling  
   
-```  
+```bash  
 $ kubectl get replicationcontorllers  
 ```  
   
 - 존재하는 ReplicationController 를 확인한다.  
 - `DESIRED` 와 `CURRENT` 열에서 있어야 하는 pod 개수와 현재 pod 개수를 확인할 수 있다.  
   
-```  
+```bash  
 $ kubectl scale rc <RC_NAME> --replica=<NUM>  
 ```  
   
