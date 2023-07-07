@@ -36,7 +36,7 @@ Proof. auto. Qed.
   
 ## Rules for Conditionals  
   
-```  
+```coq  
 Lemma modus_ponens : forall P Q : Prop,  
   (P -> Q) -> P -> Q.  
 Proof. auto. Qed.  
@@ -231,4 +231,8 @@ Proof.
   apply H0 in H1 as HNQ.  
   contradiction.  
 Qed.  
-```
+```  
+  
+---  
+  
+I was supposed to be reading the [source](https://github.com/snu-sf/promising-seq-coq) for the paper [Sequential Reasoning for Optimizing Compilers Under Weak Memory Concurrency](https://dl.acm.org/doi/abs/10.1145/3519939.3523718) but I got carried away...
