@@ -12,9 +12,10 @@ image:
   
 ![k8s-04.jpeg](../../../assets/img/posts/k8s-04.jpeg) _ReplicationController recreating pods. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-4)_  
   
-[3장](./2021-03-17-03-pods.md)에서는 pod 를 직접 관리하는 방법에 대해 살펴봤다. 하지만 실무에서는 pod 의 관리가 자동으로 되길 원한다. 이를 위해 ReplicationController 나 Deployment 를 사용한다.  
+3장에서는 pod 를 직접 관리하는 방법에 대해 살펴봤다. 하지만 실무에서는 pod 의 관리가 자동으로 되길 원한다. 이를 위해 ReplicationController 나 Deployment 를 사용한다.  
   
 ## 4.1 Keeping pods healthy  
+---  
   
 Pod 내의 컨테이너가 (오류로 인해) 죽으면, Kubelet 이 자동으로 해당 컨테이너를 재시작한다. 하지만 컨테이너의 프로세스가 종료되지 않았는데 애플리케이션이 동작하지 않는 경우가 있고, (JVM OOM 에러) 애플리케이션이 deadlock 이나 무한 루프에 빠져서 동작하지 않는 경우가 생길 수도 있다. 이런 경우에도 컨테이너가 자동으로 재시작되게 해야한다. 물론 앱이 자체적으로 에러를 감지해서 프로세스를 종료할 수도 있겠지만, 내부적으로 에러를 감지하기 보다는 **컨테이너 밖에서** 컨테이너의 상태를 확인해야 한다.  
   
@@ -93,6 +94,7 @@ spec:
   - `failureThreshold` 옵션을 이용한다.   
   
 ## 4.2 ReplicationControllers  
+---  
   
 컨테이너가 죽으면 liveness probe 등을 이용하여 다시 재시작하면 된다. 이 작업은 pod 가 존재하고 있는 노드의 Kubelet 이 해준다. 그런데 만약 노드가 죽으면? Control Plane 이 직접 나서서 죽어버린 pod 를 다시 살려야 한다.  
   
@@ -221,6 +223,7 @@ $ kubectl edit rc <RC_NAME>
 Pod 가 관리되지 않은 채로 남아있다고 하더라도, 다시 ReplicationController 를 생성해서 얼마든지 다시 관리할 수 있다.  
   
 ## 4.3 ReplicaSet  
+---  
   
 ReplicationControllers will eventually be deprecated!  
   
@@ -287,6 +290,7 @@ selector:
 항상 ReplicationController 대신 ReplicaSet 을 사용해라!  
   
 ## 4.4 DaemonSet 을 이용하여 한 노드에 pod 하나씩 실행하기  
+---  
   
 ReplicationController 나 ReplicaSet 을 사용하면 클러스터 내의 임의의 노드에서 실행하게 되는데, 각 노드마다 하나씩 존재해야 하는 앱이 있을 수도 있다. (한 노드가 여유롭다고 몰리면 안된다) 대표적으로 노드의 리소스를 확인하거나 노드의 로그를 확인하고 싶은 경우가 그렇다.  
   
@@ -315,6 +319,7 @@ template:
 ```  
   
 ## 4.5 Running pods that perform a single completable task  
+---  
   
 여기서 single completable task 란, 동작을 모두 마치면 종료하는 작업을 말하는 것이다. (기존에는 서버와 같이 계속 실행 중이어야 하는 프로세스를 다뤄왔다. 이 프로세스들은 완료 - 'completed' 의 개념이 없다)  
   
@@ -391,10 +396,9 @@ $ kubectl scale job <JOB_NAME> --replicas <NUM_REPLICAS>
 더불어 `.spec.backoffLimit` 옵션을 사용하면 최대 몇 번까지 작업을 재시도할지 설정할 수 있다. 다만 `activeDeadlineSeconds` 가 더 우선 순위가 높아 시간이 초과되면 재시도 횟수가 남아도 그냥 실패 처리한다.  
   
 ## 4.6 Scheduling Jobs to run periodically or once in the future  
+---  
   
 ### 4.6.1 CronJob 만들기  
-  
-(얘는 아직 API가 beta 네...)  
   
 ```yaml  
 apiVersion: batch/v1beta1  
