@@ -391,7 +391,7 @@ Most resource types require a name that can be used as a DNS subdomain name as d
   
 - 그냥 애초에 생성이 안 되는 듯 하다.  
   
-```bash  
+```  
 $ kubectl create configmap test --from-literal=some=thing2 --from-literal=some=thing  
 error: cannot add key "some", another key by that name already exists in Data for ConfigMap "test"  
 ```  
