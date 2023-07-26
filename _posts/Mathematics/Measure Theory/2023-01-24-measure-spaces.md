@@ -67,7 +67,7 @@ $$F_n \subseteq A \subseteq G_n, \quad \mu\left( G_n \setminus A \right) < \frac
 
 한편, $A = F \cup (A \setminus F)$, $G = A \cup (G \setminus A)$ 로 적을 수 있다. 그런데 $n \rightarrow\infty$ 일 때
 
-$$\left.\begin{array}{r}\mu\left( G \setminus A \right)\leq \mu\left( G_n \setminus A \right) < \frac{1}{n} \\        \mu\left( A \setminus F \right) \leq \mu\left( A \setminus F_n \right) < \frac{1}{n}\end{array}\right\rbrace     \rightarrow 0$$
+$$\left.\begin{array}{r}\mu\left( G \setminus A \right)\leq \mu\left( G_n \setminus A \right) < \frac{1}{n} \\        \mu\left( A \setminus F \right) \leq \mu\left( A \setminus F_n \right) < \frac{1}{n}\end{array}\right\rbrace    \rightarrow 0$$
 
 이므로 $A \in \mathfrak{M}(\mu)$ 는 Borel set 과 $\mu$-measure zero set의 합집합이다. 그리고 $A \in \mathfrak{M}(\mu)$ 에 적당한 $\mu$-measure zero set을 합집합하여 Borel set이 되게 할 수 있다.
 
@@ -118,4 +118,3 @@ Uncountable인 경우에는 Cantor set $P$를 생각한다. $E_n$을 다음과 �
 [^1]: 첫 번째 부등식은 countable subadditivity, 두 번째 부등식은 $\mu^\ast$의 정의에서 나온다.
 
 [^2]: [Vitali set](https://en.wikipedia.org/wiki/Vitali_set) 참고.
-

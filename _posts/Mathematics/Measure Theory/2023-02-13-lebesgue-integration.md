@@ -17,7 +17,7 @@ image:
 
 $E \in \mathscr{F}$ 일 때, 적분을 정의하기 위해
 
-$$\mathscr{F}_E = \lbrace A \cap E : A \in \mathscr{F}\rbrace , \quad \mu_E = \mu|_{\mathscr{F}_E}$$
+$$\mathscr{F}_E = \lbrace A \cap E : A \in \mathscr{F}\rbrace, \quad \mu_E = \mu|_{\mathscr{F}_E}$$
 
 로 설정하고 $\int = \int_E$ 로 두어 ($X, \mathscr{F}_E, \mu_E$) 위에서 적분을 정의할 수 있습니다. 그러나 굳이 이렇게 하지 않아도 됩니다. $\int = \int_X$ 로 두고
 
@@ -113,7 +113,7 @@ $$\int f \,d{\mu} = \int \left[g + (f - g)\right] \,d{\mu} = \int g\,d{\mu} + \i
 
 **(Step 3)** $f: X \rightarrow[0, \infty]$ 가 measurable일 때,
 
-$$\int f \,d{\mu} = \sup\left\lbrace \int h \,d{\mu}: 0\leq h \leq f, h \text{ measurable and simple}\right\rbrace .$$
+$$\int f \,d{\mu} = \sup\left\lbrace \int h \,d{\mu}: 0\leq h \leq f, h \text{ measurable and simple}\right\rbrace.$$
 
 로 정의한다.
 
@@ -123,7 +123,7 @@ $f$보다 작은 measurable simple function의 적분값 중 상한을 택하겠
 
 $f \geq 0$ 가 measurable이면 증가하는 measurable simple 함수열 $s_n$이 존재함을 지난 번에 보였습니다. 이 $s_n$에 대하여 적분값을 계산해보면
 
-$$\int_E s_n \,d{\mu} = \sum_{i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace  \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace )$$
+$$\int_E s_n \,d{\mu} = \sum_{i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace)$$
 
 임을 알 수 있습니다. 이제 $n \rightarrow\infty$ 일 때 우변이 곧 $\displaystyle\int f \,d{\mu}$ 이기를 기대합니다.
 
@@ -162,4 +162,3 @@ $$f \in \mathcal{L}^1(E, \mu)$$
 $$f \in \mathcal{L}^{1}(E, \mu) \iff f^+, f^- \in \mathcal{L}^{1}(E, \mu)\iff \lvert f \rvert \in \mathcal{L}^{1}(E, \mu).$$
 
 [^1]: 계수가 같거나, measure가 0이 되어 같거나.
-

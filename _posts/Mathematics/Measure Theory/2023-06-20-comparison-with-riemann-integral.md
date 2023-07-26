@@ -35,7 +35,7 @@ $$\mathcal{R}\int_a^b f\,d{x}$$
 
 또한 (2)는 리만 적분 가능성에 대한 동치 조건을 알려줍니다. Almost everywhere라는 조건이 붙었기 때문에, $\mathcal{L}^1$의 equivalence class를 고려하면 사실상 연속함수에 대해서만 리만 적분이 가능하다는 뜻이 됩니다.
 
-**증명.** $k \in \mathbb{N}$ 에 대하여 구간 $[a, b]$의 분할 $P_k = \lbrace a = x_0^k < x_1^k < \cdots < x_{n_k}^k = b\rbrace $ 를 잡는다. 단 $P_k \subseteq P_{k+1}$ (refinement) 이고 $\lvert x_{i}^k - x_{i-1}^k \rvert < \frac{1}{k}$ 이 되도록 한다.
+**증명.** $k \in \mathbb{N}$ 에 대하여 구간 $[a, b]$의 분할 $P_k = \lbrace a = x_0^k < x_1^k < \cdots < x_{n_k}^k = b\rbrace$ 를 잡는다. 단 $P_k \subseteq P_{k+1}$ (refinement) 이고 $\lvert x_{i}^k - x_{i-1}^k \rvert < \frac{1}{k}$ 이 되도록 한다.
 
 그러면 리만 적분의 정의로부터
 
@@ -89,11 +89,11 @@ $$\begin{aligned}        \lvert f(x) - f(y) \rvert & \leq M_{j_0}^n - m_{j_0}^n 
 
 가 됨을 알 수 있다.
 
-위 부등식에 의해 $y \in \lbrace x : U(x) = L(x)\rbrace  \setminus\bigcup_{k=1}^{\infty} P_k$ 이면 $f$가 $y$에서 연속임을 알 수 있게 된다.
+위 부등식에 의해 $y \in \lbrace x : U(x) = L(x)\rbrace \setminus\bigcup_{k=1}^{\infty} P_k$ 이면 $f$가 $y$에서 연속임을 알 수 있게 된다.
 
 따라서, $f$가 연속인 점들의 집합을 $C_f$라 하면
 
-$$\lbrace x : U(x) = L(x)\rbrace  \setminus\bigcup_{k=1}^{\infty} P_k \subseteq C_f \subseteq\lbrace x : U(x) = L(x)\rbrace$$
+$$\lbrace x : U(x) = L(x)\rbrace \setminus\bigcup_{k=1}^{\infty} P_k \subseteq C_f \subseteq\lbrace x : U(x) = L(x)\rbrace$$
 
 이 된다. 한편 $\bigcup_{k=1}^{\infty} P_k$는 measure가 0 이므로, $U = L$ $m$-a.e. 인 것과 $f$가 연속 $m$-a.e. 인 것은 동치이다. 위 논의의 결과를 이용하면 $f \in \mathcal{R}[a, b]$ 인 것과 $f$가 연속 $m$-a.e. 인 것은 동치이다.
 
@@ -126,4 +126,3 @@ $$\lbrace x : U(x) = L(x)\rbrace  \setminus\bigcup_{k=1}^{\infty} P_k \subseteq 
 $$\int_0^1 f\,d{x} = \lim_{n \rightarrow\infty} \int_{0}^1 f_n \,d{x} = \lim_{n \rightarrow\infty}\int_{1/n}^1 f \,d{x} = \lim_{n \rightarrow\infty} \mathcal{R}\int_{1/n}^1 f \,d{x}$$
 
 이 된다.
-

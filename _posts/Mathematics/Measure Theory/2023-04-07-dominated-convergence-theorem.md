@@ -25,11 +25,11 @@ image:
 
 **정리.** (Markov's Inequality) $u \in \mathcal{L}^{1}(E, \mu)$ 라 하자. 모든 $c > 0$ 에 대하여
 
-$$\mu\left( \lbrace \lvert u \rvert \geq c\rbrace  \cap E \right) \leq \frac{1}{c} \int_E \lvert u \rvert \,d{\mu}$$
+$$\mu\left( \lbrace \lvert u \rvert \geq c\rbrace \cap E \right) \leq \frac{1}{c} \int_E \lvert u \rvert \,d{\mu}$$
 
 이다.
 
-**증명.** $\displaystyle\int_E \lvert u \rvert \,d{\mu} \geq \int_{E\cap \lbrace \lvert u \rvert\geq c\rbrace } \lvert u \rvert \,d{\mu} \geq \int_{E\cap \lbrace \lvert u \rvert\geq c\rbrace } c \,d{\mu} = c \mu\left( \lbrace \lvert u \rvert \geq c\rbrace  \cap E \right)$.
+**증명.** $\displaystyle\int_E \lvert u \rvert \,d{\mu} \geq \int_{E\cap \lbrace \lvert u \rvert\geq c\rbrace} \lvert u \rvert \,d{\mu} \geq \int_{E\cap \lbrace \lvert u \rvert\geq c\rbrace} c \,d{\mu} = c \mu\left( \lbrace \lvert u \rvert \geq c\rbrace \cap E \right)$.
 
 아래 정리는 measure가 0인 집합에서의 적분은 무시해도 됨을 알려줍니다. $u(x) \neq 0$ 인 점들이 존재하더라도, 이 점들의 집합의 measure가 0이면 적분값에 영향을 줄 수 없습니다.
 
@@ -39,19 +39,19 @@ $$\mu\left( \lbrace \lvert u \rvert \geq c\rbrace  \cap E \right) \leq \frac{1}{
 
 2. $u = 0$ $\mu$-a.e. on $E$.
 
-3. $\mu\left( \lbrace x \in E : u(x) \neq 0\rbrace  \right) = 0$.
+3. $\mu\left( \lbrace x \in E : u(x) \neq 0\rbrace \right) = 0$.
 
 **증명.**
 
-(2 $\iff$ 3) $E\cap\lbrace u\neq 0\rbrace $ 가 measurable이므로 정의에 의해 당연하다.
+(2 $\iff$ 3) $E\cap\lbrace u\neq 0\rbrace$ 가 measurable이므로 정의에 의해 당연하다.
 
-(2 $\implies$ 1) $\displaystyle\int_E \lvert u \rvert \,d{\mu} = \int_{E \cap \lbrace \lvert u \rvert > 0\rbrace } \lvert u \rvert \,d{\mu} + \int_{E \cap \lbrace \lvert u \rvert = 0\rbrace } \lvert u \rvert \,d{\mu} = 0 + 0 = 0$.
+(2 $\implies$ 1) $\displaystyle\int_E \lvert u \rvert \,d{\mu} = \int_{E \cap \lbrace \lvert u \rvert > 0\rbrace} \lvert u \rvert \,d{\mu} + \int_{E \cap \lbrace \lvert u \rvert = 0\rbrace} \lvert u \rvert \,d{\mu} = 0 + 0 = 0$.
 
 (1 $\implies$ 3) Markov's inequality를 사용하면
 
-$$\mu\left( \left\lbrace \lvert u \rvert \geq \frac{1}{n}\right\rbrace  \cap E \right) \leq n\int_E \lvert u \rvert \,d{\mu} = 0$$
+$$\mu\left( \left\lbrace \lvert u \rvert \geq \frac{1}{n}\right\rbrace \cap E \right) \leq n\int_E \lvert u \rvert \,d{\mu} = 0$$
 
-이다. 이제 $n\rightarrow\infty$ 일 때 continuity of measure를 사용하면 $\mu\left( \lbrace \lvert u \rvert > 0\rbrace  \cap E \right) = 0$ 이다.
+이다. 이제 $n\rightarrow\infty$ 일 때 continuity of measure를 사용하면 $\mu\left( \lbrace \lvert u \rvert > 0\rbrace \cap E \right) = 0$ 이다.
 
 위 정리의 결과를 생각해 보면 다음이 성립함도 알 수 있습니다.
 
@@ -65,15 +65,15 @@ $$\int_A f \,d{\mu} = \int_B f \,d{\mu}$$
 
 **정리.** $u \in \mathcal{L}^{1}(E, \mu)$ 이면 $u(x) \in \mathbb{R}$ $\mu$-a.e. on $E$ 이다. 즉, $u(x) = \infty$ 인 집합의 measure가 0이다.
 
-**증명.** $\mu\left( \lbrace \lvert u \rvert \geq 1\rbrace \cap E \right) \leq \displaystyle\int_E \lvert u \rvert \,d{\mu} < \infty$.[^2] 그러므로
+**증명.** $\mu\left( \lbrace \lvert u \rvert \geq 1\rbrace\cap E \right) \leq \displaystyle\int_E \lvert u \rvert \,d{\mu} < \infty$.[^2] 그러므로
 
-$$\begin{aligned}        \mu\left( \lbrace \lvert u \rvert = \infty\rbrace  \cap E \right) & = \mu\left( \bigcap_{n=1}^\infty \lbrace x \in E : \lvert u(x) \rvert \geq n\rbrace  \right) \\                                               & = \lim_{n \rightarrow\infty} \mu\left( \lbrace \lvert u \rvert \geq n\rbrace  \cap E \right) \leq \limsup_{n\rightarrow\infty} \frac{1}{n} \int_E \lvert u \rvert \,d{\mu} = 0    \end{aligned}$$
+$$\begin{aligned}        \mu\left( \lbrace \lvert u \rvert = \infty\rbrace \cap E \right) & = \mu\left( \bigcap_{n=1}^\infty \lbrace x \in E : \lvert u(x) \rvert \geq n\rbrace \right) \\                                               & = \lim_{n \rightarrow\infty} \mu\left( \lbrace \lvert u \rvert \geq n\rbrace \cap E \right) \leq \limsup_{n\rightarrow\infty} \frac{1}{n} \int_E \lvert u \rvert \,d{\mu} = 0    \end{aligned}$$
 
 이다.
 
 적분 가능하다면 어차피 함숫값이 무한한 영역은 적분값에 영향을 주지 않으므로, 함숫값이 유한한 곳에서만 적분해도 될 것입니다.
 
-**따름정리.** $u \in \mathcal{L}^{1}(E, \mu)$ 이면 $\displaystyle\int_E u \,d{\mu} = \int_{E \cap \lbrace \lvert u \rvert < \infty\rbrace } u \,d{\mu}$ 이다.
+**따름정리.** $u \in \mathcal{L}^{1}(E, \mu)$ 이면 $\displaystyle\int_E u \,d{\mu} = \int_{E \cap \lbrace \lvert u \rvert < \infty\rbrace} u \,d{\mu}$ 이다.
 
 ### Linearity of the Lebesgue Integral
 
@@ -87,7 +87,7 @@ $$\int_E \left( f_1 + f_2 \right) \,d{\mu} = \int_E f_1 \,d{\mu} + \int_E f_2 \,
 
 **증명.** $\lvert f_1 + f_2 \rvert \leq \lvert f_1 \rvert + \lvert f_2 \rvert$ 임을 이용하면 $f_1+f_2 \in \mathcal{L}^{1}(E, \mu)$ 인 것은 당연하다. 이제 $f = f_1 + f_2$ 로 두고
 
-$$N = \left\lbrace x : \max\left\lbrace f_1^+, f_1^-, f_2^+, f_2^-, f^+, f^-\right\rbrace  = \infty \right\rbrace$$
+$$N = \left\lbrace x : \max\left\lbrace f_1^+, f_1^-, f_2^+, f_2^-, f^+, f^-\right\rbrace = \infty \right\rbrace$$
 
 으로 정의하자. 함수들이 모두 적분 가능하므로 위 정리에 의해 $\mu(N) = 0$ 이다. 그러므로 $E \setminus N$ 에서는 무한한 값이 없으므로 이항을 편하게 할 수 있다. 즉,
 
@@ -139,7 +139,7 @@ $$\int \lvert f \rvert \,d{\mu} \leq \int \lvert g \rvert \,d{\mu}$$
 
 그러면 $\sim$은 equivalence relation이고 다음과 같이 적을 수 있다.
 
-$$[f] = \lbrace g \in \mathcal{L}^{1}(E, \mu) : f \sim g\rbrace .$$
+$$[f] = \lbrace g \in \mathcal{L}^{1}(E, \mu) : f \sim g\rbrace.$$
 
 이처럼 equivalence relation을 정의하면 equivalence class의 대표에 대해서만 생각해도 충분합니다. 사실상 거의 모든 점에서 함숫값이 같다면 같은 함수로 보겠다는 뜻이 됩니다.
 
@@ -149,7 +149,7 @@ $$[f] = \lbrace g \in \mathcal{L}^{1}(E, \mu) : f \sim g\rbrace .$$
 
 ![mt-07.png](../../../assets/img/posts/mt-07.png)
 
-**정리.** (지배 수렴 정리) Measurable set $E$와 measurable function $f$에 대하여, $\lbrace f_n\rbrace $이 measurable function의 함수열이라 하자. $E$의 거의 모든 점 위에서 극한 $f(x) = \displaystyle\lim_{n \rightarrow\infty} f_n(x)$ 가 $\overline{\mathbb{R}}$에 존재하고 (점별 수렴) $\lvert f_n \rvert \leq g \quad \mu$-a.e. on $E$ ($\forall n \geq 1$) 를 만족하는 $g \in \mathcal{L}^{1}(E, \mu)$ 가 존재하면,
+**정리.** (지배 수렴 정리) Measurable set $E$와 measurable function $f$에 대하여, $\lbrace f_n\rbrace$이 measurable function의 함수열이라 하자. $E$의 거의 모든 점 위에서 극한 $f(x) = \displaystyle\lim_{n \rightarrow\infty} f_n(x)$ 가 $\overline{\mathbb{R}}$에 존재하고 (점별 수렴) $\lvert f_n \rvert \leq g \quad \mu$-a.e. on $E$ ($\forall n \geq 1$) 를 만족하는 $g \in \mathcal{L}^{1}(E, \mu)$ 가 존재하면,
 
 $$\lim_{n \rightarrow\infty} \int_E \lvert f_n - f \rvert \,d{\mu} = 0$$
 
@@ -171,7 +171,7 @@ $$\lim_{n \rightarrow\infty} \int_E \lvert f_n - f \rvert \,d{\mu} = 0$$
 
 **증명.** 다음과 같은 집합을 정의한다.
 
-$$A = \left\lbrace \displaystyle x \in E : \lim_{n \rightarrow\infty} f_n(x) \text{가 존재하고}, f_n(x), f(x), g(x) \in \mathbb{R}, \lvert f_n(x) \rvert \leq g(x)\right\rbrace .$$
+$$A = \left\lbrace \displaystyle x \in E : \lim_{n \rightarrow\infty} f_n(x) \text{가 존재하고}, f_n(x), f(x), g(x) \in \mathbb{R}, \lvert f_n(x) \rvert \leq g(x)\right\rbrace.$$
 
 그러면 가정에 의해 $\mu\left( E\setminus A \right) = 0$ 이다. 이제 $x \in A$ 에 대해서만 생각해도 충분하다. 그러면
 
@@ -190,4 +190,3 @@ $$2 \int_A g \,d{\mu} - \limsup_{n \rightarrow\infty} \int_A \lvert f_n - f \rve
 [^1]: 예를 들어, ‘$f(x)$가 연속이다’ 등.
 
 [^2]: Continuity of measure를 사용하기 위해서는 첫 번째 집합의 measure가 유한해야 한다.
-

@@ -35,7 +35,7 @@ $\mathcal{R}$이 집합의 모임이라고 하겠습니다. $\mathcal{R} \neq \v
 
 **정의.** (Power Set) 집합 $X$에 대하여 power set $\mathcal{P}(X)$는 다음과 같이 정의한다.
 
-$$\mathcal{P}(X) = \lbrace A : A \subseteq X\rbrace .$$
+$$\mathcal{P}(X) = \lbrace A : A \subseteq X\rbrace.$$
 
 Ring과 유사하지만 살짝 더 좋은 성질을 가진 구조를 가지고 논의를 전개합니다.
 
@@ -87,7 +87,7 @@ $\sigma$-algebra는 당연히 $\sigma$-ring이기 때문에 countable한 교집�
 
 정의역이 $\mathcal{R}$으로, 집합의 모임입니다. 즉 $\phi$는 집합을 받아 $\overline{\mathbb{R}}$과 대응시키는 함수임을 알 수 있습니다.
 
-우리는 ‘길이’ 함수를 정의하고자 합니다. ‘길이’는 보통 양수이기 때문에, $\phi$의 치역에 $-\infty$와 $\infty$가 동시에 포함되어 있는 경우는 제외합니다. 또한 $\phi$의 치역이 $\lbrace \infty\rbrace $이거나 $\lbrace -\infty\rbrace $인 경우도 생각하지 않습니다.
+우리는 ‘길이’ 함수를 정의하고자 합니다. ‘길이’는 보통 양수이기 때문에, $\phi$의 치역에 $-\infty$와 $\infty$가 동시에 포함되어 있는 경우는 제외합니다. 또한 $\phi$의 치역이 $\lbrace \infty\rbrace$이거나 $\lbrace -\infty\rbrace$인 경우도 생각하지 않습니다.
 
 따라서, $\phi(A) \in \mathbb{R}$ 인 $A \in \mathcal{R}$이 존재한다고 가정할 수 있습니다. 이 사실은 양변에서 $\phi(A)$를 cancel 할 때 사용됩니다.
 
@@ -204,4 +204,3 @@ $$\lim_{n\rightarrow\infty} \mu(A_n) = \mu\left( \bigcap_{n=1}^\infty A_n \right
 [^3]: 확률의 덧셈정리와 유사합니다. 확률론 또한 measure theory와 관련이 깊습니다.
 
 [^4]: 무한하지 않다는 조건이 있어야 이항이 가능합니다.
-

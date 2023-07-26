@@ -85,7 +85,7 @@ $$\infty = \int \chi_{[n, \infty)} \,d{m} \neq \int 0 \,d{m} = 0$$
 
 지난 번에 $f \geq 0$ 가 measurable이면 증가하는 measurable simple 함수열 $s_n$이 존재함을 보였고, 이 $s_n$에 대하여 적분값을 계산하여
 
-$$\int_E s_n \,d{\mu} = \sum_{i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace  \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace )$$
+$$\int_E s_n \,d{\mu} = \sum_{i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace)$$
 
 라는 결과까지 얻었습니다. 그런데 여기서
 
@@ -189,11 +189,10 @@ $$\int_E \limsup_{n \rightarrow\infty} f_n \,d{\mu} \geq \limsup_{n \rightarrow\
 
 	$$\int_A \lvert f \rvert \,d{\mu} \leq \int_E \lvert f \rvert\,d{\mu} < \infty.$$
 
-6. 만약 measure가 0인 집합에서 적분을 하면 어떻게 될까요? $\mu(E) = 0$ 라 하고, measurable function $f$를 적분해 보겠습니다. 여기서 $\min\lbrace \lvert f \rvert, n\rbrace \chi_E$ 도 measurable이며 $n \rightarrow\infty$ 일 때 $\min\lbrace \lvert f \rvert, n\rbrace \chi_E \nearrow \lvert f \rvert\chi_E$ 임을 이용합니다. 마지막으로 단조 수렴 정리를 적용하면
+6. 만약 measure가 0인 집합에서 적분을 하면 어떻게 될까요? $\mu(E) = 0$ 라 하고, measurable function $f$를 적분해 보겠습니다. 여기서 $\min\lbrace \lvert f \rvert, n\rbrace\chi_E$ 도 measurable이며 $n \rightarrow\infty$ 일 때 $\min\lbrace \lvert f \rvert, n\rbrace\chi_E \nearrow \lvert f \rvert\chi_E$ 임을 이용합니다. 마지막으로 단조 수렴 정리를 적용하면
 
-	$$\begin{aligned}                    \int_E \lvert f \rvert \,d{\mu} &= \lim_{n \rightarrow\infty} \int_E \min\lbrace \lvert f \rvert, n\rbrace  \,d{\mu} \\                    &\leq \lim_{n \rightarrow\infty} \int_E n \,d{\mu} = \lim_{n \rightarrow\infty} n\mu(E) = 0                  \end{aligned}$$
+	$$\begin{aligned}                    \int_E \lvert f \rvert \,d{\mu} &= \lim_{n \rightarrow\infty} \int_E \min\lbrace \lvert f \rvert, n\rbrace \,d{\mu} \\                    &\leq \lim_{n \rightarrow\infty} \int_E n \,d{\mu} = \lim_{n \rightarrow\infty} n\mu(E) = 0                  \end{aligned}$$
 
 	임을 얻습니다. 따라서 $f \in \mathcal{L}^{1}(E, \mu)$ 이고, $\displaystyle\int_E f \,d{\mu} = 0$ 가 되어 적분값이 0임을 알 수 있습니다. 즉, measure가 0인 집합 위에서 적분하면 그 결과는 0이 됩니다.[^1]
 
 [^1]: 편의상 $0\cdot\infty = 0$ 으로 정의했기 때문에 $f \equiv \infty$ 인 경우에도 성립합니다.
-
