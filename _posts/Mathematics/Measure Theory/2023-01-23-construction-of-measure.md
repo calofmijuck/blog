@@ -71,7 +71,7 @@ $\mathbb{R}, \mathbb{R}^2, \mathbb{R}^3$에서 생각해보면 $m$은 곧 길이
 
 **정의.** (Outer Measure) $E \in \mathcal{P}(\mathbb{R}^p)$ 의 **outer measure** $\mu^\ast: \mathcal{P}(\mathbb{R}^p) \rightarrow[0, \infty]$ 는
 
-$$\mu^\ast(E) = \inf \left\lbrace \sum_{n=1}^\infty \mu(A_n) : \text{열린집합 } A_n \in \Sigma \text{ 에 대하여 } E \subseteq\bigcup_{n=1}^\infty A_n\right\rbrace .$$
+$$\mu^\ast(E) = \inf \left\lbrace \sum_{n=1}^\infty \mu(A_n) : \text{열린집합 } A_n \in \Sigma \text{ 에 대하여 } E \subseteq\bigcup_{n=1}^\infty A_n\right\rbrace.$$
 
 로 정의한다.
 
@@ -135,7 +135,7 @@ Countably additive 조건이 성립하는 집합들만 모아서 measure를 cons
 
 - $A_1, B_2, B_1, B_2 \in \mathbb{R}^p$ 일 때, 다음이 성립한다.
 
-	$$\left.\begin{array}{c}d(A_1 \cup A_2, B_1 \cup B_2) \\d(A_1 \cap A_2, B_1 \cap B_2) \\d(A_1 \setminus A_2, B_1 \setminus B_2)\end{array}\right\rbrace \leq d(A_1, B_1) + d(A_2, B_2).$$
+	$$\left.\begin{array}{c}d(A_1 \cup A_2, B_1 \cup B_2) \\d(A_1 \cap A_2, B_1 \cap B_2) \\d(A_1 \setminus A_2, B_1 \setminus B_2)\end{array}\right\rbrace\leq d(A_1, B_1) + d(A_2, B_2).$$
 
 **정의.** (Finitely $\mu$-measurable) 집합 $A_n \in \Sigma$ 이 존재하여 $A_n \rightarrow A$ 이면 $A$가 **finitely $\mu$-measurable**이라 한다. 그리고 finitely $\mu$-measurable한 집합의 모임을 $\mathfrak{M}_F(\mu)$로 표기한다.
 
@@ -173,7 +173,7 @@ $$\mu^\ast(A) \leq d(A_N, A) + \mu^\ast(A_N) \leq 1 + \mu^\ast(A_N) < \infty$$
 
 $A, B \in \mathfrak{M}_F(\mu)$ 라 하자. 그러면 $A_n, B_n \in \Sigma$ 이 존재하여 $A_n \rightarrow A$, $B_n \rightarrow B$ 이 된다. 그러면
 
-$$\left.\begin{array}{c}d(A_n \cup B_n, A \cup B) \\ d(A_n \cap B_n, A \cap B) \\ d(A_n \setminus B_n, A \setminus B)\end{array}\right\rbrace \leq d(A_n, A) + d(B_n, B) \rightarrow 0$$
+$$\left.\begin{array}{c}d(A_n \cup B_n, A \cup B) \\ d(A_n \cap B_n, A \cap B) \\ d(A_n \setminus B_n, A \setminus B)\end{array}\right\rbrace\leq d(A_n, A) + d(B_n, B) \rightarrow 0$$
 
 이므로 $A_n \cup B_n \rightarrow A \cup B, A_n \setminus B_n \rightarrow A\setminus B$ 이기 때문에 $\mathfrak{M}_F(\mu)$는 ring이다.
 
@@ -199,7 +199,7 @@ $$\mu^\ast(A) + \mu^\ast(B) = \mu^\ast(A\cup B) + \mu^\ast(A \cap B)$$
 
 와 같이 정의하면 $A_n$이 쌍마다 서로소이고 $A_n \in \mathfrak{M}_F(\mu)$ 임을 알 수 있다.
 
-위 사실을 이용하여 $$A_n \in \mathfrak{M}_F(\mu)$$ 에 대하여 $$A = \displaystyle\bigcup_{n=1}^\infty A_n$$ 으로 두자.
+위 사실을 이용하여 $A_n \in \mathfrak{M}_ F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_{n=1}^\infty A_n$ 으로 두자.
 
 1. Countable subadditivity에 의해 $\displaystyle\mu^\ast(A) \leq \sum_{n=1}^{\infty} \mu^\ast (A_n)$ 가 성립한다.
 
