@@ -29,7 +29,7 @@ $$\mu\left( \lbrace \lvert u \rvert \geq c\rbrace \cap E \right) \leq \frac{1}{c
 
 이다.
 
-**증명.** $\displaystyle\int_E \lvert u \rvert \,d{\mu} \geq \int_ {E\cap \lbrace \lvert u \rvert\geq c\rbrace} \lvert u \rvert \,d{\mu} \geq \int_ {E\cap \lbrace \lvert u \rvert\geq c\rbrace} c \,d{\mu} = c \mu\left( \lbrace \lvert u \rvert \geq c\rbrace \cap E \right)$.
+**증명.** $\displaystyle\int_E \lvert u \rvert \,d{\mu} \geq \int _{E\cap \lbrace \lvert u \rvert\geq c\rbrace} \lvert u \rvert \,d{\mu} \geq \int _{E\cap \lbrace \lvert u \rvert\geq c\rbrace} c \,d{\mu} = c \mu\left( \lbrace \lvert u \rvert \geq c\rbrace \cap E \right)$.
 
 아래 정리는 measure가 0인 집합에서의 적분은 무시해도 됨을 알려줍니다. $u(x) \neq 0$ 인 점들이 존재하더라도, 이 점들의 집합의 measure가 0이면 적분값에 영향을 줄 수 없습니다.
 
@@ -45,7 +45,7 @@ $$\mu\left( \lbrace \lvert u \rvert \geq c\rbrace \cap E \right) \leq \frac{1}{c
 
 (2 $\iff$ 3) $E\cap\lbrace u\neq 0\rbrace$ 가 measurable이므로 정의에 의해 당연하다.
 
-(2 $\implies$ 1) $\displaystyle\int_E \lvert u \rvert \,d{\mu} = \int_ {E \cap \lbrace \lvert u \rvert > 0\rbrace} \lvert u \rvert \,d{\mu} + \int_ {E \cap \lbrace \lvert u \rvert = 0\rbrace} \lvert u \rvert \,d{\mu} = 0 + 0 = 0$.
+(2 $\implies$ 1) $\displaystyle\int_E \lvert u \rvert \,d{\mu} = \int _{E \cap \lbrace \lvert u \rvert > 0\rbrace} \lvert u \rvert \,d{\mu} + \int _{E \cap \lbrace \lvert u \rvert = 0\rbrace} \lvert u \rvert \,d{\mu} = 0 + 0 = 0$.
 
 (1 $\implies$ 3) Markov's inequality를 사용하면
 
@@ -67,13 +67,13 @@ $$\int_A f \,d{\mu} = \int_B f \,d{\mu}$$
 
 **증명.** $\mu\left( \lbrace \lvert u \rvert \geq 1\rbrace\cap E \right) \leq \displaystyle\int_E \lvert u \rvert \,d{\mu} < \infty$.[^2] 그러므로
 
-$$\begin{aligned}        \mu\left( \lbrace \lvert u \rvert = \infty\rbrace \cap E \right) & = \mu\left( \bigcap_ {n=1}^\infty \lbrace x \in E : \lvert u(x) \rvert \geq n\rbrace \right) \\                                               & = \lim_ {n \rightarrow\infty} \mu\left( \lbrace \lvert u \rvert \geq n\rbrace \cap E \right) \leq \limsup_ {n\rightarrow\infty} \frac{1}{n} \int_E \lvert u \rvert \,d{\mu} = 0    \end{aligned}$$
+$$\begin{aligned}        \mu\left( \lbrace \lvert u \rvert = \infty\rbrace \cap E \right) & = \mu\left( \bigcap _{n=1}^\infty \lbrace x \in E : \lvert u(x) \rvert \geq n\rbrace \right) \\                                               & = \lim _{n \rightarrow\infty} \mu\left( \lbrace \lvert u \rvert \geq n\rbrace \cap E \right) \leq \limsup _{n\rightarrow\infty} \frac{1}{n} \int_E \lvert u \rvert \,d{\mu} = 0    \end{aligned}$$
 
 이다.
 
 적분 가능하다면 어차피 함숫값이 무한한 영역은 적분값에 영향을 주지 않으므로, 함숫값이 유한한 곳에서만 적분해도 될 것입니다.
 
-**따름정리.** $u \in \mathcal{L}^{1}(E, \mu)$ 이면 $\displaystyle\int_E u \,d{\mu} = \int_ {E \cap \lbrace \lvert u \rvert < \infty\rbrace} u \,d{\mu}$ 이다.
+**따름정리.** $u \in \mathcal{L}^{1}(E, \mu)$ 이면 $\displaystyle\int_E u \,d{\mu} = \int _{E \cap \lbrace \lvert u \rvert < \infty\rbrace} u \,d{\mu}$ 이다.
 
 ### Linearity of the Lebesgue Integral
 
@@ -95,11 +95,11 @@ $$f^+ - f^- = f_1^+ - f_1^- + f_2^+ - f_2^- \implies f^+ + f_1^- + f_2^- = f^- +
 
 이다. 그러면
 
-$$\int_ {E\setminus N} f^+ \,d{\mu} + \int_ {E\setminus N} f_1^- \,d{\mu} + \int_ {E\setminus N} f_2^- \,d{\mu} = \int_ {E\setminus N} f^-\,d{\mu} + \int_ {E\setminus N} f_1^+\,d{\mu} + \int_ {E\setminus N} f_2^+ \,d{\mu}$$
+$$\int _{E\setminus N} f^+ \,d{\mu} + \int _{E\setminus N} f_1^- \,d{\mu} + \int _{E\setminus N} f_2^- \,d{\mu} = \int _{E\setminus N} f^-\,d{\mu} + \int _{E\setminus N} f_1^+\,d{\mu} + \int _{E\setminus N} f_2^+ \,d{\mu}$$
 
 이고, $\mu(N) = 0$ 임을 이용하여 $N$ 위에서의 적분값을 더해주면
 
-$$\int_ {E \setminus N} f \,d{\mu} = \int_ {E \setminus N} f_1 \,d{\mu} + \int_ {E \setminus N} f_2 \,d{\mu} \implies \int_ {E} f \,d{\mu} = \int_ {E} f_1 \,d{\mu} + \int_ {E} f_2 \,d{\mu}$$
+$$\int _{E \setminus N} f \,d{\mu} = \int _{E \setminus N} f_1 \,d{\mu} + \int _{E \setminus N} f_2 \,d{\mu} \implies \int _{E} f \,d{\mu} = \int _{E} f_1 \,d{\mu} + \int _{E} f_2 \,d{\mu}$$
 
 를 얻는다.
 
@@ -107,19 +107,19 @@ $$\int_ {E \setminus N} f \,d{\mu} = \int_ {E \setminus N} f_1 \,d{\mu} + \int_ 
 
 이제 이를 응용하여 수렴정리를 다시 적어보겠습니다. 지난 글에서는 모든 점에서 특정 성질이 성립할 것이 요구되었으나 이제는 거의 모든 점에서만 성립하면 됩니다. 증명은 해당 성질이 성립하지 않는 집합을 빼고 증명하면 됩니다.
 
-**정리.** (단조 수렴 정리) $f_n$이 measurable이고 $0 \leq f_n(x) \leq f_ {n+1}(x)$ $\mu$-a.e. 라 하자.
+**정리.** (단조 수렴 정리) $f_n$이 measurable이고 $0 \leq f_n(x) \leq f _{n+1}(x)$ $\mu$-a.e. 라 하자.
 
-$$\lim_ {n\rightarrow\infty} f_n(x) = f(x)$$
+$$\lim _{n\rightarrow\infty} f_n(x) = f(x)$$
 
 로 두면,
 
-$$\lim_ {n \rightarrow\infty} \int_E f_n \,d{\mu} = \int_E f \,d{\mu}.$$
+$$\lim _{n \rightarrow\infty} \int_E f_n \,d{\mu} = \int_E f \,d{\mu}.$$
 
 이다.
 
 **정리.** (Fatou) $f_n$이 measurable이고 $f_n(x) \geq 0$ $\mu$-a.e. 라 하자. 다음이 성립한다.
 
-$$\int_E \liminf_ {n\rightarrow\infty} f_n \,d{\mu} \leq \liminf_ {n\rightarrow\infty} \int_E f_n \,d{\mu}.$$
+$$\int_E \liminf _{n\rightarrow\infty} f_n \,d{\mu} \leq \liminf _{n\rightarrow\infty} \int_E f_n \,d{\mu}.$$
 
 비슷한 느낌으로 다음과 같은 명제를 생각할 수도 있습니다.
 
@@ -149,9 +149,9 @@ $$[f] = \lbrace g \in \mathcal{L}^{1}(E, \mu) : f \sim g\rbrace.$$
 
 ![mt-07.png](../../../assets/img/posts/mt-07.png)
 
-**정리.** (지배 수렴 정리) Measurable set $E$와 measurable function $f$에 대하여, $\lbrace f_n\rbrace$이 measurable function의 함수열이라 하자. $E$의 거의 모든 점 위에서 극한 $f(x) = \displaystyle\lim_ {n \rightarrow\infty} f_n(x)$ 가 $\overline{\mathbb{R}}$에 존재하고 (점별 수렴) $\lvert f_n \rvert \leq g \quad \mu$-a.e. on $E$ ($\forall n \geq 1$) 를 만족하는 $g \in \mathcal{L}^{1}(E, \mu)$ 가 존재하면,
+**정리.** (지배 수렴 정리) Measurable set $E$와 measurable function $f$에 대하여, $\lbrace f_n\rbrace$이 measurable function의 함수열이라 하자. $E$의 거의 모든 점 위에서 극한 $f(x) = \displaystyle\lim _{n \rightarrow\infty} f_n(x)$ 가 $\overline{\mathbb{R}}$에 존재하고 (점별 수렴) $\lvert f_n \rvert \leq g \quad \mu$-a.e. on $E$ ($\forall n \geq 1$) 를 만족하는 $g \in \mathcal{L}^{1}(E, \mu)$ 가 존재하면,
 
-$$\lim_ {n \rightarrow\infty} \int_E \lvert f_n - f \rvert \,d{\mu} = 0$$
+$$\lim _{n \rightarrow\infty} \int_E \lvert f_n - f \rvert \,d{\mu} = 0$$
 
 이다.
 
@@ -165,13 +165,13 @@ $$\lim_ {n \rightarrow\infty} \int_E \lvert f_n - f \rvert \,d{\mu} = 0$$
 
 	이므로 위 정리의 결론은 곧
 
-	$$\lim_ {n \rightarrow\infty} \int f_n \,d{\mu} = \int f \,d{\mu}$$
+	$$\lim _{n \rightarrow\infty} \int f_n \,d{\mu} = \int f \,d{\mu}$$
 
 	를 의미한다.
 
 **증명.** 다음과 같은 집합을 정의한다.
 
-$$A = \left\lbrace \displaystyle x \in E : \lim_ {n \rightarrow\infty} f_n(x) \text{가 존재하고}, f_n(x), f(x), g(x) \in \mathbb{R}, \lvert f_n(x) \rvert \leq g(x)\right\rbrace.$$
+$$A = \left\lbrace \displaystyle x \in E : \lim _{n \rightarrow\infty} f_n(x) \text{가 존재하고}, f_n(x), f(x), g(x) \in \mathbb{R}, \lvert f_n(x) \rvert \leq g(x)\right\rbrace.$$
 
 그러면 가정에 의해 $\mu\left( E\setminus A \right) = 0$ 이다. 이제 $x \in A$ 에 대해서만 생각해도 충분하다. 그러면
 
@@ -179,13 +179,13 @@ $$2g - \lvert f_n - f \rvert \geq 2g - \bigl(\lvert f_n \rvert + \lvert f \rvert
 
 이다. $\lvert f_n - f \rvert \rightarrow 0$, $2g - \lvert f_n - f \rvert \rightarrow 2g$ 이므로, Fatou’s lemma를 적용하면
 
-$$\begin{aligned}        2 \int_E g \,d{\mu} = \int_A 2g \,d{\mu} & = \int_A \liminf_ {n \rightarrow\infty} \big(2g - \lvert f_n - f \rvert\big) \,d{\mu} \\                                               & \leq \liminf_ {n \rightarrow\infty} \left( 2 \int_A g \,d{\mu} - \int_A \lvert f_n - f \rvert \,d{\mu} \right) \\                                               & = 2\int_A g \,d{\mu} - \limsup_ {n \rightarrow\infty} \int_A \lvert f_n - f \rvert \,d{\mu} \leq 2 \int_A g \,d{\mu}    \end{aligned}$$
+$$\begin{aligned}        2 \int_E g \,d{\mu} = \int_A 2g \,d{\mu} & = \int_A \liminf _{n \rightarrow\infty} \big(2g - \lvert f_n - f \rvert\big) \,d{\mu} \\                                               & \leq \liminf _{n \rightarrow\infty} \left( 2 \int_A g \,d{\mu} - \int_A \lvert f_n - f \rvert \,d{\mu} \right) \\                                               & = 2\int_A g \,d{\mu} - \limsup _{n \rightarrow\infty} \int_A \lvert f_n - f \rvert \,d{\mu} \leq 2 \int_A g \,d{\mu}    \end{aligned}$$
 
 이다. 따라서
 
-$$2 \int_A g \,d{\mu} - \limsup_ {n \rightarrow\infty} \int_A \lvert f_n - f \rvert \,d{\mu} = 2 \int_A g \,d{\mu}$$
+$$2 \int_A g \,d{\mu} - \limsup _{n \rightarrow\infty} \int_A \lvert f_n - f \rvert \,d{\mu} = 2 \int_A g \,d{\mu}$$
 
-이고, 가정에 의해 $\displaystyle 0 \leq \int_A g \,d{\mu} < \infty$ 이므로 $\displaystyle\limsup_ {n \rightarrow\infty} \int_A \lvert f_n - f \rvert \,d{\mu} = 0$ 이다.
+이고, 가정에 의해 $\displaystyle 0 \leq \int_A g \,d{\mu} < \infty$ 이므로 $\displaystyle\limsup _{n \rightarrow\infty} \int_A \lvert f_n - f \rvert \,d{\mu} = 0$ 이다.
 
 [^1]: 예를 들어, ‘$f(x)$가 연속이다’ 등.
 
