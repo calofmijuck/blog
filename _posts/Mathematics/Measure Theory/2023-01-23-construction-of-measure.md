@@ -141,7 +141,7 @@ Countably additive 조건이 성립하는 집합들만 모아서 measure를 cons
 
 위 정의는 $\mu$라는 set function에 의해 $\mu^\ast (A_n \mathop{\mathrm{\triangle}}A) \rightarrow 0$ 이 되는 elementary set $A_n$이 존재한다는 의미입니다.
 
-**정의.** ($\mu$-measurable) $A_n \in \mathfrak{M}_F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_{n=1}^\infty A_n$ 이면 $A$가 **$\mu$-measurable**이라 한다. 그리고 $\mu$-measurable한 집합의 모임을 $\mathfrak{M}(\mu)$로 표기한다.
+**정의.** ($\mu$-measurable) $$A_n \in \mathfrak{M}_F(\mu)$$ 에 대하여 $$A = \displaystyle\bigcup_{n=1}^\infty A_n$$ 이면 $A$가 **$\mu$-measurable**이라 한다. 그리고 $\mu$-measurable한 집합의 모임을 $\mathfrak{M}(\mu)$로 표기한다.
 
 **참고.** $\mu^\ast(A) = d(A, \varnothing) \leq d(A, B) + \mu^\ast(B)$.
 
@@ -189,7 +189,7 @@ $$\mu^\ast(A) + \mu^\ast(B) = \mu^\ast(A\cup B) + \mu^\ast(A \cap B)$$
 
 를 얻는다. $A \cap B = \varnothing$ 라는 조건이 추가되면 $\mu^\ast$가 additive임을 알 수 있다.
 
-**(Step 2)** *$\mathfrak{M}_F(\mu) = \lbrace A \in \mathfrak{M}(\mu) : \mu^\ast(A) < \infty\rbrace $.*[^2]
+**(Step 2)** *$\mathfrak{M}_F(\mu) = \lbrace A \in \mathfrak{M}(\mu) : \mu^\ast(A) < \infty\rbrace$.*[^2]
 
 **Claim**. 쌍마다 서로소인 $\mathfrak{M}_F(\mu)$의 원소들을 잡아 이들의 합집합으로 $A \in \mathfrak{M}(\mu)$ 를 표현할 수 있다.
 
@@ -199,7 +199,7 @@ $$\mu^\ast(A) + \mu^\ast(B) = \mu^\ast(A\cup B) + \mu^\ast(A \cap B)$$
 
 와 같이 정의하면 $A_n$이 쌍마다 서로소이고 $A_n \in \mathfrak{M}_F(\mu)$ 임을 알 수 있다.
 
-위 사실을 이용하여 $A_n \in \mathfrak{M}_F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_{n=1}^\infty A_n$ 로 두자.
+위 사실을 이용하여 $$A_n \in \mathfrak{M}_F(\mu)$$ 에 대하여 $$A = \displaystyle\bigcup_{n=1}^\infty A_n$$ 으로 두자.
 
 1. Countable subadditivity에 의해 $\displaystyle\mu^\ast(A) \leq \sum_{n=1}^{\infty} \mu^\ast (A_n)$ 가 성립한다.
 
@@ -231,7 +231,7 @@ $$\mu^\ast(A) = \mu^\ast\left( \bigcup_{n=1}^\infty A_n \right) = \sum_{n=1}^\in
 
 **(Step 4)** *$\mathfrak{M}(\mu)$는 $\sigma$-ring이다.*
 
-$A_n \in \mathfrak{M}(\mu)$ 이면 $B_{n, k} \in \mathfrak{M}_F(\mu)$ 가 존재하여 $\displaystyle A_n = \bigcup_k B_{n,k}$ 이다. 그러면
+$A_n \in \mathfrak{M}(\mu)$ 이면 $$B_{n, k} \in \mathfrak{M}_F(\mu)$$ 가 존재하여 $$\displaystyle A_n = \bigcup_k B_{n,k}$$ 이다. 그러면
 
 $$\bigcup_n A_n = \bigcup_{n, k} B_{n, k} \in \mathfrak{M}(\mu)$$
 
