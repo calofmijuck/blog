@@ -19,13 +19,13 @@ image:
 
 ![mt-06.png](../../../assets/img/posts/mt-06.png)
 
-**정리.** (단조 수렴 정리) $f_n: X \rightarrow[0, \infty]$ 가 measurable이고 모든 $x \in X$ 에 대하여 $f_n(x) \leq f _{n+1}(x)$ 라 하자.
+**정리.** (단조 수렴 정리) $f_n: X \rightarrow[0, \infty]$ 가 measurable이고 모든 $x \in X$ 에 대하여 $f_n(x) \leq f_ {n+1}(x)$ 라 하자.
 
-$$\lim _{n\rightarrow\infty} f_n(x) = \sup _{n} f_n(x) = f(x)$$
+$$\lim_ {n\rightarrow\infty} f_n(x) = \sup_ {n} f_n(x) = f(x)$$
 
 로 두면,
 
-$$\int f \,d{\mu} = \lim _{n\rightarrow\infty} \int f_n \,d{\mu} = \sup _{n \in \mathbb{N}} \int f_n \,d{\mu}$$
+$$\int f \,d{\mu} = \lim_ {n\rightarrow\infty} \int f_n \,d{\mu} = \sup_ {n \in \mathbb{N}} \int f_n \,d{\mu}$$
 
 이다.
 
@@ -41,43 +41,43 @@ $$\sup_n \int f_n \,d{\mu} \leq \int f \,d{\mu}.$$
 
 $$E_n = \lbrace x \in X : f_n(x) \geq cs(x)\rbrace$$
 
-으로 두면, $f_n(x) - cs(x)$ 가 measurable function이므로 $E_n$ 또한 measurable이다. 여기서 $f_n$이 증가하므로 $E_n\subseteq E _{n+1} \subseteq\cdots$ 임을 알 수 있고 $f_n \rightarrow f$ 이므로 $\bigcup _{n=1}^\infty E_n = X$ 이다.
+으로 두면, $f_n(x) - cs(x)$ 가 measurable function이므로 $E_n$ 또한 measurable이다. 여기서 $f_n$이 증가하므로 $E_n\subseteq E_ {n+1} \subseteq\cdots$ 임을 알 수 있고 $f_n \rightarrow f$ 이므로 $\bigcup_ {n=1}^\infty E_n = X$ 이다.
 
-충분히 큰 $N \in \mathbb{N}$ 에 대하여 $n \geq N$ 일 때, 모든 $x$에 대하여 $f(x) \geq f_n(x) > cs(x)$ 가 되게 할 수 있다. 그리고 $f_n \geq f_n \chi _{E_n} \geq cs \chi _{E_n}$ 이므로
+충분히 큰 $N \in \mathbb{N}$ 에 대하여 $n \geq N$ 일 때, 모든 $x$에 대하여 $f(x) \geq f_n(x) > cs(x)$ 가 되게 할 수 있다. 그리고 $f_n \geq f_n \chi_ {E_n} \geq cs \chi_ {E_n}$ 이므로
 
-$$\tag{\(\star\)}    \int f_n \,d{\mu} \geq \int f_n \chi _{E_n} \,d{\mu} \geq c\int s \chi _{E_n} \,d{\mu},$$
+$$\tag{\(\star\)}    \int f_n \,d{\mu} \geq \int f_n \chi_ {E_n} \,d{\mu} \geq c\int s \chi_ {E_n} \,d{\mu},$$
 
-이고 여기서 $s, \chi _{E_n}$는 simple function이다. 그러므로 $s = \sum _{k=0}^m y_k \chi _{A_k}$ 라고 적으면
+이고 여기서 $s, \chi_ {E_n}$는 simple function이다. 그러므로 $s = \sum_ {k=0}^m y_k \chi_ {A_k}$ 라고 적으면
 
-$$s\chi _{E_n} = \sum _{k=0}^m y_k \chi _{A_k\cap E_n} \implies \int s \chi _{E_n} \,d{\mu} = \sum _{k=0}^m y_k \mu(A_k\cap E_n)$$
+$$s\chi_ {E_n} = \sum_ {k=0}^m y_k \chi_ {A_k\cap E_n} \implies \int s \chi_ {E_n} \,d{\mu} = \sum_ {k=0}^m y_k \mu(A_k\cap E_n)$$
 
 이다. $n\rightarrow\infty$ 일 때 $A_k\cap E_n \nearrow A_k$ 이므로, continuity of measure를 사용해 $\mu(A_k \cap E_n) \nearrow \mu(A_k)$ 를 얻고
 
-$$\lim _{n\rightarrow\infty} \int s \chi _{E_n}\,d{\mu} = \int s \,d{\mu}$$
+$$\lim_ {n\rightarrow\infty} \int s \chi_ {E_n}\,d{\mu} = \int s \,d{\mu}$$
 
 임도 알 수 있다. 이제 ($\star$)를 이용하면
 
-$$\lim _{n\rightarrow\infty} \int f_n \,d{\mu} \geq c\int s \,d{\mu}$$
+$$\lim_ {n\rightarrow\infty} \int f_n \,d{\mu} \geq c\int s \,d{\mu}$$
 
 이므로, $c \nearrow 1$ 로 두고 $0\leq s\leq f$ 에 대하여 $\sup$을 취하면
 
-$$\lim _{n\rightarrow\infty} \int f_n \,d{\mu} \geq \sup _{0\leq s\leq f} \int s \,d{\mu} = \int f \,d{\mu}$$
+$$\lim_ {n\rightarrow\infty} \int f_n \,d{\mu} \geq \sup_ {0\leq s\leq f} \int s \,d{\mu} = \int f \,d{\mu}$$
 
 가 되어 원하는 결과를 얻는다.
 
-**참고.** 만약 부등식 $0 \leq f_n \leq f _{n+1}$ 이 정의역 전체가 아닌 정의역의 부분집합 $E$에서만 성립한다고 하면, 다음과 같이 생각할 수 있다.
+**참고.** 만약 부등식 $0 \leq f_n \leq f_ {n+1}$ 이 정의역 전체가 아닌 정의역의 부분집합 $E$에서만 성립한다고 하면, 다음과 같이 생각할 수 있다.
 
-$$0 \leq f_n \chi_E \leq f _{n+1} \chi_E \nearrow f \chi_E.$$
+$$0 \leq f_n \chi_E \leq f_ {n+1} \chi_E \nearrow f \chi_E.$$
 
 그러므로 단조 수렴 정리가 $E$에서도 성립함을 알 수 있다.
 
-> $E$에서 $0\leq f_n \leq f _{n+1} \nearrow f$ 이면 $\displaystyle\lim _{n\rightarrow\infty} \int_E f_n \,d{\mu} = \int_E f \,d{\mu}$.
+> $E$에서 $0\leq f_n \leq f_ {n+1} \nearrow f$ 이면 $\displaystyle\lim_ {n\rightarrow\infty} \int_E f_n \,d{\mu} = \int_E f \,d{\mu}$.
 
-**참고.** 함수열 $f_n$이 증가하는 경우에만 정리가 성립합니다. 감소하는 경우에는 반례로 함수 $f_n = \chi _{[n, \infty)}$ 를 생각할 수 있습니다. 그러면 $n \rightarrow\infty$ 일 때 $\chi _{[n, \infty)} \searrow 0$ 입니다.
+**참고.** 함수열 $f_n$이 증가하는 경우에만 정리가 성립합니다. 감소하는 경우에는 반례로 함수 $f_n = \chi_ {[n, \infty)}$ 를 생각할 수 있습니다. 그러면 $n \rightarrow\infty$ 일 때 $\chi_ {[n, \infty)} \searrow 0$ 입니다.
 
 그러면 Lebesgue measure $m$에 대하여
 
-$$\infty = \int \chi _{[n, \infty)} \,d{m} \neq \int 0 \,d{m} = 0$$
+$$\infty = \int \chi_ {[n, \infty)} \,d{m} \neq \int 0 \,d{m} = 0$$
 
 이 되어 단조 수렴 정리가 성립하지 않음을 확인할 수 있습니다.
 
@@ -85,15 +85,15 @@ $$\infty = \int \chi _{[n, \infty)} \,d{m} \neq \int 0 \,d{m} = 0$$
 
 지난 번에 $f \geq 0$ 가 measurable이면 증가하는 measurable simple 함수열 $s_n$이 존재함을 보였고, 이 $s_n$에 대하여 적분값을 계산하여
 
-$$\int_E s_n \,d{\mu} = \sum _{i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace)$$
+$$\int_E s_n \,d{\mu} = \sum_ {i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace)$$
 
 라는 결과까지 얻었습니다. 그런데 여기서
 
-$$f(x) = \displaystyle\lim _{n\rightarrow\infty} s_n(x)$$
+$$f(x) = \displaystyle\lim_ {n\rightarrow\infty} s_n(x)$$
 
 이기 때문에, 단조 수렴 정리에 의해
 
-$$\int_E f \,d{\mu} = \lim _{n\rightarrow\infty} \int_E s_n \,d{\mu}$$
+$$\int_E f \,d{\mu} = \lim_ {n\rightarrow\infty} \int_E s_n \,d{\mu}$$
 
 가 성립하여 기대했던 결과를 얻었습니다. 지난 번 설명한 것처럼, 이는 곧 르벡 적분은 치역을 잘게 잘라 넓이를 계산한 것으로 이해할 수 있다는 의미가 됩니다.
 
@@ -105,7 +105,7 @@ $$\int_E f \,d{\mu} = \lim _{n\rightarrow\infty} \int_E s_n \,d{\mu}$$
 
 $$\int_E \left( \alpha f + \beta g \right) \,d{\mu} = \alpha \int_E f \,d{\mu} + \beta \int_E g\,d{\mu}.$$
 
-**증명.** Measurable function은 measurable simple function으로 근사할 수 있고, $f, g \geq 0$ 이므로 단조증가하도록 잡을 수 있다. 그러므로 measurable simple function $f_n$, $g_n$에 대하여 $0 \leq f_n \leq f _{n+1} \nearrow f$, $0 \leq g_n \leq g _{n+1} \nearrow g$ 으로 잡는다.
+**증명.** Measurable function은 measurable simple function으로 근사할 수 있고, $f, g \geq 0$ 이므로 단조증가하도록 잡을 수 있다. 그러므로 measurable simple function $f_n$, $g_n$에 대하여 $0 \leq f_n \leq f_ {n+1} \nearrow f$, $0 \leq g_n \leq g_ {n+1} \nearrow g$ 으로 잡는다.
 
 그러면 $\alpha f_n + \beta g_n \nearrow \alpha f + \beta g$ 이고 $\alpha f_n + \beta g_n$ 은 단조증가하는 measurable simple 함수열이다. 따라서 단조 수렴 정리에 의해
 
@@ -115,11 +115,11 @@ $$\int_E \left( \alpha f_n + \beta g_n \right) \,d{\mu} = \alpha \int_E f_n \,d{
 
 이와 비슷한 방법을 급수에도 적용할 수 있습니다.
 
-**정리.** Measurable function $f_n: X \rightarrow[0, \infty]$ 에 대하여 $\sum _{n=1}^\infty f_n$는 measurable이고, 단조 수렴 정리에 의해 다음이 성립한다.
+**정리.** Measurable function $f_n: X \rightarrow[0, \infty]$ 에 대하여 $\sum_ {n=1}^\infty f_n$는 measurable이고, 단조 수렴 정리에 의해 다음이 성립한다.
 
-$$\int_E \sum _{n=1}^\infty f_n \,d{\mu} = \sum _{n=1}^\infty \int_E f_n \,d{\mu}.$$
+$$\int_E \sum_ {n=1}^\infty f_n \,d{\mu} = \sum_ {n=1}^\infty \int_E f_n \,d{\mu}.$$
 
-**증명.** $\sum _{n=1}^\infty f_n$는 measurable function의 극한이므로 measurable이다. 무한급수를 부분합의 극한으로 생각하면 $f_n \geq 0$ 이므로 부분합이 증가함을 알 수 있다. 따라서 단조 수렴 정리를 적용하여 결론을 얻는다.
+**증명.** $\sum_ {n=1}^\infty f_n$는 measurable function의 극한이므로 measurable이다. 무한급수를 부분합의 극한으로 생각하면 $f_n \geq 0$ 이므로 부분합이 증가함을 알 수 있다. 따라서 단조 수렴 정리를 적용하여 결론을 얻는다.
 
 ## Fatou's Lemma
 
@@ -127,15 +127,15 @@ $$\int_E \sum _{n=1}^\infty f_n \,d{\mu} = \sum _{n=1}^\infty \int_E f_n \,d{\mu
 
 **정리.** (Fatou) $f_n \geq 0$ 가 measurable이고 $E$가 measurable이라 하자. 다음이 성립한다.
 
-$$\int_E \liminf _{n\rightarrow\infty} f_n \,d{\mu} \leq \liminf _{n\rightarrow\infty} \int_E f_n \,d{\mu}.$$
+$$\int_E \liminf_ {n\rightarrow\infty} f_n \,d{\mu} \leq \liminf_ {n\rightarrow\infty} \int_E f_n \,d{\mu}.$$
 
-**증명.** $g_n = \displaystyle\inf _{k \geq n} f_k$ 으로 두면 $\displaystyle\lim _{n \rightarrow\infty} g_n = \liminf _{n\rightarrow\infty} f_n$ 이다. $g_n$이 증가함은 쉽게 확인할 수 있으며 $g_n \geq 0$ 이다. $g_n$의 정의로부터 모든 $k \geq n$ 에 대하여 $g_n \leq f_k$ 이므로,
+**증명.** $g_n = \displaystyle\inf_ {k \geq n} f_k$ 으로 두면 $\displaystyle\lim_ {n \rightarrow\infty} g_n = \liminf_ {n\rightarrow\infty} f_n$ 이다. $g_n$이 증가함은 쉽게 확인할 수 있으며 $g_n \geq 0$ 이다. $g_n$의 정의로부터 모든 $k \geq n$ 에 대하여 $g_n \leq f_k$ 이므로,
 
-$$\int_E g_n \,d{\mu} \leq \inf _{k\geq n} \int_E f_k \,d{\mu}$$
+$$\int_E g_n \,d{\mu} \leq \inf_ {k\geq n} \int_E f_k \,d{\mu}$$
 
 이다. 여기서 $n \rightarrow\infty$ 로 두면
 
-$$\int_E \liminf _{n\rightarrow\infty} f_n \,d{\mu} = \lim _{n \rightarrow\infty} \int_E g_n \,d{\mu} \leq \lim _{n \rightarrow\infty} \inf _{k \geq n}\int_E f_k \,d{\mu} = \liminf _{n \rightarrow\infty} \int_E f_n \,d{\mu}$$
+$$\int_E \liminf_ {n\rightarrow\infty} f_n \,d{\mu} = \lim_ {n \rightarrow\infty} \int_E g_n \,d{\mu} \leq \lim_ {n \rightarrow\infty} \inf_ {k \geq n}\int_E f_k \,d{\mu} = \liminf_ {n \rightarrow\infty} \int_E f_n \,d{\mu}$$
 
 이 된다. 여기서 첫 번째 등호는 단조 수렴 정리에 의해 성립한다.
 
@@ -143,9 +143,9 @@ $$\int_E \liminf _{n\rightarrow\infty} f_n \,d{\mu} = \lim _{n \rightarrow\infty
 
 **참고.** 왠지 위와 비슷한 결론이 $\limsup$에 대해서도 성립해야 할 것 같습니다. 구체적으로,
 
-$$\int_E \limsup _{n \rightarrow\infty} f_n \,d{\mu} \geq \limsup _{n \rightarrow\infty} \int_E f_n \,d{\mu}$$
+$$\int_E \limsup_ {n \rightarrow\infty} f_n \,d{\mu} \geq \limsup_ {n \rightarrow\infty} \int_E f_n \,d{\mu}$$
 
-일 것 같습니다. 안타깝게도 이는 성립하지 않습니다. 반례로 앞서 소개한 $\chi _{[n, \infty)}$를 한 번 더 가져올 수 있습니다. 좌변을 계산해 보면 0이지만, 우변을 계산해 보면 $\infty$입니다. 나중에 소개하겠지만, $\lvert f_n \rvert \leq g$ 를 만족하는 함수 $g \in \mathcal{L}^{1}$ 가 존재해야 위 부등식이 성립합니다.
+일 것 같습니다. 안타깝게도 이는 성립하지 않습니다. 반례로 앞서 소개한 $\chi_ {[n, \infty)}$를 한 번 더 가져올 수 있습니다. 좌변을 계산해 보면 0이지만, 우변을 계산해 보면 $\infty$입니다. 나중에 소개하겠지만, $\lvert f_n \rvert \leq g$ 를 만족하는 함수 $g \in \mathcal{L}^{1}$ 가 존재해야 위 부등식이 성립합니다.
 
 ## Properties of the Lebesgue Integral
 
@@ -191,7 +191,7 @@ $$\int_E \limsup _{n \rightarrow\infty} f_n \,d{\mu} \geq \limsup _{n \rightarro
 
 6. 만약 measure가 0인 집합에서 적분을 하면 어떻게 될까요? $\mu(E) = 0$ 라 하고, measurable function $f$를 적분해 보겠습니다. 여기서 $\min\lbrace \lvert f \rvert, n\rbrace\chi_E$ 도 measurable이며 $n \rightarrow\infty$ 일 때 $\min\lbrace \lvert f \rvert, n\rbrace\chi_E \nearrow \lvert f \rvert\chi_E$ 임을 이용합니다. 마지막으로 단조 수렴 정리를 적용하면
 
-	$$\begin{aligned}                    \int_E \lvert f \rvert \,d{\mu} &= \lim _{n \rightarrow\infty} \int_E \min\lbrace \lvert f \rvert, n\rbrace \,d{\mu} \\                    &\leq \lim _{n \rightarrow\infty} \int_E n \,d{\mu} = \lim _{n \rightarrow\infty} n\mu(E) = 0                  \end{aligned}$$
+	$$\begin{aligned}                    \int_E \lvert f \rvert \,d{\mu} &= \lim_ {n \rightarrow\infty} \int_E \min\lbrace \lvert f \rvert, n\rbrace \,d{\mu} \\                    &\leq \lim_ {n \rightarrow\infty} \int_E n \,d{\mu} = \lim_ {n \rightarrow\infty} n\mu(E) = 0                  \end{aligned}$$
 
 	임을 얻습니다. 따라서 $f \in \mathcal{L}^{1}(E, \mu)$ 이고, $\displaystyle\int_E f \,d{\mu} = 0$ 가 되어 적분값이 0임을 알 수 있습니다. 즉, measure가 0인 집합 위에서 적분하면 그 결과는 0이 됩니다.[^1]
 

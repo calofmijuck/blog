@@ -17,9 +17,9 @@ image:
 
 $E \in \mathscr{F}$ 일 때, 적분을 정의하기 위해
 
-$$\mathscr{F}_ E = \lbrace A \cap E : A \in \mathscr{F}\rbrace, \quad \mu_E = \mu| _{\mathscr{F}_ E}$$
+$$\mathscr{F} _ E = \lbrace A \cap E : A \in \mathscr{F}\rbrace, \quad \mu_E = \mu|_ {\mathscr{F} _ E}$$
 
-로 설정하고 $\int = \int_E$ 로 두어 ($X, \mathscr{F}_ E, \mu_E$) 위에서 적분을 정의할 수 있습니다. 그러나 굳이 이렇게 하지 않아도 됩니다. $\int = \int_X$ 로 두고
+로 설정하고 $\int = \int_E$ 로 두어 ($X, \mathscr{F} _ E, \mu_E$) 위에서 적분을 정의할 수 있습니다. 그러나 굳이 이렇게 하지 않아도 됩니다. $\int = \int_X$ 로 두고
 
 $$\int_E f \,d{\mu} = \int f \chi _E \,d{\mu}$$
 
@@ -43,13 +43,13 @@ $$\int \chi_A \,d{\mu} = \mu(A)$$
 
 다음으로 양의 값을 갖는 measurable simple function에 대해 정의합니다. $f = f^+ - f^-$ 에서 $f^+, f^-$ 모두 양의 값을 갖기 때문에 양의 값에 대해 먼저 정의합니다.
 
-**(Step 2)** $f: X \rightarrow[0, \infty)$ 가 measurable simple function이라 하자. 그러면 $A_k \subseteq\mathscr{F}$ 이면서 쌍마다 서로소인 집합열 $\left( A_k \right) _{k=1}^n$과 $a_k \in [0, \infty)$ 인 수열 $\left( a_k \right) _{k=1}^n$을 잡아
+**(Step 2)** $f: X \rightarrow[0, \infty)$ 가 measurable simple function이라 하자. 그러면 $A_k \subseteq\mathscr{F}$ 이면서 쌍마다 서로소인 집합열 $\left( A_k \right) _ {k=1}^n$과 $a_k \in [0, \infty)$ 인 수열 $\left( a_k \right) _ {k=1}^n$을 잡아
 
-$$f(x) = \sum _{k=1}^n a_k \chi _{A_k}$$
+$$f(x) = \sum_ {k=1}^n a_k \chi_ {A_k}$$
 
 와 같이 표현할 수 있다. 이제
 
-$$\int f\,d{\mu} = \sum _{k=1}^n a_k \mu(A_k) \in [0, \infty]$$
+$$\int f\,d{\mu} = \sum_ {k=1}^n a_k \mu(A_k) \in [0, \infty]$$
 
 로 정의한다.
 
@@ -61,17 +61,17 @@ Well-definedness를 증명하기 위해 임의의 linear combination을 잡아�
 
 **증명.** $f$가 다음과 같이 두 가지 방법으로 표현된다고 하자.
 
-$$f(x) = \sum _{k=1}^n a_k \chi _{A_k} = \sum _{i=1}^m b_i \chi _{B_i}.$$
+$$f(x) = \sum_ {k=1}^n a_k \chi_ {A_k} = \sum_ {i=1}^m b_i \chi_ {B_i}.$$
 
-여기서 $k = 1, \dots, n$, $i = 1, \dots, m$ 에 대하여 $0\leq a_k, b_i < \infty$ 이고 $A_k, B_i \in \mathscr{F}$ 이다. 여기서 $A_k, B_i$는 각각 쌍마다 서로소로, $X$의 분할이 된다. $C _{k, i} = A_k \cap B_i$ 로 두면
+여기서 $k = 1, \dots, n$, $i = 1, \dots, m$ 에 대하여 $0\leq a_k, b_i < \infty$ 이고 $A_k, B_i \in \mathscr{F}$ 이다. 여기서 $A_k, B_i$는 각각 쌍마다 서로소로, $X$의 분할이 된다. $C_ {k, i} = A_k \cap B_i$ 로 두면
 
-$$\sum _{k=1}^n a_k \mu(A_k) = \sum _{k=1}^n a_k \mu\left( A_k \cap \bigcup _{i=1}^m B_i \right) = \sum _{k=1}^n \sum _{i=1}^m a_k \mu(C _{k, i}),$$
+$$\sum_ {k=1}^n a_k \mu(A_k) = \sum_ {k=1}^n a_k \mu\left( A_k \cap \bigcup_ {i=1}^m B_i \right) = \sum_ {k=1}^n \sum_ {i=1}^m a_k \mu(C_ {k, i}),$$
 
-$$\sum _{i=1}^m b_i \mu(B_i) = \sum _{i=1}^{m} b_i \mu\left( B_i \cap \bigcup _{k=1}^n A_k \right)= \sum _{i=1}^m \sum _{k=1}^n b_i \mu(C _{k, i})$$
+$$\sum_ {i=1}^m b_i \mu(B_i) = \sum_ {i=1}^{m} b_i \mu\left( B_i \cap \bigcup_ {k=1}^n A_k \right)= \sum_ {i=1}^m \sum_ {k=1}^n b_i \mu(C_ {k, i})$$
 
-이다. 이 때 $C _{k, i} \neq \varnothing$ 이면 $x \in C _{k, i}$ 에 대해 $f(x) = a_k = b_i$ 가 된다. 한편 $C _{k, i} = \varnothing$ 이면 $\mu(C _{k, i}) = 0$ 이다. 이로부터 모든 $k, i$에 대하여 $b_i \mu(C _{k, i}) = a_k \mu(C _{k, i})$ 임을 알 수 있다.[^1] 따라서
+이다. 이 때 $C_ {k, i} \neq \varnothing$ 이면 $x \in C_ {k, i}$ 에 대해 $f(x) = a_k = b_i$ 가 된다. 한편 $C_ {k, i} = \varnothing$ 이면 $\mu(C_ {k, i}) = 0$ 이다. 이로부터 모든 $k, i$에 대하여 $b_i \mu(C_ {k, i}) = a_k \mu(C_ {k, i})$ 임을 알 수 있다.[^1] 따라서
 
-$$\int f \,d{\mu }= \sum _{k=1}^n a_k \mu(A_k) = \sum _{i=1}^m b_i \mu(B_i)$$
+$$\int f \,d{\mu }= \sum_ {k=1}^n a_k \mu(A_k) = \sum_ {i=1}^m b_i \mu(B_i)$$
 
 가 되어 적분값은 유일하고 위 정의가 well-defined임을 알 수 있다.
 
@@ -87,11 +87,11 @@ $$\int \left( af + bg \right) \,d{\mu} = a \int f \,d{\mu} + b \int g \,d{\mu}$$
 
 **증명.** 위 Step 2와 동일하게
 
-$$f = \sum _{j=1}^m y_j \chi _{A_j}, \quad g = \sum _{k=1}^n z_k \chi _{B_k}$$
+$$f = \sum_ {j=1}^m y_j \chi_ {A_j}, \quad g = \sum_ {k=1}^n z_k \chi_ {B_k}$$
 
-로 둘 수 있다. 여기서 $A_j, B_k$는 $X$의 분할이고 $y_j, z_k \geq 0$ 이다. 마찬가지로 $C _{j, k} = A_j \cap B_k$ 로 정의하면
+로 둘 수 있다. 여기서 $A_j, B_k$는 $X$의 분할이고 $y_j, z_k \geq 0$ 이다. 마찬가지로 $C_ {j, k} = A_j \cap B_k$ 로 정의하면
 
-$$\begin{aligned}        a \int f \,d{\mu} + b \int g \,d{\mu} & = \sum _{j} ay_j \mu(A_j) + \sum_k b z_k \mu(B_k) \\                                            & = \sum _{j} ay_j \sum_k \mu(A_j \cap B_k) + \sum_k b z_k \sum_j \mu(B_k \cap A_j) \\                                            & = \sum _{j} \sum_k ay_j \mu(C _{j, k}) + \sum_k \sum_j b z_k \mu(C _{j, k}) \\                                            & = \sum _{j, k} (ay_j + bz_k) \mu(C _{j, k}) = \int \left( af + bg \right) \,d{\mu}    \end{aligned}$$
+$$\begin{aligned}        a \int f \,d{\mu} + b \int g \,d{\mu} & = \sum_ {j} ay_j \mu(A_j) + \sum_k b z_k \mu(B_k) \\                                            & = \sum_ {j} ay_j \sum_k \mu(A_j \cap B_k) + \sum_k b z_k \sum_j \mu(B_k \cap A_j) \\                                            & = \sum_ {j} \sum_k ay_j \mu(C_ {j, k}) + \sum_k \sum_j b z_k \mu(C_ {j, k}) \\                                            & = \sum_ {j, k} (ay_j + bz_k) \mu(C_ {j, k}) = \int \left( af + bg \right) \,d{\mu}    \end{aligned}$$
 
 이다.
 
@@ -123,7 +123,7 @@ $f$보다 작은 measurable simple function의 적분값 중 상한을 택하겠
 
 $f \geq 0$ 가 measurable이면 증가하는 measurable simple 함수열 $s_n$이 존재함을 지난 번에 보였습니다. 이 $s_n$에 대하여 적분값을 계산해보면
 
-$$\int_E s_n \,d{\mu} = \sum _{i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace)$$
+$$\int_E s_n \,d{\mu} = \sum_ {i=1}^{n2^n} \frac{i - 1}{2^n}\mu\left( \left\lbrace x \in E : \frac{i-1}{2^n} \leq f(x) \leq \frac{i}{2^n}\right\rbrace \right) + n\mu(\lbrace x \in E : f(x)\geq n\rbrace)$$
 
 임을 알 수 있습니다. 이제 $n \rightarrow\infty$ 일 때 우변이 곧 $\displaystyle\int f \,d{\mu}$ 이기를 기대합니다.
 
