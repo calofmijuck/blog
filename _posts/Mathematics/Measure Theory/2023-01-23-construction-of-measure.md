@@ -169,7 +169,7 @@ $$\mu^\ast(A) \leq d(A_N, A) + \mu^\ast(A_N) \leq 1 + \mu^\ast(A_N) < \infty$$
 
 **증명.** $\mathfrak{M}(\mu)$가 $\sigma$-algebra이고 $\mu^\ast$가 $\mathfrak{M}(\mu)$에서 countably additive임을 보이면 충분하다.
 
-(Step 0) *$\mathfrak{M} _ F(\mu)$는 ring이다.*
+**(Step 0)** *$\mathfrak{M} _ F(\mu)$는 ring이다.*
 
 $A, B \in \mathfrak{M} _ F(\mu)$ 라 하자. 그러면 $A_n, B_n \in \Sigma$ 이 존재하여 $A_n \rightarrow A$, $B_n \rightarrow B$ 이 된다. 그러면
 
