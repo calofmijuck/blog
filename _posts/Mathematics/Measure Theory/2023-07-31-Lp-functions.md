@@ -4,14 +4,14 @@ toc: true
 math: true
 categories: [Mathematics, Measure Theory]
 tags: [math, analysis, measure-theory]
-title: "09. Lp Functions"
+title: "09. $\\mathcal{L}^p$ Functions"
 date: "2023-07-31"
 github_title: "2023-07-31-Lp-functions"
 image:
   path: /assets/img/posts/mt-09.png
 ---
 
-![mt-09.png](../../../assets/img/posts/mt-09.png)
+![mt-09.png](../../../assets/img/posts/mt-09.png){: .w-50}
 
 ## Integration on Complex Valued Function
 
@@ -43,6 +43,8 @@ $$\begin{aligned}                      \left\lvert  \int_E f \,d{\mu} \right\rve
 
 ## Functions of Class $\mathcal{L}^{p}$
 
+### $\mathcal{L}^p$ Space
+
 Assume that $(X, \mathscr{F}, \mu)$ is given and $X = E$.
 
 **정의.** ($\mathcal{L}^{p}$) A complex function $f$ is in $\mathcal{L}^{p}(\mu)$ if $f$ is measurable and $\displaystyle\int_E \left\lvert  f \right\rvert ^p \,d{\mu} < \infty$.
@@ -50,6 +52,8 @@ Assume that $(X, \mathscr{F}, \mu)$ is given and $X = E$.
 **정의.** ($\mathcal{L}^{p}$-norm) **$\mathcal{L}^{p}$-norm** of $f$ is defined as
 
 $$\left\lVert f \right\rVert_p = \left[\int_E \left\lvert  f \right\rvert ^p \,d{\mu} \right]^{1/p}.$$
+
+### Inequalities
 
 **정리.** (Young Inequality) For $a, b \geq 0$, if $p > 1$ and $1/p + 1/q = 1$, then
 
@@ -108,6 +112,8 @@ We treat $[f]$ as an element in $\mathcal{L}^{p}(X, \mu)$, and write $f = [f]$.
 1.  We write $\left\lVert f \right\rVert_p = 0 \iff f = [0] = 0$ in the sense that $f = 0$ $\mu$-a.e.
 
 2.  Now $\lVert \cdot \rVert_p$ is a **norm** in $\mathcal{L}^{p}(X, \mu)$ so $d(f, g) = \left\lVert f - g \right\rVert_p$ is a **metric** in $\mathcal{L}^{p}(X, \mu)$.
+
+## Completeness of $\mathcal{L}^p$
 
 Now we have a *function space*, so we are interested in its *completeness*.
 
