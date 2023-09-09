@@ -199,7 +199,7 @@ $$\mu^\ast(A) + \mu^\ast(B) = \mu^\ast(A\cup B) + \mu^\ast(A \cap B)$$
 
 와 같이 정의하면 $A_n$이 쌍마다 서로소이고 $A_n \in \mathfrak{M} _ F(\mu)$ 임을 알 수 있다.
 
-위 사실을 이용하여 $A_n \in \mathfrak{M} _  F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_ {n=1}^\infty A_n$ 으로 두자.
+위 사실을 이용하여 $A_n \in \mathfrak{M} _ F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_ {n=1}^\infty A_n$ 으로 두자.
 
 1. Countable subadditivity에 의해 $\displaystyle\mu^\ast(A) \leq \sum_ {n=1}^{\infty} \mu^\ast (A_n)$ 가 성립한다.
 
