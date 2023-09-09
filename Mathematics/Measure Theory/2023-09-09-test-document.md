@@ -14,7 +14,7 @@ date: 2023-09-09
 github_title: 2023-09-09-test-document
 image:
   path: /assets/img/posts/mt-09.png
-directory: "Mathematics/Measure Theory"
+directory: Mathematics/Measure Theory
 ---
 
-Test Document!
+Test Document update!
