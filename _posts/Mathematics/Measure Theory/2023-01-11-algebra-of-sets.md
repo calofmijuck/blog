@@ -9,12 +9,10 @@ date: "2023-01-11"
 github_title: "2023-01-11-algebra-of-sets"
 image:
   path: /assets/img/posts/mt-01.png
-attachment:
-  send: true
-  folder: assets/img/posts/Mathematics/Measure Theory
+attachment.folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-01.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-01.png)
+![mt-01.png](../../../assets/img/posts/mt-01.png)
 
 르벡 적분을 공부하기 위해서는 먼저 집합의 ‘길이’ 개념을 공부해야 합니다. 그리고 집합의 ‘길이’ 개념을 확립하기 위해서는 집합 간의 연산과 이에 대한 구조가 필요합니다.
 
