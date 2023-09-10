@@ -8,7 +8,7 @@ title: "07. Dominated Convergence Theorem"
 date: "2023-04-07"
 github_title: "2023-04-07-dominated-convergence-theorem"
 image:
-  path: /assets/img/posts/mt-07.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-07.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---
