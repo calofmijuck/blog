@@ -9,6 +9,8 @@ date: "2023-02-06"
 github_title: "2023-02-06-measurable-functions"
 image:
   path: /assets/img/posts/mt-04.png
+attachment:
+  folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
 Lebesgue integral을 공부하기 전 마지막 준비입니다. Lebesgue integral은 다음과 같이 표기합니다.
@@ -153,7 +155,7 @@ $$s(x) = \sum_ {i=1}^{n} c_i \chi_ {E_i}(x).$$
 
 여기서 $E_i$에 measurable 조건이 추가되면, 정의에 의해 $\chi_ {E_i}$도 measurable function입니다. 따라서 모든 measurable simple function을 measurable $\chi_ {E_i}$의 linear combination으로 표현할 수 있습니다.
 
-![mt-04.png](../../../assets/img/posts/mt-04.png)
+![mt-04.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-04.png)
 
 아래 정리는 simple function이 Lebesgue integral의 building block이 되는 이유를 잘 드러냅니다. 모든 함수는 simple function으로 근사할 수 있습니다.
 
@@ -206,7 +208,5 @@ $$f_n + g_n \rightarrow f + g, \quad f_ng_n \rightarrow fg$$
 이고 measurability는 극한에 의해 보존되므로 $f+g, fg$는 measurable이다.
 
 [^1]: 일반적으로는 ‘measurable set의 preimage가 measurable이 될 때’로 정의합니다.
-
 [^2]: 참고로 $\infty - \infty$ 의 경우는 정의되지 않으므로 생각하지 않습니다.
-
 [^3]: 이 정의에서 $\infty - \infty$ 가 나타나지 않음에 유의해야 합니다.
