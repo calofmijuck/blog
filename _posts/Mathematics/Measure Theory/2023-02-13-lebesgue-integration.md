@@ -8,7 +8,7 @@ title: "05. Lebesgue Integration"
 date: "2023-02-13"
 github_title: "2023-02-13-lebesgue-integration"
 image:
-  path: /assets/img/posts/mt-05.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-05.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---

@@ -8,7 +8,7 @@ title: "08. Comparison with the Riemann Integral"
 date: "2023-06-20"
 github_title: "2023-06-20-comparison-with-riemann-integral"
 image:
-  path: /assets/img/posts/mt-08.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-08.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---

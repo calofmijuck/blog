@@ -8,7 +8,7 @@ title: "03. Measure Spaces"
 date: "2023-01-24"
 github_title: "2023-01-24-measure-spaces"
 image:
-  path: /assets/img/posts/mt-03.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-03.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---

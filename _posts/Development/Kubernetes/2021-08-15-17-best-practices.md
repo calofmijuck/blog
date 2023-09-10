@@ -7,10 +7,12 @@ title: "17. Best Practices for Developing Apps"
 date: "2021-08-15"
 github_title: "2021-08-15-17-best-practices"
 image:
-  path: /assets/img/posts/k8s-17.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-17.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-17.jpeg](../../../assets/img/posts/k8s-17.jpeg) _Resources in a typical application (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-17)_
+![k8s-17.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-17.jpeg) _Resources in a typical application (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-17)_
 
 ### 주요 내용
 
@@ -18,6 +20,7 @@ image:
 - Pod lifecycle hooks and init containers
 
 ## 17.1 Bringing everything together
+
 ---
 
 일반적인 애플리케이션이 Kubernetes 위에서 배포될 때 어떤 형태로 하는지, 지금까지 살펴본 것들을 종합하여 알아본다.
@@ -35,6 +38,7 @@ Service 를 이용해서 외부에서 pod 로 요청을 보낼 수 있도록 하
 Kubernetes resource 에는 주로 label 을 붙여서 관리하고, 또 대부분 annotation 을 가지고 있어 메타데이터를 저장하여 운영 및 관리를 할 수 있게 해준다.
 
 ## 17.2 Understanding the pod's lifecycle
+
 ---
 
 Pod 와 VM 의 가장 큰 차이점 중 하나는 pod 는 얼마든지 삭제되었다 다시 생성할 수 있다는 점이다. Pod 를 다른 노드로 옮기거나, scale down 이 일어났을 때 pod 를 삭제하곤 한다.
@@ -184,6 +188,7 @@ StatefulSet 을 사용하면 PVC 를 다시 사용할 수 있기는 하지만, s
 > 얘도 문제가 생기는 경우는 어떻게 하나요...
 
 ## 17.3 Ensuring all client requests are handled properly
+
 ---
 
 당연히 client 의 요청은 잘 처리해야 한다.
@@ -219,6 +224,7 @@ Shutdown 을 위해서 다음 절차를 밟아야 한다.
 - 종료한다.
 
 ## 17.4 Making your apps easy to run and manage in Kubernetes
+
 ---
 
 ### 17.4.1 Making manageable container images
@@ -286,6 +292,7 @@ Sidecar 컨테이너에 로그를 처리해주는 프로세스를 띄워도 된�
 해결 방법으로는 JSON 로그는 파일로 내보내고, `stdout` 에는 원본을 찍어 사람이 보기 편하도록 하면 된다.
 
 ## 17.5 Best practices for development and testing
+
 ---
 
 정해진 정답은 없지만, 권장 사항을 몇 가지 살펴본다. 각자 환경에 알맞은 방법을 택하면 된다.

@@ -7,10 +7,12 @@ title: "09. Deployments: Updating Applications Declaratively"
 date: "2021-04-30"
 github_title: "2021-04-30-09-deployments"
 image:
-  path: /assets/img/posts/k8s-09.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-09.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-09.jpeg](../../../assets/img/posts/k8s-09.jpeg) _Rolling update of Deployments (출처: livebook.manning.com/book/kubernetes-in-action/chapter-9)_
+![k8s-09.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-09.jpeg) _Rolling update of Deployments (출처: livebook.manning.com/book/kubernetes-in-action/chapter-9)_
 
 ### 주요 내용
 
@@ -19,6 +21,7 @@ image:
   - 롤백하는 방법
 
 ## 9.1 Updating applications running in pods
+
 ---
 
 만약 서비스/앱을 업데이트하고 싶다면 2가지 방법이 있다.
@@ -61,6 +64,7 @@ Rolling update 방식에서는 pod 를 조금씩 교체한다.
 롤링 업데이트는 수동으로 하면 실수할 확률이 매우 높으므로, 자동화하는 것이 좋다.
 
 ## 9.2 Performing an automatic rolling update with a ReplicationController
+
 ---
 
 > 아래에 소개되는 방법은 이제는 사용하지 않는 방법이다!
@@ -114,7 +118,7 @@ ReplicationController `kubia-v1` 을 `kubia-v2` 로 업데이트하고, 이미�
 
 #### 동작 과정
 
-`kubectl` 은 `kubia-v1` ReplicationController 의 pod template 을 그대로 가져와서 image 만 바꿔치기한 후 `kubia-v2` 를 만든다. 
+`kubectl` 은 `kubia-v1` ReplicationController 의 pod template 을 그대로 가져와서 image 만 바꿔치기한 후 `kubia-v2` 를 만든다.
 
 또한 label 에 `deployment=...` 이 추가된 것을 확인할 수 있다. 만약 label 이 변경되지 않는다면 같은 label selector 를 갖는 ReplicationController 가 2개 존재하게 될 것이므로 문제가 생긴다. (새로 생긴 rc 가 동작할 필요가 없어진다)
 
@@ -130,7 +134,7 @@ Label 변경이 끝나면 본격적으로 scaling 이 시작되고, pod 는 하�
 
 - 사용자가 생성한 object 들을 Kubernetes 가 직접 수정하는 것이 좋지 않다.
   - 위에서 `deployment=...` label 이 추가되는 것처럼
-- `kubectl` *client* 가 모든 작업을 수행한다. 
+- `kubectl` *client* 가 모든 작업을 수행한다.
   - `kubectl rolling-update ... --v 6` 을 하면 로그를 볼 수 있다.
   - 로그를 보면 `kubectl` 이 API 서버에 보내는 요청을 하나씩 확인할 수 있다.
   - Client 가 작업을 수행하게 되면 중간에 네트워크 연결이 유실되면 업데이트가 멈춰버린다.
@@ -141,6 +145,7 @@ Label 변경이 끝나면 본격적으로 scaling 이 시작되고, pod 는 하�
 > `--v 6` 하면 로깅 레벨을 높여서 `kubectl` 이 API 서버에 보내는 요청을 볼 수 있다.
 
 ## 9.3 Using Deployments for updating apps declaratively
+
 ---
 
 > Declarative 와 imperative 가 서로 상반되는 개념인듯 하다.
@@ -189,13 +194,14 @@ deployment "kubia" successfully rolled out
 
 #### 생성된 pod, ReplicaSet 확인
 
-`kubectl get po` 로 만들어진 pod 들을 확인할 수 있고, `kubectl get rs` 를 해보면 ReplicaSet 이 생겼다는 것을 알 수 있다. 
+`kubectl get po` 로 만들어진 pod 들을 확인할 수 있고, `kubectl get rs` 를 해보면 ReplicaSet 이 생겼다는 것을 알 수 있다.
 
 그리고 ReplicaSet 의 이름에는 pod template 의 hash 값이 들어가 있는데, 이렇게 하는 이유는 Deployment 가 직접 pod 를 제어하지 않고 ReplicaSet 이 하기 때문이다. Deployment 는 ReplicaSet 을 여러 개 만들기도 하는데, 이때 이미 존재하는 ReplicaSet 을 추가로 만들지 않고 그대로 사용할 수 있게 된다. (pod template 이 같다면 hash 값이 일치하므로 재사용이 가능하다.)
 
-> 앞에서 `kubectl rolling-update` 를 사용할 때는 ReplicationController 에 label 이 추가되는 부분이 있었는데, 이는 같은 label selector 를 사용하는 여러 개의 ReplicationController 생성을 막기 위한 것이었다. 
->
-> ReplicaSet 도 이 문제에서 자유롭지는 못할 것 같아서 확인해보니, label selector 에 `pod-template-hash` 가 있는 것을 확인할 수 있었다. 
+> 앞에서 `kubectl rolling-update` 를 사용할 때는 ReplicationController 에 label 이 추가되는 부분이 있었는데, 이는 같은 label selector 를 사용하는 여러 개의 ReplicationController 생성을 막기 위한 것이었다.
+> 
+> ReplicaSet 도 이 문제에서 자유롭지는 못할 것 같아서 확인해보니, label selector 에 `pod-template-hash` 가 있는 것을 확인할 수 있었다.
+> 
 > ```
 > $ kubectl get po --show-labels                          
 > NAME                     READY   STATUS    RESTARTS   AGE   LABELS
@@ -203,6 +209,7 @@ deployment "kubia" successfully rolled out
 > kubia-74967b5695-djsfb   1/1     Running   0          17s   app=kubia,pod-template-hash=74967b5695
 > kubia-74967b5695-h7d2b   1/1     Running   0          17s   app=kubia,pod-template-hash=74967b5695
 > ```
+> 
 > 실제로 pod template hash 값을 사용하나보다.
 
 #### Service 생성
@@ -301,29 +308,32 @@ $ kubectl rollout undo deployment kubia --to-revision=1
 
 위에서 Deployment 생성시 `--record` 명령을 사용했기 때문에 `CHANGE-CAUSE` 에 revision history 가 상세하게 남게 된다.
 
-> `--record` 를 사용하지 않고 Deployment 를 생성하면 history 에서 `CHANGE-CAUSE` 열이 `<none>` 으로 표시된다.
+> `--record` 를 사용하지 않고 Deployment 를 생성하면 history 에서 `CHANGE-CAUSE` 열이 `<none> ` 으로 표시된다.
 > 
 > ```
 > $ kubectl rollout history deployment kubia
 > deployment.apps/kubia 
 > REVISION  CHANGE-CAUSE
-> 1        \ <none\>
-> 2         \<none\>
+> 1        \ <none\> 
+> 2         \<none\> 
 > ```
 > 
-> 또한, ReplicaSet 을 강제로 삭제하게 되면 그와 관련된 revision 도 함께 삭제된다. 
+> 또한, ReplicaSet 을 강제로 삭제하게 되면 그와 관련된 revision 도 함께 삭제된다.
+> 
 > ```
 > $ kubectl rollout history deployment kubia
 > deployment.apps/kubia 
 > REVISION  CHANGE-CAUSE
-> 2         \<none\>
+> 2         \<none\> 
 > ```
->
+> 
 > 그러므로 `kubectl rollout undo` 도 사용이 불가능하다.
+> 
 > ```
 > $ kubectl rollout undo deployment kubia   
 > error: no rollout history found for deployment "kubia"
 > ```
+> 
 > 그냥 궁금해서 테스트했는데 뒤에 나와있다. ㅋㅋ
 
 그렇다면 revision 이 생길 때마다 ReplicaSet 이 남아있게 되므로 이는 작업할 때 매우 불편할 것이다. 그래서 `revisionHistoryLimit` 옵션을 Deployment 에 주게 되면 해당 개수 만큼만 revision history 가 남는다.
@@ -451,11 +461,11 @@ kubia-bcf9bb974-k7cxf    1/1     Running   0          7m14s
 당연히, available 상태가 되지 않았으므로 rollout 은 더 이상 진행될 수 없으며 (`maxUnavailable`) `READY` 상태가 아닌 pod 들은 Service Endpoints 에서 제거되기 때문에 과거 버전 pod 로만 요청이 가게 된다.
 
 > Service Endpoint 에서 추가/제거 되는 기준은 pod 가 `READY` 인지 아닌지 이다. 우선 `curl` 로 요청을 계속 보내고 있는 상태에서 버그가 있는 버전으로 rolling update 를 해보니 중간에 에러가 난 요청들이 보이긴 했다.
->
+> 
 > 4번째 요청까지는 OK 응답이 돌아오므로, readiness probe 가 이 pod 는 `READY` 라고 했을 것이다. 그러면서 Service Endpoints 에 이 pod 의 IP 가 추가된 것이며, 내가 보낸 `curl` 요청을 받을 수 있었던 것이다.
->
+> 
 > Readiness probe 는 주기적으로 실행되므로, 어느 시점부터 실패했을 것이므로 `READY` 상태가 아니게 되고 unavailable 상태가 지속되면서 rollout 은 중단된 것이다.
->
+> 
 > 결국 중간에 요청이 비정상적으로 처리되는 경우가 있었다는 것은 실제 서비스에서 일부 사용자들은 오류를 겪을 수도 있다는 것인데 이것이 불가피한 것인지 아닌지는 상황에 따라 다를 것 같다. 책에서는 모든 pod 가 잘못된 pod 로 교체되는 것에 비하면 낫다고 하는데, 이렇게 생각해도 과연 괜찮을련지 ㅋㅋ
 
 #### Rollout deadline
@@ -463,6 +473,7 @@ kubia-bcf9bb974-k7cxf    1/1     Running   0          7m14s
 Rollout 이 10분간 진전이 없으면 failed 처리된다. `kubectl describe` 로 확인해 보면 `ProgressDeadlineExceeded` condition 이 발생해있다.
 
 > `kubectl rollout status` 에서는 다음과 같이 에러가 발생한다.
+> 
 > ```
 > $ kubectl rollout status deployment kubia
 > error: deployment "kubia" exceeded its progress deadline

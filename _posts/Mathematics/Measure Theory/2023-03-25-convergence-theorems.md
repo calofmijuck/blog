@@ -8,7 +8,7 @@ title: "06. Convergence Theorems"
 date: "2023-03-25"
 github_title: "2023-03-25-convergence-theorems"
 image:
-  path: /assets/img/posts/mt-06.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-06.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---

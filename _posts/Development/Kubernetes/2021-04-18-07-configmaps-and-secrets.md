@@ -7,19 +7,22 @@ title: "07. ConfigMaps and Secrets: Configuring Applications"
 date: "2021-04-18"
 github_title: "2021-04-18-07-configmaps-and-secrets"
 image:
-  path: /assets/img/posts/k8s-07.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-07.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-07.jpeg](../../../assets/img/posts/k8s-07.jpeg) _Combining a ConfigMap and a Secret to run your fortune-https pod (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-7)_
+![k8s-07.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-07.jpeg) _Combining a ConfigMap and a Secret to run your fortune-https pod (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-7)_
 
 거의 대부분의 앱은 설정(configuration)이 필요하다. 개발 서버, 배포 서버의 설정 사항 (접속하려는 DB 서버 주소 등)이 다를 수도 있고, 클라우드 등에 접속하기 위한 access key 가 필요하거나, 데이터를 암호화하는 encryption key 도 설정해야하는 경우가 있다. 이러한 경우에 해당 값들을 도커 이미지 자체에 넣어버리면 보안 상 취약하고, 또 설정 사항을 변경하는 경우 이미지를 다시 빌드해야하는 등 불편함이 따른다.
 
 이번 장에서는 Kubernetes 에서 돌아가는 애플리케이션에 설정 사항을 넘겨주는 방법을 알아본다.
 
 ## 7.1 컨테이너화 된 애플리케이션 설정하기
+
 ---
 
-보통 애플리케이션의 설정 사항을 관리할 때에는 configuration file 이 존재하게 된다. (`.properties`, `.env` 등) 
+보통 애플리케이션의 설정 사항을 관리할 때에는 configuration file 이 존재하게 된다. (`.properties`, `.env` 등)
 
 그런데 Docker 를 사용하면, config file 을 컨테이너로 옮기는 명령이 Dockerfile 에 필요하게 되고, config file 을 수정하면 이미지를 다시 빌드해야하기 때문에 보통은 컨테이너에 환경 변수(environment variables)를 전달하는 방식으로 사용한다. 그리고 애플리케이션은 환경 변수를 조회하여 사용할 수 있다.
 
@@ -29,8 +32,9 @@ image:
 - 컨테이너에 command line argument 전달하기
 - 컨테이너마다 환경 변수 설정하기
 - Volume 을 이용해서 config file mount 하기
-  
+
 ## 7.2 컨테이너에 command line argument 전달하기
+
 ---
 
 보통은 컨테이너 이미지에 정의된 기본 명령으로 이미지를 실행하지만, Kubernetes 에서는 해당 명령을 override 하여 다른 명령을 실행하도록 할 수 있다. 그래서 실행할 때 추가로 argument 를 전달할 수 있게 된다.
@@ -50,17 +54,17 @@ Dockerfile 에서 다음 명령을 사용할 수 있다.
 > - `CMD ["executable","param1","param2"]` (*exec* form, this is the preferred form)
 > - `CMD ["param1","param2"]` (as *default parameters to ENTRYPOINT*)
 > - `CMD command param1 param2` (*shell* form)
->
+> 
 > Dockerfile 에는 하나의 `CMD` 만 존재할 수 있으며, **The main purpose of a CMD is to provide defaults for an executing container.** 라고 한다.
 > *provide default* 라고 했기 때문에 이는 overriding 이 가능하다는 것이다.
->
+> 
 > `ENTRYPOINT` 를 사용하면 컨테이너가 실행될 때 `ENTRYPOINT` 에서 지정한 명령을 수행하고, `CMD` 도 마찬가지지만 `CMD` 의 경우 컨테이너 실행시 인자값을 주면 Dockerfile 의 `CMD` 를 override 하여 실행한다.
->
+> 
 > Reference 에서도 이 둘의 사용법을 설명해줬다.
 > 
 > Both `CMD` and `ENTRYPOINT` instructions define what command gets executed when running a container. There are few rules that describe their co-operation.
 > - Dockerfile should specify at least one of `CMD` or `ENTRYPOINT` commands.
-> - `ENTRYPOINT` should be defined when using the container as an executable. 
+> - `ENTRYPOINT` should be defined when using the container as an executable.
 > - `CMD` should be used as a way of defining default arguments for an `ENTRYPOINT` command or for executing an ad-hoc command in a container.
 > - `CMD` will be overridden when running the container with alternative arguments.
 
@@ -107,6 +111,7 @@ spec:
 `command`, `args` 필드는 컨테이너가 시작되면 수정할 수 없다.
 
 ## 7.3 컨테이너 환경 변수 설정하기
+
 ---
 
 Pod 레벨에서 환경 변수를 설정하고 컨테이너가 이를 상속하게 하는 옵션은 존재하지 않는다.
@@ -146,6 +151,7 @@ env:
 만약 pod 설정을 재사용하고 싶다면 config 와 pod 설정을 분리해야 하므로, 쿠버네티스에서는 ConfigMap 리소스를 제공한다.
 
 ## 7.4 ConfigMap 으로 설정 분리하기
+
 ---
 
 앱 설정 사항을 만들 때 가장 많이 고려하는 부분은 자주 바뀌는 설정을 코드와 분리하는 것이다. (그래서 config file 도 만들고, 환경 변수도 쓰고...)
@@ -310,6 +316,7 @@ ConfigMap 을 업데이트하는데 앱이 만약 설정이 변경된 것을 rel
 (??? atomic 하게 된다고 했던 것 같은데...)
 
 ## 7.5 Secrets for sensitive data
+
 ---
 
 Credential 의 경우 안전하게 전달되어야 한다.
@@ -386,7 +393,6 @@ Most resource types require a name that can be used as a DNS subdomain name as d
 - start with an alphanumeric character
 - end with an alphanumeric character
 
-
 ### Resolution of key collisions when creating ConfigMaps?
 
 - 그냥 애초에 생성이 안 되는 듯 하다.
@@ -423,7 +429,7 @@ data:
 
 When a ConfigMap already being consumed in a volume is updated, *projected keys are eventually updated as well*. **Kubelet is checking whether the mounted ConfigMap is fresh on every periodic sync**.
 
-However, it is using its *local ttl-based cache* for getting the current value of the ConfigMap. As a result, the total delay [from the moment when the ConfigMap is updated to the moment when new keys are projected to the pod] can be as long as kubelet sync period (1 minute by default) + ttl of ConfigMaps cache (1 minute by default) in kubelet. 
+However, it is using its *local ttl-based cache* for getting the current value of the ConfigMap. As a result, the total delay [from the moment when the ConfigMap is updated to the moment when new keys are projected to the pod] can be as long as kubelet sync period (1 minute by default) + ttl of ConfigMaps cache (1 minute by default) in kubelet.
 
 You can trigger an immediate refresh by updating one of the pod's annotations.
 

@@ -8,7 +8,7 @@ title: "09. $\\mathcal{L}^p$ Functions"
 date: "2023-07-31"
 github_title: "2023-07-31-Lp-functions"
 image:
-  path: /assets/img/posts/mt-09.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-09.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---

@@ -7,10 +7,12 @@ title: "08. Accessing Pod Metadata and Other Resources from Applications"
 date: "2021-04-18"
 github_title: "2021-04-18-08-accessing-pod-metadata"
 image:
-  path: /assets/img/posts/k8s-08.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-08.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-08.jpeg](../../../assets/img/posts/k8s-08.jpeg) _Using the files from the default-token Secret to talk to the API server (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-8)_
+![k8s-08.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-08.jpeg) _Using the files from the default-token Secret to talk to the API server (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-8)_
 
 ### 주요 내용
 
@@ -18,6 +20,7 @@ image:
 - 컨테이너 안의 앱이 Kubernetes API 와 통신하고 클러스터의 리소스를 생성/수정하는 방법
 
 ## 8.1 Passing metadata through the Downward API
+
 ---
 
 앱의 config data 는 pod 생성 전에 결정되기 때문에 환경 변수나 configMap, secret volume 을 이용해 전달할 수 있었다.
@@ -173,7 +176,7 @@ total 24
 -rw-r--r--    1 root     root             7 Apr 17 06:31 podNamespace
 ```
 
-> `-L` (`--dereference`) 옵션: when  showing  file information for a symbolic link, show information for the file the link references rather than for the link itself
+> `-L` (`--dereference`) 옵션: when showing file information for a symbolic link, show information for the file the link references rather than for the link itself
 
 #### label 과 annotation 은 volume 으로만 expose 가능한 이유
 
@@ -192,9 +195,10 @@ total 24
 Downward API 를 사용하는 것은 간단하다. Shell script 로 환경 변수를 설정하는 등의 수고로움을 덜어줄 것며, 애플리케이션이 Kubernetes 에 의존하지 않게 할 수 있다. 만약 환경 변수 값을 이용해서 동작하는 앱이라면 Downward API 가 유용할 것이다.
 
 ## 8.2 Talking to the Kubernetes API server
+
 ---
 
-Downward API 도 다양한 정보를 제공하지만 이로는 부족할 수 있다. (다른 pod/클러스터의 정보가 필요하거나) 그렇다면 Kubernetes API server 와 직접 통신하여 원하는 값을 얻어야 한다. 
+Downward API 도 다양한 정보를 제공하지만 이로는 부족할 수 있다. (다른 pod/클러스터의 정보가 필요하거나) 그렇다면 Kubernetes API server 와 직접 통신하여 원하는 값을 얻어야 한다.
 
 ### 8.2.1 Exploring the Kubernetes REST API
 
@@ -349,7 +353,7 @@ KUBERNETES_SERVICE_PORT_HTTPS=443
 
 > SRV record: specification of data in the DNS defining the location of servers for specified services. 여기서 location 이라 함은 hostname 과 port number 정도로 생각해도 괜찮을 것 같다.
 
-한 번 `https://kubernetes` 로 요청을 보내보면 인증서가 없어서 실패한다. 
+한 번 `https://kubernetes` 로 요청을 보내보면 인증서가 없어서 실패한다.
 
 ```
 root@curl:/# curl https://kubernetes
@@ -430,11 +434,13 @@ $ curl -H "Authorization: Bearer $TOKEN" https://kubernetes
 ```
 
 > Role-based access control ([RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)) 이 실행되고 있는 클러스터에서는 위 `curl` 에서 에러가 난다. 일단 테스트를 위해서 임시적으로
+> 
 > ```bash
 > kubectl create clusterrolebinding permissive-binding \
 > --clusterrole=cluster-admin \
 > --group=system:serviceaccounts
 > ```
+> 
 > 를 입력하여 모든 serviceaccounts 에 admin 권한을 줄 수 있다 ㅋㅋㅋ;
 
 #### 현재 pod 의 namespace 가져오기

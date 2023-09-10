@@ -7,10 +7,12 @@ title: "14. Managing Pods' Computational Resources"
 date: "2021-07-11"
 github_title: "2021-07-11-14-managing-computation-resources"
 image:
-  path: /assets/img/posts/k8s-14.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-14.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-14.jpeg](../../../assets/img/posts/k8s-14.jpeg) _The Scheduler only cares about requests, not actual usage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-14)_
+![k8s-14.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-14.jpeg) _The Scheduler only cares about requests, not actual usage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-14)_
 
 ### 주요 내용
 
@@ -21,6 +23,7 @@ image:
 각 pod 가 어느 정도의 자원(CPU/메모리)을 소모할지 파악하고, 이를 적절히 제한하는 것은 pod 정의에서 굉장히 중요한 부분이다.
 
 ## 14.1 Requesting resources for a pod's containers
+
 ---
 
 Pod 를 생성할 때 **requests** 와 **limits** 를 정할 수 있다.
@@ -126,6 +129,7 @@ Allocatable:
 Kubernetes 에서는 사용자 지정 resource 를 정의해서 requests 에 포함할 수 있다. (Extended Resources since version 1.8)
 
 ## 14.2 Limiting resources available to a container
+
 ---
 
 이번에는 자원의 최대 사용량을 제한해 본다.
@@ -194,6 +198,7 @@ CPU도 문제가 되는 경우가 있는데, 코어 수를 참고하여 worker t
 이러한 경우 Kubernetes Downward API 를 이용해서 CPU limit 값을 애플리케이션에 넘겨주는 식으로 해결할 수 있다.
 
 ## 14.3 Understanding pod QoS classes
+
 ---
 
 위에서 limits 의 경우 100% 를 초과할 수 있다고 했는데, 초과하면 어떤 컨테이너나 pod 를 kill 해야 한다고 했다. 어떤 pod 가 kill 되는지는 내부적으로 정해져 있다.
@@ -241,6 +246,7 @@ OOM score 의 계산에는 2가지 요인이 들어간다.
 잡은 메모리 중 사용 비율이 높을수록 먼저 kill 된다.
 
 ## 14.4 Setting default requests and limits for pods per namespace
+
 ---
 
 requests/limits 를 설정하지 않으면 kill 의 대상이 될 수 있으므로 설정하는 것이 좋다. 각 컨테이너에 이를 설정하는 것은 번거로우므로, Kubernetes 에서는 LimitRange 리소스를 제공한다.
@@ -303,6 +309,7 @@ LimitRange 리소스를 생성한 뒤 range 를 벗어난 pod 를 생성하려�
 LimitRange 는 namespaced resource 이므로 한 namespace 에만 적용된다. 따라서 namespace 별로 LimitRange 를 만들어 두면 제한을 다르게 할 수 있다.
 
 ## 14.5 Limiting the total resources available in a namespace
+
 ---
 
 LimitRange 는 pod 전체의 리소스 총합을 제한하지는 못한다. 하지만 클러스터 관리자 입장에서는 namespace 별로 리소스 총량을 제한할 필요가 있기 때문에, Kubernetes 에서는 ResourceQuota object 가 제공된다.
@@ -400,6 +407,7 @@ spec:
 `BestEffort` 의 경우 pod 의 개수만 제한할 수 있다. (애초에 requests/limits 가 세팅되지 않음) 나머지 3개 클래스의 경우 pod 개수 뿐만 아니라 CPU/메모리 requests/limits 모두 제한할 수 있다.
 
 ## 14.6 Monitoring pod resource usage
+
 ---
 
 requests/limits 를 적절하게 설정하려면 pod 에서 자원이 얼마나 사용되고 있는지 확인해야 하고 이를 모니터링해야 한다.

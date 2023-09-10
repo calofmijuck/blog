@@ -8,7 +8,7 @@ title: "04. Measurable Functions"
 date: "2023-02-06"
 github_title: "2023-02-06-measurable-functions"
 image:
-  path: /assets/img/posts/mt-04.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-04.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---
