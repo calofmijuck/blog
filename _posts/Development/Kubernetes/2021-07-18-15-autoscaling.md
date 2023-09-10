@@ -7,10 +7,12 @@ title: "15. Automatic Scaling of Pods and Cluster Nodes"
 date: "2021-07-18"
 github_title: "2021-07-18-15-autoscaling"
 image:
-  path: /assets/img/posts/k8s-15.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-15.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-15.jpeg](../../../assets/img/posts/k8s-15.jpeg)  _How the autoscaler obtains metrics and rescales the target deployment (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-15)_
+![k8s-15.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-15.jpeg) _How the autoscaler obtains metrics and rescales the target deployment (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-15)_
 
 ### 주요 내용
 
@@ -22,6 +24,7 @@ image:
 이번 장에서는 pod 나 노드의 상태에 따라 자동으로 scaling 하는 방법을 알아본다.
 
 ## 15.1 Horizontal pod autoscaling
+
 ---
 
 Horizontal pod autoscaling 은 **Horizontal controller** 가 pod 의 replica 수를 알아서 조절하는 것이다.
@@ -75,6 +78,7 @@ HPA 를 실제로 생성하기 위해서는 다음 명령어를 입력하면 된
 ```bash
 $ kubectl autoscale deployment <DEPLOYMENT_NAME> --cpu-percent=<PERCENT> --min=<MIN> --max=<MAX>
 ```
+
 - `PERCENT` 는 target value 로 지정할 CPU utilization 이다.
 - `MIN`, `MAX` 는 scaling 으로 조절할 수 있는 pod 개수의 최솟값/최댓값이다.
 
@@ -156,6 +160,7 @@ https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkth
 > Documentation 에서는 특별한 언급을 찾지는 못했다. 일단 `autoscale` 명령어로 `--min=0` 을 주고 생성해도 1 로 설정하는 것이 확인되었다.
 
 ## 15.2 Vertical pod autoscaling
+
 ---
 
 만약 vertical scaling 이 지원됐다면, pod manifest 에서 resource requests 를 수정하는 방식으로 지원했을 것이라고 한다. 하지만 이미 생성된 pod 의 resource requests 는 수정이 불가능하다.
@@ -175,6 +180,7 @@ Experimental feature 중에, 새로 생성된 pod 의 CPU/메모리 requests 를
 책이 쓰여질 당시 vertical pod autoscaling proposal 이 finalize 되고 있었다고 한다. 공식 문서를 참고해 달라고 한다.
 
 ## 15.3 Horizontal scaling of cluster nodes
+
 ---
 
 Scaling 을 하다 보면 존재하는 노드의 자원을 다 쓰거나 기타 이유로 scheduling 이 불가능해지는 상황이 올 수도 있다.
@@ -201,7 +207,7 @@ Scheduler 가 scheduling 에 실패했을 때, Cluster Autoscaler 가 동작하�
 
 노드가 삭제될 것이라고 마킹되면, unschedulable 이라고 마킹되며, pod 들은 전부 삭제된다. 삭제되기 위해서는 애초에 모든 pod 들이 Replication 에 의해 관리되고 있었을 것이므로, 삭제된 pod 대신 다른 노드에 pod 가 자동으로 띄워진다.
 
-> `kubectl cordon <node>` 를 하면 노드가 unschedulable 상태가 된다. 하지만 pod 들은 남아있는다. `kubectl drain <node>` 를 하면 unschedulable 상태가 되고 pod 가 전부 삭제된다.
+> `kubectl cordon <node> ` 를 하면 노드가 unschedulable 상태가 된다. 하지만 pod 들은 남아있는다. `kubectl drain <node> ` 를 하면 unschedulable 상태가 되고 pod 가 전부 삭제된다.
 
 ### 15.3.2 Enabling the Cluster Autoscaler
 
@@ -216,6 +222,7 @@ Pod label selector 와 최솟값을 설정해서 생성하면 selector 에 매�
 ```bash
 $ kubectl create pdb <NAME> --selector=<SELECTOR> --min-available=<MIN>
 ```
+
 - `SELECTOR` 는 pod label selector (`key=value`)
 - `MIN` 은 사용 가능한 pod 개수의 최솟값
 

@@ -8,7 +8,9 @@ title: "07. Dominated Convergence Theorem"
 date: "2023-04-07"
 github_title: "2023-04-07-dominated-convergence-theorem"
 image:
-  path: /assets/img/posts/mt-07.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-07.png
+attachment:
+  folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
 ## Almost Everywhere
@@ -147,7 +149,7 @@ $$[f] = \lbrace g \in \mathcal{L}^{1}(E, \mu) : f \sim g\rbrace.$$
 
 마지막 수렴정리를 소개하고 수렴정리와 관련된 내용을 마칩니다. 지배 수렴 정리(dominated convergence theorem, DCT)로 불립니다.
 
-![mt-07.png](../../../assets/img/posts/mt-07.png)
+![mt-07.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-07.png)
 
 **정리.** (지배 수렴 정리) Measurable set $E$와 measurable function $f$에 대하여, $\lbrace f_n\rbrace$이 measurable function의 함수열이라 하자. $E$의 거의 모든 점 위에서 극한 $f(x) = \displaystyle\lim_ {n \rightarrow\infty} f_n(x)$ 가 $\overline{\mathbb{R}}$에 존재하고 (점별 수렴) $\lvert f_n \rvert \leq g \quad \mu$-a.e. on $E$ ($\forall n \geq 1$) 를 만족하는 $g \in \mathcal{L}^{1}(E, \mu)$ 가 존재하면,
 
@@ -188,5 +190,4 @@ $$2 \int_A g \,d{\mu} - \limsup_ {n \rightarrow\infty} \int_A \lvert f_n - f \rv
 이고, 가정에 의해 $\displaystyle 0 \leq \int_A g \,d{\mu} < \infty$ 이므로 $\displaystyle\limsup_ {n \rightarrow\infty} \int_A \lvert f_n - f \rvert \,d{\mu} = 0$ 이다.
 
 [^1]: 예를 들어, ‘$f(x)$가 연속이다’ 등.
-
 [^2]: Continuity of measure를 사용하기 위해서는 첫 번째 집합의 measure가 유한해야 한다.

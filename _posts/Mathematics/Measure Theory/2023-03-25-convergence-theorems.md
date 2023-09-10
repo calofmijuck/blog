@@ -8,7 +8,9 @@ title: "06. Convergence Theorems"
 date: "2023-03-25"
 github_title: "2023-03-25-convergence-theorems"
 image:
-  path: /assets/img/posts/mt-06.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-06.png
+attachment:
+  folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
 르벡 적분 이론에서 굉장히 자주 사용되는 수렴 정리에 대해 다루겠습니다. 이 정리들을 사용하면 굉장히 유용한 결과를 쉽게 얻을 수 있습니다.
@@ -17,7 +19,7 @@ image:
 
 먼저 단조 수렴 정리(monotone convergence theorem, MCT)입니다. 이 정리에서는 $f_n \geq 0$ 인 것이 매우 중요합니다.
 
-![mt-06.png](../../../assets/img/posts/mt-06.png)
+![mt-06.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-06.png)
 
 **정리.** (단조 수렴 정리) $f_n: X \rightarrow[0, \infty]$ 가 measurable이고 모든 $x \in X$ 에 대하여 $f_n(x) \leq f_ {n+1}(x)$ 라 하자.
 

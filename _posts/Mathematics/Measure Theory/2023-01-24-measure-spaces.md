@@ -8,14 +8,16 @@ title: "03. Measure Spaces"
 date: "2023-01-24"
 github_title: "2023-01-24-measure-spaces"
 image:
-  path: /assets/img/posts/mt-03.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-03.png
+attachment:
+  folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
 ## Remarks on Construction of Measure
 
 Construction of measure 증명에서 추가로 참고할 내용입니다.
 
-![mt-03.png](../../../assets/img/posts/mt-03.png)
+![mt-03.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-03.png)
 
 **명제.** $A$가 열린집합이면 $A \in \mathfrak{M}(\mu)$ 이다. 또한 $A^C \in \mathfrak{M}(\mu)$ 이므로, $F$가 닫힌집합이면 $F \in \mathfrak{M}(\mu)$ 이다.
 
@@ -116,5 +118,4 @@ Uncountable인 경우에는 Cantor set $P$를 생각한다. $E_n$을 다음과 �
 > $A \subseteq B \subseteq X$ 일 때, $B \in \mathfrak{M}$ 이고 $\mu(B) = 0$ 이면 $A \in \mathfrak{M}$ 이다.
 
 [^1]: 첫 번째 부등식은 countable subadditivity, 두 번째 부등식은 $\mu^\ast$의 정의에서 나온다.
-
 [^2]: [Vitali set](https://en.wikipedia.org/wiki/Vitali_set) 참고.

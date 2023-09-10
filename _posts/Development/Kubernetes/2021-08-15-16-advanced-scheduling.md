@@ -7,10 +7,12 @@ title: "16. Advanced Scheduling"
 date: "2021-08-15"
 github_title: "2021-08-15-16-advanced-scheduling"
 image:
-  path: /assets/img/posts/k8s-16.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-16.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-16.jpeg](../../../assets/img/posts/k8s-16.jpeg) _A pod is only scheduled to a node if it tolerates the node’s taints. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-16)_
+![k8s-16.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-16.jpeg) _A pod is only scheduled to a node if it tolerates the node’s taints. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-16)_
 
 ### 주요 내용
 
@@ -19,6 +21,7 @@ image:
 - Pod affinity, anti-affinity 사용
 
 ## 16.1 Using taints and tolerations to repel pods from certain nodes
+
 ---
 
 Pod 가 특정 노드에 schedule 되기 위해서는 그 노드의 taint 를 tolerate 할 수 있어야 한다.
@@ -87,6 +90,7 @@ Taint 를 사용하면 `NoSchedule` effect 를 이용해 새로운 pod 들이 �
 이외에도 taint/toleration 을 이용해서 클러스터를 분할해서 여러 팀이 사용하게 할 수 있다.
 
 ## 16.2 Using node affinity to attract pods to certain nodes
+
 ---
 
 Taint 를 이용하면 특정 노드에 pod 이 scheduling 되지 않도록 할 수 있었다. 반면 **node affinity** 를 이용하면 pod 가 schedule 될 수 있는 노드를 정할 수 있다.
@@ -170,6 +174,7 @@ spec:
 4. 이외의 노드
 
 ## 16.3 Co-locating pods with pod affinity and anti-affinity
+
 ---
 
 앞서 살펴본 node affinity 는 pod 과 노드 사이의 affinity 를 정한 것이었는데, 때로는 pod 사이의 affinity 가 필요할 때도 있다. 예를 들어 프론트엔드/백엔드 pod 를 같은 노드에 띄우면 latency 가 줄어들게 될 것이다. 그렇다고 두 pod 를 특정 노드에 띄우라고 지시하기 보다는 Kubernetes 가 알아서 하라고 하는 것이 좋을 것이다.

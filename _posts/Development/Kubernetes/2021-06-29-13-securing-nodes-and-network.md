@@ -7,10 +7,12 @@ title: "13. Securing Cluster Nodes and the Network"
 date: "2021-06-29"
 github_title: "2021-06-29-13-securing-nodes-and-network"
 image:
-  path: /assets/img/posts/k8s-13.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-13.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-13.jpeg](../../../assets/img/posts/k8s-13.jpeg) _A pod with hostNetwork: true uses the node's network interfaces instead of its own. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-13)_
+![k8s-13.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-13.jpeg) _A pod with hostNetwork: true uses the node's network interfaces instead of its own. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-13)_
 
 ### 주요 내용
 
@@ -20,6 +22,7 @@ image:
 컨테이너는 독립적인 환경을 제공한다고 하긴 했지만, 공격자가 API server 에 접근하게 되면 컨테이너에 무엇이든 집어넣고 악의적인 코드를 실행할 수 있고, 이는 실행 중인 다른 컨테이너에 영향을 줄 수도 있다!
 
 ## 13.1 Using the host node's namespaces in a pod
+
 ---
 
 컨테이너는 별도의 linux namespace 에서 실행된다고 했었다.
@@ -64,6 +67,7 @@ spec:
 호스트의 네트워크 namespace 를 사용할 수 있었던 것처럼 `hostPID`, `hostIPC` 값을 `true` 로 설정해 주면 노드의 PID 와 IPC namespace 를 사용하게 된다. `spec` 아래에 넣어주면 된다.
 
 ## 13.2 Configuring the container's security context
+
 ---
 
 `securityContext` property 를 이용하면 보안과 관련된 기능들을 pod 과 내부 컨테이너에 설정할 수 있다.
@@ -271,6 +275,7 @@ total 4
 > `supplementalGroups` 에 대한 설명이 좀 부족하다. 단순히 user 와 엮인 추가 group ID 를 설정할 수 있다고만 적혀있다.
 
 ## 13.3 Restricting the use of security-related features in pods
+
 ---
 
 클러스터 관리자는 PodSecurityPolicy 리소스를 이용해서 pod 의 보안과 관련된 기능들을 제한할 수 있다.
@@ -387,11 +392,12 @@ $ kubectl create clusterrolebinding <CLUSTER_ROLE_BINDING_NAME> \
   --clusterrole=<CLUSTER_ROLE_NAME> --group=<GROUP_NAME>
 ```
 
-> `kubectl` 에서 사용자를 추가하려면 `kubectl config set-credentials <NAME> --username=<USERNAME> --password=<PASSWORD>` 를 입력하면 된다.
+> `kubectl` 에서 사용자를 추가하려면 `kubectl config set-credentials <NAME> --username=<USERNAME> --password=<PASSWORD> ` 를 입력하면 된다.
 
 > 다른 사용자의 이름으로 리소스를 생성하려면 `kubectl --user <USERNAME> create` 를 하면 된다.
 
 ## 13.4 Isolating the pod network
+
 ---
 
 앞서 살펴본 방법들은 pod 와 컨테이너 단에서 적용되는 보안 관련 설정을 살펴봤다. 이번에는 pod 사이의 네트워크 통신 측면에서 보안을 적용하는 방법을 알아본다.

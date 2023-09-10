@@ -8,10 +8,12 @@ title: "09. $\\mathcal{L}^p$ Functions"
 date: "2023-07-31"
 github_title: "2023-07-31-Lp-functions"
 image:
-  path: /assets/img/posts/mt-09.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-09.png
+attachment:
+  folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-09.png](../../../assets/img/posts/mt-09.png){: .w-50}
+![mt-09.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-09.png){: .w-50}
 
 ## Integration on Complex Valued Function
 
@@ -19,23 +21,23 @@ Let $(X, \mathscr{F}, \mu)$ be a measure space, and $E \in \mathscr{F}$.
 
 **정의.**
 
-1.  A complex valued function $f = u + iv$, (where $u, v$ are real functions) is measurable if $u$ and $v$ are both measurable.
+1. A complex valued function $f = u + iv$, (where $u, v$ are real functions) is measurable if $u$ and $v$ are both measurable.
 
-2.  For a complex function $f$,
+2. For a complex function $f$,
 
 	$$f \in \mathcal{L}^{1}(E, \mu) \iff  \int_E \left\lvert  f \right\rvert  \,d{\mu} < \infty \iff u, v \in \mathcal{L}^{1}(E, \mu).$$
 
-3.  If $f = u + iv \in \mathcal{L}^{1}(E, \mu)$, we define
+3. If $f = u + iv \in \mathcal{L}^{1}(E, \mu)$, we define
 
 	$$\int_E f \,d{\mu} = \int_E u \,d{\mu} + i\int_E v \,d{\mu}.$$
 
 **참고.**
 
-1.  Linearity also holds for complex valued functions. For $f_1, f_2 \in \mathcal{L}^{1}(\mu)$ and $\alpha \in \mathbb{C}$,
+1. Linearity also holds for complex valued functions. For $f_1, f_2 \in \mathcal{L}^{1}(\mu)$ and $\alpha \in \mathbb{C}$,
 
 	$$\int_E \left( f_1 + \alpha f_2 \right) \,d{\mu} = \int_E f_1 \,d{\mu} +  \alpha \int_E f_2 \,d{\mu}.$$
 
-2.  Choose $c \in \mathbb{C}$ and $\left\lvert  c \right\rvert  = 1$ such that $\displaystyle c \int_E f \,d{\mu} \geq 0$. This is possible since multiplying by $c$ is equivalent to a rotation.
+2. Choose $c \in \mathbb{C}$ and $\left\lvert  c \right\rvert  = 1$ such that $\displaystyle c \int_E f \,d{\mu} \geq 0$. This is possible since multiplying by $c$ is equivalent to a rotation.
 
 Now set $cf = u + vi$ where $u, v$ are real functions and the integral of $v$ over $E$ is $0$. Then,
 
@@ -109,9 +111,9 @@ We treat $[f]$ as an element in $\mathcal{L}^{p}(X, \mu)$, and write $f = [f]$.
 
 **참고.**
 
-1.  We write $\left\lVert f \right\rVert_p = 0 \iff f = [0] = 0$ in the sense that $f = 0$ $\mu$-a.e.
+1. We write $\left\lVert f \right\rVert_p = 0 \iff f = [0] = 0$ in the sense that $f = 0$ $\mu$-a.e.
 
-2.  Now $\lVert \cdot \rVert_p$ is a **norm** in $\mathcal{L}^{p}(X, \mu)$ so $d(f, g) = \left\lVert f - g \right\rVert_p$ is a **metric** in $\mathcal{L}^{p}(X, \mu)$.
+2. Now $\lVert \cdot \rVert_p$ is a **norm** in $\mathcal{L}^{p}(X, \mu)$ so $d(f, g) = \left\lVert f - g \right\rVert_p$ is a **metric** in $\mathcal{L}^{p}(X, \mu)$.
 
 ## Completeness of $\mathcal{L}^p$
 
@@ -119,9 +121,9 @@ Now we have a *function space*, so we are interested in its *completeness*.
 
 **정의.** (Convergence in $\mathcal{L}^p$) Let $f, f_n \in \mathcal{L}^{p}(\mu)$.
 
-1.  $f_n \rightarrow f$ in $\mathcal{L}^p(\mu) \iff \left\lVert f_n-f \right\rVert_p \rightarrow 0$ as $n \rightarrow\infty$.
+1. $f_n \rightarrow f$ in $\mathcal{L}^p(\mu) \iff \left\lVert f_n-f \right\rVert_p \rightarrow 0$ as $n \rightarrow\infty$.
 
-2.  $\left( f_n \right)_{n=1}^\infty$ is a Cauchy sequence in $\mathcal{L}^{p}(\mu)$ if and only if
+2. $\left( f_n \right)_{n=1}^\infty$ is a Cauchy sequence in $\mathcal{L}^{p}(\mu)$ if and only if
 
 > $\forall \epsilon > 0$, $\exists\,N > 0$ such that $n, m \geq N \implies \left\lVert f_n-f_m \right\rVert_p < \epsilon$.
 
@@ -206,4 +208,3 @@ $$\left\lVert f - \sum_{k=1}^{m} a_k g_n^k \right\rVert_p = \left\lVert \sum_{k=
 Next for $f \in \mathcal{L}^{p}$ and $f \geq 0$, there exist simple functions $f_n \geq 0$ such that $f_n \nearrow f$ in $\mathcal{L}^{p}$. Finally, any $f \in \mathcal{L}^{p}$ can be written as $f = f^+ - f^-$, which completes the proof.
 
 이러한 확장을 몇 번 해보면 굉장히 routine합니다. $\chi_F$ for closed $F$ $\rightarrow$ $\chi_A$ for measurable $A$ $\rightarrow$ measurable simple $f$ $\rightarrow$ $0\leq f \in \mathcal{L}^{p} \rightarrow$ $f \in \mathcal{L}^{p}$ 와 같은 순서로 확장합니다.
-
