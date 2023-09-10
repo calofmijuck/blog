@@ -9,9 +9,11 @@ date: "2023-01-11"
 github_title: "2023-01-11-algebra-of-sets"
 image:
   path: /assets/img/posts/mt-01.png
+attachment:
+  folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-01.png](../../../assets/img/posts/mt-01.png)
+![mt-01.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-01.png)
 
 르벡 적분을 공부하기 위해서는 먼저 집합의 ‘길이’ 개념을 공부해야 합니다. 그리고 집합의 ‘길이’ 개념을 확립하기 위해서는 집합 간의 연산과 이에 대한 구조가 필요합니다.
 
@@ -198,9 +200,6 @@ $$\lim_ {n\rightarrow\infty} \mu(A_n) = \mu\left( \bigcap_ {n=1}^\infty A_n \rig
 이제 measure의 개념을 정리했으니 다음 글에서는 본격적으로 집합을 재보려고 합니다. 우리의 목표는 $\mathbb{R}^p$에서 measure를 정의하는 것입니다. 우선 쉽게 잴 수 있는 집합들부터 고려할 것입니다.
 
 [^1]: $\sigma$-ring 이면 불필요한 조건이지만, 일반적인 ring에 대해서는 필요한 조건입니다.
-
 [^2]: 증명은 해석개론, 김김계 책을 참고해주세요. 각 구간마다 유리수를 택할 수 있고, 유리수는 countable이기 때문에...
-
 [^3]: 확률의 덧셈정리와 유사합니다. 확률론 또한 measure theory와 관련이 깊습니다.
-
 [^4]: 무한하지 않다는 조건이 있어야 이항이 가능합니다.
