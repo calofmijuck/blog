@@ -7,10 +7,12 @@ title: "12. Securing the Kubernetes API Server"
 date: "2021-06-06"
 github_title: "2021-06-06-12-securing-k8s-api-server"
 image:
-  path: /assets/img/posts/k8s-12.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-12.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-12.jpeg](../../../assets/img/posts/k8s-12.jpeg) _Roles grant permissions, whereas RoleBindings bind Roles to subjects (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-12)_
+![k8s-12.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-12.jpeg) _Roles grant permissions, whereas RoleBindings bind Roles to subjects (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-12)_
 
 ### 주요 내용
 
@@ -18,6 +20,7 @@ image:
 - RBAC plugin, Role/RoleBinding, ClusterRole/ClusterRoleBinding 에 대한 이해
 
 ## 12.1 Understanding authentication
+
 ---
 
 API server 가 요청을 받게 되면, authentication plugin 을 거치며 요청을 보낸 주체가 누구인지 분석한다.
@@ -125,6 +128,7 @@ Image pull secret 은 private image repository 에서 image 를 pull 받을 때 
 Pod definition 에서 `.spec.serviceAccountName` 필드에 적어주면 된다. Pod 생성할 때 미리 정해야 하며, pod 가 생성된 뒤에는 수정할 수 없다.
 
 ## 12.2 Securing the cluster with role-based access control
+
 ---
 
 Role-based access control (RBAC) plugin 을 사용하게 되면, unauthorized user 가 클러스터의 상태를 조회하거나 수정하는 것을 막을 수 있다. RBAC 를 사용하여 클러스터의 authorization 을 관리하는 방법을 살펴본다.
