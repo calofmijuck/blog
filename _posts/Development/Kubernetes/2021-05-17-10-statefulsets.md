@@ -7,10 +7,12 @@ title: "10. StatefulSets: Deploying Replicated Stateful Applications"
 date: "2021-05-17"
 github_title: "2021-05-17-10-statefulsets"
 image:
-  path: /assets/img/posts/k8s-10.jpeg
+  path: /assets/img/posts/Development/Kubernetes/k8s-10.jpeg
+attachment:
+  folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-10.jpeg](../../../assets/img/posts/k8s-10.jpeg) _A stateful pod may be rescheduled to a different node, but it retains the name, hostname, and storage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-10)_
+![k8s-10.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-10.jpeg) _A stateful pod may be rescheduled to a different node, but it retains the name, hostname, and storage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-10)_
 
 ### 주요 내용
 
@@ -19,6 +21,7 @@ image:
 - DNS SRV record 를 이용한 peer discovery
 
 ## 10.1 Replicating stateful pods
+
 ---
 
 도입 질문: 각 pod replica 가 하나씩 PV 를 갖게 할 수는 없을까?
@@ -60,6 +63,7 @@ Kubernetes 의 철학에 어긋난다.
 Kubernetes 에서는 이러한 문제를 **StatefulSet** 으로 해결한다.
 
 ## 10.2 Understanding StatefulSets
+
 ---
 
 이런 경우, ReplicaSet 보다는 StatefulSet 을 사용하여 각 pod 들이 stable 한 이름과 상태를 갖도록 한다.
@@ -146,11 +150,12 @@ StatefulSet 들이 무엇을 보장해주는지 살펴본다.
 
 따라서 Kubernetes 에서는 같은 정보를 가지고 같은 PVC 에 bind 된 stateful pod 가 동시에 2개 이상 존재하지 않도록 특별히 주의한다. 즉 StatefulSet 은 stateful pod 가 최대 1개만 존재하도록 보장해야 하며, 이를 *at-most-one* semantics 라고 한다.
 
-따라서 StatefulSet 의 입장에서는 새로운 pod 를 생성하기 전에 생성할 pod 의 정보와 같은 정보를 가진 pod 가 없음을 **확신**할 수 있어야 한다. 이 때문에 노드에 문제가 생기는 경우 처리 방법이 크게 달라진다. 
+따라서 StatefulSet 의 입장에서는 새로운 pod 를 생성하기 전에 생성할 pod 의 정보와 같은 정보를 가진 pod 가 없음을 **확신**할 수 있어야 한다. 이 때문에 노드에 문제가 생기는 경우 처리 방법이 크게 달라진다.
 
 뒤에서 더 자세히 살펴보고, 우선 StatefulSet 을 생성하는 방법부터 살펴본다.
 
 ## 10.3 Using a StatefulSet
+
 ---
 
 ### 10.3.1 Creating the app and container image
@@ -383,6 +388,7 @@ Data stored on this pod: No data posted yet
 다만 random 한 pod 에서 응답을 보내준다.
 
 ## 10.4 Discovering peers in a StatefulSet
+
 ---
 
 마지막으로 살펴볼 내용은 peer discovery 이다. StatefulSet 의 pod 이 다른 pod 를 발견할 수 있어야 한다. 물론 API server 를 사용할수도 있겠지만, 애플리케이션이 직접 요청을 보내게 되기 때문에 Kubernetes 에 종속되게 된다. 다른 방법이 필요하며, 여기서는 SRV record 를 사용할 것이다.
@@ -472,6 +478,7 @@ Data stored in the cluster:
 Pod 가 직접 peer discovery 를 진행하므로 scaling 에도 유연하게 대처할 수 있다.
 
 ## 10.5 Understanding how StatefulSets deal with node failures
+
 ---
 
 10.2.4 에서 *at-most-one* semantics 를 설명하면서 StatefulSet 은 같은 상태를 가진 pod 를 2개 만들어서는 안된다고 했었다. 한편 노드가 작동을 중단하는 경우 Kubernetes 는 그 노드에 있던 리소스의 정보를 알 수 없게 된다. Pod 가 실제로 작동을 중지한 것인지, 아니면 접근이 가능한데 그냥 Kubelet 이 노드의 상태를 master 에 보고하는 것을 중단했을 수도 있다.
@@ -494,7 +501,7 @@ minikube 에서는 안된다! GKE 의 이야기이다.
 
 만약 노드의 네트워크가 금방 다시 연결되면 pod 상태를 다시 보고할 것이므로 `Ready` 상태가 된다. 반면 오랜 시간동안 (이 시간은 설정 가능하다) `Unknown` 상태이면 Kubernetes control plane 에서 pod 를 자동으로 삭제한다.
 
-Kubelet 이 pod 이 삭제 명령을 받으면 삭제를 시작하여 `Terminating` 으로 변경되는데, 지금 상황에서는 네트워크가 유실되었으므로 Kubelet 이 pod 삭제 명령을 알 수 없다. 그래서 pod 는 게속 실행 중이게 된다. 
+Kubelet 이 pod 이 삭제 명령을 받으면 삭제를 시작하여 `Terminating` 으로 변경되는데, 지금 상황에서는 네트워크가 유실되었으므로 Kubelet 이 pod 삭제 명령을 알 수 없다. 그래서 pod 는 게속 실행 중이게 된다.
 
 `kubectl describe pod <NAME>` 으로 유실된 노드의 pod 를 살펴보면 `Terminating` 으로 변경되어있고, `Reason: NodeLost` 라고 적혀있다. 단, 이는 어디까지나 control plane 의 관점이며, 실제로 노드 안에서 pod 는 정상적으로 돌아가고 있다.
 
