@@ -12,12 +12,11 @@ tags:
 title: test-document
 date: 2023-09-10
 github_title: test-document
-image:
-  path: /assets/img/posts/test/mt-09.png
 attachment:
-  folder: /assets/img/posts/test
+  send: true
+  folder: assets/img/posts/test
 ---
 
-![mt-09.png](../../..//assets/img/posts/test/mt-09.png){: .w-50}
+![test-image.png](../../../assets/img/posts/test/test-image.png)
 
 Where does this image go?
