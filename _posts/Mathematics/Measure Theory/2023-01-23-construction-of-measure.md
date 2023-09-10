@@ -8,10 +8,12 @@ title: "02. Construction of Measure"
 date: "2023-01-23"
 github_title: "2023-01-23-construction-of-measure"
 image:
-  path: /assets/img/posts/mt-02.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-02.png
+attachment:
+  folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-02.png](../../../assets/img/posts/mt-02.png)
+![mt-02.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-02.png)
 
 이제 본격적으로 집합을 재보도록 하겠습니다. 우리가 잴 수 있는 집합들부터 시작합니다. $\mathbb{R}^p$에서 논의할 건데, 이제 여기서부터는 $\mathbb{R}$의 구간의 열림/닫힘을 모두 포괄하여 정의합니다. 즉, $\mathbb{R}$의 구간이라고 하면 $[a, b], (a, b), [a, b), (a, b]$ 네 가지 경우를 모두 포함합니다.
 
@@ -254,9 +256,6 @@ $$A_n \cap B = \bigcup_ {k=1}^\infty (A_n \cap B_k) \in \mathfrak{M}(\mu)$$
 이제 $\Sigma$ 위의 $\mu$ 정의를 $\mathfrak{M}(\mu)$ ($\sigma$-algebra)로 확장하여 $\mathfrak{M}(\mu)$ 위에서는 $\mu = \mu^\ast$ 로 정의합니다. $\Sigma$ 위에서 $\mu = m$ 일 때, 이와 같이 확장한 $\mathfrak{M}(m)$ 위의 $m$을 **Lebesgue measure** on $\mathbb{R}^p$라 합니다. 그리고 $A \in \mathfrak{M}(m)$ 를 Lebesgue measurable set이라 합니다.
 
 [^1]: $A$가 open이 아니면 자명하지 않은 명제입니다.
-
 [^2]: $A$가 $\mu$-measurable인데 $\mu^\ast(A) < \infty$이면 $A$는 finitely $\mu$-measurable이다.
-
 [^3]: $A$가 countable union of sets in $\mathfrak{M} _ F(\mu)$이므로 $\mu^\ast$도 각 set의 $\mu^\ast$의 합이 된다.
-
 [^4]: 아직 증명이 끝나지 않았습니다. $A_n$은 $\mathfrak{M}(\mu)$의 원소가 아니라 $\mathfrak{M} _ F(\mu)$의 원소입니다.
