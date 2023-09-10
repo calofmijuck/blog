@@ -8,7 +8,7 @@ title: "01. Algebra of Sets"
 date: "2023-01-11"
 github_title: "2023-01-11-algebra-of-sets"
 image:
-  path: /assets/img/posts/mt-01.png
+  path: /assets/img/posts/Mathematics/Measure Theory/mt-01.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---
