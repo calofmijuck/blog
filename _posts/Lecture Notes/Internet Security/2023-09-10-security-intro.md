@@ -20,9 +20,9 @@ attachment:
 
 > Every program has at least two purposes: the one for which it was written, and another for which it wasn't. - Alan J. Perlis
 
-# Security Overview
+## Security Overview
 
-## Security
+### Security
 
 **Security** may mean different things.
 - Emotional security
@@ -43,7 +43,7 @@ In internet security, we assume that:
 - Everything on the network can be an attack target.
 - Every transmitted bit can be tapped (eavesdropped).
 
-## Modeling in Network Security
+### Modeling in Network Security
 
 - Basically, we have a sender and a receiver, and they communicate through the internet.
 - **Sender and receiver want to communicate *securely***.
@@ -56,11 +56,11 @@ In internet security, we assume that:
 	- Alice and Bob for the two parties participating in the communication.
 	- Eve (or Mallory, Oscar) for the adversary.
 
-# Security Attacks
+## Security Attacks
 
 This is only an overview, so the attacks are introduced briefly.
 
-## Computer/Network Attacks
+### Computer/Network Attacks
 
 - Malware: malicious software
 	- virus, worm, Trojan, spyware, ransomware
@@ -99,9 +99,9 @@ There are two types of attacks in security attacks
 	- Ex. eavesdropping, port scanning (idle scan secretly scanns).
 	- *Detection* is important since passive attacks are a danger to *confidentiality*.
 
-# Security Services and Mechanisms
+## Security Services and Mechanisms
 
-## CIA Triad
+### CIA Triad
 
 What kind of security services do we want? The basic network security services must support the following. These are also known as the **CIA triad**.
 
@@ -120,7 +120,7 @@ Additionally, we also need:
 - Integrity: modification, masquerading, replaying, repudiation
 - Availability: denial of service
 
-## More Security Services
+### More Security Services
 
 - **Access control**: controlling privileges to access assets
 	- identification, authentication (credential validation), authorization
@@ -131,7 +131,7 @@ Additionally, we also need:
 - **Privacy**: keeping data safe in transit and in storage
 - **Digital forensics**: recovering data from digital devices
 
-## Security Mechanisms
+### Security Mechanisms
 
 There are many ways of achieving security.
 
@@ -147,13 +147,13 @@ There are many ways of achieving security.
 - **Append-only server**: keeps track of all modifications, good for auditing
 	- Blockchain is a kind of append-only data structure
 
-# Cryptography
+## Cryptography
 
 > **Cryptography** is the study of mathematical techniques for securing digital information, systems, and distributed computations against adversarial attacks.^[J. Katz, Introduction to Modern Cryptography]
 
 **Cryptanalysis** is the study of methods for obtaining the meaning of encrypted information without access to the key.
 
-## Basics of a Cryptosystem
+### Basics of a Cryptosystem
 
 ![is-01-cryptosystem.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-01-cryptosystem.png)
 
@@ -174,7 +174,7 @@ There are two criteria for classifying cryptosystems.
 	- **Block cipher**
 	- **Stream cipher**
 
-## Kerckhoffs' Principle
+### Kerckhoffs' Principle
 
 There are two choices to achieve the security of a cryptosystem.
 
@@ -197,7 +197,7 @@ Why? Here are some of the arguments in favor of Kerckhoffs' principle.
 	- *Standardization* of schemes is possible, supporting compatibility between different users.
 	- It is beneficial to use strong schemes that have gone through public scrutiny.
 
-# Threat Modeling
+## Threat Modeling
 
 What should we consider when we are building secure systems? We should consider what attacks are possible. **Threat modeling** is the process of systematically identifying the threats faced by a system.
 
@@ -211,7 +211,7 @@ What should we consider when we are building secure systems? We should consider 
 
 We consider the case of a smartphone.
 
-## Identifying Assets
+### Identifying Assets
 
 In a smartphone, assets (things of value) would be
 - Saved credentials such as passwords
@@ -220,14 +220,14 @@ In a smartphone, assets (things of value) would be
 - Access to sensors such as camera, microphone, network traffic or location
 - The device itself
 
-## Attack Surfaces
+### Attack Surfaces
 
 - Physically stealing the device
 - Tricking the user to install malicious applications
 - Passive eavesdropping on the network
 - Backdoors in the OS
 
-## Hypothetical Attackers
+### Hypothetical Attackers
 
 For example,
 
@@ -237,7 +237,7 @@ For example,
 |FBI|Lot of things...|Obtain evidence from the device|
 |Eavesdropper|Observe network traffic|Steal information|
 
-## Surveying Mitigations
+### Surveying Mitigations
 
 Next, we survey how to mitigate the attacks.
 
@@ -250,7 +250,7 @@ Suppose we are mitigating theft. One could:
 
 For blocking eavesdroppers, one could apply HTTPS everywhere or use a VPN. But it's hard to check if apps are actually using HTTPS or not, and VPNs may slow down connection.
 
-## Cost vs. Risk Analysis
+### Cost vs. Risk Analysis
 
 - How costly is the mitigation?
 	- Applying strong password is not very costly.
