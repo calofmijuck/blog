@@ -1,7 +1,7 @@
 ---
 ---
 
-@import '{{ site.theme }}';
+@import 'main';
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
 
 /* append your custom style below */
@@ -18,7 +18,7 @@ div.highlight {
     font-family: monospace!important;
 }
 
-.post-content {
+div.content {
     font-size: 110%;
 }
 
@@ -26,7 +26,7 @@ div.highlight {
     font-size: 90%;
 }
 
-div.year.lead {
+time.year.lead {
     font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
 }
 
