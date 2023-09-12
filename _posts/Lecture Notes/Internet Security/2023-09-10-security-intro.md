@@ -183,7 +183,7 @@ There are two choices to achieve the security of a cryptosystem.
 
 But in real life, we use the second method and keep the key secret.
 
-> The cipher method must not be required to be secret, and it must be able to fall into the hands of the enemy without inconvenience.[^2]
+> The cipher method must not be required to be secret, and it must be able to fall into the hands of the enemy without inconvenience.[^1]
 
 **Kerckhoffs' principle** demands that *security rely solely on the secrecy of the key*. Even if everything about the system is publicly known, except for the key.
 
@@ -258,4 +258,3 @@ For blocking eavesdroppers, one could apply HTTPS everywhere or use a VPN. But i
 	- Attacks from FBI are very unlikely for an average person.
 
 [^1]: J. Katz, Introduction to Modern Cryptography
-[^2]: J. Katz, Introduction to Modern Cryptography
