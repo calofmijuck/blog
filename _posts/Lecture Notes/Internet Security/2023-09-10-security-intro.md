@@ -149,7 +149,7 @@ There are many ways of achieving security.
 
 ## Cryptography
 
-> **Cryptography** is the study of mathematical techniques for securing digital information, systems, and distributed computations against adversarial attacks.^[J. Katz, Introduction to Modern Cryptography]
+> **Cryptography** is the study of mathematical techniques for securing digital information, systems, and distributed computations against adversarial attacks.[^1]
 
 **Cryptanalysis** is the study of methods for obtaining the meaning of encrypted information without access to the key.
 
@@ -183,7 +183,7 @@ There are two choices to achieve the security of a cryptosystem.
 
 But in real life, we use the second method and keep the key secret.
 
-> The cipher method must not be required to be secret, and it must be able to fall into the hands of the enemy without inconvenience.^[J. Katz, Introduction to Modern Cryptography]
+> The cipher method must not be required to be secret, and it must be able to fall into the hands of the enemy without inconvenience.[^2]
 
 **Kerckhoffs' principle** demands that *security rely solely on the secrecy of the key*. Even if everything about the system is publicly known, except for the key.
 
@@ -199,7 +199,7 @@ Why? Here are some of the arguments in favor of Kerckhoffs' principle.
 
 ## Threat Modeling
 
-What should we consider when we are building secure systems? We should consider what attacks are possible. **Threat modeling** is the process of systematically identifying the threats faced by a system.
+What should we consider when we are designing secure systems? We should consider what attacks are possible. **Threat modeling** is the process of systematically identifying the threats faced by a system.
 
 1. Identify the values of assets.
 2. Enumerate the *attack surfaces*.
@@ -256,3 +256,6 @@ For blocking eavesdroppers, one could apply HTTPS everywhere or use a VPN. But i
 	- Applying strong password is not very costly.
 - How likely is the attack?
 	- Attacks from FBI are very unlikely for an average person.
+
+[^1]: J. Katz, Introduction to Modern Cryptography
+[^2]: J. Katz, Introduction to Modern Cryptography
