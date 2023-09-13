@@ -6,10 +6,6 @@
 
 /* append your custom style below */
 
-footer p:last-child::before {
-    content: none;
-}
-
 body, h1, h2, h3, h4, h5, h6 {
     font-family: Pretendard;
 }
@@ -19,6 +15,11 @@ div.highlight {
 }
 
 div.content {
+    h1, h2, h3, h4, h5, h6 {
+        font-family: palatino, Pretendard;
+    }
+
+    font-family: palatino, Pretendard;
     font-size: 110%;
 }
 
