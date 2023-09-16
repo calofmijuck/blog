@@ -17,14 +17,20 @@ div.highlight {
 div.content {
     h1, h2, h3, h4, h5, h6 {
         font-family: palatino, Pretendard;
+        font-weight: bold;
     }
 
     font-family: palatino, Pretendard;
-    font-size: 110%;
+    font-size: 105%;
+
+    blockquote {
+        color: black;
+        border-left-color: rgba(0, 191, 255, 0.5);
+    }
 }
 
 .MathJax {
-    font-size: 90%;
+    font-size: 100%;
 }
 
 time.year.lead {
@@ -38,5 +44,5 @@ div.language-plaintext.highlighter-rouge {
 }
 
 div.footnotes {
-    font-size: 80%;
+    font-size: 90%;
 }
