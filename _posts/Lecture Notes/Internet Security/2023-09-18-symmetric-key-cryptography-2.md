@@ -175,7 +175,7 @@ AES, DES use fixed block size for encryption. How do we encrypt longer messages?
 
 ### Electronic Codebook Mode (ECB)
 
-![is-03-cbc-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cbc-encryption.png)
+![is-03-ecb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ecb-encryption.png)
 
 - Codebook is a mapping table.
 - For the $i$-th plaintext block, we use key $k$ to encrypt and obtain the $i$-th ciphertext block.
