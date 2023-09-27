@@ -47,22 +47,23 @@ attachment:
 
 ### Encryption
 
-(Diagram)
-- From the $56$-bit key, generate $16$ different $48$ bit keys $k_1, \dots, k_{16}$.
-1. Initially, input goes through the P-box.
-2. The output goes through $16$ rounds, and in the round $i$, key $k_i$ is used.
-3. After $16$ rounds, split the output into two $32$ bit halves and swap them.
-4. The output goes through the inverse of the P-box from Step 1.
+1. From the $56$-bit key, generate $16$ different $48$ bit keys $k_1, \dots, k_{16}$.
+2. The plaintext message goes through the P-box.
+3. The output goes through $16$ rounds, and in the round $i$, key $k_i$ is used.
+4. After $16$ rounds, split the output into two $32$ bit halves and swap them.
+5. The output goes through the inverse of the P-box from Step 1.
 
-Let $L_{i-1} \parallel R_{i-1}$ be the output of round $i-1$, where $L_{i-1}$ and $R_{i-1}$ are $32$ bit halves. Also let $f$ be the Mangler function.
+Let $L_{i-1} \parallel R_{i-1}$ be the output of round $i-1$, where $L_{i-1}$ and $R_{i-1}$ are $32$ bit halves. Also let $f$ be the Feistel function.
 
 In each round $i$,
-- $L_i = R_{i - 1}$
-- $R_i = L_{i-1} \oplus f(k_i, R_{i-1})$
 
-#### Mangler Function
+$$L_i = R_{i - 1}, \qquad R_i = L_{i-1} \oplus f(k_i, R_{i-1})$$
 
-*Is the Mangler function invertible?*
+#### The Feistel Function
+
+The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunks. Each chunk is expanded to $6$ bits using a P-box. Now, we have 48 bits of data, so apply XOR with the key for this round. Next, each $6$-bit block is compressed back to $4$ bits using a S-box. Finally, there is a (straight) permutation at the end, resulting in $32$ bit data.
+
+The Feistel function is **not invertible.**
 
 ### Questions
 
@@ -72,12 +73,11 @@ In each round $i$,
 	- Not for security, but for engineering purposes, see below.
 - Is DES invertible?
 	- Yes, message should be decrypted.
-
-But a Mangler function is *not invertible*, since it sends $4$ bits to $6$ bits during the evaluation process. Then how is decryption possible?
+	- But the Feistel function is not invertible, since it sends $4$ bits to $6$ bits during the evaluation process. Then how is decryption possible?
 
 ### Decryption
 
-Let $f$ be the Mangler function. We can define each round as a function $F$,
+Let $f$ be the Feistel function. We can define each round as a function $F$,
 
 $$
 F(L_i \parallel R_i) = R_i \parallel L_i \oplus f(R_i).
@@ -122,7 +122,7 @@ so evaluating the decryption round is actually equivalent to running the encrypt
 Each round consists of the following:
 - **SubBytes**: byte substitution, 1 S-box on every byte
 - **ShiftRows**: permutes bytes between groups and columns
-- **MixColumns**: mix columns by using matrix multiplication in $\mathbf{GF}(2^8)$.
+- **MixColumns**: mix columns by using matrix multiplication in $\mathrm{GF}(2^8)$.
 - **AddRoundKey**: XOR with round key
 
 The first and last rounds are a little different.
@@ -233,7 +233,14 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- No IVs should be reused under the same key
 	- IV changes should be unpredictable
 - On IV reuse, same message will generate the same ciphertext if key isn't changed
-- If IV is predictable, CBC is vulnerable to chosen plaintext attacks
+- If IV is predictable, CBC is vulnerable to chosen plaintext attacks.
+	- Define Eve's new message $m' = \mathrm{IV} _ {\mathrm{E}} \oplus \mathrm{IV} _ {\mathrm{A}} \oplus g$, where
+		- $\mathrm{IV} _ \mathrm{A}$ and $\mathrm{IV} _ \mathrm{E}$ are Alice and Eve's IVs
+		- $g$ is a guess of Alice's original message $m$.
+	- Since Eve can encrypt any message, $m'$ can be encrypted.
+	- $c' = E _ k(\mathrm{IV} _ \mathrm{E} \oplus m') = E _ k(\mathrm{IV} _ \mathrm{A} \oplus g)$.
+	- Then Eve can compare $c'$ and the original $c = E _ k(\mathrm{IV} _ \mathrm{A} \oplus m)$ to recover $m$.
+	- Useful when there are not many cases for $m$ (or most of the message is already known).
 
 ### Cipher Feedback Mode (CFB)
 
@@ -292,13 +299,13 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- The plaintext is $(p_1, p_2, \dots)$.
 - Note: IV and successive encryptions act as an OTP generator.
 - Advantages
-	- There is no error propagation. 1 bit error in ciphertext only affects 1 bit in the plaintext.
+	- There is no error propagation. $1$ bit error in ciphertext only affects $1$ bit in the plaintext.
 	- Key streams can be generated in advance.
 	- Fast when parallelized.
 	- Only encryption module is needed.
 - Limitations
 	- Key streams should not have repetitions.
-		- We would have $c_i \oplus c_{i+1} = p_i \oplus p_{i + 1}$.
+		- We would have $c_i \oplus c_j = p_i \oplus p_j$.
 		- Size of each $s_i$ should be large enough.
 	- If attacker knows the plaintext and ciphertext, plaintext can be modified.
 		- Same as in OTP.
@@ -307,7 +314,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ![is-03-ctr-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ctr-encryption.png)
 
-- Without chaining, we use a counter (typically incremented by 1).
+- Without chaining, we use a counter (typically incremented by $1$).
 	- Counter starts from the initialization vector.
 	- Highly parallelizable.
 	- Can decrypt from any arbitrary position.
