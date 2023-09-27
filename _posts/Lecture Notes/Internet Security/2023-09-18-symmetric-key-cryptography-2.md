@@ -63,7 +63,7 @@ $$
 
 #### The Feistel Function
 
-![400](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png)
+![is-03-feistel-function.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png)
 
 The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunks. Each chunk is expanded to $6$ bits using a P-box. Now, we have 48 bits of data, so apply XOR with the key for this round. Next, each $6$-bit block is compressed back to $4$ bits using a S-box. Finally, there is a (straight) permutation at the end, resulting in $32$ bit data.
 
