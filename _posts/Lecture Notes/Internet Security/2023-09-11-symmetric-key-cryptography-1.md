@@ -7,8 +7,8 @@ categories:
   - Internet Security
 tags:
   - security
-  - network
   - lecture-note
+  - cryptography
 title: 02. Symmetric Key Cryptography (1)
 date: 2023-09-11
 github_title: 2023-09-11-symmetric-key-cryptography-1
@@ -94,7 +94,7 @@ To attack this scheme, find the key length by *index of coincidence*. Then use f
 #### Hill Cipher
 
 - A polyalphabetic substitution
-- A key is a *invertible* matrix $K = (k_{ij})_{m \times m}$ where $k_{ij} \in \mathbb{Z}_{26}$.
+- A key is a *invertible* matrix $K = (k _ {ij}) _ {m \times m}$ where $k _ {ij} \in \mathbb{Z} _ {26}$.
 - Encryption/decryption is done by multiplying $K$ or $K^{-1}$.
 
 This scheme is vulnerable to known plaintext attack, since the equation can be solved for $K$.
@@ -218,7 +218,7 @@ To alleviate this problem, we can combine multiple LFSRs with a $k$-input binary
 
 #### Encryption Overall
 
-- Plaintext: Message +CRC
+- Plaintext: Message + CRC
 - CRC is padded to verify the integrity of the message.
 	- CRC is $32$ bits
 	- Not for attacks, but for error correction
@@ -256,12 +256,16 @@ To alleviate this problem, we can combine multiple LFSRs with a $k$-input binary
 #### IV Collision
 
 - The key is fixed, and the period of IV is $2^{24}$
-- Same IV leads to same keystream.
+- Same IV leads to same key stream.
 - So if the adversary takes two frames with same IV to obtain the XOR of two plaintext messages.
 	- $c_1 \oplus c_2 = (p_1 \oplus k_s) \oplus (p_2 \oplus k_s) = p_1 \oplus p_2$
 - Since network traffic contents are predictable, messages can be recovered.
 	- We are in the link layer, so HTTP, IP, TCP headers will be contained in the encrypted payload.
 	- The header formats are usually known.
+
+#### CRC Algorithm
+
+Given a bit string (defined in the specification), the sender performs long division on the data. The remainder is the result of the CRC, which is appended to the data. The receiver will check by performing long division, and the remainder should be $0$ if there were no bit errors during transmission.
 
 ### Message Modification
 
