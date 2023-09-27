@@ -13,7 +13,7 @@ title: 03. Symmetric Key Cryptography (2)
 date: 2023-09-18
 github_title: 2023-09-18-symmetric-key-cryptography-2
 image:
-  path: /assets/img/posts/Lecture Notes/Internet Security/is-03-ecb-encryption.png
+  path: /assets/img/posts/Lecture Notes/Internet Security/is-03-feistel-function.png
 attachment: 
   folder: assets/img/posts/Lecture Notes/Internet Security
 ---
@@ -57,9 +57,13 @@ Let $L_{i-1} \parallel R_{i-1}$ be the output of round $i-1$, where $L_{i-1}$ an
 
 In each round $i$,
 
-$$L_i = R_{i - 1}, \qquad R_i = L_{i-1} \oplus f(k_i, R_{i-1})$$
+$$
+L_i = R_{i - 1}, \qquad R_i = L_{i-1} \oplus f(k_i, R_{i-1})
+$$
 
 #### The Feistel Function
+
+![400](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png)
 
 The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunks. Each chunk is expanded to $6$ bits using a P-box. Now, we have 48 bits of data, so apply XOR with the key for this round. Next, each $6$-bit block is compressed back to $4$ bits using a S-box. Finally, there is a (straight) permutation at the end, resulting in $32$ bit data.
 
