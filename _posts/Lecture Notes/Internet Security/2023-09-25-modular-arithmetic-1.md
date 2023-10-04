@@ -47,16 +47,16 @@ The following is a simple algorithm to check if a given integer is prime.
 
 ```c
 bool naive_prime_test(int n) {
-	if (n < 2) {
-		return false;
-	}
+    if (n < 2) {
+        return false;
+    }
 
-	for (int i = 2; i < sqrt(n); ++i) {
-		if (n % i == 0) {
-			return false;
-		}
-	}
-	return true;
+    for (int i = 2; i < sqrt(n); ++i) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 ```
 
@@ -109,7 +109,7 @@ For modulus $n$, **modular arithmetic** is operation on $\mathbb{Z}_n$.
 
 ### Residue Classes
 
-For each positive integer $n$, we can partition $\mathbb{Z}$ into $n$ cells according to whether the remainder is $0, 1, 2, \dots, n - 1$ when the integer is divided by $n$. These cells are the **residue classes module $n$ in $\mathbb{Z}$**.
+For each positive integer $n$, we can partition $\mathbb{Z}$ into $n$ cells according to whether the remainder is $0, 1, 2, \dots, n - 1$ when the integer is divided by $n$. These cells are the **residue classes modulo $n$ in $\mathbb{Z}$**.
 
 We write each residue class as follows.
 
@@ -202,10 +202,10 @@ The following code computes the greatest common divisor.
 ```c
 int gcd(int a, int b) {
 	if (b == 0) {
-		return a;
-	} else {
-		return gcd(b, a % b);
-	}
+        return a;
+    } else {
+        return gcd(b, a % b);
+    }
 }
 ```
 
