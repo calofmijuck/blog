@@ -127,11 +127,11 @@ We learned how to encrypt a single block. How do we encrypt longer messages with
 
 There are many ways of processing multiple blocks, this is called the **mode of operation**.
 
-Additional explanation available in [Modes of Operations (Internet Security)](2023-09-18-symmetric-key-cryptography-2.md#Modes%20of%20Operations).
+Additional explanation available in [Modes of Operations (Internet Security)](2023-09-18-symmetric-key-cryptography-2.md#modes-of-operations).
 
 ### Electronic Codebook Mode (ECB)
 
-![is-03-ecb-encryption.png](../../../assets/img/posts/is-03-ecb-encryption.png)
+![is-03-ecb-encryption.png](../../../assets/img/posts/is-03-ecb-encryption.png#)
 
 - ECB mode encrypts each block with the same key.
 - Blocks are independent of each other.
@@ -139,7 +139,7 @@ Additional explanation available in [Modes of Operations (Internet Security)](20
 
 ### Ciphertext Block Chain Mode (CBC)
 
-![is-03-cbc-encryption.png](../../../assets/img/posts/is-03-cbc-encryption.png)
+![is-03-cbc-encryption.png](../../../assets/img/posts/is-03-cbc-encryption.png#)
 
 Let $X = \left\lbrace 0, 1 \right\rbrace^n$ and $E : \mathcal{K} \times X \rightarrow X$ be a **PRP**.
 
@@ -190,7 +190,7 @@ Note that if $k_1$ is the same as the key used for encrypting messages, then thi
 
 ### Counter Mode (CTR)
 
-![is-03-ctr-encryption.png](../../../assets/img/posts/is-03-ctr-encryption.png)
+![is-03-ctr-encryption.png](../../../assets/img/posts/is-03-ctr-encryption.png#)
 
 Let $F : \mathcal{K} \times X \rightarrow X$ be a secure **PRF**.
 
