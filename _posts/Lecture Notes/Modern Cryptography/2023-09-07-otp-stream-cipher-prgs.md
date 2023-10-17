@@ -13,7 +13,7 @@ title: 1. One-Time Pad, Stream Ciphers and PRGs
 date: 2023-09-07
 github_title: 2023-09-07-otp-stream-cipher-prgs
 image:
-  path: "assets/img/posts/Lecture Notes/Modern Cryptography/mc-01-ss"
+  path: "assets/img/posts/Lecture Notes/Modern Cryptography/mc-01-ss.png"
 attachment:
   folder: assets/img/posts/Lecture Notes/Modern Cryptography
 ---
