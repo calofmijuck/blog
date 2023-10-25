@@ -36,7 +36,7 @@ Now we define a stronger notion of security against **chosen ciphertext attacks*
 > 	- *Encryption*: Send $m_i$ and receive $c'_i = E(k, m_i)$.
 > 	- *Decryption*: Send $c_i$ and receive $m'_i = D(k, c_i)$.
 > 	- Note that $\mathcal{A}$ is not allowed to make a decryption query for any $c_i'$.
-> 3. $\mathcal{A}$ outputs a pair of messages $(m_0^*, m_1^*)$.
+> 3. $\mathcal{A}$ outputs a pair of messages $(m_0^ * , m_1^*)$.
 > 4. The challenger generates $c^* \leftarrow E(k, m_b^*)$ and gives it to $\mathcal{A}$.
 > 5. $\mathcal{A}$ is allowed to keep making queries, but not allowed to make a decryption query for $c^*$.
 > 6. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
@@ -67,7 +67,7 @@ An adversary at destination 25 wants to receive the message sent to destination 
 
 Suppose we used CBC mode encryption. Then the first block of the ciphertext would contain the IV, the next block would contain $E(k, \mathrm{IV} \oplus m_0)$.
 
-The adversary can generate a new ciphertext $c'$ without knowing the actual key. Set the new IV as $\mathrm{IV}' =\mathrm{IV} \oplus m^*$ where $m^*$ contains a payload that can change $\texttt{80}$ to $\texttt{25}$. (This can be calculated)
+The adversary can generate a new ciphertext $c'$ without knowing the actual key. Set the new IV as $\mathrm{IV}' =\mathrm{IV} \oplus m^ *$ where $m^ *$ contains a payload that can change $\texttt{80}$ to $\texttt{25}$. (This can be calculated)
 
 Then the decryption works as normal,
 
@@ -118,7 +118,7 @@ This theorem enables us to use AE secure schemes as a CCA secure scheme.
 
 > **Theorem.** Let $\mathcal{E} = (E, D)$ be a cipher. If $\mathcal{E}$ is AE-secure, then it is CCA-secure.
 > 
-> For any efficient $q$-query CCA adversary $\mathcal{A}$, there exists efficient adversaries $\mathcal{B}_\mathrm{CPA}$ and $\mathcal{B}_\mathrm{CI}$ such that
+> For any efficient $q$-query CCA adversary $\mathcal{A}$, there exists efficient adversaries $\mathcal{B} _ \mathrm{CPA}$ and $\mathcal{B} _ \mathrm{CI}$ such that
 > 
 > $$
 > \mathrm{Adv}_{\mathrm{CCA}}[\mathcal{A}, \mathcal{E}] \leq \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{B}_\mathrm{CPA}, \mathcal{E}] + 2q \cdot \mathrm{Adv}_{\mathrm{CI}}[\mathcal{B}_\mathrm{CI}, \mathcal{E}].
@@ -182,13 +182,13 @@ In **Encrypt-then-MAC**, the encrypted message is signed, and is known to be sec
 
 > **Theorem.** Let $\mathcal{E} = (E, D)$ be a cipher and let $\Pi = (S, V)$ be a MAC system. If $\mathcal{E}$ is CPA secure cipher and $\Pi$ is a strongly secure MAC, then $\mathcal{E}_\mathrm{EtM}$ is AE secure.
 > 
-> For every efficient CI adversary $\mathcal{A}_\mathrm{CI}$ attacking $\mathcal{E}_\mathrm{EtM}$, there exists an efficient MAC adversary $\mathcal{B}_\mathrm{MAC}$ attacking $\Pi$ such that
+> For every efficient CI adversary $\mathcal{A} _ \mathrm{CI}$ attacking $\mathcal{E} _ \mathrm{EtM}$, there exists an efficient MAC adversary $\mathcal{B} _ \mathrm{MAC}$ attacking $\Pi$ such that
 > 
 > $$
 > \mathrm{Adv}_{\mathrm{CI}}[\mathcal{A}_\mathrm{CI}, \mathcal{E}_\mathrm{EtM}] = \mathrm{Adv}_{\mathrm{MAC}}[\mathcal{B}_\mathrm{MAC}, \Pi].
 > $$
 > 
-> For every efficient CPA adversary $\mathcal{A}_\mathrm{CPA}$ attacking $\mathcal{E}_\mathrm{EtM}$, there exists an efficient CPA adversary $\mathcal{B}_\mathrm{MAC}$ attacking $\mathcal{E}$ such that
+> For every efficient CPA adversary $\mathcal{A} _ \mathrm{CPA}$ attacking $\mathcal{E} _ \mathrm{EtM}$, there exists an efficient CPA adversary $\mathcal{B} _ \mathrm{MAC}$ attacking $\mathcal{E}$ such that
 > 
 > $$
 > \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{A}_\mathrm{CPA}, \mathcal{E}_\mathrm{EtM}] = \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{B}_\mathrm{CPA}, \mathcal{E}].
