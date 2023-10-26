@@ -99,7 +99,7 @@ We have used $E(x) = g^x$ in the above implementation. This function is called t
 
 We required that $E$ must be a one-way function for the protocol to work. So it must be hard to compute the discrete logarithm function. There are some problems related to the discrete logarithm, which are used as assumptions in the security proof. They are formalized as a security game, as usual.
 
-$G = \left\langle g \right\rangle \leq \mathbb{Z} _ p^ *$ will be a *cyclic group* of order $q$ and $g$ is given as a generator. Note that $g$ and $q$ are also given to the adversary.
+$G = \left\langle g \right\rangle \leq \mathbb{Z} _ p^{ * }$ will be a *cyclic group* of order $q$ and $g$ is given as a generator. Note that $g$ and $q$ are also given to the adversary.
 
 ### Discrete Logarithm Problem (DL)
 
