@@ -58,7 +58,7 @@ Let $\Pi = (S, V)$ be a MAC scheme defined over $(\mathcal{K}, \mathcal{M}, \mat
 > 
 > If $\Pi$ is a secure MAC and $H$ is collision resistant, then $\Pi'$ is a secure MAC.
 > 
-> For any efficient adversary $\mathcal{A}$ attacking $\Pi'$, there exist a MAC adversary $\mathcal{B}_\mathrm{MAC}$ attacking $\Pi$ and an adversary $\mathcal{B}_\mathrm{CR}$ attacking $H$ such that
+> For any efficient adversary $\mathcal{A}$ attacking $\Pi'$, there exist a MAC adversary $\mathcal{B} _ \mathrm{MAC}$ attacking $\Pi$ and an adversary $\mathcal{B} _ \mathrm{CR}$ attacking $H$ such that
 > 
 > $$
 > \mathrm{Adv}_{\mathrm{MAC}}[\mathcal{A}, \Pi'] \leq \mathrm{Adv}_{\mathrm{MAC}}[\mathcal{B}_\mathrm{MAC}, \Pi] + \mathrm{Adv}_{\mathrm{CR}}[\mathcal{B}_\mathrm{CR}, H].
@@ -139,7 +139,7 @@ Suppose that $t_{u-1} \neq t_{v-1}'$ and $m_u \neq m_v'$. Then this is a collisi
 
 Now we have $t_{u-1} = t_{u-1}'$, which implies $h(t_{u-2}, m_{u-1}) = h(t_{u-2}', m_{u-1}')$. We can now repeat the same process until the first block. If $\mathcal{B}$ did not find any collision then it means that $m_i = m_i'$ for all $i$, so $m = m'$. This is a contradiction, so $\mathcal{B}$ must have found a collision.
 
-By the above argument, we see that $\mathrm{Adv}_{\mathrm{CR}}[\mathcal{A}, H] = \mathrm{Adv}_{\mathrm{CR}}[\mathcal{B}, h]$.
+By the above argument, we see that $\mathrm{Adv} _ {\mathrm{CR}}[\mathcal{A}, H] = \mathrm{Adv} _ {\mathrm{CR}}[\mathcal{B}, h]$.
 
 ### Attacking Merkle-Damgård Hash Functions
 
@@ -171,7 +171,7 @@ $$
 h_1(x, y) = E(y, x) \oplus y, \quad h_2(x, y) = E(x, x \oplus y) \oplus x.
 $$
 
-Also, just using $E(y, x)$ is insecure. (Why?)
+Also, just using $E(y, x)$ is insecure.
 
 ## Secure Hash Algorithm (SHA)
 
