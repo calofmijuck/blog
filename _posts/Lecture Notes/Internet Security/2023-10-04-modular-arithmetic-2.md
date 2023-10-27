@@ -91,6 +91,8 @@ For even better (maybe faster) results, we need the help of elementary number th
 
 *Proof*. (Using group theory) The statement can be rewritten as follows. For $a \neq 0$ in $\mathbb{Z}_p$, $a^{p-1} = 1$ in $\mathbb{Z}_p$. Since $\mathbb{Z}_p^*$ is a (multiplicative) group of order $p-1$, the order of $a$ should divide $p-1$. Therefore, $a^{p-1} = 1$ in $\mathbb{Z}_p$.
 
+Here is an elementary proof not using group theory.
+
 *Proof*. (Elementary) Let $S = \left\lbrace 0, 1, \dots, p-1 \right\rbrace$. Consider a map $f : S \rightarrow S$ defined as $x \mapsto ax \bmod p$ ($a \neq 0$).
 
 We will show that $f$ is injective. Suppose that $ax \equiv ay \pmod p$ for distinct $x, y \in S$. Since $\gcd(a, p) = 1$, $a$ has a multiplicative inverse, thus $x \equiv y \pmod p$. Then $x, y$ should be same elements of $S$.
@@ -150,7 +152,7 @@ We can also show that $\mathbb{Z}_n^*$ is a multiplicative group.
 
 > **Lemma.** $\mathbb{Z}_n^*$ is a multiplicative group.
 
-*Proof*. Let $a, b \in \mathbb{Z}_n^*$. We must check if $ab \in \mathbb{Z}_n^*$. Since $\gcd(a, n) = \gcd(b, n) = 1$, $\gcd(ab, n) = 1$. This is because if $d = \gcd(ab, n) > 1$, then a prime factor $p$ of $d$ must divide $a$ or $b$ and also $n$. Then $\gcd(a, n) \geq p$ or $\gcd(b, n) \geq p$, which is a contradiction. Thus $ab \in \mathbb{Z}_n^*$.
+*Proof*. Let $a, b \in \mathbb{Z}_n^{ * }$. We must check if $ab \in \mathbb{Z}_n^{ * }$. Since $\gcd(a, n) = \gcd(b, n) = 1$, $\gcd(ab, n) = 1$. This is because if $d = \gcd(ab, n) > 1$, then a prime factor $p$ of $d$ must divide $a$ or $b$ and also $n$. Then $\gcd(a, n) \geq p$ or $\gcd(b, n) \geq p$, which is a contradiction. Thus $ab \in \mathbb{Z}_n^{ * }$.
 
 Associativity holds trivially, as a subset of $\mathbb{Z}_n$. We also have an identity element $1$, and inverse of $a \in \mathbb{Z}_n^*$ exists since $\gcd(a, n) = 1$.
 
@@ -164,7 +166,7 @@ Now we can prove Euler's generalization.
 > a^{\phi(n)} \equiv 1 \pmod n.
 > $$
 
-*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z}_n^*$. Then $a^\left\lvert \mathbb{Z}_n^* \right\lvert = 1$ in $\mathbb{Z}_n$. By the above lemma, we have the desired result.
+*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z}_n^{ * }$. Then $a^\left\lvert \mathbb{Z}_n^{ * } \right\lvert = 1$ in $\mathbb{Z}_n$. By the above lemma, we have the desired result.
 
 *Proof*. (Elementary) Set $f : \mathbb{Z}_n^* \rightarrow \mathbb{Z}_n^*$ as $x \mapsto ax \bmod n$, then the rest of the reasoning follows similarly as in the proof of Fermat's little theorem.
 
@@ -270,6 +272,6 @@ $$
 
 and using the result, add the next equation $x \equiv a_3 \pmod{n_3}$ and find a solution.[^1]
 
-Lastly, the ring isomorphism actually tells us a lot and is quite effective for computation. Since the two rings are *isomorphic*, operations in $\mathbb{Z}_N$ can be done independently in each $\mathbb{Z}_{n_i}$ and then merged back to $\mathbb{Z}_N$. $N$ was a large number, so computations can be much faster in $\mathbb{Z}_{n_i}$. Specifically, we will see how this fact is used for computations in RSA.
+Lastly, the ring isomorphism actually tells us a lot and is quite effective for computation. Since the two rings are *isomorphic*, operations in $\mathbb{Z} _ N$ can be done independently in each $\mathbb{Z} _ {n_i}$ and then merged back to $\mathbb{Z} _ N$. $N$ was a large number, so computations can be much faster in $\mathbb{Z} _ {n _ i}$. Specifically, we will see how this fact is used for computations in RSA.
 
 [^1]: I have an implementation in my repository. [Link](https://github.com/calofmijuck/BOJ/blob/4b29e0c7f487aac3186661176d2795f85f0ab21b/Codes/23000/23062.cpp#L38).
