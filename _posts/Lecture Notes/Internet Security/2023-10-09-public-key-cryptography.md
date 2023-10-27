@@ -12,10 +12,6 @@ tags:
 title: 07. Public Key Cryptography
 date: 2023-10-09
 github_title: 2023-10-09-public-key-cryptography
-image:
-  path: ""
-attachment:
-  folder: ""
 ---
 
 In symmetric key cryptography, we have a problem with key sharing and management. More info in the first few paragraphs of [Key Exchange (Modern Cryptography)](2023-10-03-key-exchange.md#).
