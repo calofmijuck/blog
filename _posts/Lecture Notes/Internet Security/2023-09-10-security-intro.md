@@ -36,7 +36,7 @@ attachment:
 In this course, we are mainly interested in system/network security!
 
 There are two categories in **IT Security**, (though the boundary is blurry)
-- **Computer** (system) **security** uses automated tools and mechanisms to protect **data in a computer**, against hackers, malware, etc.
+- **Computer** (system) **security** uses automated tools and mechanisms to protect the **data in a computer**, against hackers, malware, etc.
 - **Internet** (network) **security** prevents, detects, and corrects security violations that involve the **transmission of information** in a network.
 
 In internet security, we assume that:
@@ -52,7 +52,7 @@ In internet security, we assume that:
 	- inserting, modifying, deleting, replaying messages
 	- poisoning data
 	- impersonate and pretend to be someone else
-- Conventionally, we use the terms:
+- Conventionally, we use the following names:
 	- Alice and Bob for the two parties participating in the communication.
 	- Eve (or Mallory, Oscar) for the adversary.
 
@@ -94,9 +94,9 @@ This is only an overview, so the attacks are introduced briefly.
 There are two types of attacks in security attacks
 - **Active attacks**: modify the content of messages
 	- Ex. (D)DoS, MITM, poisoning, smurf attack, system attacks.
-	- *Prevention* is important since the active attacks are a danger to *data integrity* and *availability*.
+	- *Prevention* is important since the active attacks concern *data integrity* and *availability*.
 - **Passive attacks**: does not modify information, but observes the content or copies it.
-	- Ex. eavesdropping, port scanning (idle scan secretly scanns).
+	- Ex. eavesdropping, port scanning (idle scan secretly scans).
 	- *Detection* is important since passive attacks are a danger to *confidentiality*.
 
 ## Security Services and Mechanisms
@@ -112,7 +112,7 @@ What kind of security services do we want? The basic network security services m
 Additionally, we also need:
 - **Authentication**: a way to authenticate users (ID, passwords)
 - **Non-repudiation**: ensure that no party can deny that it sent or received a message or approved some information
-	- Assurance that someone cannot deny the validity of something
+	- Assurance that someone cannot deny the validity of message or information
 
 ### Attacks Against CIA Triad
 
@@ -142,10 +142,10 @@ There are many ways of achieving security.
 	- It may be desirable to not leak *any* information, so one might add padding to the traffic, so the traffic is indistinguishable by the adversary (prevents side-channel attacks)
 - **Digital signatures**: provides authenticity of digital messages or documents
 - **Trusted Third Party** (TTP): a safe third-party that we can trust
-	- If we have a TTP, a lot of problems go away. We can always ask the TTP for the truth
-	- But TTP can become a *single point of failure* (SPOF), and security architectures may become too dependent on the TTP
+	- If we have a TTP, a lot of problems go away. We can always ask the TTP for the truth.
+	- But TTP can become a *single point of failure* (SPOF), and security architectures may become too dependent on the TTP.
 - **Append-only server**: keeps track of all modifications, good for auditing
-	- Blockchain is a kind of append-only data structure
+	- Blockchain is a kind of append-only data structure.
 
 ## Cryptography
 
@@ -155,7 +155,7 @@ There are many ways of achieving security.
 
 ### Basics of a Cryptosystem
 
-![is-01-cryptosystem.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-01-cryptosystem.png)
+![is-01-cryptosystem.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-01-cryptosystem.png#)
 
 - A **message** in *plaintext* is given to an **encryption algorithm**.
 - The encryption algorithm uses an **encryption key** to create a *ciphertext*.
@@ -168,7 +168,7 @@ There are many ways of achieving security.
 There are two criteria for classifying cryptosystems.
 
 - How are the keys used?
-	- **Symmetric** cryptography uses a single key for both encryption and decryption
+	- **Symmetric** cryptography uses a single key for both encryption and decryption.
 	- **Public key** cryptography uses different keys for encryption and decryption, respectively.
 - How are plaintexts processed?
 	- **Block cipher**
@@ -232,7 +232,7 @@ In a smartphone, assets (things of value) would be
 For example,
 
 |Attacker|Abilities|Goals|
-|-|-|-|
+|:-:|-|-|
 |Thief|Steal the phone|Take the device|
 |FBI|Lot of things...|Obtain evidence from the device|
 |Eavesdropper|Observe network traffic|Steal information|
