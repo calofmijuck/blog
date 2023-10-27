@@ -24,7 +24,7 @@ github_title: 2023-09-11-symmetric-key-cryptography-1
 - A strong encryption algorithm, which is known to the public.
 	- Kerckhoff's principle!
 - A secret key known only to sender and receiver.
-- We assume the **existence of a a secure channel for distributing the key**.
+- We assume the **existence of a a secure channel for distributing the key**.[^1]
 - **Correctness requirement**
 	- Let $m$, $k$ denote the message and the key.
 	- For encryption/decryption algorithm $E$ and $D$,
@@ -32,7 +32,7 @@ github_title: 2023-09-11-symmetric-key-cryptography-1
 
 ## Cryptographic Attacks
 
-In increasing order of increasing power of the attacker,
+In increasing order of the power of the attacker,
 
 - **Ciphertext only attacks**: the attacker has ciphertexts, and tries to obtain information.
 - **Known plaintext attack**: the attacker has a collection of plaintext/ciphertext pairs.
@@ -44,8 +44,10 @@ In increasing order of increasing power of the attacker,
 The following two properties should hold for a secure cipher.
 - **Diffusion** hides the relationship between the ciphertext and the plaintext.
 	- It should be hard to obtain the plaintext from the ciphertext.
+	- Changing a single bit of the plaintext affects several bits of the ciphertext, and vice versa.
 - **Confusion** hides the relationship between the ciphertext and the key.
 	- It should be hard to obtain the key from the ciphertext.
+	- Each bit of the ciphertext should depend on several parts of the key.
 
 ## Primitives
 
@@ -66,8 +68,9 @@ In **substitution cipher**, encryption is done by replacing units of plaintext w
 	- In Caesar cipher, $a = 1$ and $b = 3$.
 - Encryption: $E(x) = ax + b \pmod m$.
 - Decryption: $D(x) = a^{-1}(x - b) \pmod m$.
-- There are $12$ possible values for $a$, and $26$ possible values for $b$.
+- If we use the $26$ alphabets, there are $12$ possible values for $a$, and $26$ possible values for $b$.
 	- $a^{-1}$ does not exist for all $m$.
+	- We need that $\gcd(a, m) = 1$. The number of possible $a$ values is $\phi(m)$.
 - This scheme is not secure either, since we can try all possibilities and check if the message makes sense.
 
 #### Monoalphabetic Substitution Cipher
@@ -79,17 +82,17 @@ In **substitution cipher**, encryption is done by replacing units of plaintext w
 - Decryption is done by replacing each letter $x$ by $\pi^{-1}(x)$.
 - This scheme is still not secure, since we can try all possibilities on a *modern* computer.
 
-To attack this scheme, we use frequency analysis. Calculate the frequency of each letter and compare it with the actual distribution of English letters. Also, we could use bigrams (2-letters)
+To attack this scheme, we use frequency analysis. Calculate the frequency of each letter and compare it with the actual distribution of English letters. We could also use *bigrams* (2-letters) for calculating the frequency.
 
 #### Vigenère Cipher
 
 - A polyalphabetic substitution
 - Given a key length $m$, take key $k = (k_1, k_2, \dots, k_m)$.
-- For the $i$-th letter $x$, set $j = i \pmod m$.
+- For the $i$-th letter $x$, set $j = i \bmod m$.
 - Encryption is done by replacing $x$ by $x + k_{j}$.
 - Decryption is done by replacing $x$ by $x - k_j$.
 
-To attack this scheme, find the key length by *index of coincidence*. Then use frequency analysis.
+To attack this scheme, find the key length by [*index of coincidence*](https://en.wikipedia.org/wiki/Index_of_coincidence). Then use frequency analysis.
 
 #### Hill Cipher
 
@@ -113,6 +116,48 @@ This scheme is vulnerable to known plaintext attack, since the equation can be s
 - To encrypt, reorder the columns by the chosen permutation.
 	- Then the ciphertext is taken by taking letters in column major order.
 
+##### Example
+
+Suppose we encrypt the following text:
+
+$$
+\texttt{CRYPTOGRAPHY INTERNET SECURITY}
+$$
+
+Choose a key $\sigma = (1, 4, 5, 2, 3, 6)$. Then
+
+$$
+\begin{matrix} \\
+4 & 3 & 6 & 5 & 2 & 1 \\ \hline
+\texttt{C} & \texttt{R} & \texttt{Y} & \texttt{P} & \texttt{T} & \texttt{O} \\
+\texttt{G} & \texttt{R} & \texttt{A} & \texttt{P} & \texttt{H} & \texttt{Y} \\
+\texttt{I} & \texttt{N} & \texttt{T} & \texttt{E} & \texttt{R} & \texttt{N} \\
+\texttt{E} & \texttt{T} & \texttt{S} & \texttt{E} & \texttt{C} & \texttt{U} \\
+\texttt{R} & \texttt{I} & \texttt{T} & \texttt{Y}
+\end{matrix}
+$$
+
+Now reorder the columns,
+
+$$
+\begin{matrix} \\
+1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+\texttt{O} & \texttt{T} & \texttt{R} & \texttt{C} & \texttt{P} & \texttt{Y} \\
+\texttt{Y} & \texttt{H} & \texttt{R} & \texttt{G} & \texttt{P} & \texttt{A} \\
+\texttt{N} & \texttt{R} & \texttt{N} & \texttt{I} & \texttt{E} & \texttt{T} \\
+\texttt{U} & \texttt{C} & \texttt{T} & \texttt{E} & \texttt{E} & \texttt{S} \\
+&& \texttt{I} & \texttt{R} & \texttt{Y} & \texttt{T} 
+\end{matrix}
+$$
+
+The ciphertext is
+
+$$
+\texttt{OYNU THRC RRNTI CGIER PPEEY YATST}.
+$$
+
+The decryption process is the reverse of this operation. It seems to be breakable by inspecting the $i$-th letter of each block and reordering the letters to check if any reordering makes sense.
+
 ### Exclusive OR (XOR)
 
 - A bitwise operation $x \oplus y = x + y \pmod 2$.
@@ -130,8 +175,8 @@ This scheme is vulnerable to known plaintext attack, since the equation can be s
 
 $$
 \begin{align*}
-\mathrm{Pr}[C = 0] &= \mathrm{Pr}[M = 0 \land K = 0] + \mathrm{Pr}[M = 1 \land K = 1] \\ &= \mathrm{Pr}[M = 0] \cdot \mathrm{Pr}[K = 0] + \mathrm{Pr}[M = 1] \cdot \mathrm{Pr}[K = 1] \\
-&= \frac{1}{2}\left(\mathrm{Pr}[M = 0] + \mathrm{Pr}[M = 1]\right) \\
+\Pr[C = 0] &= \Pr[M = 0 \land K = 0] + \Pr[M = 1 \land K = 1] \\ &= \Pr[M = 0] \cdot \Pr[K = 0] + \Pr[M = 1] \cdot \Pr[K = 1] \\
+&= \frac{1}{2}\left(\Pr[M = 0] + \Pr[M = 1]\right) \\
 &= \frac{1}{2}.
 \end{align*}
 $$
@@ -140,20 +185,20 @@ The case for $C = 1$ is similar.
 
 ### One-Time Pad (OTP)
 
-Omitted.
+![1. OTP, Stream Ciphers and PRGs > One-Time Pad (OTP)](2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-otp)
 
 ## Perfect Secrecy
 
 > **Definition.** Let $(E, D)$ be a cipher defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$. We assume that $\lvert \mathcal{K} \rvert = \lvert \mathcal{M} \rvert = \lvert \mathcal{C} \rvert$. The cipher is **perfectly secure** if for all $m \in \mathcal{M}$ and $c \in \mathcal{C}$,
 > 
 > $$
-> \mathrm{Pr}[\mathcal{M} = m \mid \mathcal{C} = c] = \mathrm{Pr}[\mathcal{M} = m].
+> \Pr[\mathcal{M} = m \mid \mathcal{C} = c] = \Pr[\mathcal{M} = m].
 > $$
 > 
 > Or equivalently, for all $m_0, m_1 \in \mathcal{M}$, $c \in \mathcal{C}$,
 > 
 > $$
-> \mathrm{Pr}[E(k, m _ 0) = c] = \mathrm{Pr}[E(k, m _ 1) = c]
+> \Pr[E(k, m _ 0) = c] = \Pr[E(k, m _ 1) = c]
 > $$ 
 > 
 > where $k$ is chosen uniformly in $\mathcal{K}$.
@@ -163,7 +208,7 @@ In other words, the adversary learns nothing from the ciphertext.
 With this definition, we can show that **OTP is perfectly secure**. For all $m \in \mathcal{M}$ and $c \in \mathcal{C}$,
 
 $$
-\mathrm{Pr}[E(k, m) = c] = \frac{1}{\lvert \mathcal{K} \rvert}
+\Pr[E(k, m) = c] = \frac{1}{\lvert \mathcal{K} \rvert}
 $$
 
 since for each $m$ and $c$, $k$ is determined uniquely.
@@ -278,3 +323,5 @@ Given a bit string (defined in the specification), the sender performs long divi
 	- $c \oplus (x \parallel \mathrm{CRC}(x)) = k_s \oplus (m\oplus x \parallel \mathrm{CRC}(m\oplus x))$
 	- The receiver will decrypt and get $(m\oplus x \parallel \mathrm{CRC}(m\oplus x))$.
 	- CRC check by the receiver will succeed.
+
+[^1]: This assumption will be removed when we learn public key cryptography.
