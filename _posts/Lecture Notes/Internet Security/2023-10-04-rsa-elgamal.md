@@ -166,7 +166,7 @@ The attacker will see $g^k$. By the hardness of DLP, the attacker is unable to r
 
 #### Ephemeral Key Should Be Distinct
 
-If the same $k$ is used twice, the encryption is not secure. Suppose we encrypt two different messages $m_1, m_2 \in \mathbb{Z}_p^*$. The attacker will see $(g^k, m_1y^k)$ and $(g^k, m_2 y^k)$. Then since we are in a multiplicative group $\mathbb{Z}_p^*$, inverses exist. So
+If the same $k$ is used twice, the encryption is not secure. Suppose we encrypt two different messages $m_1, m_2 \in \mathbb{Z} _ p^{ * }$. The attacker will see $(g^k, m_1y^k)$ and $(g^k, m_2 y^k)$. Then since we are in a multiplicative group $\mathbb{Z} _ p^{ * }$, inverses exist. So
 
 $$
 m_1y^k \cdot (m_2 y^k)^{-1} \equiv m_1m_2^{-1} \equiv 1 \pmod p
