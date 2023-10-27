@@ -10,7 +10,7 @@ tags:
   - security
   - cryptography
   - number-theory
-title: 05.1 RSA and ElGamal Encryption
+title: 06. RSA and ElGamal Encryption
 date: 2023-10-04
 github_title: 2023-10-04-rsa-elgamal
 ---
