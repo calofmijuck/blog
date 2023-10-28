@@ -185,7 +185,7 @@ The case for $C = 1$ is similar.
 
 ### One-Time Pad (OTP)
 
-![1. OTP, Stream Ciphers and PRGs > One-Time Pad (OTP)](2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-otp)
+[1. OTP, Stream Ciphers and PRGs > One-Time Pad (OTP)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs#one-time-pad-otp)
 
 ## Perfect Secrecy
 
