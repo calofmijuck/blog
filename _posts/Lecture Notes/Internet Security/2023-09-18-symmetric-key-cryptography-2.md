@@ -28,8 +28,8 @@ attachment:
 ### Modules
 
 - **S-box**: a substitution module
-	- Usually for confusion
-	- $m \times n$ lookup box is needed, since it should be invertible
+	- Usually for confusion, also gives diffusion
+	- $m \times n$ lookup box is used for implementation
 - **P-box**: a permutation module
 	- Usually for diffusion
 	- Compared to the number of input bits,
@@ -42,28 +42,28 @@ attachment:
 - Standardized in 1979.
 - Block size is $64$ bits ($8$ bytes)
 - $64$ bits input $\rightarrow$ $64$ bits output
-- Key is $56$ bits, but there are $8$ bits representing parity, so total of $64$ bits
-	- Every $8$th bit is a parity bit
+- Key is $56$ bits, and every $8$th bit is a parity bit.
+	- Thus $64$ bits in total
 
 ### Encryption
 
 1. From the $56$-bit key, generate $16$ different $48$ bit keys $k_1, \dots, k_{16}$.
-2. The plaintext message goes through the P-box.
-3. The output goes through $16$ rounds, and in the round $i$, key $k_i$ is used.
+2. The plaintext message goes through an initial permutation.
+3. The output goes through $16$ rounds, and key $k_i$ is used in round $i$.
 4. After $16$ rounds, split the output into two $32$ bit halves and swap them.
-5. The output goes through the inverse of the P-box from Step 1.
+5. The output goes through the inverse of the permutation from Step 1.
 
-Let $L_{i-1} \parallel R_{i-1}$ be the output of round $i-1$, where $L_{i-1}$ and $R_{i-1}$ are $32$ bit halves. Also let $f$ be the Feistel function.
+Let $L_{i-1} \parallel R_{i-1}$ be the output of round $i-1$, where $L_{i-1}$ and $R_{i-1}$ are $32$ bit halves. Also let $f$ be the Feistel function.[^1]
 
-In each round $i$,
+In each round $i$, the following operation is performed:
 
 $$
-L_i = R_{i - 1}, \qquad R_i = L_{i-1} \oplus f(k_i, R_{i-1})
+L_i = R_{i - 1}, \qquad R_i = L_{i-1} \oplus f(k_i, R_{i-1}).
 $$
 
 #### The Feistel Function
 
-![is-03-feistel-function.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png)
+![is-03-feistel-function.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png#)
 
 The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunks. Each chunk is expanded to $6$ bits using a P-box. Now, we have 48 bits of data, so apply XOR with the key for this round. Next, each $6$-bit block is compressed back to $4$ bits using a S-box. Finally, there is a (straight) permutation at the end, resulting in $32$ bit data.
 
@@ -108,10 +108,10 @@ Thus $F$ and $G$ are inverses of each other, thus $f$ doesn't have to be inverti
 Also, note that
 
 $$
-G(L_i \parallel R_i) = F(L_i \oplus f(R_i) \parallel R_i),
+G(L_i \parallel R_i) = F(L_i \oplus f(R_i) \parallel R_i).
 $$
 
-so evaluating the decryption round is actually equivalent to running the encryption round with upper/lower $32$ bit halves swapped. Hence the reason for swapping each $32$ bit halves.
+Notice that evaluating $G$ is equivalent to evaluating $F$ on a encrypted block, with their upper/lower $32$ bit halves swapped. We get $L_i \oplus f(R_i) \parallel R_i$ exactly when we swap each halves of $F(L_i \parallel R_i)$. Thus, we can use the same hardware for encryption and decryption, which is the reason for swapping each $32$ bit halves.
 
 ## Advanced Encryption Standard (AES)
 
@@ -130,7 +130,7 @@ Each round consists of the following:
 - **AddRoundKey**: XOR with round key
 
 The first and last rounds are a little different.
-- Before the first round, AddRoundKey is done.
+- AddRoundKey is done before the first round.
 - The last round does not have MixColumns.
 
 The objectives of AES:
@@ -138,7 +138,7 @@ The objectives of AES:
 - Code must be compact, and should run fast on many CPUs
 - Design must be simple
 
-### Modules
+### Layers
 
 #### SubBytes
 
@@ -157,7 +157,7 @@ The objectives of AES:
 - For each column, each byte is replaced by a value
 	- The value depends on all 4 bytes of the column
 - Each column is processed separately
-	- Thus effectively, it is a matrix multiplication (Hill cipher)
+	- Thus effectively, it is a matrix multiplication (Hill cipher).[^2]
 
 #### AddRoundKey
 
@@ -171,7 +171,7 @@ These 4 modules are all invertible!
 - Why is there a AddRoundKey at the beginning?
 - Why is the last round different?
 
-Both are for engineering purposes, to make the encryption and decryption process the same. (Check!)
+Both are for engineering purposes, to make the encryption and decryption process the same.[^3]
 
 ## Modes of Operations
 
@@ -179,14 +179,14 @@ AES, DES use fixed block size for encryption. How do we encrypt longer messages?
 
 ### Electronic Codebook Mode (ECB)
 
-![is-03-ecb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ecb-encryption.png)
+![is-03-ecb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ecb-encryption.png#)
 
 - Codebook is a mapping table.
 - For the $i$-th plaintext block, we use key $k$ to encrypt and obtain the $i$-th ciphertext block.
 	- **Uses the same key for all blocks**
 - Adjacent blocks are independent of each other.
 - Advantages
-	- Good when run in parallel
+	- Fast when run in parallel
 - Limitations
 	- Repetitions in messages (if aligned with the block) may lead to repetitions in the ciphertext
 	- Susceptible to *cut-and-paste attacks*
@@ -198,7 +198,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Cipher Block Chaining Mode (CBC)
 
-![is-03-cbc-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cbc-encryption.png)
+![is-03-cbc-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cbc-encryption.png#)
 
 - Two identical messages produce to different ciphertexts.
 	- This prevents chosen plaintext attacks
@@ -234,8 +234,8 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 - If the IV is the same, then the encryption of the same plaintext is the same.
 	- Thus IVs should be random.
 - IV are not required to be secret, but
-	- No IVs should be reused under the same key
-	- IV changes should be unpredictable
+	- **No IVs should be reused under the same key**
+	- **IV changes should be unpredictable**
 - On IV reuse, same message will generate the same ciphertext if key isn't changed
 - If IV is predictable, CBC is vulnerable to chosen plaintext attacks.
 	- Define Eve's new message $m' = \mathrm{IV} _ {\mathrm{E}} \oplus \mathrm{IV} _ {\mathrm{A}} \oplus g$, where
@@ -248,12 +248,12 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Cipher Feedback Mode (CFB)
 
-![is-03-cfb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cfb-encryption.png)
+![is-03-cfb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cfb-encryption.png#)
 
 - The message is treated as a stream of bits; similar to stream cipher
 - **Result of the encryption is fed to the next stage.**
 	- Standard allows any number of bits to be fed to the next stage
-	- It is most efficient to use all $64$ bits (CFB-64)
+	- It is most efficient to use all bits.
 - Initialization vector is used.
 	- Same requirements on the IV as CBC mode.
 	- Should be randomized, and should not be predictable.
@@ -277,13 +277,13 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 - CFB mode is self-recovering.
 - 1 bit error in the ciphertext corrupts some number of blocks.
 	- Bit errors in the ciphertext will cause bit errors at the same position.
-	- Since this ciphertext is fed to the next block, the error is propagated
+	- Since this ciphertext is fed to the next block, the error is propagated.
 - Some implementations (like CFB-8) use shift registers, so errors will be propagated as long as the erroneous bit is in the shift register.
 	- If the error is removed from the shift register, it automatically recovers.
 
 ### Output Feedback Mode (OFB)
 
-![is-03-ofb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ofb-encryption.png)
+![is-03-ofb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ofb-encryption.png#)
 
 - Very similar to stream cipher.
 - Initialization vector is used as a seed to generate the key stream.
@@ -316,14 +316,39 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Counter Mode (CTR)
 
-![is-03-ctr-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ctr-encryption.png)
+![is-03-ctr-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ctr-encryption.png#)
 
 - Without chaining, we use a counter (typically incremented by $1$).
 	- Counter starts from the initialization vector.
 	- Highly parallelizable.
 	- Can decrypt from any arbitrary position.
 - Counter should not be repeated for the same key.
+	- Suppose that the same counter $ctr$ is used for encrypting $m_0$ and $m_1$.
+	- Encryption results are: $(ctr, E(k, ctr) \oplus m_0), (ctr, E(k, ctr) \oplus m_1)$.
+	- Then the attacker can obtain $m_0 \oplus m_1$.
+
+## Modes of Operations Summary
+
+|Criteria\Modes|ECB|CBC|CFB|OFB|CTR|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|IV|-|Yes|Yes|Yes|Counter|
+|Encryption Parallelizable|Yes|No|No|Yes\*|Yes|
+|Decryption Parallelizable|Yes|Yes|Yes|Yes\*|Yes|
+|Random Read Access|Yes|Yes|Yes|No|Yes|
+|Self-Recovering|-|Yes|Yes|-|-|
+
+- OFB is parallelizable only if the keystream is generated in advance.
+- We don't have to consider self-recovery if the ciphertext is not fed into the encryption of the next block.
+	- Errors in the ciphertext are not be propagated for ECB, OFB and CTR.
+- **Random read access**
+	- Suppose that a part of the plaintext changes.
+	- In OFB, the *whole* keystream must be recalculated to fix the ciphertext.
+	- But for other modes, only a part of the ciphertext needs to be changed, using the information from the previous block if necesary.
 
 ---
 
 Images are from [Wikipedia](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation).
+
+[^1]: Some people call this function the *mangler* function.
+[^2]: Over the finite field $\mathrm{GF}(2^8)$.
+[^3]: See also a helpful [question](https://crypto.stackexchange.com/questions/1346/why-is-mixcolumns-omitted-from-the-last-round-of-aes) on cryptography SE.
