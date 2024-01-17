@@ -199,7 +199,7 @@ Now we describe an attack for the DDH problem.
 
 > 1. The adversary is given $(g^\alpha, g^\beta, g^\gamma)$.
 > 2. The adversary computes the parity of $\gamma$ and $\alpha\beta$ and compares them.
-> 3. The adversary outputs $\texttt{accept}$ if the parities match, otherwise output $\texttt{{reject}}$.
+> 3. The adversary outputs $\texttt{accept}$ if the parities match, otherwise output $\texttt{reject}$.
 
 If $\gamma$ was chosen uniformly, then the adversary wins with probability $1/2$. But if $\gamma = \alpha\beta$, the adversary always wins, so the adversary has DDH advantage $1/2$.
 
