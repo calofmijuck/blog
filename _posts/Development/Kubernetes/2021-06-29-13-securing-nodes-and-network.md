@@ -12,7 +12,7 @@ attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-13.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-13.jpeg) _A pod with hostNetwork: true uses the node's network interfaces instead of its own. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-13)_
+![k8s-13.jpeg](/assets/img/posts/Development/Kubernetes/k8s-13.jpeg) _A pod with hostNetwork: true uses the node's network interfaces instead of its own. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-13)_
 
 ### 주요 내용
 

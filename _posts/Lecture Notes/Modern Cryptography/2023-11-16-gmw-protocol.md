@@ -148,7 +148,7 @@ Indeed, $z_1, z_2$ are shares of $z$.[^2] See also Exercise 23.5.[^3]
 
 Now, in the actual computation of AND gates, proceed as follows.
 
-![mc-16-beaver-triple.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-16-beaver-triple.png)
+![mc-16-beaver-triple.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-16-beaver-triple.png)
 
 > Each $P_i$ has a share of inputs $a_i, b_i$ and a Beaver triple $(x_i, y_i, z_i)$.
 > 1. Each $P_i$ computes $u_i = a_i + x_i$, $v_i = b_i + y_i$.

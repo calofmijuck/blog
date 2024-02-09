@@ -121,7 +121,7 @@ $$\int f \,d{\mu} = \sup\left\lbrace \int h \,d{\mu}: 0\leq h \leq f, h \text{ m
 
 $f$보다 작은 measurable simple function의 적분값 중 상한을 택하겠다는 의미입니다. $f$보다 작은 measurable simple function으로 $f$를 근사한다고도 이해할 수 있습니다. 또한 $f$가 simple function이면 Step 2의 정의와 일치하는 것을 알 수 있습니다.
 
-![mt-05.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-05.png)
+![mt-05.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-05.png)
 
 $f \geq 0$ 가 measurable이면 증가하는 measurable simple 함수열 $s_n$이 존재함을 지난 번에 보였습니다. 이 $s_n$에 대하여 적분값을 계산해보면
 

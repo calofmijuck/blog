@@ -57,7 +57,7 @@ $$
 
 The definition is similar to the [secure MAC](../2023-09-21-macs/#secure-mac-unforgeability). The adversary can perform a **chosen message attack**, but cannot create an **existential forgery**.
 
-![mc-10-dsig-security.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-dsig-security.png)
+![mc-10-dsig-security.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-dsig-security.png)
 
 > **Definition.** Let $\mc{S} = (G, S, V)$ be a signature scheme defined over $(\mc{M}, \Sigma)$. Given an adversary $\mc{A}$, the game goes as follows.
 > 
@@ -184,7 +184,7 @@ This scheme is originally from the **Schnorr identification protocol**.
 
 Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$. We consider an interaction between two parties, prover $P$ and a verifier $V$. The prover has a secret $\alpha \in \Z_q$ and the verification key is $u = g^\alpha$. **$P$ wants to convince $V$ that he knows $\alpha$, but does not want to reveal $\alpha$**.
 
-![mc-10-schnorr-identification.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
+![mc-10-schnorr-identification.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
 
 The protocol $\mc{I}_\rm{sch} = (G, P, V)$ works as follows.
 

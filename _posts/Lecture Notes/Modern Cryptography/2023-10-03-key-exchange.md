@@ -74,7 +74,7 @@ $$
 
 We assume that the description of $p$, $q$ and $g$ are generated at the setup and shared by all parties. Now the actual protocol goes like this.
 
-![mc-07-dhke.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-07-dhke.png#)
+![mc-07-dhke.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-07-dhke.png#)
 
 > 1. Alice chooses $\alpha \leftarrow \mathbb{Z}_q$ and computes $g^\alpha$.
 > 2. Bob chooses $\beta \leftarrow \mathbb{Z}_q$ and computes $g^\beta$.
@@ -189,7 +189,7 @@ Taking $\mathcal{O}(N)$ steps is impractical in the real world, due to many comm
 
 We assumed that the adversary only eavesdrops, but if the adversary carries out active attacks, then DHKE is not enough. The major problem is the lack of **authentication**. Alice and Bob are exchanging keys, but they both cannot be sure that there are in fact communicating with the other. An attacker can intercept messages and impersonate Alice or Bob. This attack is called a **man in the middle attack**, and this attack works on any key exchange protocol that lacks authentication.
 
-![mc-07-dhke-mitm.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-07-dhke-mitm.png#)
+![mc-07-dhke-mitm.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-07-dhke-mitm.png#)
 
 The adversary will impersonate Bob when communicating with Alice, and will do the same for Bob by pretending to be Alice. The values of $\alpha, \beta$ that Alice and Bob chose are not leaked, but the adversary can decrypt anything in the middle and obtain the plaintext.
 
@@ -211,7 +211,7 @@ Before Diffie-Hellman, Merkle proposed an idea for secure key exchange protocol 
 
 The idea was to use *puzzles*, which are problems that can be solved with some effort.
 
-![mc-07-merkle-puzzles.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-07-merkle-puzzles.png#)
+![mc-07-merkle-puzzles.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-07-merkle-puzzles.png#)
 
 > Let $\mathcal{E} = (E, D)$ be a block cipher defined over $(\mathcal{K}, \mathcal{M})$.
 > 1. Alice chooses random pairs $(k_i, s_i) \leftarrow \mathcal{K} \times \mathcal{M}$ for $i = 1, \dots, L$.

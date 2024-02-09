@@ -12,7 +12,7 @@ attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-16.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-16.jpeg) _A pod is only scheduled to a node if it tolerates the node’s taints. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-16)_
+![k8s-16.jpeg](/assets/img/posts/Development/Kubernetes/k8s-16.jpeg) _A pod is only scheduled to a node if it tolerates the node’s taints. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-16)_
 
 ### 주요 내용
 

@@ -17,7 +17,7 @@ attachment:
 
 Construction of measure 증명에서 추가로 참고할 내용입니다.
 
-![mt-03.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-03.png)
+![mt-03.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-03.png)
 
 **명제.** $A$가 열린집합이면 $A \in \mathfrak{M}(\mu)$ 이다. 또한 $A^C \in \mathfrak{M}(\mu)$ 이므로, $F$가 닫힌집합이면 $F \in \mathfrak{M}(\mu)$ 이다.
 

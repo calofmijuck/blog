@@ -13,7 +13,7 @@ attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-02.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-02.png)
+![mt-02.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-02.png)
 
 이제 본격적으로 집합을 재보도록 하겠습니다. 우리가 잴 수 있는 집합들부터 시작합니다. $\mathbb{R}^p$에서 논의할 건데, 이제 여기서부터는 $\mathbb{R}$의 구간의 열림/닫힘을 모두 포괄하여 정의합니다. 즉, $\mathbb{R}$의 구간이라고 하면 $[a, b], (a, b), [a, b), (a, b]$ 네 가지 경우를 모두 포함합니다.
 

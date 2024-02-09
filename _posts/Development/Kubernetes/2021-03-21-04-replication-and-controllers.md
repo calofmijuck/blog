@@ -12,7 +12,7 @@ attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-04.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-04.jpeg) _ReplicationController recreating pods. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-4)_
+![k8s-04.jpeg](/assets/img/posts/Development/Kubernetes/k8s-04.jpeg) _ReplicationController recreating pods. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-4)_
 
 3장에서는 pod 를 직접 관리하는 방법에 대해 살펴봤다. 하지만 실무에서는 pod 의 관리가 자동으로 되길 원한다. 이를 위해 ReplicationController 나 Deployment 를 사용한다.
 

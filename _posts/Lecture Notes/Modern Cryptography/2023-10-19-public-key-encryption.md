@@ -45,7 +45,7 @@ Public key $pk$ will be publicized. After Alice obtains $pk$, she can use it to 
 
 The following notion of security is only for an eavesdropping adversary.
 
-![mc-09-ss-pke.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-09-ss-pke.png)
+![mc-09-ss-pke.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-09-ss-pke.png)
 
 > **Definition.** Let $\mc{E} = (G, E, D)$ be a public key encryption scheme defined over $(\mc{M}, \mc{C})$. For an adversary $\mc{A}$, we define two experiments.
 > 

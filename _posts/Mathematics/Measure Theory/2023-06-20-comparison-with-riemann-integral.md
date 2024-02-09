@@ -13,7 +13,7 @@ attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-08.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-08.png)
+![mt-08.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-08.png)
 
 ## Comparison with the Riemann Integral
 

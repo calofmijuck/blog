@@ -63,7 +63,7 @@ $$
 
 #### The Feistel Function
 
-![is-03-feistel-function.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png#)
+![is-03-feistel-function.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png#)
 
 The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunks. Each chunk is expanded to $6$ bits using a P-box. Now, we have 48 bits of data, so apply XOR with the key for this round. Next, each $6$-bit block is compressed back to $4$ bits using a S-box. Finally, there is a (straight) permutation at the end, resulting in $32$ bit data.
 
@@ -179,7 +179,7 @@ AES, DES use fixed block size for encryption. How do we encrypt longer messages?
 
 ### Electronic Codebook Mode (ECB)
 
-![is-03-ecb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ecb-encryption.png#)
+![is-03-ecb-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ecb-encryption.png#)
 
 - Codebook is a mapping table.
 - For the $i$-th plaintext block, we use key $k$ to encrypt and obtain the $i$-th ciphertext block.
@@ -198,7 +198,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Cipher Block Chaining Mode (CBC)
 
-![is-03-cbc-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cbc-encryption.png#)
+![is-03-cbc-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cbc-encryption.png#)
 
 - Two identical messages produce to different ciphertexts.
 	- This prevents chosen plaintext attacks
@@ -248,7 +248,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Cipher Feedback Mode (CFB)
 
-![is-03-cfb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cfb-encryption.png#)
+![is-03-cfb-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cfb-encryption.png#)
 
 - The message is treated as a stream of bits; similar to stream cipher
 - **Result of the encryption is fed to the next stage.**
@@ -283,7 +283,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Output Feedback Mode (OFB)
 
-![is-03-ofb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ofb-encryption.png#)
+![is-03-ofb-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ofb-encryption.png#)
 
 - Very similar to stream cipher.
 - Initialization vector is used as a seed to generate the key stream.
@@ -316,7 +316,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Counter Mode (CTR)
 
-![is-03-ctr-encryption.png](../../../assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ctr-encryption.png#)
+![is-03-ctr-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ctr-encryption.png#)
 
 - Without chaining, we use a counter (typically incremented by $1$).
 	- Counter starts from the initialization vector.

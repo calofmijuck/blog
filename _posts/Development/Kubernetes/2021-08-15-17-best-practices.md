@@ -12,7 +12,7 @@ attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-17.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-17.jpeg) _Resources in a typical application (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-17)_
+![k8s-17.jpeg](/assets/img/posts/Development/Kubernetes/k8s-17.jpeg) _Resources in a typical application (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-17)_
 
 ### 주요 내용
 

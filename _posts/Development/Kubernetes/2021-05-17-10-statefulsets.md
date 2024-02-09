@@ -12,7 +12,7 @@ attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-10.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-10.jpeg) _A stateful pod may be rescheduled to a different node, but it retains the name, hostname, and storage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-10)_
+![k8s-10.jpeg](/assets/img/posts/Development/Kubernetes/k8s-10.jpeg) _A stateful pod may be rescheduled to a different node, but it retains the name, hostname, and storage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-10)_
 
 ### 주요 내용
 

@@ -12,7 +12,7 @@ attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-15.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-15.jpeg) _How the autoscaler obtains metrics and rescales the target deployment (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-15)_
+![k8s-15.jpeg](/assets/img/posts/Development/Kubernetes/k8s-15.jpeg) _How the autoscaler obtains metrics and rescales the target deployment (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-15)_
 
 ### 주요 내용
 

@@ -19,7 +19,7 @@ attachment:
 
 먼저 단조 수렴 정리(monotone convergence theorem, MCT)입니다. 이 정리에서는 $f_n \geq 0$ 인 것이 매우 중요합니다.
 
-![mt-06.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-06.png)
+![mt-06.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-06.png)
 
 **정리.** (단조 수렴 정리) $f_n: X \rightarrow[0, \infty]$ 가 measurable이고 모든 $x \in X$ 에 대하여 $f_n(x) \leq f_ {n+1}(x)$ 라 하자.
 

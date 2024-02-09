@@ -155,7 +155,7 @@ $$s(x) = \sum_ {i=1}^{n} c_i \chi_ {E_i}(x).$$
 
 여기서 $E_i$에 measurable 조건이 추가되면, 정의에 의해 $\chi_ {E_i}$도 measurable function입니다. 따라서 모든 measurable simple function을 measurable $\chi_ {E_i}$의 linear combination으로 표현할 수 있습니다.
 
-![mt-04.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-04.png)
+![mt-04.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-04.png)
 
 아래 정리는 simple function이 Lebesgue integral의 building block이 되는 이유를 잘 드러냅니다. 모든 함수는 simple function으로 근사할 수 있습니다.
 

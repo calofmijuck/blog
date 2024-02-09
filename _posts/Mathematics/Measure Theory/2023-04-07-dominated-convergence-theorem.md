@@ -149,7 +149,7 @@ $$[f] = \lbrace g \in \mathcal{L}^{1}(E, \mu) : f \sim g\rbrace.$$
 
 마지막 수렴정리를 소개하고 수렴정리와 관련된 내용을 마칩니다. 지배 수렴 정리(dominated convergence theorem, DCT)로 불립니다.
 
-![mt-07.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-07.png)
+![mt-07.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-07.png)
 
 **정리.** (지배 수렴 정리) Measurable set $E$와 measurable function $f$에 대하여, $\lbrace f_n\rbrace$이 measurable function의 함수열이라 하자. $E$의 거의 모든 점 위에서 극한 $f(x) = \displaystyle\lim_ {n \rightarrow\infty} f_n(x)$ 가 $\overline{\mathbb{R}}$에 존재하고 (점별 수렴) $\lvert f_n \rvert \leq g \quad \mu$-a.e. on $E$ ($\forall n \geq 1$) 를 만족하는 $g \in \mathcal{L}^{1}(E, \mu)$ 가 존재하면,
 

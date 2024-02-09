@@ -13,7 +13,7 @@ attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-09.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-09.png){: .w-50}
+![mt-09.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-09.png){: .w-50}
 
 ## Integration on Complex Valued Function
 

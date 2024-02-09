@@ -83,7 +83,7 @@ The attacker shouldn't be able to create a new ciphertext that decrypts properly
 
 In this case, we fix the decryption algorithm so that $D : \mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M} \cup \left\lbrace \bot \right\rbrace$, where $\bot$ means that the ciphertext was rejected.
 
-![mc-05-ci.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-ci.png#)
+![mc-05-ci.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-ci.png#)
 
 > **Definition.** Let $\mathcal{E} = (E, D)$ be a cipher defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$. Given an adversary $\mathcal{A}$, the security game goes as follows.
 > 
@@ -138,7 +138,7 @@ Most natural constructions of CCA secure schemes satisfy AE, so we don't need to
 
 We want to combine CPA secure scheme and strongly secure MAC to get AE. Rather than focusing on the internal structure of the scheme, we want a general method to compose these two secure schemes so that we can get a AE secure scheme. We will see 3 examples.
 
-![mc-05-etm-mte.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-etm-mte.png#)
+![mc-05-etm-mte.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-etm-mte.png#)
 
 ### Encrypt-and-MAC (E&M)
 

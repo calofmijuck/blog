@@ -10,7 +10,7 @@ image:
   path: /assets/img/posts/blog-logo.png
 ---
 
-![blog-logo.png](../../../assets/img/posts/blog-logo.png) _New blog logo_
+![blog-logo.png](/assets/img/posts/blog-logo.png) _New blog logo_
 
 오래 전, Github Pages가 불편하다는 이유로 티스토리로 옮겼었다.
 근데 어쩌다 보니 결국 다시 돌아오게 되었다.
@@ -65,7 +65,7 @@ image:
 
 Obsidian을 Github과 연동하기 위해 [Obsidian Github Publisher](https://github.com/ObsidianPublisher/obsidian-github-publisher) 플러그인을 사용할 수 있다.
 
-![github-publisher.png](../../../assets/img/posts/github-publisher.png){: .shadow } _플러그인 설정 화면: 어느 폴더에 어떤 이름으로 파일을 업로드할지 설정할 수 있다._
+![github-publisher.png](/assets/img/posts/github-publisher.png){: .shadow } _플러그인 설정 화면: 어느 폴더에 어떤 이름으로 파일을 업로드할지 설정할 수 있다._
 
 이 플러그인을 사용하면 Obsidian의 문서 중에서 `share: true` 로 마킹된 문서들을 레포에 저장할 수 있게 된다. 그렇다면 블로그 글을 Obsidian에서 작성하고, 플러그인을 이용해 레포에 push하게 되면, 자동으로 빌드/배포가 이뤄져서 블로그에 반영되는 것을 확인할 수 있을 것이다.
 

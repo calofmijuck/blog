@@ -12,7 +12,7 @@ attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-09.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-09.jpeg) _Rolling update of Deployments (출처: livebook.manning.com/book/kubernetes-in-action/chapter-9)_
+![k8s-09.jpeg](/assets/img/posts/Development/Kubernetes/k8s-09.jpeg) _Rolling update of Deployments (출처: livebook.manning.com/book/kubernetes-in-action/chapter-9)_
 
 ### 주요 내용
 
