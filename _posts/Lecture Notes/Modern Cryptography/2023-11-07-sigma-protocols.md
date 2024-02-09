@@ -19,7 +19,7 @@ attachment:
 ---
 
 
-The previous [3-coloring example](./2023-11-02-zkp-intro.md#example-3-coloring) certainly works as a zero knowledge proof, but is quite slow, and requires a lot of interaction. There are efficient protocols for interactive proofs, we will study sigma protocols.
+The previous [3-coloring example](../2023-11-02-zkp-intro/#example-3-coloring) certainly works as a zero knowledge proof, but is quite slow, and requires a lot of interaction. There are efficient protocols for interactive proofs, we will study sigma protocols.
 
 ## Sigma Protocols
 
@@ -105,7 +105,7 @@ Also note that **the simulator is free to generate the messages in any convenien
 
 ## The Schnorr Identification Protocol Revisited
 
-The Schnorr identification protocol is actually a sigma protocol. Refer to [Schnorr identification protocol (Modern Cryptography)](./2023-10-26-digital-signatures.md#the-schnorr-identification-protocol) for the full description.
+The Schnorr identification protocol is actually a sigma protocol. Refer to [Schnorr identification protocol (Modern Cryptography)](../2023-10-26-digital-signatures/#the-schnorr-identification-protocol) for the full description.
 
 ![mc-10-schnorr-identification.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
 
@@ -425,7 +425,7 @@ Omitted. Works...
 
 ### The Fiat-Shamir Signature Scheme
 
-Now we understand why the [Schnorr signature scheme](./2023-10-26-digital-signatures.md#schnorr-digital-signature-scheme) used hash functions. In general, the Fiat-Shamir transform can be used to convert sigma protocols into signature schemes.
+Now we understand why the [Schnorr signature scheme](../2023-10-26-digital-signatures/#schnorr-digital-signature-scheme) used hash functions. In general, the Fiat-Shamir transform can be used to convert sigma protocols into signature schemes.
 
 We need $3$ building blocks.
 
@@ -450,7 +450,7 @@ If an adversary can come up with a forgery, then the underlying sigma protocol i
 
 $n$ voters are casting a vote, either $0$ or $1$. At the end, all voters learn the sum of the votes, but we want to keep the votes secret for each party.
 
-We can use the [multiplicative ElGamal encryption](./2023-10-19-public-key-encryption.md#the-elgamal-encryption) scheme in this case. Assume that a trusted vote tallying center generates a key pair, keeps $sk = \alpha$ to itself and publishes $pk = g^\alpha$.
+We can use the [multiplicative ElGamal encryption](../2023-10-19-public-key-encryption/#the-elgamal-encryption) scheme in this case. Assume that a trusted vote tallying center generates a key pair, keeps $sk = \alpha$ to itself and publishes $pk = g^\alpha$.
 
 Each voter encrypts the vote $b_i$ and the ciphertext is
 
@@ -468,7 +468,7 @@ where $\beta^{\ast} = \sum_{i=1}^n \beta_i$ and $b^{\ast} = \sum_{i=1}^n b_i$. N
 
 Since the ElGamal scheme is semantically secure, the protocol is also secure if all voters follow the protocol. But a dishonest voter can encrypt $b_i = -100$ or some arbitrary value.
 
-To fix this, we can make each voter prove that the vote is valid. Using the [Chaum-Pedersen protocol for DH-triples](2023-11-07-sigma-protocols.md#the-chaum-pedersen-protocol-for-dh-triples) and the [OR-proof construction](2023-11-07-sigma-protocols.md#or-proof-construction), the voter can submit a proof that the ciphertext is either a encryption of $b_i = 0$ or $1$. We can also apply the Fiat-Shamir transform here for efficient protocols, resulting in non-interactive proofs.
+To fix this, we can make each voter prove that the vote is valid. Using the [Chaum-Pedersen protocol for DH-triples](#the-chaum-pedersen-protocol-for-dh-triples) and the [OR-proof construction](#or-proof-construction), the voter can submit a proof that the ciphertext is either a encryption of $b_i = 0$ or $1$. We can also apply the Fiat-Shamir transform here for efficient protocols, resulting in non-interactive proofs.
 
 [^1]: The message flows in a shape that resembles the greek letter $\Sigma$, hence the name *sigma protocol*.
 [^2]: A Graduate Course in Applied Cryptography.

@@ -19,7 +19,7 @@ attachment:
 ---
 
 
-There are two types of MPC protocols, **generic** and **specific**. Generic protocols can compute arbitrary functions. [Garbled circuits](./2023-11-14-garbled-circuits.md#garbled-circuits) were generic protocols, since it can be used to compute any boolean circuits. In contrast, the [summation protocol](./2023-11-09-secure-mpc.md#example-secure-summation) is a specific protocol that can only be used to compute a specific function. Note that generic protocols are not necessarily better, since specific protocols are much more efficient.
+There are two types of MPC protocols, **generic** and **specific**. Generic protocols can compute arbitrary functions. [Garbled circuits](../2023-11-14-garbled-circuits/#garbled-circuits) were generic protocols, since it can be used to compute any boolean circuits. In contrast, the [summation protocol](../2023-11-09-secure-mpc/#example-secure-summation) is a specific protocol that can only be used to compute a specific function. Note that generic protocols are not necessarily better, since specific protocols are much more efficient.
 
 ## GMW Protocol
 
@@ -193,7 +193,7 @@ Also note that $u_i, v_i$ does not reveal any information about $x_i, y_i$. Esse
 
 **Beaver triples are to be used only once!** If $u_1 = a_1 + x_1$ and ${} u_1' = a_1' + x_1 {}$, then $u_1 + u_1' = a_1 + a_1'$, revealing information about $a_1 + a_1'$.
 
-Thus, before the online phase, a huge amount of Beaver triples are shared to speed up the computation. This can be done efficiently using [OT extension](2023-11-16-gmw-protocol.md#ot-extension) described below.
+Thus, before the online phase, a huge amount of Beaver triples are shared to speed up the computation. This can be done efficiently using [OT extension](#ot-extension) described below.
 
 ## Comparison of Yao and GMW
 
@@ -281,7 +281,7 @@ As for the receiver, the values $(x_j^0, x_j^1)$ are masked by a hash function, 
 
 The extension technique allows us to run $n$ base OT instances to obtain $m$ OT instances. For each of the $m$ OT transfers, only a few hash operations are required, resulting in very efficient OT.
 
-One may concern that we have to send a lot of information for each of the $n$ OT instances, since we have to send $m$ bit data for each OT. But this of not much concern. For example, if we used [OT based on ElGamal](./2023-11-09-secure-mpc.md#1-out-of-2-ot-construction-from-elgamal-encryption), we can choose primes large enough $> 2^m$ to handle $m$-bit data.
+One may concern that we have to send a lot of information for each of the $n$ OT instances, since we have to send $m$ bit data for each OT. But this of not much concern. For example, if we used [OT based on ElGamal](../2023-11-09-secure-mpc/#1-out-of-2-ot-construction-from-elgamal-encryption), we can choose primes large enough $> 2^m$ to handle $m$-bit data.
 
 Hence, with OT extensions, we can perform millions of OTs efficiently, which can be used especially for computing many Beaver triples during preprocessing.
 

@@ -15,7 +15,7 @@ github_title: 2023-11-14-garbled-circuits
 ---
 
 
-A simple solution for two party computation would be to use oblivious transfers as noted [here](./2023-11-09-secure-mpc.md#ot-for-computing-14-secure-multiparty-computationot-for-computing-dollar2dollar-ary-function-with-finite-domaindollar-ary-function-with-finite-domain). However, this method is inefficient. We will look at **Yao's protocol**, presented in 1986, for secure two-party computation.
+A simple solution for two party computation would be to use oblivious transfers as noted [here](../2023-11-09-secure-mpc/#ot-for-computing-2-ary-function-with-finite-domain). However, this method is inefficient. We will look at **Yao's protocol**, presented in 1986, for secure two-party computation.
 
 The term **garbled circuit** was used by Beaver-Micali-Rogaway (BMR), presenting a multiparty protocol using a similar approach to Yao's protocol.
 
