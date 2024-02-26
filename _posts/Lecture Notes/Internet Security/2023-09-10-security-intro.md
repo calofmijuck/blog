@@ -155,7 +155,7 @@ There are many ways of achieving security.
 
 ### Basics of a Cryptosystem
 
-![is-01-cryptosystem.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-01-cryptosystem.png#)
+![is-01-cryptosystem.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-01-cryptosystem.png)
 
 - A **message** in *plaintext* is given to an **encryption algorithm**.
 - The encryption algorithm uses an **encryption key** to create a *ciphertext*.
