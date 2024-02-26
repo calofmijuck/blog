@@ -9,7 +9,12 @@ tags:
 title: Secure IAM on AWS with Multi-Account Strategy
 date: 2024-02-26
 github_title: 2024-02-26-secure-iam
+image: /assets/img/posts/Development/separation-by-product.png
+attachment:
+  folder: assets/img/posts/Development
 ---
+
+![separation-by-product.png](../../assets/img/posts/Development/separation-by-product.png)
 
 B.S. Graduation Paper, Received Best Paper Award!
 
