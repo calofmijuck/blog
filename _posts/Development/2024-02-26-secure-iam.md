@@ -16,9 +16,10 @@ attachment:
 
 ![separation-by-product.png](../../assets/img/posts/Development/separation-by-product.png)
 
-B.S. Graduation Paper, Received Best Paper Award!
+2024\. 2. B.S. Graduation Paper, Received Best Paper Award!
 
-- [Secure IAM on AWS with Multi-Account Strategy (pdf)](https://zxcvber.com/secure-iam.pdf)
+- [Secure IAM on AWS with Multi-Account Strategy (pdf)](https://zxcvber.com/files/secure-iam.pdf)
+- [Presentation Poster (pdf)](https://zxcvber.com/files/secure-iam-poster.pdf)
 
 ## Abstract
 
