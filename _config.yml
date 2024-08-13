@@ -18,9 +18,7 @@ title: Life Log # the main title
 
 tagline: Recording Life. # it will display as the sub-title
 
-description: >- # used by seo meta and the atom feed
-  Sungchan Yi.<br/>
-  CSE & Math & Life
+description: CSE & Math & Life # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
