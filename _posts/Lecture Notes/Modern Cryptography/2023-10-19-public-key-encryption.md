@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Modern Cryptography
+path: _posts/lecture-notes/modern-cryptography
 tags:
   - lecture-note
   - cryptography
@@ -17,7 +18,6 @@ image:
 attachment:
   folder: assets/img/posts/Lecture Notes/Modern Cryptography
 ---
-
 
 In symmetric encryption, we assumed that the two parties had a shared key in advance. If the two parties do not have a shared key, **public-key encryption** can be used to encrypt messages.
 
@@ -45,7 +45,7 @@ Public key $pk$ will be publicized. After Alice obtains $pk$, she can use it to 
 
 The following notion of security is only for an eavesdropping adversary.
 
-![mc-09-ss-pke.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-09-ss-pke.png)
+![mc-09-ss-pke.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-09-ss-pke.png)
 
 > **Definition.** Let $\mc{E} = (G, E, D)$ be a public key encryption scheme defined over $(\mc{M}, \mc{C})$. For an adversary $\mc{A}$, we define two experiments.
 > 
@@ -69,7 +69,7 @@ Note that $pk$ is sent to the adversary, and adversary can encrypt any message! 
 
 For symmetric ciphers, semantic security (one-time) did not guarantee CPA security (many-time). But in public key encryption, semantic security implies CPA security. This is because *the attacker can encrypt any message using the public key*.
 
-First, we check the definition of CPA security for public key encryption. It is similar to that of symmetric ciphers, compare with [CPA Security for symmetric key encryption (Modern Cryptography)](../2023-09-19-symmetric-key-encryption/#cpa-security).
+First, we check the definition of CPA security for public key encryption. It is similar to that of symmetric ciphers, compare with [CPA Security for symmetric key encryption (Modern Cryptography)](./2023-09-19-symmetric-key-encryption.md#cpa-security).
 
 > **Definition.** For a given public-key encryption scheme $\mc{E} = (G, E, D)$ defined over $(\mc{M}, \mc{C})$ and given an adversary $\mc{A}$, define experiments 0 and 1.
 > 
@@ -141,7 +141,7 @@ $$
 
 ## CCA Security for Public Key Encryption
 
-We also define CCA security for public key encryption, which models a wide spectrum of real-world attacks. The definition is also very similar to that of symmetric ciphers, compare with [CCA security for symmetric ciphers (Modern Cryptography)](../2023-09-26-cca-security-authenticated-encryption/#cca-security).
+We also define CCA security for public key encryption, which models a wide spectrum of real-world attacks. The definition is also very similar to that of symmetric ciphers, compare with [CCA security for symmetric ciphers (Modern Cryptography)](./2023-09-26-cca-security-authenticated-encryption.md#cca-security).
 
 > **Definition.** Let $\mc{E} = (G, E, D)$ be a public-key encryption scheme over $(\mc{M}, \mc{C})$. Given an adversary $\mc{A}$, define experiments $0$ and $1$.
 > 
@@ -176,7 +176,7 @@ Similarly, 1CCA security implies CCA security, as in the above theorem. So to sh
 
 ### Active Adversaries in Symmetric vs Public Key
 
-In symmetric key encryption, we studied [authenticated encryption (AE)](../2023-09-26-cca-security-authenticated-encryption/#authenticated-encryption-ae), which required the scheme to be CPA secure and provide ciphertext integrity. In symmetric key settings, AE implied CCA.
+In symmetric key encryption, we studied [authenticated encryption (AE)](./2023-09-26-cca-security-authenticated-encryption.md#authenticated-encryption-(ae)), which required the scheme to be CPA secure and provide ciphertext integrity. In symmetric key settings, AE implied CCA.
 
 However in public-key schemes, adversaries can always create new ciphertexts using the public key, which makes the original definition of ciphertext integrity unusable. Thus we directly require CCA security.
 
