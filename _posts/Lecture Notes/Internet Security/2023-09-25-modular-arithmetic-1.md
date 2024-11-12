@@ -9,6 +9,7 @@ tags:
   - lecture-note
   - security
   - cryptography
+  - number-theory
 title: 04. Modular Arithmetic (1)
 date: 2023-09-25
 github_title: 2023-09-25-modular-arithmetic-1
@@ -169,7 +170,7 @@ The inverse exists if and only if $\gcd(a, n) = 1$.
 
 > **Lemma**. For $n \geq 2$ and $a \in \mathbb{Z}$, its inverse $a^{-1} \in \mathbb{Z}_n$ exists if and only if $\gcd(a, n) = 1$.
 
-*Proof*. We use the Extended Euclidean Algorithm. There exists $u, v \in \mathbb{Z}$ such that
+*Proof*. We use the extended Euclidean algorithm. There exists $u, v \in \mathbb{Z}$ such that
 
 $$
 au + nv = \gcd(a, n).
