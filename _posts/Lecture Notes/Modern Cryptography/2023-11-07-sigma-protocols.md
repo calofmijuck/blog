@@ -18,8 +18,7 @@ attachment:
   folder: assets/img/posts/Lecture Notes/Modern Cryptography
 ---
 
-
-The previous [3-coloring example](../2023-11-02-zkp-intro/#example-3-coloring) certainly works as a zero knowledge proof, but is quite slow, and requires a lot of interaction. There are efficient protocols for interactive proofs, we will study sigma protocols.
+The previous [3-coloring example](./2023-11-02-zkp-intro.md#example-3-coloring) certainly works as a zero knowledge proof, but is quite slow, and requires a lot of interaction. There are efficient protocols for interactive proofs, we will study sigma protocols.
 
 ## Sigma Protocols
 
@@ -27,7 +26,7 @@ The previous [3-coloring example](../2023-11-02-zkp-intro/#example-3-coloring) c
 
 > **Definition.** An **effective relation** is a binary relation $\mc{R} \subset \mc{X} \times \mc{Y}$, where $\mc{X}$, $\mc{Y}$, $\mc{R}$ are efficiently recognizable finite sets. Elements of $\mc{Y}$ are called **statements**. If $(x, y) \in \mc{R}$, then $x$ is called a **witness for** $y$.
 
-![mc-13-sigma-protocol.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-sigma-protocol.png)
+![mc-13-sigma-protocol.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-sigma-protocol.png)
 
 > **Definition.** Let $\mc{R} \subset \mc{X} \times \mc{Y}$ be an effective relation. A **sigma protocol** for $\mc{R}$ is a pair of algorithms $(P, V)$ satisfying the following.
 > 
@@ -105,9 +104,9 @@ Also note that **the simulator is free to generate the messages in any convenien
 
 ## The Schnorr Identification Protocol Revisited
 
-The Schnorr identification protocol is actually a sigma protocol. Refer to [Schnorr identification protocol (Modern Cryptography)](../2023-10-26-digital-signatures/#the-schnorr-identification-protocol) for the full description.
+The Schnorr identification protocol is actually a sigma protocol. Refer to [Schnorr identification protocol (Modern Cryptography)](./2023-10-26-digital-signatures.md#the-schnorr-identification-protocol) for the full description.
 
-![mc-10-schnorr-identification.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
+![mc-10-schnorr-identification.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
 
 > The pair $(P, V)$ is a sigma protocol for the relation $\mc{R} \subset \mc{X} \times \mc{Y}$ where
 > 
@@ -165,7 +164,7 @@ $$
 
 goes as follows.
 
-![mc-13-okamoto.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-okamoto.png)
+![mc-13-okamoto.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-okamoto.png)
 
 > 1. $P$ computes random $\alpha_t, \beta_t \la \bb{Z}_q$ and sends commitment $u_t \la g^{\alpha_t}h^{\beta_t}$ to $V$.
 > 2. $V$ computes challenge $c \la \mc{C}$ and sends it to $P$.
@@ -192,7 +191,7 @@ $$
 
 goes as follows.
 
-![mc-13-chaum-pedersen.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-chaum-pedersen.png)
+![mc-13-chaum-pedersen.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-chaum-pedersen.png)
 
 > 1. $P$ computes random $\beta_t \la \bb{Z}_q$ and sends commitment $v_t \la g^{\beta_t}$, $w_t \la u^{\beta_t}$ to $V$.
 > 2. $V$ computes challenge $c \la \mc{C}$ and sends it to $P$.
@@ -223,7 +222,7 @@ $$
 
 goes as follows.
 
-![mc-13-gq-protocol.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-gq-protocol.png)
+![mc-13-gq-protocol.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-gq-protocol.png)
 
 > 1. $P$ computes random $x_t \la \bb{Z}_n^{\ast}$ and sends commitment $y_t \la x_t^e$ to $V$.
 > 2. $V$ computes challenge $c \la \mc{C}$ and sends it to $P$.
@@ -279,7 +278,7 @@ If the challenge is known in advance, the prover can cheat. We exploit this fact
 
 Suppose we are given two sigma protocols $(P_0, V_0)$ for $\mc{R}_0 \subset \mc{X}_0 \times \mc{Y}_0$ and $(P_1, V_1)$ for $\mc{R}_1 \subset \mc{X}_1 \times \mc{Y}_1$. We assume that these both use the same challenge space, and both are special HVZK with simulators $\rm{Sim}_0$ and $\rm{Sim}_1$.
 
-We combine the protocols to form a sigma protocol for the relation $\mc{R}_\rm{OR}$ defined on ${} \big( \braces{0, 1} \times (\mc{X}_0 \cup \mc{X}_1) \big) \times (\mc{Y}_0\times \mc{Y}_1) {}$ as
+We combine the protocols to form a sigma protocol for the relation $\mc{R}_\rm{OR}$ defined on $\big( \braces{0, 1} \times (\mc{X}_0 \cup \mc{X}_1) \big) \times (\mc{Y}_0\times \mc{Y}_1)$ as
 
 $$
 \mc{R}_\rm{OR} = \bigg\lbrace \big( (b, x), (y_0, y_1)  \big): (x, y_b) \in \mc{R}_b\bigg\rbrace.
@@ -425,7 +424,7 @@ Omitted. Works...
 
 ### The Fiat-Shamir Signature Scheme
 
-Now we understand why the [Schnorr signature scheme](../2023-10-26-digital-signatures/#schnorr-digital-signature-scheme) used hash functions. In general, the Fiat-Shamir transform can be used to convert sigma protocols into signature schemes.
+Now we understand why the [Schnorr signature scheme](./2023-10-26-digital-signatures.md#schnorr-digital-signature-scheme) used hash functions. In general, the Fiat-Shamir transform can be used to convert sigma protocols into signature schemes.
 
 We need $3$ building blocks.
 
@@ -450,7 +449,7 @@ If an adversary can come up with a forgery, then the underlying sigma protocol i
 
 $n$ voters are casting a vote, either $0$ or $1$. At the end, all voters learn the sum of the votes, but we want to keep the votes secret for each party.
 
-We can use the [multiplicative ElGamal encryption](../2023-10-19-public-key-encryption/#the-elgamal-encryption) scheme in this case. Assume that a trusted vote tallying center generates a key pair, keeps $sk = \alpha$ to itself and publishes $pk = g^\alpha$.
+We can use the [multiplicative ElGamal encryption](./2023-10-19-public-key-encryption.md#the-elgamal-encryption) scheme in this case. Assume that a trusted vote tallying center generates a key pair, keeps $sk = \alpha$ to itself and publishes $pk = g^\alpha$.
 
 Each voter encrypts the vote $b_i$ and the ciphertext is
 
@@ -468,7 +467,7 @@ where $\beta^{\ast} = \sum_{i=1}^n \beta_i$ and $b^{\ast} = \sum_{i=1}^n b_i$. N
 
 Since the ElGamal scheme is semantically secure, the protocol is also secure if all voters follow the protocol. But a dishonest voter can encrypt $b_i = -100$ or some arbitrary value.
 
-To fix this, we can make each voter prove that the vote is valid. Using the [Chaum-Pedersen protocol for DH-triples](#the-chaum-pedersen-protocol-for-dh-triples) and the [OR-proof construction](#or-proof-construction), the voter can submit a proof that the ciphertext is either a encryption of $b_i = 0$ or $1$. We can also apply the Fiat-Shamir transform here for efficient protocols, resulting in non-interactive proofs.
+To fix this, we can make each voter prove that the vote is valid. Using the [Chaum-Pedersen protocol for DH-triples](2023-11-07-sigma-protocols.md#the-chaum-pedersen-protocol-for-dh-triples) and the [OR-proof construction](2023-11-07-sigma-protocols.md#or-proof-construction), the voter can submit a proof that the ciphertext is either a encryption of $b_i = 0$ or $1$. We can also apply the Fiat-Shamir transform here for efficient protocols, resulting in non-interactive proofs.
 
 [^1]: The message flows in a shape that resembles the greek letter $\Sigma$, hence the name *sigma protocol*.
 [^2]: A Graduate Course in Applied Cryptography.
