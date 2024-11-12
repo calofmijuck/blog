@@ -14,8 +14,7 @@ date: 2023-11-14
 github_title: 2023-11-14-garbled-circuits
 ---
 
-
-A simple solution for two party computation would be to use oblivious transfers as noted [here](../2023-11-09-secure-mpc/#ot-for-computing-2-ary-function-with-finite-domain). However, this method is inefficient. We will look at **Yao's protocol**, presented in 1986, for secure two-party computation.
+A simple solution for two party computation would be to use oblivious transfers as noted [here](./2023-11-09-secure-mpc.md#ot-for-computing-14.-secure-multiparty-computation#ot-for-computing-$2$-ary-function-with-finite-domain$-ary-function-with-finite-domain). However, this method is inefficient. We will look at **Yao's protocol**, presented in 1986, for secure two-party computation.
 
 The term **garbled circuit** was used by Beaver-Micali-Rogaway (BMR), presenting a multiparty protocol using a similar approach to Yao's protocol.
 
@@ -42,7 +41,7 @@ Then we have the following garbled values, as in columns 1 to 3. Now, encrypt th
 |$A$|$B$|$C$|$C = \rm{AND}(A, B)$|
 |:-:|:-:|:-:|:-:|
 |$A_0$|$B_0$|$C_0$|$E(A_0 \parallel B_0, C_0)$|
-|$A_0$|$B_1$|$C_0$|${} E(A_0 \parallel B_1, C_0) {}$|
+|$A_0$|$B_1$|$C_0$|$E(A_0 \parallel B_1, C_0)$|
 |$A_1$|$B_0$|$C_0$|$E(A_1 \parallel B_0, C_0)$|
 |$A_1$|$B_1$|$C_1$|$E(A_1 \parallel B_1, C_1)$|
 
