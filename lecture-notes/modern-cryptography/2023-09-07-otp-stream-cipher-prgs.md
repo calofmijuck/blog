@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Modern Cryptography
+path: lecture-notes/modern-cryptography
 tags:
   - lecture-note
   - cryptography
@@ -13,7 +14,7 @@ title: 1. One-Time Pad, Stream Ciphers and PRGs
 date: 2023-09-07
 github_title: 2023-09-07-otp-stream-cipher-prgs
 image:
-  path: "assets/img/posts/Lecture Notes/Modern Cryptography/mc-01-ss.png"
+  path: assets/img/posts/Lecture Notes/Modern Cryptography/mc-01-ss.png
 attachment:
   folder: assets/img/posts/Lecture Notes/Modern Cryptography
 ---
@@ -44,11 +45,11 @@ Some random variables:
 For a scheme to be perfectly secret, the *ciphertext should not reveal any information about the underlying plaintext*, so that the adversary learns absolutely nothing about the plaintext.
 
 > **Definition**. An encryption scheme is **perfectly secret** if for any distribution of $M$ and any ciphertext $c \in \mathcal{C}$ such that $\Pr[C = c] > 0$,
-> 
+>
 > $$
 > \Pr[M = m \mid C = c] = \Pr[M = m]
 > $$
-> 
+>
 > for every $m \in \mathcal{M}$.
 
 For example, the shift cipher with $\mathcal{M}$ as the set of all two-letter characters is not perfectly secure. Suppose that $c = \texttt{XX}$ is observed. Then the adversary learns that the plaintext must consist of the same letter, revealing some information.
@@ -56,11 +57,11 @@ For example, the shift cipher with $\mathcal{M}$ as the set of all two-letter ch
 The above definition is equivalent to the following.
 
 > **Definition**. An encryption scheme is **perfectly secret** if for any $m_1, m_2 \in \mathcal{M}$ and $c \in \mathcal{C}$, we have
-> 
+>
 > $$
 > \Pr[E(k, m_1) = c] = \Pr[E(k, m_2) = c]
 > $$
-> 
+>
 > where the probability is taken over the random choice $k \leftarrow \mathcal{K}$.
 
 > **Proposition**. The above two definitions are equivalent.
@@ -220,7 +221,7 @@ A negligible function is a function that tends to $0$ as $n \rightarrow \infty$,
 The following is evident from the definition.
 
 > **Lemma.** A function $f : \mathbb{N} \rightarrow \mathbb{R}$ is negligible if and only if for all $c > 0$,
-> 
+>
 > $$
 > \lim_{n \rightarrow \infty} f(n) n^c = 0.
 > $$
@@ -232,11 +233,11 @@ In practice, about $2^{-30}$ is non-negligible since it is likely to happen over
 The adversary will want to distinguish if some bit string is an output of a PRG or truly random. So PRGs must satisfy the notion of **unpredictability**, which says that no *efficient* algorithm can predict the next bit of PRGs.
 
 > **Definition.** A PRG is **predictable** if there exists an efficient adversary $\mathcal{A}$ and $i < n$ such that
-> 
+>
 > $$
 > \Pr[\mathcal{A}(G(k)[0..i-1]) = G(k)[i]] > \frac{1}{2} + \epsilon
 > $$
-> 
+>
 > for non-negligible $\epsilon > 0$.
 
 The probability here is taken over $k \leftarrow \lbrace 0, 1 \rbrace^s$, and $G(k)[0..i-1]$ denotes the first $i$ bits of $G(k)$. Also, the probability has to be non-negligible compared to $\frac{1}{2}$, implying that the adversary should be better than random guessing.
@@ -266,7 +267,7 @@ would be a statistical test.
 Let $G : \lbrace 0, 1 \rbrace^s \rightarrow \lbrace 0, 1 \rbrace^n$ be a PRG and $\mathcal{A}$ be a statistical test on $\lbrace 0, 1 \rbrace^n$.
 
 > **Definition.** The **PRG advantage** is defined as
-> 
+>
 > $$
 > \mathrm{Adv}_\mathrm{PRG}[\mathcal{A} , G] = \left\lvert \Pr_{k \leftarrow \left\lbrace 0, 1 \right\rbrace^s}[\mathcal{A}(G(k)) = 1] - \Pr_{r \leftarrow \left\lbrace 0, 1 \right\rbrace^n}[\mathcal{A}(r) = 1] \right\rvert.
 > $$
@@ -292,7 +293,7 @@ We can deduce that if a PRG is predictable, then it is insecure.
 
 *Proof*. Let $\mathcal{A}$ be an efficient adversary (next bit predictor) that predicts $G$. Suppose that $i$ is the index chosen by $\mathcal{A}$. With $\mathcal{A}$, we construct a statistical test $\mathcal{B}$ such that $\mathrm{Adv}_\mathrm{PRG}[\mathcal{B}, G]$ is non-negligible.
 
-![mc-01-prg-game.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-01-prg-game.png)
+![mc-01-prg-game.png](../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-01-prg-game.png)
 
 1. The challenger PRG will send a bit string $x$ to $\mathcal{B}$.
 	- In experiment $0$, PRG gives pseudorandom string $G(k)$.
@@ -318,17 +319,17 @@ The theorem implies that if next bit predictors cannot distinguish $G$ from true
 
 To motivate the definition of semantic security, we consider a **security game framework** (attack game) between a **challenger** (ex. the creator of some cryptographic scheme) and an **adversary** $\mathcal{A}$ (ex. attacker of the scheme).
 
-![mc-01-ss.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-01-ss.png)
+![mc-01-ss.png](../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-01-ss.png)
 
 > **Definition.** Let $\mathcal{E} = (G, E, D)$ be a cipher defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$. For a given adversary $\mathcal{A}$, we define two experiments $0$ and $1$. For $b \in \lbrace 0, 1 \rbrace$, define experiment $b$ as follows:
-> 
+>
 > **Experiment** $b$.
 > 1. The adversary computes $m_0, m_1 \in \mathcal{M}$ and sends them to the challenger.
 > 2. The challenger computes $k \leftarrow \mathcal{K}$, $c \leftarrow E(k, m_b)$ and sends $c$ to the adversary.
 > 3. The adversary outputs a bit $b' \in \lbrace 0, 1 \rbrace$.
-> 
+>
 > Let $W_b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. i.e, the event that $\mathcal{A}(\mathrm{EXP}(b)) = 1$. Now define the **semantic security advantage** of $\mathcal{A}$ with respect to $\mathcal{E}$ as
-> 
+>
 > $$
 > \mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}] = \lvert \Pr [W_0] - \Pr[W_1] \rvert.
 > $$
@@ -340,17 +341,17 @@ As we understood the advantage of PRG, semantic security advantage can be unders
 In the same way, we can define a security game for distinguishing two distributions.
 
 > **Definition.** Let $P_0$, $P_1$ be two distributions over a set $\mathcal{S}$. For any given efficient adversary $\mathcal{A}$, define experiments $0$ and $1$.
-> 
+>
 > **Experiment $b$.**
 > 1. The challenger computes $x \leftarrow P_b$ and sends $x$ to the adversary.
 > 2. The adversary computes and outputs a bit $b' \in \lbrace 0, 1 \rbrace$.
-> 
+>
 > Let $W_b$ the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the advantage is defined as
-> 
+>
 >  $$
 >  \mathrm{Adv}[\mathcal{A}] = \lvert \Pr[W_0] - \Pr[W_1] \rvert
 >  $$
-> 
+>
 > If the advantage is negligible, we say that $P_0$ and $P_1$ are **computationally indistinguishable**, and write $P_0 \approx_c P_1$.
 
 As an example, a PRG $G$ is secure if the two distributions $G(k)$ over $k \leftarrow \lbrace 0, 1 \rbrace^s$ and $r \leftarrow \lbrace 0, 1 \rbrace^n$ are *computationally indistinguishable*.
@@ -421,7 +422,7 @@ $$
 which is non-negligible, so it breaks the security of the PRG.
 
 > **Corollary.** For any adversary $\mathcal{A}$ for the stream cipher $\mathcal{E}$, there exists an adversary $\mathcal{B}$ for a PRG $G$ such that
-> 
+>
 > $$
 > \mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}] \leq 2 \cdot \mathrm{Adv}_\mathrm{PRG}[\mathcal{B}, G].
 > $$
