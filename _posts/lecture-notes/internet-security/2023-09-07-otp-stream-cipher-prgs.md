@@ -293,7 +293,7 @@ We can deduce that if a PRG is predictable, then it is insecure.
 
 *Proof*. Let $\mathcal{A}$ be an efficient adversary (next bit predictor) that predicts $G$. Suppose that $i$ is the index chosen by $\mathcal{A}$. With $\mathcal{A}$, we construct a statistical test $\mathcal{B}$ such that $\mathrm{Adv}_\mathrm{PRG}[\mathcal{B}, G]$ is non-negligible.
 
-![mc-01-prg-game.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-01-prg-game.png)
+![[mc-01-prg-game.png|mc-01-prg-game.png]]
 
 1. The challenger PRG will send a bit string $x$ to $\mathcal{B}$.
 	- In experiment $0$, PRG gives pseudorandom string $G(k)$.
@@ -319,7 +319,7 @@ The theorem implies that if next bit predictors cannot distinguish $G$ from true
 
 To motivate the definition of semantic security, we consider a **security game framework** (attack game) between a **challenger** (ex. the creator of some cryptographic scheme) and an **adversary** $\mathcal{A}$ (ex. attacker of the scheme).
 
-![mc-01-ss.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-01-ss.png)
+![[mc-01-ss.png|mc-01-ss.png]]
 
 > **Definition.** Let $\mathcal{E} = (G, E, D)$ be a cipher defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$. For a given adversary $\mathcal{A}$, we define two experiments $0$ and $1$. For $b \in \lbrace 0, 1 \rbrace$, define experiment $b$ as follows:
 >
