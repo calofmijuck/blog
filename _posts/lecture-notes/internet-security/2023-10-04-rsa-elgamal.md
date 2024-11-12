@@ -140,7 +140,7 @@ This is an inverse problem of exponentiation. The inverse of exponentials is log
 
 Given $y \equiv g^x \pmod p$ for some prime $p$, we want to find $x = \log_g y$. We set $g$ to be a generator of the group $\mathbb{Z}_p$ or $\mathbb{Z}_p^*$, since if $g$ is the generator, a solution always exists.
 
-Read more in [discrete logarithm problem (Modern Cryptography)](../modern-cryptography/2023-10-03-key-exchange.md#discrete-logarithm-problem-(dl)).
+Read more in [discrete logarithm problem (Modern Cryptography)](../../modern-cryptography/2023-10-03-key-exchange/#discrete-logarithm-problem-(dl)).
 
 ## ElGamal Encryption
 

@@ -54,7 +54,7 @@ Now we define a stronger notion of security against **chosen ciphertext attacks*
 
 None of the encryption schemes already seen thus far is CCA secure.
 
-Recall a [CPA secure construction from PRF](./2023-09-19-symmetric-key-encryption.md#secure-construction-from-prf). This scheme is not CCA secure. Suppose that the adversary is given $c^* = (r, F(k, r) \oplus m_b)$. Then it can request a decryption for $c' = (r, s')$ for some $s'$ and receive $m' = s' \oplus F(k, r)$. Then $F(k, r) = m' \oplus s'$, so the adversary can successfully recover $m_b$.
+Recall a [CPA secure construction from PRF](../2023-09-19-symmetric-key-encryption/#secure-construction-from-prf). This scheme is not CCA secure. Suppose that the adversary is given $c^* = (r, F(k, r) \oplus m_b)$. Then it can request a decryption for $c' = (r, s')$ for some $s'$ and receive $m' = s' \oplus F(k, r)$. Then $F(k, r) = m' \oplus s'$, so the adversary can successfully recover $m_b$.
 
 In general, any encryption scheme that allows ciphertexts to be *manipulated* in a controlled way cannot be CCA secure.
 

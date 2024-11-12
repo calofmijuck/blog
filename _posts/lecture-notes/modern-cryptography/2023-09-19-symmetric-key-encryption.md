@@ -128,7 +128,7 @@ We learned how to encrypt a single block. How do we encrypt longer messages with
 
 There are many ways of processing multiple blocks, this is called the **mode of operation**.
 
-Additional explanation available in [Modes of Operations (Internet Security)](../internet-security/2023-09-18-symmetric-key-cryptography-2.md#modes-of-operations).
+Additional explanation available in [Modes of Operations (Internet Security)](../../internet-security/2023-09-18-symmetric-key-cryptography-2/#modes-of-operations).
 
 ### Electronic Codebook Mode (ECB)
 

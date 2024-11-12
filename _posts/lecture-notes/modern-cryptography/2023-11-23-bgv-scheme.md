@@ -512,7 +512,7 @@ $$
 N^{L+1} \ra N^L \ra \cdots \ra N.
 $$
 
-When we perform $L$ levels of computation and reach modulus $q_0 = N$, we cannot perform any multiplications. We must apply [bootstrapping](./2023-12-08-bootstrapping-ckks.md#bootstrapping).
+When we perform $L$ levels of computation and reach modulus $q_0 = N$, we cannot perform any multiplications. We must apply [bootstrapping](../2023-12-08-bootstrapping-ckks/#bootstrapping).
 
 Note that without modulus switching, we need $q_L > N^{2^L}$ for $L$ levels of computation, which is very large. Since we want $q$ to be small (for the hardness of the LWE problem), modulus switching is necessary. We now only require $q_L > N^{L+1}$.
 

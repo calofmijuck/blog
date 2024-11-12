@@ -191,7 +191,7 @@ Let $m \in \left\lbrace 0, 1 \right\rbrace^n$ be the message to encrypt. Then ch
 - Encryption: $E(k, m) = k \oplus m$.
 - Decryption: $D(k, c) = k \oplus c$.
 
-This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-(otp)).
+This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/#one-time-pad-(otp)).
 
 ## Perfect Secrecy
 
@@ -225,7 +225,7 @@ since for each $m$ and $c$, $k$ is determined uniquely.
 
 *Proof*. Assume not, then we can find some message $m_0 \in \mathcal{M}$ such that $m_0$ is not a decryption of some $c \in \mathcal{C}$. This is because the decryption algorithm $D$ is deterministic and $\lvert \mathcal{K} \rvert < \lvert \mathcal{M} \rvert$.
 
-For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#shannon's-theorem).
+For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/#shannon's-theorem).
 
 ### Two-Time Pad is Insecure
 
