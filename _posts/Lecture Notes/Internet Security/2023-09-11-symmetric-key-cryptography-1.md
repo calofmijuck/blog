@@ -185,7 +185,12 @@ The case for $C = 1$ is similar.
 
 ### One-Time Pad (OTP)
 
-[1. OTP, Stream Ciphers and PRGs > One-Time Pad (OTP)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs#one-time-pad-otp)
+Let $m \in \left\lbrace 0, 1 \right\rbrace^n$ be the message to encrypt. Then choose a *random* key $k \in \left\lbrace 0, 1 \right\rbrace^n$, and XOR $k$ and $m$.
+
+- Encryption: $E(k, m) = k \oplus m$.
+- Decryption: $D(k, c) = k \oplus c$.
+
+This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../Modern%20Cryptography/2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-(otp)).
 
 ## Perfect Secrecy
 
@@ -219,6 +224,8 @@ since for each $m$ and $c$, $k$ is determined uniquely.
 
 *Proof*. Assume not, then we can find some message $m_0 \in \mathcal{M}$ such that $m_0$ is not a decryption of some $c \in \mathcal{C}$. This is because the decryption algorithm $D$ is deterministic and $\lvert \mathcal{K} \rvert < \lvert \mathcal{M} \rvert$.
 
+For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../Modern%20Cryptography/2023-09-07-otp-stream-cipher-prgs.md#shannon's-theorem).
+
 ### Two-Time Pad is Insecure
 
 It is not secure to use the same key twice. If for the key $k$ and two messages $m_1$, $m_2$,
@@ -237,6 +244,7 @@ So some information is leaked, even though we cannot actually recover $m_i$ from
 	- Ex. RC4
 - **Block cipher**: encrypt a block of bits at a time
 	- Can provide integrity or authentication.
+	- Block ciphers usually have feedback between blocks, so errors during transmission will be propagated during the decryption process.
 	- Ex. DES, AES
 
 ### Stream Cipher
@@ -247,7 +255,7 @@ Stream cipher does not have perfect secrecy, since the key length is shorter tha
 
 ### Linear Feedback Shift Register (LFSR)
 
-The seed can be used in a **linear feedback shift register** (LFSR) to generate the actual key for the stream cipher. There are $n$ stages (or states) and the generated key stream is periodic with period $2^n - 1$.
+The seed can be used in a **linear feedback shift register** (LFSR) to generate the actual key for the stream cipher. There are $n$ stages (or states) and the generated key stream is periodic with maximal period $2^n - 1$.
 
 The links between stages may be different. But in general, if one is given $2n$ output bits of LFSR, one can solve the $n$-stage LFSR.
 
@@ -278,9 +286,10 @@ To alleviate this problem, we can combine multiple LFSRs with a $k$-input binary
 1. Compute CRC for the message
 	- CRC-32 polynomial is used
 2. Compute the keystream from IV and the key
-	- $128$ bit input is given to the PRG
+	- IV is concatenated with the key.
+	- $128$ bit input is given to the key generation algorithm.
 3. Now encrypt the plaintext with XOR.
-	- The IV is prepended to the ciphertext, since the receiver needs it to decrypt
+	- The IV is prepended to the ciphertext, since the receiver needs it to decrypt.
 
 #### Decryption Process
 
@@ -292,17 +301,17 @@ To alleviate this problem, we can combine multiple LFSRs with a $k$-input binary
 ### Initialization Vector
 
 - The IV is not encrypted, and carried in plaintext.
-- IV is only $24$ bits, so around $16$ million.
+- IV is only $24$ bits, so around $16$ million possible IVs.
 - **IV must be different for every message transmitted.**
 - 802.11 standard doesn't specify how IV is calculated.
-	- Usually increment by $1$ for each frame
-	- No restrictions on reusing the IV
+	- Usually increment by $1$ for each frame.
+	- No restrictions on reusing the IV.
 
 #### IV Collision
 
-- The key is fixed, and the period of IV is $2^{24}$
+- The key is fixed, and the period of IV is $2^{24}$.
 - Same IV leads to same key stream.
-- So if the adversary takes two frames with same IV to obtain the XOR of two plaintext messages.
+- So if the adversary takes two frames with the same IV to obtain the XOR of two plaintext messages.
 	- $c_1 \oplus c_2 = (p_1 \oplus k_s) \oplus (p_2 \oplus k_s) = p_1 \oplus p_2$
 - Since network traffic contents are predictable, messages can be recovered.
 	- We are in the link layer, so HTTP, IP, TCP headers will be contained in the encrypted payload.
@@ -315,12 +324,13 @@ Given a bit string (defined in the specification), the sender performs long divi
 ### Message Modification
 
 - CRC is actually a linear function.
-	- $\mathrm{CRC}(x \oplus y) = \mathrm{CRC}(x) \oplus \mathrm{CRC}(y)$
+	- $\mathrm{CRC}(x \oplus y) = \mathrm{CRC}(x) \oplus \mathrm{CRC}(y)$.
+	- The remainder of $x \oplus y$ is equal to the sum of the remainders of $x$ and $y$, since $\oplus$ is effectively an addition over $\mathbb{Z}_2$.
 - CRC function doesn't have a key, so it is forgeable.
 - **RC4 is transparent to XOR**, and messages can be modified.
-	- $c = k_s \oplus (m \parallel \mathrm{CRC}(m))$
-	- If we XOR $(x \parallel \mathrm{CRC}(x))$, where $x$ is some malicious message
-	- $c \oplus (x \parallel \mathrm{CRC}(x)) = k_s \oplus (m\oplus x \parallel \mathrm{CRC}(m\oplus x))$
+	- Let $c = k_s \oplus (m \parallel \mathrm{CRC}(m))$.
+	- If we XOR $(x \parallel \mathrm{CRC}(x))$, where $x$ is some malicious message.
+	- $c \oplus (x \parallel \mathrm{CRC}(x)) = k_s \oplus (m\oplus x \parallel \mathrm{CRC}(m\oplus x))$.
 	- The receiver will decrypt and get $(m\oplus x \parallel \mathrm{CRC}(m\oplus x))$.
 	- CRC check by the receiver will succeed.
 

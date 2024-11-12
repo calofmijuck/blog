@@ -14,7 +14,6 @@ date: 2023-11-09
 github_title: 2023-11-09-secure-mpc
 ---
 
-
 ## Secure Multiparty Computation (MPC)
 
 Suppose we have a function $f$ that takes $n$ inputs and produces $m$ outputs.
@@ -121,7 +120,7 @@ It is known that $k$-out-of-$n$ OT is constructible from 1-out-of-2 OTs.
 
 > Suppose that the sender Alice has messages $x_0, x_1 \in \braces{0, 1}\conj$, and the receiver Bob has a choice $\sigma \in \braces{0, 1}$.
 > 
-> 1. Bob chooses $sk = \alpha \la \Z_q$ and computes ${} h = g^\alpha {}$, and chooses $h' \la G$.
+> 1. Bob chooses $sk = \alpha \la \Z_q$ and computes $h = g^\alpha$, and chooses $h' \la G$.
 > 2. Bob sets $pk_\sigma = h$ and $pk_{1-\sigma} = h'$ and sends $(pk_0, pk_1)$ to Alice.
 > 3. Alice encrypts each $x_i$ using $pk_i$, obtains two ciphertexts.
 > 	- $\beta_0, \beta_1 \la \Z_q$.
@@ -142,7 +141,7 @@ The above works for **semi-honest** parties. To prevent malicious behavior, we f
 > 
 > The remaining steps are the same, except that Alice checks if $pk_0 \cdot pk_1 = w$.
 
-Bob must choose $h, h'$ such that $hh' = w$. If not, Bob can choose ${} \alpha' \la \Z_q {}$ and set $h' = g^{\alpha'}$, enabling him to decrypt both $c_0, c_1$, revealing $x_0, x_1$. Under the DL assumption, Bob cannot find the discrete logarithm of $h'$, which prevents malicious behavior.
+Bob must choose $h, h'$ such that $hh' = w$. If not, Bob can choose $\alpha' \la \Z_q$ and set $h' = g^{\alpha'}$, enabling him to decrypt both $c_0, c_1$, revealing $x_0, x_1$. Under the DL assumption, Bob cannot find the discrete logarithm of $h'$, which prevents malicious behavior.
 
 ### 1-out-of-$n$ OT Construction from ElGamal Encryption
 
@@ -160,7 +159,7 @@ Let $m_1, \dots, m_n \in \mc{M}$ be the messages to send, and let $i$ be an inde
 
 Note that all ciphertexts $c_j$ were created from the same ephemeral key $\beta \in \Z_q$.
 
-For correctness, we check that Bob indeed receives $m_i$ from the above protocol. Check that $u_i = u\cdot v^i = g^\alpha v^0 = g^\alpha$, then $u_i^\beta = g^{\alpha\beta} = v^\alpha$. Since $c_i = E_S\big( H(g^\beta, u_i^\beta), m_i \big) = E_S\big( H(v, v^\alpha), m_i \big)$, the decryption gives ${} m_i {}$.
+For correctness, we check that Bob indeed receives $m_i$ from the above protocol. Check that $u_i = u\cdot v^i = g^\alpha v^0 = g^\alpha$, then $u_i^\beta = g^{\alpha\beta} = v^\alpha$. Since $c_i = E_S\big( H(g^\beta, u_i^\beta), m_i \big) = E_S\big( H(v, v^\alpha), m_i \big)$, the decryption gives $m_i$.
 
 Now is this oblivious? All that Alice sees is $u = g^\alpha v^{-i}$ from Bob. Since $\alpha \la \Z_q$, $u$ is uniformly distributed over elements of $G$. Alice learns no information about $i$.
 
@@ -176,11 +175,11 @@ and by raising both to the $(j_1 - j_2)\inv$ power (inverse in $\Z_q$), he can c
 
 We can use an OT for computing a $2$-ary function with finite domain.
 
-Let $f : X_1 \times X_2 \ra Y$ be a deterministic function with $X_1$, $X_2$ both finite. There are two parties ${} P_1, P_2 {}$ with inputs $x_1, x_2$, and they want to compute $f(x_1, x_2)$ without revealing their input.
+Let $f : X_1 \times X_2 \ra Y$ be a deterministic function with $X_1$, $X_2$ both finite. There are two parties $P_1, P_2$ with inputs $x_1, x_2$, and they want to compute $f(x_1, x_2)$ without revealing their input.
 
 Then we can use $1$-out-of-$\abs{X_2}$ OT to securely compute $f(x_1, x_2)$. Without loss of generality, suppose that $P_1$ is the sender.
 
-${} P_1$ computes $y_x =f(x_1, x)$ for all $x \in X_2$, resulting in $\abs{X_2}$ messages. Then $P_1$ performs 1-out-of-$\abs{X_2}$ OT with $P_2$. The value of $x_2$ will be used as the choice of $P_2$, which will be oblivious to $P_1$.[^2]
+$P_1$ computes $y_x =f(x_1, x)$ for all $x \in X_2$, resulting in $\abs{X_2}$ messages. Then $P_1$ performs 1-out-of-$\abs{X_2}$ OT with $P_2$. The value of $x_2$ will be used as the choice of $P_2$, which will be oblivious to $P_1$.[^2]
 
 This method is inefficient, so we have better methods!
 

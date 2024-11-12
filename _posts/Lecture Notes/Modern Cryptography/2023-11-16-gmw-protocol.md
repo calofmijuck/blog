@@ -18,8 +18,7 @@ attachment:
   folder: assets/img/posts/Lecture Notes/Modern Cryptography
 ---
 
-
-There are two types of MPC protocols, **generic** and **specific**. Generic protocols can compute arbitrary functions. [Garbled circuits](../2023-11-14-garbled-circuits/#garbled-circuits) were generic protocols, since it can be used to compute any boolean circuits. In contrast, the [summation protocol](../2023-11-09-secure-mpc/#example-secure-summation) is a specific protocol that can only be used to compute a specific function. Note that generic protocols are not necessarily better, since specific protocols are much more efficient.
+There are two types of MPC protocols, **generic** and **specific**. Generic protocols can compute arbitrary functions. [Garbled circuits](./2023-11-14-garbled-circuits.md#garbled-circuits) were generic protocols, since it can be used to compute any boolean circuits. In contrast, the [summation protocol](./2023-11-09-secure-mpc.md#example-secure-summation) is a specific protocol that can only be used to compute a specific function. Note that generic protocols are not necessarily better, since specific protocols are much more efficient.
 
 ## GMW Protocol
 
@@ -40,10 +39,10 @@ Suppose that we have $n$ parties $P_1, \dots, P_n$ with inputs $x_1, \dots, x_n 
 
 > Each party $P_i$ shares its input with other parties as follows.
 > 
-> 1. Choose random ${} r_{i, j} \la \braces{0, 1} {}$ for all $j \neq i$ and send $r_{i, j}$ to $P_j$.
-> 2. Set ${} r_{i, i} = x_i + \sum_{i \neq j} r_{i, j} {}$.
+> 1. Choose random $r_{i, j} \la \braces{0, 1}$ for all $j \neq i$ and send $r_{i, j}$ to $P_j$.
+> 2. Set $r_{i, i} = x_i + \sum_{i \neq j} r_{i, j}$.
 
-Then we see that $x_i = \sum_{j = 1}^n r_{i, j} {}$. Each party has a **share** of $x_i$, which is $r_{i, j}$. We have a notation for this,
+Then we see that $x_i = \sum_{j = 1}^n r_{i, j}$. Each party has a **share** of $x_i$, which is $r_{i, j}$. We have a notation for this,
 
 $$
 [x_i] = (r_{i, 1}, \dots, r_{i, n}).
@@ -59,7 +58,7 @@ Now, each party computes each gate using the shares received from other parties.
 
 #### Evaluating XOR Gates
 
-Suppose we want to compute a share of ${} c = a + b {}$. Then, since
+Suppose we want to compute a share of $c = a + b$. Then, since
 
 $$
 [c] = [a] + [b],
@@ -67,7 +66,7 @@ $$
 
 each party can simply add all the input shares.
 
-If ${} {} y = x_1 + \cdots + x_n {} {}$, then party $P_j$ will compute ${} y_j = \sum_{i=1}^n r_{i, j} {}$, which is a share of $y$, $[y] = (y_1, \dots, y_n)$. It can be checked that
+If $y = x_1 + \cdots + x_n$, then party $P_j$ will compute $y_j = \sum_{i=1}^n r_{i, j}$, which is a share of $y$, $[y] = (y_1, \dots, y_n)$. It can be checked that
 
 $$
 y = \sum_{j=1}^n y_j = \sum_{j=1}^n \sum_{i=1}^n r_{i, j}.
@@ -148,7 +147,7 @@ Indeed, $z_1, z_2$ are shares of $z$.[^2] See also Exercise 23.5.[^3]
 
 Now, in the actual computation of AND gates, proceed as follows.
 
-![mc-16-beaver-triple.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-16-beaver-triple.png)
+![mc-16-beaver-triple.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-16-beaver-triple.png)
 
 > Each $P_i$ has a share of inputs $a_i, b_i$ and a Beaver triple $(x_i, y_i, z_i)$.
 > 1. Each $P_i$ computes $u_i = a_i + x_i$, $v_i = b_i + y_i$.
@@ -187,13 +186,13 @@ $$
 
 and $uv$ is public, so any party can include it in its share.
 
-Also note that $u_i, v_i$ does not reveal any information about $x_i, y_i$. Essentially, they are *one-time pad* encryptions of $x_i$ and ${} y_i {}$ since $a_i, b_i$ were chosen randomly. No need for OTs during actual computation.
+Also note that $u_i, v_i$ does not reveal any information about $x_i, y_i$. Essentially, they are *one-time pad* encryptions of $x_i$ and $y_i$ since $a_i, b_i$ were chosen randomly. No need for OTs during actual computation.
 
 ### Reusing Beaver Triples?
 
-**Beaver triples are to be used only once!** If $u_1 = a_1 + x_1$ and ${} u_1' = a_1' + x_1 {}$, then $u_1 + u_1' = a_1 + a_1'$, revealing information about $a_1 + a_1'$.
+**Beaver triples are to be used only once!** If $u_1 = a_1 + x_1$ and $u_1' = a_1' + x_1$, then $u_1 + u_1' = a_1 + a_1'$, revealing information about $a_1 + a_1'$.
 
-Thus, before the online phase, a huge amount of Beaver triples are shared to speed up the computation. This can be done efficiently using [OT extension](#ot-extension) described below.
+Thus, before the online phase, a huge amount of Beaver triples are shared to speed up the computation. This can be done efficiently using [OT extension](2023-11-16-gmw-protocol.md#ot-extension) described below.
 
 ## Comparison of Yao and GMW
 
@@ -240,7 +239,7 @@ Q_i = \begin{cases} T_i  & (s_i = 0)  \\
 \end{cases}
 $$
 
-**Now consider each row separately!** Let ${} A[k]$ be the $k$-th row of matrix $A$.
+**Now consider each row separately!** Let $A[k]$ be the $k$-th row of matrix $A$.
 
 If $\sigma_j = 0$, the XOR operation in $T_i \oplus \sigma$ has no effect on the $j$-th element (row), so the $j$-th element of $T_i \oplus \sigma$ and $T_i$ are the same. Thus, we have $Q[j] = T[j]$.
 
@@ -281,7 +280,7 @@ As for the receiver, the values $(x_j^0, x_j^1)$ are masked by a hash function, 
 
 The extension technique allows us to run $n$ base OT instances to obtain $m$ OT instances. For each of the $m$ OT transfers, only a few hash operations are required, resulting in very efficient OT.
 
-One may concern that we have to send a lot of information for each of the $n$ OT instances, since we have to send $m$ bit data for each OT. But this of not much concern. For example, if we used [OT based on ElGamal](../2023-11-09-secure-mpc/#1-out-of-2-ot-construction-from-elgamal-encryption), we can choose primes large enough $> 2^m$ to handle $m$-bit data.
+One may concern that we have to send a lot of information for each of the $n$ OT instances, since we have to send $m$ bit data for each OT. But this of not much concern. For example, if we used [OT based on ElGamal](./2023-11-09-secure-mpc.md#1-out-of-2-ot-construction-from-elgamal-encryption), we can choose primes large enough $> 2^m$ to handle $m$-bit data.
 
 Hence, with OT extensions, we can perform millions of OTs efficiently, which can be used especially for computing many Beaver triples during preprocessing.
 

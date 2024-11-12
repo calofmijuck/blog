@@ -98,5 +98,20 @@ Read the full text for the full context!
 
 > I think it's very valuable to have first-class people around. \[...\] **I tried to go with people who had great ability so I could learn from them and who would expect great results out of me.**
 
+---
+
+## Summary By Claude 3 Sonnet
+
+Here is a summary of the key points from the article "You and Your Research" by Richard Hamming:
+
+- Hamming discusses what separates the great scientists who make significant contributions from the merely ordinary ones. He argues that great scientists possess certain key traits and approaches.
+- Great scientists work on important problems rather than following the crowd. They have courage, ambition, and become emotionally invested in their work.
+- Changing viewpoints and converting perceived negatives into positives is crucial. Luck favors the prepared mind that seizes opportunities.
+- Other key ingredients include continuous learning, knowing oneself and managing weaknesses, having a drive to work hard, tolerating ambiguity, shifting focus periodically to stay creative, and great scientists carefully pick their associates.
+- Presentation and selling ideas is extremely important, sometimes as much effort as the research itself. Having the courage to promote unorthodox ideas is vital.
+- While talent plays a role, Hamming argues factors like attitude, work habits, self-awareness and motivation are equally or more important determinants of whether someone does truly great, impactful research.
+
+The article crystallizes insights from Hamming's decades of observing what distinguishes elite scientists based on his experiences at Los Alamos and Bell Labs.
+
 [^1]: *if you don't think it is going to lead to something important, why are you at \[...\] working on it?"*
 [^2]: *What will be the impact of \[...\] on \[...\] and how can I change it?*

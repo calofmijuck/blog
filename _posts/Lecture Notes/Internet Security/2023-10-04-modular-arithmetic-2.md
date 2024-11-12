@@ -166,7 +166,7 @@ Now we can prove Euler's generalization.
 > a^{\phi(n)} \equiv 1 \pmod n.
 > $$
 
-*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z}_n^{ * }$. Then $a^\left\lvert \mathbb{Z}_n^{ * } \right\lvert = 1$ in $\mathbb{Z}_n$. By the above lemma, we have the desired result.
+*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z}_n^{ * }$. Then $a^{\left\lvert \mathbb{Z}_n^{ * } \right\lvert} = 1$ in $\mathbb{Z}_n$. By the above lemma, we have the desired result.
 
 *Proof*. (Elementary) Set $f : \mathbb{Z}_n^* \rightarrow \mathbb{Z}_n^*$ as $x \mapsto ax \bmod n$, then the rest of the reasoning follows similarly as in the proof of Fermat's little theorem.
 
@@ -195,7 +195,7 @@ $\mathbb{Z}_n$ is an additive group, and $\mathbb{Z}_n^*$ is a multiplicative gr
 
 ## Chinese Remainder Theorem (CRT)
 
-> **Theorem.** Let $n_1, \dots, n_k$ integers greater than $1$, and let $N = n_1n_2\cdots n_k$. If $n_i$ are pairwise relatively prime, then the system of equations $x \equiv a_i \pmod {n_i}$ has a unique solution modulo $N$.
+> **Theorem.** Let $n_1, \dots, n_k$ be integers greater than $1$, and let $N = n_1n_2\cdots n_k$. If $n_i$ are pairwise relatively prime, then the system of equations $x \equiv a_i \pmod {n_i}$ has a unique solution modulo $N$.
 > 
 > *(Abstract Algebra)* The map
 > 
