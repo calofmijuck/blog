@@ -139,7 +139,7 @@ $$
 B\bf{u} = \sum_{i=1}^n \lfloor a_i \rceil \bf{b}_i.
 $$
 
-Then this ${} B\bf{u} \in L {}$ is pretty close to $\bf{t} \notin L$.
+Then this $B\bf{u} \in L$ is pretty close to $\bf{t} \notin L$.
 
 ## Learning with Errors Problem (LWE)
 
@@ -212,7 +212,7 @@ $$
 
 Addition is easy!
 
-> Let $\bf{c} = (b, \bf{a})$ and $\bf{c}' = (b', \bf{a}')$ be encryptions of ${} m, m' \in \braces{0, 1} {}$. Then, $\bf{c}_\rm{add} = \bf{c} + \bf{c}'$ is an encryption of $m + m'$.
+> Let $\bf{c} = (b, \bf{a})$ and $\bf{c}' = (b', \bf{a}')$ be encryptions of $m, m' \in \braces{0, 1}$. Then, $\bf{c}_\rm{add} = \bf{c} + \bf{c}'$ is an encryption of $m + m'$.
 
 *Proof*. Decrypt $\bf{c}_\rm{add} = (b + b', \bf{a} + \bf{a}')$. If
 
@@ -343,7 +343,7 @@ Thus we use encryptions of $s_is_j$ by $\bf{s}$. If we have ciphertexts of $s_is
 > \bf{c}_\rm{mul}^\ast = (b_\rm{mul}^\ast, \bf{a}_\rm{mul}^\ast) = (bb', b\bf{a}' + b'\bf{a}) + \sum_{i=1}^n \sum_{j=1}^n a_i a_j' \bf{w}_{i, j} \pmod q.
 > $$
 
-Note that the addition $+$ is the addition of two ${} (n+1) {}$-dimensional vectors. By plugging in $\bf{w}_{i, j} = (v_{i, j}, \bf{u}_{i, j})$, we actually have
+Note that the addition $+$ is the addition of two $(n+1)$-dimensional vectors. By plugging in $\bf{w}_{i, j} = (v_{i, j}, \bf{u}_{i, j})$, we actually have
 
 $$
 b_\rm{mul}^\ast = bb' + \sum_{i=1}^n \sum_{j=1}^n a_i a_j' v_{i, j}
@@ -405,9 +405,9 @@ so instead of encryptions of $s_i s_j$, we use encryptions of $2^k s_i s_j$.
 For convenience, let $a_{i, j} = a_i a_j'$. Now we have triple indices including $k$.
 
 > **Relinearization Keys**: for $1 \leq i, j \leq n$ and $0 \leq k < \ceil{\log q}$, perform the following.
-> - Sample $\bf{u}_{i, j, k} \la \Z_q^{n}$ and ${} e_{i, j, k} \la D_\sigma {}$.
-> - Compute ${} v_{i, j, k} = -\span{\bf{u}_{i, j, k}, \bf{s}} + 2^k \cdot s_i s_j + 2e_{i, j, k} \pmod q {}$.
-> - Output ${} \bf{w}_{i, j, k} = (v_{i, j, k}, \bf{u}_{i, j, k}) {}$.
+> - Sample $\bf{u}_{i, j, k} \la \Z_q^{n}$ and $e_{i, j, k} \la D_\sigma$.
+> - Compute $v_{i, j, k} = -\span{\bf{u}_{i, j, k}, \bf{s}} + 2^k \cdot s_i s_j + 2e_{i, j, k} \pmod q$.
+> - Output $\bf{w}_{i, j, k} = (v_{i, j, k}, \bf{u}_{i, j, k})$.
 > 
 > **Linearization**: given $\bf{c}_\rm{mul} = (bb', b\bf{a}' + b' \bf{a}, \bf{a} \otimes \bf{a}')$, $\bf{w}_{i, j, k}$ for $1 \leq i, j \leq n$ and $0 \leq k < \ceil{\log q}$, output the following.
 > 
@@ -424,7 +424,7 @@ b_\rm{mul}^\ast + \span{\bf{a}_\rm{mul}^\ast, \bf{s}} &= bb' + \sum_{i, j, k} a_
 \end{aligned}
 $$
 
-Since ${} v_{i, j, k} + \span{\bf{u}_{i, j, k}, \bf{s}} = 2^k \cdot s_i s_j + 2e_{i, j, k} \pmod q {}$, the above expression further reduces to
+Since $v_{i, j, k} + \span{\bf{u}_{i, j, k}, \bf{s}} = 2^k \cdot s_i s_j + 2e_{i, j, k} \pmod q$, the above expression further reduces to
 
 $$
 \begin{aligned}
@@ -463,7 +463,7 @@ Given $\bf{c} = (b, \bf{a}) \in \Z_q^{n+1}$, we reduce the modulus to $q' < q$ w
 
 In summary, $\bf{c}' \approx \bf{c} \cdot (q'/q)$, and $\bf{c}' = \bf{c} \pmod 2$ component-wise.
 
-We check if the noise has been reduced, and decryption results in the same message $m$. Decryption of $\bf{c}'$ is done by $r' = b' + \span{\bf{a}', \bf{s}} \pmod{q'}$, so we must prove that ${} r' \approx r \cdot (q'/q) {}$ and $r' = r \pmod 2$. Then the noise is scaled down by $q'/q$ and the message is preserved.
+We check if the noise has been reduced, and decryption results in the same message $m$. Decryption of $\bf{c}'$ is done by $r' = b' + \span{\bf{a}', \bf{s}} \pmod{q'}$, so we must prove that $r' \approx r \cdot (q'/q)$ and $r' = r \pmod 2$. Then the noise is scaled down by $q'/q$ and the message is preserved.
 
 Let $k \in \Z$ such that $b + \span{\bf{a}, \bf{s}} = r + kq$. By the choice of $b'$ and $a_i'$,
 
@@ -511,7 +511,7 @@ $$
 N^{L+1} \ra N^L \ra \cdots \ra N.
 $$
 
-When we perform $L$ levels of computation and reach modulus $q_0 = N$, we cannot perform any multiplications. We must apply [bootstrapping](../2023-12-08-bootstrapping-ckks/#bootstrapping).
+When we perform $L$ levels of computation and reach modulus $q_0 = N$, we cannot perform any multiplications. We must apply [bootstrapping](./2023-12-08-bootstrapping-ckks.md#bootstrapping).
 
 Note that without modulus switching, we need $q_L > N^{2^L}$ for $L$ levels of computation, which is very large. Since we want $q$ to be small (for the hardness of the LWE problem), modulus switching is necessary. We now only require $q_L > N^{L+1}$.
 
