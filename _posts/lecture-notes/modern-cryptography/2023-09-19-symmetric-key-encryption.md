@@ -132,7 +132,7 @@ Additional explanation available in [Modes of Operations (Internet Security)](..
 
 ### Electronic Codebook Mode (ECB)
 
-![is-03-ecb-encryption.png](../../../assets/img/posts/is-03-ecb-encryption.png)
+![is-03-ecb-encryption.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/is-03-ecb-encryption.png)
 
 - ECB mode encrypts each block with the same key.
 - Blocks are independent of each other.
@@ -140,7 +140,7 @@ Additional explanation available in [Modes of Operations (Internet Security)](..
 
 ### Ciphertext Block Chain Mode (CBC)
 
-![is-03-cbc-encryption.png](../../../assets/img/posts/is-03-cbc-encryption.png)
+![is-03-cbc-encryption.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/is-03-cbc-encryption.png)
 
 Let $X = \left\lbrace 0, 1 \right\rbrace^n$ and $E : \mathcal{K} \times X \rightarrow X$ be a **PRP**.
 
@@ -191,7 +191,7 @@ Note that if $k_1$ is the same as the key used for encrypting messages, then thi
 
 ### Counter Mode (CTR)
 
-![is-03-ctr-encryption.png](../../../assets/img/posts/is-03-ctr-encryption.png)
+![is-03-ctr-encryption.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/is-03-ctr-encryption.png)
 
 Let $F : \mathcal{K} \times X \rightarrow X$ be a secure **PRF**.
 
