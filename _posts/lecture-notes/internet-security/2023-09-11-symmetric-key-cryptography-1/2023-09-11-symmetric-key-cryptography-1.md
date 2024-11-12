@@ -5,7 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Internet Security
-path: _posts/lecture-notes/internet-security
+path: _posts/lecture-notes/internet-security/2023-09-11-symmetric-key-cryptography-1
 tags:
   - security
   - lecture-note
@@ -191,22 +191,22 @@ Let $m \in \left\lbrace 0, 1 \right\rbrace^n$ be the message to encrypt. Then ch
 - Encryption: $E(k, m) = k \oplus m$.
 - Decryption: $D(k, c) = k \oplus c$.
 
-This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-(otp)).
+This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-(otp)).
 
 ## Perfect Secrecy
 
 > **Definition.** Let $(E, D)$ be a cipher defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$. We assume that $\lvert \mathcal{K} \rvert = \lvert \mathcal{M} \rvert = \lvert \mathcal{C} \rvert$. The cipher is **perfectly secure** if for all $m \in \mathcal{M}$ and $c \in \mathcal{C}$,
-> 
+>
 > $$
 > \Pr[\mathcal{M} = m \mid \mathcal{C} = c] = \Pr[\mathcal{M} = m].
 > $$
-> 
+>
 > Or equivalently, for all $m_0, m_1 \in \mathcal{M}$, $c \in \mathcal{C}$,
-> 
+>
 > $$
 > \Pr[E(k, m _ 0) = c] = \Pr[E(k, m _ 1) = c]
 > $$ 
-> 
+>
 > where $k$ is chosen uniformly in $\mathcal{K}$.
 
 In other words, the adversary learns nothing from the ciphertext.
@@ -225,7 +225,7 @@ since for each $m$ and $c$, $k$ is determined uniquely.
 
 *Proof*. Assume not, then we can find some message $m_0 \in \mathcal{M}$ such that $m_0$ is not a decryption of some $c \in \mathcal{C}$. This is because the decryption algorithm $D$ is deterministic and $\lvert \mathcal{K} \rvert < \lvert \mathcal{M} \rvert$.
 
-For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#shannon's-theorem).
+For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/2023-09-07-otp-stream-cipher-prgs.md#shannon's-theorem).
 
 ### Two-Time Pad is Insecure
 
