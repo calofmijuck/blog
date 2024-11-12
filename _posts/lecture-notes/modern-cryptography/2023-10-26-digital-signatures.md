@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Modern Cryptography
+path: _posts/lecture-notes/modern-cryptography
 tags:
   - lecture-note
   - cryptography
@@ -17,7 +18,6 @@ image:
 attachment:
   folder: assets/img/posts/Lecture Notes/Modern Cryptography
 ---
-
 
 ## Digital Signatures
 
@@ -55,9 +55,9 @@ $$
 
 ## Secure Digital Signatures
 
-The definition is similar to the [secure MAC](../2023-09-21-macs/#secure-mac-unforgeability). The adversary can perform a **chosen message attack**, but cannot create an **existential forgery**.
+The definition is similar to the [secure MAC](./2023-09-21-macs.md#secure-mac-unforgeability). The adversary can perform a **chosen message attack**, but cannot create an **existential forgery**.
 
-![mc-10-dsig-security.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-dsig-security.png)
+![mc-10-dsig-security.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-dsig-security.png)
 
 > **Definition.** Let $\mc{S} = (G, S, V)$ be a signature scheme defined over $(\mc{M}, \Sigma)$. Given an adversary $\mc{A}$, the game goes as follows.
 > 
@@ -97,7 +97,7 @@ Any signature scheme can be made strongly binding by appending a collision resis
 
 ## Extending the Message Space
 
-We can extend the message space of a secure digital signature scheme, [as we did for MACs](../2023-09-28-hash-functions/#mac-domain-extension). Let $\mc{S} = (G, S, V)$ be a signature scheme defined over $(\mc{M}, \Sigma)$ and let $H : \mc{M}' \ra \mc{M}$ be a hash function with $\left\lvert \mc{M}' \right\lvert \geq \left\lvert \mc{M} \right\lvert$.
+We can extend the message space of a secure digital signature scheme, [as we did for MACs](./2023-09-28-hash-functions.md#mac-domain-extension). Let $\mc{S} = (G, S, V)$ be a signature scheme defined over $(\mc{M}, \Sigma)$ and let $H : \mc{M}' \ra \mc{M}$ be a hash function with $\left\lvert \mc{M}' \right\lvert \geq \left\lvert \mc{M} \right\lvert$.
 
 Define a new signature scheme $\mc{S}' = (G, S', V')$ over $(\mc{M}', \Sigma)$ as
 
@@ -184,7 +184,7 @@ This scheme is originally from the **Schnorr identification protocol**.
 
 Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$. We consider an interaction between two parties, prover $P$ and a verifier $V$. The prover has a secret $\alpha \in \Z_q$ and the verification key is $u = g^\alpha$. **$P$ wants to convince $V$ that he knows $\alpha$, but does not want to reveal $\alpha$**.
 
-![mc-10-schnorr-identification.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
+![mc-10-schnorr-identification.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
 
 The protocol $\mc{I}_\rm{sch} = (G, P, V)$ works as follows.
 
@@ -206,7 +206,7 @@ We must check a few things.
 	- We can repeat this many times then the probability of reject is $1 - \frac{1}{q^n} \ra 1$.
 	- Thus $q$ (the size of the challenge space) must be large.
 - **Zero-knowledge**: $V$ learns no information about $x$ from the conversation.
-	- This will be revisited later. See [here](../2023-11-07-sigma-protocols/#the-schnorr-identification-protocol-revisited).
+	- This will be revisited later. See [here](./2023-11-07-sigma-protocols.md#the-schnorr-identification-protocol-revisited).
 
 > **Theorem.** The Schnorr identification protocol is secure if the DL problem is hard, and the challenge space $\mc{C}$ is large.
 
@@ -239,7 +239,7 @@ Schnorr's scheme was protected by a patent, so NIST opted for a ad-hoc signature
 
 How would you trust public keys? We introduce **digital certificates** for this.
 
-Read in [public key infrastructure (Internet Security)](../../internet-security/2023-10-16-pki).
+Read in [public key infrastructure (Internet Security)](../../Lecture%20Notes/Internet%20Security/2023-10-16-pki.md).
 
 [^1]: A Graduate Course in Applied Cryptography
-[^2]: By using the [Fiat-Shamir transform](../2023-11-07-sigma-protocols/#the-fiat-shamir-transform).
+[^2]: By using the [Fiat-Shamir transform](./2023-11-07-sigma-protocols.md#the-fiat-shamir-transform).

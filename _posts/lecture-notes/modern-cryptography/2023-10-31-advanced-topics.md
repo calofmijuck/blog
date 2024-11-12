@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Modern Cryptography
+path: _posts/lecture-notes/modern-cryptography
 tags:
   - lecture-note
   - cryptography
@@ -13,7 +14,6 @@ title: 11. Advanced Topics
 date: 2023-10-31
 github_title: 2023-10-31-advanced-topics
 ---
-
 
 ## Ciphertext Indistinguishability
 

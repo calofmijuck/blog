@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Modern Cryptography
+path: _posts/lecture-notes/modern-cryptography
 tags:
   - lecture-note
   - cryptography
@@ -14,7 +15,6 @@ title: 8. Number Theory
 date: 2023-10-05
 github_title: 2023-10-05-number-theory
 ---
-
 
 ## Background
 

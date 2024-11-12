@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Modern Cryptography
+path: _posts/lecture-notes/modern-cryptography
 tags:
   - lecture-note
   - cryptography
@@ -106,7 +107,7 @@ Now we want to construct collision resistant hash functions that work for arbitr
 
 The Merkle-Damgård transform gives as a way to extend our input domain of the hash function by iterating the function.
 
-![mc-06-merkle-damgard.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-merkle-damgard.png)
+![mc-06-merkle-damgard.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-merkle-damgard.png)
 
 > **Definition.** Let $h : \left\lbrace 0, 1 \right\rbrace^n \times \left\lbrace 0, 1 \right\rbrace^l \rightarrow \left\lbrace 0, 1 \right\rbrace^n$ be a hash function. The **Merkle-Damgård function derived from $h$** is a function $H$ that works as follows.
 > 
@@ -149,9 +150,9 @@ See Joux's attack.[^2]
 
 Now we only have to build a collision resistant compression function. We can build these functions from either a block cipher, or by using number theoretic primitives.
 
-Number theoretic primitives will be shown after we learn some number theory.[^3] An example is shown in [collision resistance using DL problem (Modern Cryptography)](../2023-10-03-key-exchange#collision-resistance-based-on-dl-problem).
+Number theoretic primitives will be shown after we learn some number theory.[^3] An example is shown in [collision resistance using DL problem (Modern Cryptography)](./2023-10-03-key-exchange.md#collision-resistance-based-on-dl-problem).
 
-![mc-06-davies-meyer.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-davies-meyer.png)
+![mc-06-davies-meyer.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-davies-meyer.png)
 
 > **Definition.** Let $\mathcal{E} = (E, D)$ be a block cipher over $(\mathcal{K}, X, X)$ where $X = \left\lbrace 0, 1 \right\rbrace^n$. The **Davies-Meyer compression function derived from $E$** maps inputs in $X \times \mathcal{K}$ to outputs in $X$, defined as follows.
 > 
@@ -194,7 +195,7 @@ We needed a complicated construction for MACs that work on long messages. We mig
 
 Here are a few approaches. Suppose that a compression function $h$ is given and $H$ is a Merkle-Damgård function derived from $h$.
 
-Recall that [we can construct a MAC scheme from a PRF](../2023-09-21-macs#mac-constructions-from-prfs), so either we want a secure PRF or a secure MAC scheme.
+Recall that [we can construct a MAC scheme from a PRF](./2023-09-21-macs.md#mac-constructions-from-prfs), so either we want a secure PRF or a secure MAC scheme.
 
 #### Prepending the Key
 
@@ -214,9 +215,9 @@ Define $S((k_1,k_2), m) = H(k_2 \parallel H(k_1 \parallel m))$. This can also be
 
 This can be thought of as blocking the length extension attack from prepending the key method.
 
-### HMAC
+### HMAC Definition
 
-![mc-06-hmac.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-hmac.png)
+![mc-06-hmac.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-hmac.png)
 
 This is a variant of the two-key nest, but the difference is that the keys $k_1', k_2'$ are not independent. Choose a key $k \leftarrow \mathcal{K}$, and set
 

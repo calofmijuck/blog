@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Modern Cryptography
+path: _posts/lecture-notes/modern-cryptography
 tags:
   - lecture-note
   - cryptography
@@ -53,7 +54,7 @@ Now we define a stronger notion of security against **chosen ciphertext attacks*
 
 None of the encryption schemes already seen thus far is CCA secure.
 
-Recall a [CPA secure construction from PRF](../2023-09-19-symmetric-key-encryption#secure-construction-from-prf). This scheme is not CCA secure. Suppose that the adversary is given $c^* = (r, F(k, r) \oplus m_b)$. Then it can request a decryption for $c' = (r, s')$ for some $s'$ and receive $m' = s' \oplus F(k, r)$. Then $F(k, r) = m' \oplus s'$, so the adversary can successfully recover $m_b$.
+Recall a [CPA secure construction from PRF](./2023-09-19-symmetric-key-encryption.md#secure-construction-from-prf). This scheme is not CCA secure. Suppose that the adversary is given $c^* = (r, F(k, r) \oplus m_b)$. Then it can request a decryption for $c' = (r, s')$ for some $s'$ and receive $m' = s' \oplus F(k, r)$. Then $F(k, r) = m' \oplus s'$, so the adversary can successfully recover $m_b$.
 
 In general, any encryption scheme that allows ciphertexts to be *manipulated* in a controlled way cannot be CCA secure.
 
@@ -83,7 +84,7 @@ The attacker shouldn't be able to create a new ciphertext that decrypts properly
 
 In this case, we fix the decryption algorithm so that $D : \mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M} \cup \left\lbrace \bot \right\rbrace$, where $\bot$ means that the ciphertext was rejected.
 
-![mc-05-ci.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-ci.png)
+![mc-05-ci.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-ci.png)
 
 > **Definition.** Let $\mathcal{E} = (E, D)$ be a cipher defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$. Given an adversary $\mathcal{A}$, the security game goes as follows.
 > 
@@ -138,7 +139,7 @@ Most natural constructions of CCA secure schemes satisfy AE, so we don't need to
 
 We want to combine CPA secure scheme and strongly secure MAC to get AE. Rather than focusing on the internal structure of the scheme, we want a general method to compose these two secure schemes so that we can get a AE secure scheme. We will see 3 examples.
 
-![mc-05-etm-mte.png](/assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-etm-mte.png)
+![mc-05-etm-mte.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-05-etm-mte.png)
 
 ### Encrypt-and-MAC (E&M)
 
