@@ -14,9 +14,9 @@ title: 16. The GMW Protocol
 date: 2023-11-16
 github_title: 2023-11-16-gmw-protocol
 image:
-  path: assets/img/posts/Lecture Notes/Modern Cryptography/mc-16-beaver-triple.png
+  path: assets/img/posts/lecture-notes/modern-cryptography/mc-16-beaver-triple.png
 attachment:
-  folder: assets/img/posts/Lecture Notes/Modern Cryptography
+  folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
 There are two types of MPC protocols, **generic** and **specific**. Generic protocols can compute arbitrary functions. [Garbled circuits](./2023-11-14-garbled-circuits.md#garbled-circuits) were generic protocols, since it can be used to compute any boolean circuits. In contrast, the [summation protocol](./2023-11-09-secure-mpc.md#example-secure-summation) is a specific protocol that can only be used to compute a specific function. Note that generic protocols are not necessarily better, since specific protocols are much more efficient.
@@ -148,7 +148,7 @@ Indeed, $z_1, z_2$ are shares of $z$.[^2] See also Exercise 23.5.[^3]
 
 Now, in the actual computation of AND gates, proceed as follows.
 
-![mc-16-beaver-triple.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-16-beaver-triple.png)
+![mc-16-beaver-triple.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-16-beaver-triple.png)
 
 > Each $P_i$ has a share of inputs $a_i, b_i$ and a Beaver triple $(x_i, y_i, z_i)$.
 > 1. Each $P_i$ computes $u_i = a_i + x_i$, $v_i = b_i + y_i$.
