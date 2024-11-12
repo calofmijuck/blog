@@ -2,11 +2,16 @@
 share: true
 toc: true
 math: true
-categories: [Mathematics, Coq]
-tags: [math, coq, proof-verification]
-title: "Rules of Inference with Coq"
-date: "2023-07-08"
-github_title: "2023-07-08-rules-of-inference"
+categories:
+  - Mathematics
+  - Coq
+tags:
+  - math
+  - coq
+  - proof-verification
+title: Rules of Inference with Coq
+date: 2023-07-08
+github_title: 2023-07-08-rules-of-inference
 ---
 
 This is a list of proofs with Coq, for each rule of inference stated in [List of Rules of Inference (Wikipedia)](https://en.wikipedia.org/wiki/List_of_rules_of_inference)
@@ -188,7 +193,7 @@ Lemma distributive_conjunction : forall P Q R : Prop,
 Proof.
   split; intros.
   - destruct H as [H [H1 | H1]]; auto.
-  - destruct H as [ [H1 H2](H1%20H2.md); auto.
+  - destruct H as [[H1 H2] | [H1 H2]]; auto.
 Qed.
 
 Lemma material_implication_converse : forall P Q : Prop,
