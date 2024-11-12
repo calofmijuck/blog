@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Internet Security
+path: _posts/lecture-notes/internet-security
 tags:
   - lecture-note
   - security
@@ -20,7 +21,7 @@ github_title: 2023-09-25-modular-arithmetic-1
 ## Divisibility
 
 > **Definition.** Let $a, b, c \in \mathbb{Z}$ such that $a = bc$. Then,
-> 
+>
 > 1. $b$ and $c$ are said to **divide** $a$, and are called **factors** of $a$.
 > 2. $a$ is said to be a **multiple** of $b$ and $c$.
 
@@ -29,7 +30,7 @@ github_title: 2023-09-25-modular-arithmetic-1
 These are simple lemmas for checking divisibility.
 
 > **Lemma.** Let $a, b, c \in \mathbb{Z}$.
-> 
+>
 >  1. If $a \mid b$ and $a \mid c$, then $a \mid (b + c)$.
 >  2. If $a \mid b$, then $a \mid bc$.
 >  3. If $a \mid b$ and $b \mid c$, then $a \mid c$.
@@ -88,7 +89,7 @@ As a congruence, it means that $a, b$ are in the same *equivalence class*.[^2]
 Properties of modulo operation.
 
 > **Lemma.** Suppose that $a \equiv b \pmod n$ and $c \equiv d \pmod n$. Then, the following hold.
-> 
+>
 > 1. $a + c \equiv (b + d) \pmod n$.
 > 2. $ac \equiv bd \pmod n$.
 > 3. $a^k \equiv b^k \pmod n$.
@@ -143,7 +144,7 @@ Note that $\mathbb{Z}_n$ is closed under addition and multiplication.
 ### Identity
 
 > **Definition.** For a binary operation $\ast$ defined on a set $S$, $e$ is the **identity** if
-> 
+>
 > $$
 > \forall a \in S,\, a * e = e * a = a.
 > $$
@@ -153,11 +154,11 @@ In $\mathbb{Z}_n$, the additive identity is $0$, the multiplicative identity is 
 ### Inverse
 
 > **Definition.** For a binary operation $\ast$ defined on a set $S$, let $e$ be the identity. $x$ is the **inverse of $a$** if
-> 
+>
 > $$
 > x * a = a * x = e.
 > $$
-> 
+>
 > We write $x = a^{-1}$.
 
 In the language of modular arithmetic, $x$ is the inverse of $a$ if

@@ -5,6 +5,7 @@ math: false
 categories:
   - Lecture Notes
   - Internet Security
+path: _posts/lecture-notes/internet-security
 tags:
   - network
   - security
@@ -13,9 +14,9 @@ title: 01. Security Introduction
 date: 2023-09-10
 github_title: 2023-09-10-security-intro
 image:
-  path: /assets/img/posts/Lecture Notes/Internet Security/is-01-cryptosystem.png
-attachment: 
-  folder: assets/img/posts/Lecture Notes/Internet Security
+  path: /assets/img/posts/lecture-notes/internet-security/is-01-cryptosystem.png
+attachment:
+  folder: assets/img/posts/lecture-notes/internet-security
 ---
 
 > Every program has at least two purposes: the one for which it was written, and another for which it wasn't. - Alan J. Perlis
@@ -155,7 +156,7 @@ There are many ways of achieving security.
 
 ### Basics of a Cryptosystem
 
-![is-01-cryptosystem.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-01-cryptosystem.png)
+![is-01-cryptosystem.png](../../../assets/img/posts/lecture-notes/internet-security/is-01-cryptosystem.png)
 
 - A **message** in *plaintext* is given to an **encryption algorithm**.
 - The encryption algorithm uses an **encryption key** to create a *ciphertext*.

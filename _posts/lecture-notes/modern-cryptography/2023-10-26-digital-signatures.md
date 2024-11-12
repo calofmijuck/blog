@@ -14,9 +14,9 @@ title: 10. Digital Signatures
 date: 2023-10-26
 github_title: 2023-10-26-digital-signatures
 image:
-  path: assets/img/posts/Lecture Notes/Modern Cryptography/mc-10-dsig-security.png
+  path: assets/img/posts/lecture-notes/modern-cryptography/mc-10-dsig-security.png
 attachment:
-  folder: assets/img/posts/Lecture Notes/Modern Cryptography
+  folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
 ## Digital Signatures
@@ -57,7 +57,7 @@ $$
 
 The definition is similar to the [secure MAC](./2023-09-21-macs.md#secure-mac-unforgeability). The adversary can perform a **chosen message attack**, but cannot create an **existential forgery**.
 
-![mc-10-dsig-security.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-dsig-security.png)
+![mc-10-dsig-security.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-10-dsig-security.png)
 
 > **Definition.** Let $\mc{S} = (G, S, V)$ be a signature scheme defined over $(\mc{M}, \Sigma)$. Given an adversary $\mc{A}$, the game goes as follows.
 > 
@@ -184,7 +184,7 @@ This scheme is originally from the **Schnorr identification protocol**.
 
 Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$. We consider an interaction between two parties, prover $P$ and a verifier $V$. The prover has a secret $\alpha \in \Z_q$ and the verification key is $u = g^\alpha$. **$P$ wants to convince $V$ that he knows $\alpha$, but does not want to reveal $\alpha$**.
 
-![mc-10-schnorr-identification.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
+![mc-10-schnorr-identification.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-10-schnorr-identification.png)
 
 The protocol $\mc{I}_\rm{sch} = (G, P, V)$ works as follows.
 
@@ -239,7 +239,7 @@ Schnorr's scheme was protected by a patent, so NIST opted for a ad-hoc signature
 
 How would you trust public keys? We introduce **digital certificates** for this.
 
-Read in [public key infrastructure (Internet Security)](../../Lecture%20Notes/Internet%20Security/2023-10-16-pki.md).
+Read in [public key infrastructure (Internet Security)](../internet-security/2023-10-16-pki.md).
 
 [^1]: A Graduate Course in Applied Cryptography
 [^2]: By using the [Fiat-Shamir transform](./2023-11-07-sigma-protocols.md#the-fiat-shamir-transform).

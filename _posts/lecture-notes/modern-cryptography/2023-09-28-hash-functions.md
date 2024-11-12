@@ -14,9 +14,9 @@ title: 6. Hash Functions
 date: 2023-09-28
 github_title: 2023-09-28-hash-functions
 image:
-  path: assets/img/posts/Lecture Notes/Modern Cryptography/mc-06-merkle-damgard.png
+  path: assets/img/posts/lecture-notes/modern-cryptography/mc-06-merkle-damgard.png
 attachment:
-  folder: assets/img/posts/Lecture Notes/Modern Cryptography
+  folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
 Hash functions are functions that take some input an compress them to produce an output of fixed size, usually just called *hash* or *digest*. A desired property of hash function is **collision resistance**.
@@ -107,7 +107,7 @@ Now we want to construct collision resistant hash functions that work for arbitr
 
 The Merkle-Damgård transform gives as a way to extend our input domain of the hash function by iterating the function.
 
-![mc-06-merkle-damgard.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-merkle-damgard.png)
+![mc-06-merkle-damgard.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-06-merkle-damgard.png)
 
 > **Definition.** Let $h : \left\lbrace 0, 1 \right\rbrace^n \times \left\lbrace 0, 1 \right\rbrace^l \rightarrow \left\lbrace 0, 1 \right\rbrace^n$ be a hash function. The **Merkle-Damgård function derived from $h$** is a function $H$ that works as follows.
 > 
@@ -152,7 +152,7 @@ Now we only have to build a collision resistant compression function. We can bui
 
 Number theoretic primitives will be shown after we learn some number theory.[^3] An example is shown in [collision resistance using DL problem (Modern Cryptography)](./2023-10-03-key-exchange.md#collision-resistance-based-on-dl-problem).
 
-![mc-06-davies-meyer.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-davies-meyer.png)
+![mc-06-davies-meyer.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-06-davies-meyer.png)
 
 > **Definition.** Let $\mathcal{E} = (E, D)$ be a block cipher over $(\mathcal{K}, X, X)$ where $X = \left\lbrace 0, 1 \right\rbrace^n$. The **Davies-Meyer compression function derived from $E$** maps inputs in $X \times \mathcal{K}$ to outputs in $X$, defined as follows.
 > 
@@ -217,7 +217,7 @@ This can be thought of as blocking the length extension attack from prepending t
 
 ### HMAC Definition
 
-![mc-06-hmac.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-06-hmac.png)
+![mc-06-hmac.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-06-hmac.png)
 
 This is a variant of the two-key nest, but the difference is that the keys $k_1', k_2'$ are not independent. Choose a key $k \leftarrow \mathcal{K}$, and set
 

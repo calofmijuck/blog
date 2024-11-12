@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Internet Security
+path: _posts/lecture-notes/internet-security
 tags:
   - lecture-note
   - security

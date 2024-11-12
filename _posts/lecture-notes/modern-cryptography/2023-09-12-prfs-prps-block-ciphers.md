@@ -14,9 +14,9 @@ title: 2. PRFs, PRPs and Block Ciphers
 date: 2023-09-12
 github_title: 2023-09-12-prfs-prps-block-ciphers
 image:
-  path: assets/img/posts/Lecture Notes/Modern Cryptography/mc-02-block-cipher.png
+  path: assets/img/posts/lecture-notes/modern-cryptography/mc-02-block-cipher.png
 attachment:
-  folder: assets/img/posts/Lecture Notes/Modern Cryptography
+  folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
 ## Pseudorandom Functions (PRF)
@@ -119,7 +119,7 @@ This is a matter of *collisions* of $f(x_i)$, so we use the facts from the birth
 
 A **block cipher** is actually a different name for PRPs. Since a PRP $E$ is a keyed function, applying $E(k, x)$ is in fact encryption, and applying its inverse is decryption.
 
-![mc-02-block-cipher.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-02-block-cipher.png)
+![mc-02-block-cipher.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-block-cipher.png)
 
 Block ciphers commonly have the following form.
 - A key $k$ is chosen uniformly from $\left\lbrace 0, 1 \right\rbrace^s$.
@@ -141,7 +141,7 @@ Block ciphers commonly have the following form.
 
 Since block ciphers are PRPs, we have to build an invertible function. Suppose we are given **any** functions $F_1, \dots, F_d : \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^n$. Can we build an **invertible** function $F : \left\lbrace 0, 1 \right\rbrace^{2n} \rightarrow \left\lbrace 0, 1 \right\rbrace^{2n}$?
 
-![mc-02-feistel-network.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-02-feistel-network.png)
+![mc-02-feistel-network.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-feistel-network.png)
 
 It turns out the answer is yes. Given an $2n$-bit long input, $L_0$ and $R_0$ denote the left and right halves ($n$ bits) of the input, respectively. Define
 
@@ -161,7 +161,7 @@ Note that we did not require $F_i$ to be invertible. We can build invertible fun
 
 In DES, the function $F_i$ is the DES round function.
 
-![mc-02-des-round.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-02-des-round.png)
+![mc-02-des-round.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-des-round.png)
 
 The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunks. Each chunk is expanded to $6$ bits using $E$. Now, we have 48 bits of data, so apply XOR with the key for this round. Next, each $6$-bit block is compressed back to $4$ bits using a S-box. Finally, there is a permutation $P$ at the end, resulting in $32$ bit data.
 
@@ -169,7 +169,7 @@ The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunk
 
 DES uses $56$ bit keys that generate $16$ rounds keys. The diagram below shows that DES has 16-round Feistel networks.
 
-![mc-02-DES.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-02-DES.png)
+![mc-02-DES.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-DES.png)
 
 The input goes through initial/final permutation, which are inverses of each other. These have no cryptographic significance, and just for engineering.
 
@@ -177,7 +177,7 @@ The input goes through initial/final permutation, which are inverses of each oth
 
 DES is not secure, since key space and block length is too small. Thankfully, we have a replacement called the **advanced encryption standard** (AES).
 
-![mc-02-aes-128.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-02-aes-128.png)
+![mc-02-aes-128.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-aes-128.png)
 
 - DES key only had $56$ bits, so DES was broken in the 1990s
 - NIST standardized AES in 2001, based on Rijndael cipher
@@ -255,7 +255,7 @@ Then the key space has increased (exponentially). As for 2DES, the key space is 
 
 Unfortunately, 2DES is only secure as DES, with the attack strategy called **meet in the middle**. The idea is that if $c = E(k_1, E(k_2, m))$, then $D(k_1, c) = E(k_2, m)$.
 
-![mc-02-2des-mitm.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-02-2des-mitm.png)
+![mc-02-2des-mitm.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-2des-mitm.png)
 
 Since we have the plaintext and the ciphertext, we first build a table of $(k, E(k_2, m))$ over $k_2 \in \mathcal{K}$ and sort by $E(k_2, m)$. Next, we check if $D(k_1, c)$ is in the table for all $k_1 \in \mathcal{K}$.
 

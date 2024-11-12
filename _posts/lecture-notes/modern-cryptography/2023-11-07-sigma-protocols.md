@@ -14,9 +14,9 @@ title: 13. Sigma Protocols
 date: 2023-11-07
 github_title: 2023-11-07-sigma-protocols
 image:
-  path: assets/img/posts/Lecture Notes/Modern Cryptography/mc-13-sigma-protocol.png
+  path: assets/img/posts/lecture-notes/modern-cryptography/mc-13-sigma-protocol.png
 attachment:
-  folder: assets/img/posts/Lecture Notes/Modern Cryptography
+  folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
 The previous [3-coloring example](./2023-11-02-zkp-intro.md#example-3-coloring) certainly works as a zero knowledge proof, but is quite slow, and requires a lot of interaction. There are efficient protocols for interactive proofs, we will study sigma protocols.
@@ -27,7 +27,7 @@ The previous [3-coloring example](./2023-11-02-zkp-intro.md#example-3-coloring) 
 
 > **Definition.** An **effective relation** is a binary relation $\mc{R} \subset \mc{X} \times \mc{Y}$, where $\mc{X}$, $\mc{Y}$, $\mc{R}$ are efficiently recognizable finite sets. Elements of $\mc{Y}$ are called **statements**. If $(x, y) \in \mc{R}$, then $x$ is called a **witness for** $y$.
 
-![mc-13-sigma-protocol.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-sigma-protocol.png)
+![mc-13-sigma-protocol.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-13-sigma-protocol.png)
 
 > **Definition.** Let $\mc{R} \subset \mc{X} \times \mc{Y}$ be an effective relation. A **sigma protocol** for $\mc{R}$ is a pair of algorithms $(P, V)$ satisfying the following.
 > 
@@ -107,7 +107,7 @@ Also note that **the simulator is free to generate the messages in any convenien
 
 The Schnorr identification protocol is actually a sigma protocol. Refer to [Schnorr identification protocol (Modern Cryptography)](./2023-10-26-digital-signatures.md#the-schnorr-identification-protocol) for the full description.
 
-![mc-10-schnorr-identification.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-10-schnorr-identification.png)
+![mc-10-schnorr-identification.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-10-schnorr-identification.png)
 
 > The pair $(P, V)$ is a sigma protocol for the relation $\mc{R} \subset \mc{X} \times \mc{Y}$ where
 > 
@@ -165,7 +165,7 @@ $$
 
 goes as follows.
 
-![mc-13-okamoto.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-okamoto.png)
+![mc-13-okamoto.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-13-okamoto.png)
 
 > 1. $P$ computes random $\alpha_t, \beta_t \la \bb{Z}_q$ and sends commitment $u_t \la g^{\alpha_t}h^{\beta_t}$ to $V$.
 > 2. $V$ computes challenge $c \la \mc{C}$ and sends it to $P$.
@@ -192,7 +192,7 @@ $$
 
 goes as follows.
 
-![mc-13-chaum-pedersen.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-chaum-pedersen.png)
+![mc-13-chaum-pedersen.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-13-chaum-pedersen.png)
 
 > 1. $P$ computes random $\beta_t \la \bb{Z}_q$ and sends commitment $v_t \la g^{\beta_t}$, $w_t \la u^{\beta_t}$ to $V$.
 > 2. $V$ computes challenge $c \la \mc{C}$ and sends it to $P$.
@@ -223,7 +223,7 @@ $$
 
 goes as follows.
 
-![mc-13-gq-protocol.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-13-gq-protocol.png)
+![mc-13-gq-protocol.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-13-gq-protocol.png)
 
 > 1. $P$ computes random $x_t \la \bb{Z}_n^{\ast}$ and sends commitment $y_t \la x_t^e$ to $V$.
 > 2. $V$ computes challenge $c \la \mc{C}$ and sends it to $P$.

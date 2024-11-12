@@ -5,6 +5,7 @@ math: true
 categories:
   - Lecture Notes
   - Internet Security
+path: _posts/lecture-notes/internet-security
 tags:
   - lecture-note
   - security
@@ -13,9 +14,9 @@ title: 03. Symmetric Key Cryptography (2)
 date: 2023-09-18
 github_title: 2023-09-18-symmetric-key-cryptography-2
 image:
-  path: /assets/img/posts/Lecture Notes/Internet Security/is-03-feistel-function.png
-attachment: 
-  folder: assets/img/posts/Lecture Notes/Internet Security
+  path: /assets/img/posts/lecture-notes/internet-security/is-03-feistel-function.png
+attachment:
+  folder: assets/img/posts/lecture-notes/internet-security
 ---
 
 ## Block Cipher Overview
@@ -63,7 +64,7 @@ $$
 
 #### The Feistel Function
 
-![is-03-feistel-function.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-feistel-function.png)
+![is-03-feistel-function.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-feistel-function.png)
 
 The Feistel function takes $32$ bit data and divides it into eight $4$ bit chunks. Each chunk is expanded to $6$ bits using a P-box. Now, we have 48 bits of data, so apply XOR with the key for this round. Next, each $6$-bit block is compressed back to $4$ bits using a S-box. Finally, there is a (straight) permutation at the end, resulting in $32$ bit data.
 
@@ -179,7 +180,7 @@ AES, DES use fixed block size for encryption. How do we encrypt longer messages?
 
 ### Electronic Codebook Mode (ECB)
 
-![is-03-ecb-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ecb-encryption.png)
+![is-03-ecb-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-ecb-encryption.png)
 
 - Codebook is a mapping table.
 - For the $i$-th plaintext block, we use key $k$ to encrypt and obtain the $i$-th ciphertext block.
@@ -198,9 +199,9 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Cipher Block Chaining Mode (CBC)
 
-![is-03-cbc-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cbc-encryption.png)
+![is-03-cbc-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-cbc-encryption.png)
 
-- Two identical messages produce to different ciphertexts.
+- Two identical messages produce two different ciphertexts.
 	- This prevents chosen plaintext attacks
 - Blocks are linked together in the encryption process
 	- **Each previous cipher block is chained with current block**
@@ -238,17 +239,18 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- **IV changes should be unpredictable**
 - On IV reuse, same message will generate the same ciphertext if key isn't changed
 - If IV is predictable, CBC is vulnerable to chosen plaintext attacks.
-	- Define Eve's new message $m' = \mathrm{IV} _ {\mathrm{E}} \oplus \mathrm{IV} _ {\mathrm{A}} \oplus g$, where
-		- $\mathrm{IV} _ \mathrm{A}$ and $\mathrm{IV} _ \mathrm{E}$ are Alice and Eve's IVs
+	- Suppose Eve obtains $(\mathrm{IV}_1, E_k(\mathrm{IV}_1 \oplus m))$.
+	- Define Eve's new message $m' = \mathrm{IV} _  {2} \oplus \mathrm{IV} _ {1} \oplus g$, where
+		- $\mathrm{IV} _ 2$ is the guess of the next IV, and
 		- $g$ is a guess of Alice's original message $m$.
-	- Since Eve can encrypt any message, $m'$ can be encrypted.
-	- $c' = E _ k(\mathrm{IV} _ \mathrm{E} \oplus m') = E _ k(\mathrm{IV} _ \mathrm{A} \oplus g)$.
-	- Then Eve can compare $c'$ and the original $c = E _ k(\mathrm{IV} _ \mathrm{A} \oplus m)$ to recover $m$.
+	- Eve requests an encryption of $m'$
+		- $c' = E _ k(\mathrm{IV} _ 2 \oplus m') = E _ k(\mathrm{IV} _ \mathrm{1} \oplus g)$.
+	- Then Eve can compare $c'$ and the original $c = E _ k(\mathrm{IV} _ \mathrm{1} \oplus m)$ to recover $m$.
 	- Useful when there are not many cases for $m$ (or most of the message is already known).
 
 ### Cipher Feedback Mode (CFB)
 
-![is-03-cfb-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-cfb-encryption.png)
+![is-03-cfb-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-cfb-encryption.png)
 
 - The message is treated as a stream of bits; similar to stream cipher
 - **Result of the encryption is fed to the next stage.**
@@ -283,7 +285,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Output Feedback Mode (OFB)
 
-![is-03-ofb-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ofb-encryption.png)
+![is-03-ofb-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-ofb-encryption.png)
 
 - Very similar to stream cipher.
 - Initialization vector is used as a seed to generate the key stream.
@@ -316,7 +318,7 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 
 ### Counter Mode (CTR)
 
-![is-03-ctr-encryption.png](/assets/img/posts/Lecture%20Notes/Internet%20Security/is-03-ctr-encryption.png)
+![is-03-ctr-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-ctr-encryption.png)
 
 - Without chaining, we use a counter (typically incremented by $1$).
 	- Counter starts from the initialization vector.
