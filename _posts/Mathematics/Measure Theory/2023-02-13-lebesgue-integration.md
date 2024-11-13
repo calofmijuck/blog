@@ -2,11 +2,16 @@
 share: true
 toc: true
 math: true
-categories: [Mathematics, Measure Theory]
-tags: [math, analysis, measure-theory]
-title: "05. Lebesgue Integration"
-date: "2023-02-13"
-github_title: "2023-02-13-lebesgue-integration"
+categories:
+  - Mathematics
+  - Measure Theory
+tags:
+  - math
+  - analysis
+  - measure-theory
+title: 05. Lebesgue Integration
+date: 2023-02-13
+github_title: 2023-02-13-lebesgue-integration
 image:
   path: /assets/img/posts/Mathematics/Measure Theory/mt-05.png
 attachment:
@@ -19,9 +24,9 @@ attachment:
 
 $E \in \mathscr{F}$ 일 때, 적분을 정의하기 위해
 
-$$\mathscr{F} _ E = \lbrace A \cap E : A \in \mathscr{F}\rbrace, \quad \mu_E = \mu|_ {\mathscr{F} _ E}$$
+$$\mathscr{F}_E = \lbrace A \cap E : A \in \mathscr{F}\rbrace, \quad \mu_E = \mu|_ {\mathscr{F}_E}$$
 
-로 설정하고 $\int = \int_E$ 로 두어 ($X, \mathscr{F} _ E, \mu_E$) 위에서 적분을 정의할 수 있습니다. 그러나 굳이 이렇게 하지 않아도 됩니다. $\int = \int_X$ 로 두고
+로 설정하고 $\int = \int_E$ 로 두어 ($X, \mathscr{F}_E, \mu_E$) 위에서 적분을 정의할 수 있습니다. 그러나 굳이 이렇게 하지 않아도 됩니다. $\int = \int_X$ 로 두고
 
 $$\int_E f \,d{\mu} = \int f \chi _E \,d{\mu}$$
 
@@ -45,7 +50,7 @@ $$\int \chi_A \,d{\mu} = \mu(A)$$
 
 다음으로 양의 값을 갖는 measurable simple function에 대해 정의합니다. $f = f^+ - f^-$ 에서 $f^+, f^-$ 모두 양의 값을 갖기 때문에 양의 값에 대해 먼저 정의합니다.
 
-**(Step 2)** $f: X \rightarrow[0, \infty)$ 가 measurable simple function이라 하자. 그러면 $A_k \subseteq\mathscr{F}$ 이면서 쌍마다 서로소인 집합열 $\left( A_k \right) _ {k=1}^n$과 $a_k \in [0, \infty)$ 인 수열 $\left( a_k \right) _ {k=1}^n$을 잡아
+**(Step 2)** $f: X \rightarrow[0, \infty)$ 가 measurable simple function이라 하자. 그러면 $A_k \subseteq\mathscr{F}$ 이면서 쌍마다 서로소인 집합열 $\left( A_k \right)_{k=1}^n$과 $a_k \in [0, \infty)$ 인 수열 $\left( a_k \right)_{k=1}^n$을 잡아
 
 $$f(x) = \sum_ {k=1}^n a_k \chi_ {A_k}$$
 
@@ -121,7 +126,7 @@ $$\int f \,d{\mu} = \sup\left\lbrace \int h \,d{\mu}: 0\leq h \leq f, h \text{ m
 
 $f$보다 작은 measurable simple function의 적분값 중 상한을 택하겠다는 의미입니다. $f$보다 작은 measurable simple function으로 $f$를 근사한다고도 이해할 수 있습니다. 또한 $f$가 simple function이면 Step 2의 정의와 일치하는 것을 알 수 있습니다.
 
-![mt-05.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-05.png)
+![mt-05.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-05.png)
 
 $f \geq 0$ 가 measurable이면 증가하는 measurable simple 함수열 $s_n$이 존재함을 지난 번에 보였습니다. 이 $s_n$에 대하여 적분값을 계산해보면
 
