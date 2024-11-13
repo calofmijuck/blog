@@ -42,7 +42,7 @@ attachment:
 
 - Standardized in 1979.
 - Block size is $64$ bits ($8$ bytes)
-- $64$ bits input $\ra$ $64$ bits output
+- $64$ bits input $\rightarrow$ $64$ bits output
 - Key is $56$ bits, and every $8$th bit is a parity bit.
 	- Thus $64$ bits in total
 
