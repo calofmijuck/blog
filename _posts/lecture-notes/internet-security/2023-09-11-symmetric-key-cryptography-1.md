@@ -98,7 +98,7 @@ To attack this scheme, find the key length by [*index of coincidence*](https://e
 #### Hill Cipher
 
 - A polyalphabetic substitution
-- A key is a *invertible* matrix $K = (k _ {ij}) _ {m \times m}$ where $k _ {ij} \in \mathbb{Z} _ {26}$.
+- A key is a *invertible* matrix $K = (k_{ij})_{m \times m}$ where $k_{ij} \in \mathbb{Z}_{26}$.
 - Encryption/decryption is done by multiplying $K$ or $K^{-1}$.
 
 This scheme is vulnerable to known plaintext attack, since the equation can be solved for $K$.
@@ -191,7 +191,7 @@ Let $m \in \left\lbrace 0, 1 \right\rbrace^n$ be the message to encrypt. Then ch
 - Encryption: $E(k, m) = k \oplus m$.
 - Decryption: $D(k, c) = k \oplus c$.
 
-This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/#one-time-pad-(otp)).
+This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-(otp)).
 
 ## Perfect Secrecy
 
@@ -204,7 +204,7 @@ This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)
 > Or equivalently, for all $m_0, m_1 \in \mathcal{M}$, $c \in \mathcal{C}$,
 >
 > $$
-> \Pr[E(k, m _ 0) = c] = \Pr[E(k, m _ 1) = c]
+> \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c]
 > $$ 
 >
 > where $k$ is chosen uniformly in $\mathcal{K}$.
@@ -225,7 +225,7 @@ since for each $m$ and $c$, $k$ is determined uniquely.
 
 *Proof*. Assume not, then we can find some message $m_0 \in \mathcal{M}$ such that $m_0$ is not a decryption of some $c \in \mathcal{C}$. This is because the decryption algorithm $D$ is deterministic and $\lvert \mathcal{K} \rvert < \lvert \mathcal{M} \rvert$.
 
-For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/#shannon's-theorem).
+For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#shannon's-theorem).
 
 ### Two-Time Pad is Insecure
 
