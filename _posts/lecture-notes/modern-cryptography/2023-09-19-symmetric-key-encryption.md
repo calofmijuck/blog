@@ -30,14 +30,14 @@ This notion can be formalized as a security game. The difference here is that we
 > **Experiment $b$.**
 > 1. The challenger fixes a key $k \leftarrow \mathcal{K}$.
 > 2. The adversary submits a sequence of queries to the challenger:
-> 	- The $i$-th query is a pair of messages $m _ {i, 0}, m_{i, 1} \in \mathcal{M}$ of the same length.
-> 3. The challenger computes $c_i = E(k, m_{i, b})$ and sends $c_i$ to the adversary.
+> 	- The $i$-th query is a pair of messages $m _ {i, 0}, m _ {i, 1} \in \mathcal{M}$ of the same length.
+> 3. The challenger computes $c _ i = E(k, m _ {i, b})$ and sends $c _ i$ to the adversary.
 > 4. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
 >
-> Let $W_b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mathcal{E}$** is defined as
+> Let $W _ b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mathcal{E}$** is defined as
 >
 > $$
-> \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{A}, \mathcal{E}] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert
+> \mathrm{Adv} _ {\mathrm{CPA}}[\mathcal{A}, \mathcal{E}] = \left\lvert \Pr[W _ 0] - \Pr[W _ 1] \right\lvert
 > $$
 >
 > If the CPA advantage is negligible for all efficient adversaries $\mathcal{A}$, then the cipher $\mathcal{E}$ is **semantically secure against chosen plaintext attack**, or simply **CPA secure**.
@@ -48,7 +48,7 @@ The assumption that the adversary can choose any message of its choice may seem 
 
 ### Deterministic Cipher is not CPA Secure
 
-Suppose that $E$ is deterministic. Then we can construct an adversary that breaks CPA security. For example, the adversary can send $(m_0, m_1)$ and $(m_0, m_2)$. Then if $b = 0$, the received ciphertext would be same, so the adversary can output $0$ and win the CPA security game.
+Suppose that $E$ is deterministic. Then we can construct an adversary that breaks CPA security. For example, the adversary can send $(m _ 0, m _ 1)$ and $(m _ 0, m _ 2)$. Then if $b = 0$, the received ciphertext would be same, so the adversary can output $0$ and win the CPA security game.
 
 Therefore, for *indistinguishability under chosen plaintext attack* (IND-CPA), encryption must produce different outputs even for the same plaintext.
 
@@ -73,15 +73,15 @@ We also formalize security for nonce-based encryption. It is basically the same 
 > **Experiment $b$**.
 > 1. The challenger fixes a key $k \leftarrow \mathcal{K}$.
 > 2. The adversary submits a sequence of queries to the challenger.
-> 	- The $i$-th query is a pair of messages $m_{i, 0}, m_{i, 1} \in \mathcal{M}$ of the same length, and a nonce $n_i \in \mathcal{N} \setminus \left\lbrace n_1, \dots, n_{i-1} \right\rbrace$.
+> 	- The $i$-th query is a pair of messages $m _ {i, 0}, m _ {i, 1} \in \mathcal{M}$ of the same length, and a nonce $n _ i \in \mathcal{N} \setminus \left\lbrace n _ 1, \dots, n _ {i-1} \right\rbrace$.
 > 	- Nonces should be unique.
-> 3. The challenger computes $c_i = E(k, m_{i, b}, n_i)$ and sends $c_i$ to the adversary.
+> 3. The challenger computes $c _ i = E(k, m _ {i, b}, n _ i)$ and sends $c _ i$ to the adversary.
 > 4. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
 >
-> Let $W_b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mathcal{E}$** is defined as
+> Let $W _ b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mathcal{E}$** is defined as
 >
 > $$
-> \mathrm{Adv}_{\mathrm{nCPA}}[\mathcal{A}, \mathcal{E}] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert
+> \mathrm{Adv} _ {\mathrm{nCPA}}[\mathcal{A}, \mathcal{E}] = \left\lvert \Pr[W _ 0] - \Pr[W _ 1] \right\lvert
 > $$
 >
 > If the CPA advantage is negligible for all efficient adversaries $\mathcal{A}$, then the nonce-based cipher $\mathcal{E}$ is **semantically secure against chosen plaintext attack**, or simply **CPA secure**.
@@ -157,7 +157,7 @@ There is a security proof for CBC mode.
 > For any $q$-query adversary $\mathcal{A}$, there exists a PRP adversary $\mathcal{B}$ such that
 >
 > $$
-> \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{A}, E] \leq 2 \cdot \mathrm{Adv}_{\mathrm{PRP}}[\mathcal{B}, E] + \frac{2q^2L^2}{\left\lvert X \right\lvert}.
+> \mathrm{Adv} _ {\mathrm{CPA}}[\mathcal{A}, E] \leq 2 \cdot \mathrm{Adv} _ {\mathrm{PRP}}[\mathcal{B}, E] + \frac{2q^2L^2}{\left\lvert X \right\lvert}.
 > $$
 
 *Proof*. See Theorem 5.4.[^2]
@@ -166,16 +166,16 @@ From the above theorem, note that CBC is only secure as long as $q^2L^2 \ll \lef
 
 Also, CBC mode is not secure if the adversary can predict the IV of the next message. Proceed as follows:
 
-> 1. Query the challenger for an encryption of $m_0$ and $m_1$.
-> 2. Receive $\mathrm{IV}_0, E(k, \mathrm{IV}_0 \oplus m_0)$ and $\mathrm{IV}_1, E(k, \mathrm{IV}_1 \oplus m_1)$.
-> 3. Predict the next IV as $\mathrm{IV}_2$, and set the new query pair as
+> 1. Query the challenger for an encryption of $m _ 0$ and $m _ 1$.
+> 2. Receive $\mathrm{IV} _ 0, E(k, \mathrm{IV} _ 0 \oplus m _ 0)$ and $\mathrm{IV} _ 1, E(k, \mathrm{IV} _ 1 \oplus m _ 1)$.
+> 3. Predict the next IV as $\mathrm{IV} _ 2$, and set the new query pair as
 >
 > 	$$
-> 	m_0' = \mathrm{IV}_2 \oplus \mathrm{IV}_0 \oplus m_0, \quad m_1' = \mathrm{IV}_2 \oplus \mathrm{IV}_1 \oplus m_1
+> 	m _ 0' = \mathrm{IV} _ 2 \oplus \mathrm{IV} _ 0 \oplus m _ 0, \quad m _ 1' = \mathrm{IV} _ 2 \oplus \mathrm{IV} _ 1 \oplus m _ 1
 > 	$$
 >
 > and send it to the challenger.
-> 4. In experiment $b$, the adversary will receive $E(k, \mathrm{IV}_b \oplus m_b)$. Compare this with the result of the query from (2). The adversary wins with advantage $1$.
+> 4. In experiment $b$, the adversary will receive $E(k, \mathrm{IV} _ b \oplus m _ b)$. Compare this with the result of the query from (2). The adversary wins with advantage $1$.
 
 (More on this to be added)
 
@@ -184,12 +184,12 @@ Also, CBC mode is not secure if the adversary can predict the IV of the next mes
 We can also use a **unique** nonce to generate the IV. Specifically,
 
 $$
-\mathrm{IV} = E(k_1, n)
+\mathrm{IV} = E(k _ 1, n)
 $$
 
-where $k_1$ is the new key and $n$ is a nonce. The ciphertext starts with $n$ instead of the $\mathrm{IV}$.
+where $k _ 1$ is the new key and $n$ is a nonce. The ciphertext starts with $n$ instead of the $\mathrm{IV}$.
 
-Note that if $k_1$ is the same as the key used for encrypting messages, then this scheme is insecure. See Exercise 5.14.[^2]
+Note that if $k _ 1$ is the same as the key used for encrypting messages, then this scheme is insecure. See Exercise 5.14.[^2]
 
 ### Counter Mode (CTR)
 
@@ -209,7 +209,7 @@ There is also a security proof for CTR mode.
 > For any $q$-query adversary $\mathcal{A}$ against $E$, there exists a PRF adversary $\mathcal{B}$ such that
 >
 > $$
-> \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{A}, E] \leq 2\cdot\mathrm{Adv}_{\mathrm{PRF}}[\mathcal{B}, F] + \frac{4q^2L}{\left\lvert X \right\lvert}.
+> \mathrm{Adv} _ {\mathrm{CPA}}[\mathcal{A}, E] \leq 2\cdot\mathrm{Adv} _ {\mathrm{PRF}}[\mathcal{B}, F] + \frac{4q^2L}{\left\lvert X \right\lvert}.
 > $$
 
 *Proof.* Refer to Theorem 5.3.[^2]
