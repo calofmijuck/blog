@@ -1,18 +1,23 @@
 ---
 share: true
 toc: true
-categories: [Development, Kubernetes]
-tags: [kubernetes, sre, devops]
+categories:
+  - Development
+  - Kubernetes
+tags:
+  - kubernetes
+  - sre
+  - devops
 title: "09. Deployments: Updating Applications Declaratively"
-date: "2021-04-30"
-github_title: "2021-04-30-09-deployments"
+date: 2021-04-30
+github_title: 2021-04-30-09-deployments
 image:
   path: /assets/img/posts/Development/Kubernetes/k8s-09.jpeg
 attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-09.jpeg](/assets/img/posts/Development/Kubernetes/k8s-09.jpeg) _Rolling update of Deployments (출처: livebook.manning.com/book/kubernetes-in-action/chapter-9)_
+![k8s-09.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-09.jpeg) _Rolling update of Deployments (출처: livebook.manning.com/book/kubernetes-in-action/chapter-9)_
 
 ### 주요 내용
 
