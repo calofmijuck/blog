@@ -12,7 +12,7 @@ tags:
   - security
 title: 3. Symmetric Key Encryption
 date: 2023-09-19
-github_title: 2023-09-19-symmetric-key-encryption
+github_title: 2023-09-19-symmetric-key-encryptio
 attachment:
   folder: assets/img/posts/lecture-notes/internet-security
 ---
