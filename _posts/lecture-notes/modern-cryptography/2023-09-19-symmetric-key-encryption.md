@@ -30,7 +30,7 @@ This notion can be formalized as a security game. The difference here is that we
 > **Experiment $b$.**
 > 1. The challenger fixes a key $k \leftarrow \mathcal{K}$.
 > 2. The adversary submits a sequence of queries to the challenger:
-> 	- The $i$-th query is a pair of messages $m_{i, 0}, m_{i, 1} \in \mathcal{M}$ of the same length.
+> 	- The $i$-th query is a pair of messages $m _ {i, 0}, m_{i, 1} \in \mathcal{M}$ of the same length.
 > 3. The challenger computes $c_i = E(k, m_{i, b})$ and sends $c_i$ to the adversary.
 > 4. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
 >
