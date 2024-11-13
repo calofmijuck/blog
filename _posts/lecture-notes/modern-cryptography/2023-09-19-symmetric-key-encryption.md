@@ -13,6 +13,8 @@ tags:
 title: 3. Symmetric Key Encryption
 date: 2023-09-19
 github_title: 2023-09-19-symmetric-key-encryption
+attachment:
+  folder: assets/img/posts/lecture-notes/internet-security
 ---
 
 ## CPA Security
@@ -24,20 +26,20 @@ We strengthen the adversary's power, and assume that the adversary can obtain en
 This notion can be formalized as a security game. The difference here is that we must guarantee security for multiple encryptions.
 
 > **Definition.** For a given cipher $\mathcal{E} = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and given an adversary $\mathcal{A}$, define experiments 0 and 1.
-> 
+>
 > **Experiment $b$.**
 > 1. The challenger fixes a key $k \leftarrow \mathcal{K}$.
 > 2. The adversary submits a sequence of queries to the challenger:
 > 	- The $i$-th query is a pair of messages $m_{i, 0}, m_{i, 1} \in \mathcal{M}$ of the same length.
 > 3. The challenger computes $c_i = E(k, m_{i, b})$ and sends $c_i$ to the adversary.
 > 4. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
-> 
+>
 > Let $W_b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mathcal{E}$** is defined as
-> 
+>
 > $$
 > \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{A}, \mathcal{E}] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert
 > $$
-> 
+>
 > If the CPA advantage is negligible for all efficient adversaries $\mathcal{A}$, then the cipher $\mathcal{E}$ is **semantically secure against chosen plaintext attack**, or simply **CPA secure**.
 
 The above security game is indeed a *chosen* plaintext attack since if the attacker sends two identical messages $(m, m)$ as a query, it can surely obtain an encryption of $m$.
@@ -67,7 +69,7 @@ The syntax for nonce-based encryption is $c = E(k, m, n)$ where $n \in \mathcal{
 We also formalize security for nonce-based encryption. It is basically the same as CPA security definition. The difference is that the adversary chooses a nonce for each query, with the constraint that they should be unique for every query.
 
 > **Definition.** For a given **nonce-based** cipher $\mathcal{E} = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C}, \mathcal{N})$ and given an adversary $\mathcal{A}$, define experiments 0 and 1.
-> 
+>
 > **Experiment $b$**.
 > 1. The challenger fixes a key $k \leftarrow \mathcal{K}$.
 > 2. The adversary submits a sequence of queries to the challenger.
@@ -75,13 +77,13 @@ We also formalize security for nonce-based encryption. It is basically the same 
 > 	- Nonces should be unique.
 > 3. The challenger computes $c_i = E(k, m_{i, b}, n_i)$ and sends $c_i$ to the adversary.
 > 4. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
-> 
+>
 > Let $W_b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mathcal{E}$** is defined as
-> 
+>
 > $$
 > \mathrm{Adv}_{\mathrm{nCPA}}[\mathcal{A}, \mathcal{E}] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert
 > $$
-> 
+>
 > If the CPA advantage is negligible for all efficient adversaries $\mathcal{A}$, then the nonce-based cipher $\mathcal{E}$ is **semantically secure against chosen plaintext attack**, or simply **CPA secure**.
 
 ### Secure Construction from PRF
@@ -132,7 +134,7 @@ Additional explanation available in [Modes of Operations (Internet Security)](..
 
 ### Electronic Codebook Mode (ECB)
 
-![is-03-ecb-encryption.png](../../../assets/img/posts/is-03-ecb-encryption.png)
+![is-03-ecb-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-ecb-encryption.png)
 
 - ECB mode encrypts each block with the same key.
 - Blocks are independent of each other.
@@ -140,7 +142,7 @@ Additional explanation available in [Modes of Operations (Internet Security)](..
 
 ### Ciphertext Block Chain Mode (CBC)
 
-![is-03-cbc-encryption.png](../../../assets/img/posts/is-03-cbc-encryption.png)
+![is-03-cbc-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-cbc-encryption.png)
 
 Let $X = \left\lbrace 0, 1 \right\rbrace^n$ and $E : \mathcal{K} \times X \rightarrow X$ be a **PRP**.
 
@@ -151,9 +153,9 @@ Let $X = \left\lbrace 0, 1 \right\rbrace^n$ and $E : \mathcal{K} \times X \right
 There is a security proof for CBC mode.
 
 > **Theorem.** Let $E : \mathcal{K} \times X \rightarrow X$ be a secure PRP. Then CBC mode encryption $E : \mathcal{K} \times X^L \rightarrow X^{L+1}$ is CPA-secure for any $L > 0$.
-> 
+>
 > For any $q$-query adversary $\mathcal{A}$, there exists a PRP adversary $\mathcal{B}$ such that
-> 
+>
 > $$
 > \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{A}, E] \leq 2 \cdot \mathrm{Adv}_{\mathrm{PRP}}[\mathcal{B}, E] + \frac{2q^2L^2}{\left\lvert X \right\lvert}.
 > $$
@@ -167,12 +169,12 @@ Also, CBC mode is not secure if the adversary can predict the IV of the next mes
 > 1. Query the challenger for an encryption of $m_0$ and $m_1$.
 > 2. Receive $\mathrm{IV}_0, E(k, \mathrm{IV}_0 \oplus m_0)$ and $\mathrm{IV}_1, E(k, \mathrm{IV}_1 \oplus m_1)$.
 > 3. Predict the next IV as $\mathrm{IV}_2$, and set the new query pair as
-> 
+>
 > 	$$
 > 	m_0' = \mathrm{IV}_2 \oplus \mathrm{IV}_0 \oplus m_0, \quad m_1' = \mathrm{IV}_2 \oplus \mathrm{IV}_1 \oplus m_1
 > 	$$
-> 
-> 	and send it to the challenger.
+>
+> and send it to the challenger.
 > 4. In experiment $b$, the adversary will receive $E(k, \mathrm{IV}_b \oplus m_b)$. Compare this with the result of the query from (2). The adversary wins with advantage $1$.
 
 (More on this to be added)
@@ -191,7 +193,7 @@ Note that if $k_1$ is the same as the key used for encrypting messages, then thi
 
 ### Counter Mode (CTR)
 
-![is-03-ctr-encryption.png](../../../assets/img/posts/is-03-ctr-encryption.png)
+![is-03-ctr-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-ctr-encryption.png)
 
 Let $F : \mathcal{K} \times X \rightarrow X$ be a secure **PRF**.
 
@@ -203,9 +205,9 @@ Let $F : \mathcal{K} \times X \rightarrow X$ be a secure **PRF**.
 There is also a security proof for CTR mode.
 
 > **Theorem.** If $F : \mathcal{K} \times X \rightarrow X$ is a secure PRF, then CTR mode encryption $E : \mathcal{K} \times X^L \rightarrow X^{L+1}$ is CPA-secure.
-> 
+>
 > For any $q$-query adversary $\mathcal{A}$ against $E$, there exists a PRF adversary $\mathcal{B}$ such that
-> 
+>
 > $$
 > \mathrm{Adv}_{\mathrm{CPA}}[\mathcal{A}, E] \leq 2\cdot\mathrm{Adv}_{\mathrm{PRF}}[\mathcal{B}, F] + \frac{4q^2L}{\left\lvert X \right\lvert}.
 > $$
