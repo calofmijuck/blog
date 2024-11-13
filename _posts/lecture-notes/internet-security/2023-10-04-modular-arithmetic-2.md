@@ -85,12 +85,12 @@ For even better (maybe faster) results, we need the help of elementary number th
 ## Fermat's Little Theorem
 
 > **Theorem.** Let $p$ be prime. For $a \in \mathbb{Z}$ such that $\gcd(a, p) = 1$,
-> 
+>
 > $$
 > a^{p-1} \equiv 1 \pmod p.
 > $$
 
-*Proof*. (Using group theory) The statement can be rewritten as follows. For $a \neq 0$ in $\mathbb{Z}_p$, $a^{p-1} = 1$ in $\mathbb{Z}_p$. Since $\mathbb{Z}_p^*$ is a (multiplicative) group of order $p-1$, the order of $a$ should divide $p-1$. Therefore, $a^{p-1} = 1$ in $\mathbb{Z}_p$.
+*Proof*. (Using group theory) The statement can be rewritten as follows. For $a \neq 0$ in $\mathbb{Z}_p$, $a^{p-1} = 1$ in $\mathbb{Z}_p$. Since $\mathbb{Z}_p^\ast$ is a (multiplicative) group of order $p-1$, the order of $a$ should divide $p-1$. Therefore, $a^{p-1} = 1$ in $\mathbb{Z}_p$.
 
 Here is an elementary proof not using group theory.
 
@@ -115,11 +115,11 @@ For composite modulus, we have Euler's generalization. Before proving the theore
 For direct calculation, we use the following formula.
 
 > **Lemma.** For $n \in \mathbb{N}$, the following holds.
-> 
+>
 > $$
 > \phi(n) = n \cdot \prod_{p \mid n} \left( 1 - \frac{1}{p} \right)
 > $$
-> 
+>
 > where $p$ is a prime number dividing $n$.
 
 So to calculate $\phi(n)$, we need to **factorize** $n$. From the formula above, we have some corollaries.
@@ -139,41 +139,41 @@ $$
 
 We also often use the **reduced set of residues**.
 
-> **Definition.** The **reduced set of residues** is the set of residues that are relatively prime to $n$. We denote this set as $\mathbb{Z}_n^*$.
-> 
+> **Definition.** The **reduced set of residues** is the set of residues that are relatively prime to $n$. We denote this set as $\mathbb{Z}_n^\ast$.
+>
 > $$
-> \mathbb{Z}_n^* = \left\lbrace a \in \mathbb{Z}_n \setminus \left\lbrace 0 \right\rbrace : \gcd(a, n) = 1 \right\rbrace.
+> \mathbb{Z}_n^\ast = \left\lbrace a \in \mathbb{Z}_n \setminus \left\lbrace 0 \right\rbrace : \gcd(a, n) = 1 \right\rbrace.
 > $$
 
 Then by definition, we have the following result.
 
-> **Lemma.** $\left\lvert \mathbb{Z}_n^* \right\lvert = \phi(n)$.
+> **Lemma.** $\left\lvert \mathbb{Z}_n^\ast \right\lvert = \phi(n)$.
 
-We can also show that $\mathbb{Z}_n^*$ is a multiplicative group.
+We can also show that $\mathbb{Z}_n^\ast$ is a multiplicative group.
 
-> **Lemma.** $\mathbb{Z}_n^*$ is a multiplicative group.
+> **Lemma.** $\mathbb{Z}_n^\ast$ is a multiplicative group.
 
-*Proof*. Let $a, b \in \mathbb{Z}_n^{ * }$. We must check if $ab \in \mathbb{Z}_n^{ * }$. Since $\gcd(a, n) = \gcd(b, n) = 1$, $\gcd(ab, n) = 1$. This is because if $d = \gcd(ab, n) > 1$, then a prime factor $p$ of $d$ must divide $a$ or $b$ and also $n$. Then $\gcd(a, n) \geq p$ or $\gcd(b, n) \geq p$, which is a contradiction. Thus $ab \in \mathbb{Z}_n^{ * }$.
+*Proof*. Let $a, b \in \mathbb{Z}_n^\ast$. We must check if $ab \in \mathbb{Z}_n^\ast$. Since $\gcd(a, n) = \gcd(b, n) = 1$, $\gcd(ab, n) = 1$. This is because if $d = \gcd(ab, n) > 1$, then a prime factor $p$ of $d$ must divide $a$ or $b$ and also $n$. Then $\gcd(a, n) \geq p$ or $\gcd(b, n) \geq p$, which is a contradiction. Thus $ab \in \mathbb{Z}_n^\ast$.
 
-Associativity holds trivially, as a subset of $\mathbb{Z}_n$. We also have an identity element $1$, and inverse of $a \in \mathbb{Z}_n^*$ exists since $\gcd(a, n) = 1$.
+Associativity holds trivially, as a subset of $\mathbb{Z}_n$. We also have an identity element $1$, and inverse of $a \in \mathbb{Z}_n^\ast$ exists since $\gcd(a, n) = 1$.
 
 Now we can prove Euler's generalization.
 
 ## Euler's Generalization
 
 > **Theorem.** Let $a \in \mathbb{Z}$ such that $\gcd(a, n) = 1$. Then
-> 
+>
 > $$
 > a^{\phi(n)} \equiv 1 \pmod n.
 > $$
 
-*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z}_n^{ * }$. Then $a^{\left\lvert \mathbb{Z}_n^{ * } \right\lvert} = 1$ in $\mathbb{Z}_n$. By the above lemma, we have the desired result.
+*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z}_n^\ast$. Then $a^{\left\lvert \mathbb{Z}_n^\ast \right\lvert} = 1$ in $\mathbb{Z}_n$. By the above lemma, we have the desired result.
 
-*Proof*. (Elementary) Set $f : \mathbb{Z}_n^* \rightarrow \mathbb{Z}_n^*$ as $x \mapsto ax \bmod n$, then the rest of the reasoning follows similarly as in the proof of Fermat's little theorem.
+*Proof*. (Elementary) Set $f : \mathbb{Z}_n^\ast \rightarrow \mathbb{Z}_n^\ast$ as $x \mapsto ax \bmod n$, then the rest of the reasoning follows similarly as in the proof of Fermat's little theorem.
 
 Using the above result, we remark an important result that will be used in RSA.
 
-> **Lemma.** Let $n \in \mathbb{N}$. For $a, b \in \mathbb{Z}$ and $x \in \mathbb{Z}_n^*$, if $a \equiv b \pmod{\phi(n)}$, then $x^a \equiv x^b \pmod n$.
+> **Lemma.** Let $n \in \mathbb{N}$. For $a, b \in \mathbb{Z}$ and $x \in \mathbb{Z}_n^\ast$, if $a \equiv b \pmod{\phi(n)}$, then $x^a \equiv x^b \pmod n$.
 
 *Proof*. $a = b + k\phi(n)$ for some $k \in \mathbb{Z}$. Then
 
@@ -186,26 +186,26 @@ by Euler's generalization.
 ## Groups Based on Modular Arithmetic
 
 > **Definition.** A **group** is a set $G$ with a binary operation $* : G \times G \rightarrow G$, satisfying the following properties.
-> 
+>
 > - $(\mathsf{G1})$ The binary operation $*$ is **closed**.
 > - $(\mathsf{G2})$ The binary operation $*$ is **associative**, so $(a * b) * c = a * (b * c)$ for all $a, b, c \in G$.
 > - $(\mathsf{G3})$ $G$ has an **identity** element $e$ such that $e * a = a * e = a$ for all $a \in G$.
 > - $(\mathsf{G4})$ There is an **inverse** for every element of $G$. For each $a \in G$, there exists $x \in G$ such that $a * x = x * a = e$. We write $x = a^{-1}$ in this case.
 
-$\mathbb{Z}_n$ is an additive group, and $\mathbb{Z}_n^*$ is a multiplicative group.
+$\mathbb{Z}_n$ is an additive group, and $\mathbb{Z}_n^\ast$ is a multiplicative group.
 
 ## Chinese Remainder Theorem (CRT)
 
 > **Theorem.** Let $n_1, \dots, n_k$ be integers greater than $1$, and let $N = n_1n_2\cdots n_k$. If $n_i$ are pairwise relatively prime, then the system of equations $x \equiv a_i \pmod {n_i}$ has a unique solution modulo $N$.
-> 
+>
 > *(Abstract Algebra)* The map
-> 
+>
 > $$
 > x \bmod N \mapsto (x \bmod n_1, \dots, x \bmod n_k)
 > $$
-> 
+>
 >  defines a ring isomorphism
-> 
+>
 > $$
 >  \mathbb{Z}_N \simeq \mathbb{Z}_{n_1} \times \mathbb{Z}_{n_2} \times \cdots \times \mathbb{Z}_{n_k}.
 > $$
@@ -229,7 +229,7 @@ But $n_i$ are pairwise relatively prime, so $\mathrm{lcm}(n_1, \dots, n_k) = N$ 
 *Proof*. (**Abstract Algebra**) The above uniqueness proof shows that the map
 
 $$
-x \bmod N \mapsto (x \bmod n_1, \dots, x \bmod n_k) 
+x \bmod N \mapsto (x \bmod n_1, \dots, x \bmod n_k)
 $$
 
 is injective. By pigeonhole principle, this map must also be surjective. This map is also a ring homomorphism, by the properties of modular arithmetic. We have a ring isomorphism.
@@ -273,6 +273,6 @@ $$
 
 and using the result, add the next equation $x \equiv a_3 \pmod{n_3}$ and find a solution.[^1]
 
-Lastly, the ring isomorphism actually tells us a lot and is quite effective for computation. Since the two rings are *isomorphic*, operations in $\mathbb{Z} _ N$ can be done independently in each $\mathbb{Z} _ {n_i}$ and then merged back to $\mathbb{Z} _ N$. $N$ was a large number, so computations can be much faster in $\mathbb{Z} _ {n _ i}$. Specifically, we will see how this fact is used for computations in RSA.
+Lastly, the ring isomorphism actually tells us a lot and is quite effective for computation. Since the two rings are *isomorphic*, operations in $\mathbb{Z}_N$ can be done independently in each $\mathbb{Z}_{n_i}$ and then merged back to $\mathbb{Z}_N$. $N$ was a large number, so computations can be much faster in $\mathbb{Z}_{n_i}$. Specifically, we will see how this fact is used for computations in RSA.
 
 [^1]: I have an implementation in my repository. [Link](https://github.com/calofmijuck/BOJ/blob/4b29e0c7f487aac3186661176d2795f85f0ab21b/Codes/23000/23062.cpp#L38).
