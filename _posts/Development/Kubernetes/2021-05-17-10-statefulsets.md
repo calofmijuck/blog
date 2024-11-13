@@ -1,18 +1,23 @@
 ---
 share: true
 toc: true
-categories: [Development, Kubernetes]
-tags: [kubernetes, sre, devops]
+categories:
+  - Development
+  - Kubernetes
+tags:
+  - kubernetes
+  - sre
+  - devops
 title: "10. StatefulSets: Deploying Replicated Stateful Applications"
-date: "2021-05-17"
-github_title: "2021-05-17-10-statefulsets"
+date: 2021-05-17
+github_title: 2021-05-17-10-statefulsets
 image:
   path: /assets/img/posts/Development/Kubernetes/k8s-10.jpeg
 attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-10.jpeg](/assets/img/posts/Development/Kubernetes/k8s-10.jpeg) _A stateful pod may be rescheduled to a different node, but it retains the name, hostname, and storage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-10)_
+![k8s-10.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-10.jpeg) _A stateful pod may be rescheduled to a different node, but it retains the name, hostname, and storage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-10)_
 
 ### 주요 내용
 
