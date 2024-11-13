@@ -14,9 +14,9 @@ title: 9. Public Key Encryption
 date: 2023-10-19
 github_title: 2023-10-19-public-key-encryption
 image:
-  path: assets/img/posts/Lecture Notes/Modern Cryptography/mc-09-ss-pke.png
+  path: assets/img/posts/lecture-notes/modern-cryptography/mc-09-ss-pke.png
 attachment:
-  folder: assets/img/posts/Lecture Notes/Modern Cryptography
+  folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
 In symmetric encryption, we assumed that the two parties had a shared key in advance. If the two parties do not have a shared key, **public-key encryption** can be used to encrypt messages.
@@ -24,11 +24,11 @@ In symmetric encryption, we assumed that the two parties had a shared key in adv
 ## Public Key Encryption
 
 > **Definition.** A **public key encryption scheme** $\mc{E} = (G, E, D)$ is a triple of efficient algorithms: a **key generation** algorithm $G$, an **encryption algorithm** $E$, a decryption algorithm $D$.
-> 
+>
 > - $G$ generates a key pair as $(pk, sk) \la G()$. $pk$ is called a **public key** and $sk$ is called a **secret key**.
 > - $E$ takes a public key $pk$ and a message $m$ and outputs ciphertext $c \la E(pk, m)$.
 > - $D$ takes a secret key $sk$ and a ciphertext $c$ and outputs plaintext $m \la D(sk, c)$ or a special $\texttt{reject}$ value $\bot$.
-> 
+>
 > We say that $\mc{E} = (G, E, D)$ is defined over $(\mc{M}, \mc{C})$.
 
 $G$ and $E$ may be probabilistic, but $D$ must be deterministic. Also, correctness condition is required. For any $(pk, sk)$ and $m \in \mc{M}$,
@@ -45,22 +45,22 @@ Public key $pk$ will be publicized. After Alice obtains $pk$, she can use it to 
 
 The following notion of security is only for an eavesdropping adversary.
 
-![mc-09-ss-pke.png](../../../assets/img/posts/Lecture%20Notes/Modern%20Cryptography/mc-09-ss-pke.png)
+![mc-09-ss-pke.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-09-ss-pke.png)
 
 > **Definition.** Let $\mc{E} = (G, E, D)$ be a public key encryption scheme defined over $(\mc{M}, \mc{C})$. For an adversary $\mc{A}$, we define two experiments.
-> 
+>
 > **Experiment** $b$.
 > 1. The challenger computes $(pk, sk) \la G()$ and sends $pk$ to the adversary.
 > 2. The adversary chooses $m_0, m_1 \in \mc{M}$ of the same length, and sends them to the challenger.
 > 3. The challenger computes $c \la E(pk, m_b)$ and sends $c$ to the adversary.
 > 4. $\mc{A}$ outputs a bit $b' \in \braces{0, 1}$.
-> 
+>
 > Let $W_b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. The **advantage** of $\mc{A}$ with respect to $\mc{E}$ is defined as
-> 
+>
 > $$
 > \Adv[SS]{\mc{A}, \mc{E}} = \abs{\Pr[W_0] - \Pr[W_1]}.
 > $$
-> 
+>
 > $\mc{E}$ is **semantically secure** if $\rm{Adv}_{\rm{SS}}[\mc{A}, \mc{E}]$ is negligible for any efficient $\mc{A}$.
 
 Note that $pk$ is sent to the adversary, and adversary can encrypt any message! Thus, encryption must be randomized. Otherwise, the adversary can compute $E(pk, m_b)$ for each $b$ and compare with $c$ given from the challenger.
@@ -69,31 +69,31 @@ Note that $pk$ is sent to the adversary, and adversary can encrypt any message! 
 
 For symmetric ciphers, semantic security (one-time) did not guarantee CPA security (many-time). But in public key encryption, semantic security implies CPA security. This is because *the attacker can encrypt any message using the public key*.
 
-First, we check the definition of CPA security for public key encryption. It is similar to that of symmetric ciphers, compare with [CPA Security for symmetric key encryption (Modern Cryptography)](../2023-09-19-symmetric-key-encryption/#cpa-security).
+First, we check the definition of CPA security for public key encryption. It is similar to that of symmetric ciphers, compare with [CPA Security for symmetric key encryption (Modern Cryptography)](./2023-09-19-symmetric-key-encryption.md#cpa-security).
 
 > **Definition.** For a given public-key encryption scheme $\mc{E} = (G, E, D)$ defined over $(\mc{M}, \mc{C})$ and given an adversary $\mc{A}$, define experiments 0 and 1.
-> 
+>
 > **Experiment $b$.**
 > 1. The challenger computes $(pk, sk) \la G()$ and sends $pk$ to the adversary.
 > 2. The adversary submits a sequence of queries to the challenger:
 > 	- The $i$-th query is a pair of messages $m_{i, 0}, m_{i, 1} \in \mc{M}$ of the same length.
 > 3. The challenger computes $c_i = E(pk, m_{i, b})$ and sends $c_i$ to the adversary.
 > 4. The adversary computes and outputs a bit $b' \in \braces{0, 1}$.
-> 
+>
 > Let $W_b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mc{E}$** is defined as
-> 
+>
 > $$
 > \Adv[CPA]{\mc{A}, \mc{E}} = \abs{\Pr[W_0] - \Pr[W_1]}.
 > $$
-> 
+>
 > If the CPA advantage is negligible for all efficient adversaries $\mc{A}$, then $\mc{E}$ is **semantically secure against chosen plaintext attack**, or simply **CPA secure**.
 
 We formally prove the following theorem.
 
 > **Theorem.** If a public-key encryption scheme $\mc{E}$ is semantically secure, then it is also CPA secure.
-> 
+>
 > For any $q$-query CPA adversary $\mc{A}$, there exists an SS adversary $\mc{B}$ such that
-> 
+>
 > $$
 > \rm{Adv}_{\rm{CPA}}[\mc{A}, \mc{E}] = q \cdot \rm{Adv}_{\rm{SS}}[\mc{B}, \mc{E}].
 > $$
@@ -141,27 +141,27 @@ $$
 
 ## CCA Security for Public Key Encryption
 
-We also define CCA security for public key encryption, which models a wide spectrum of real-world attacks. The definition is also very similar to that of symmetric ciphers, compare with [CCA security for symmetric ciphers (Modern Cryptography)](../2023-09-26-cca-security-authenticated-encryption/#cca-security).
+We also define CCA security for public key encryption, which models a wide spectrum of real-world attacks. The definition is also very similar to that of symmetric ciphers, compare with [CCA security for symmetric ciphers (Modern Cryptography)](./2023-09-26-cca-security-authenticated-encryption.md#cca-security).
 
 > **Definition.** Let $\mc{E} = (G, E, D)$ be a public-key encryption scheme over $(\mc{M}, \mc{C})$. Given an adversary $\mc{A}$, define experiments $0$ and $1$.
-> 
+>
 > **Experiment $b$.**
 > 1. The challenger computes $(pk, sk) \la G()$ and sends $pk$ to the adversary.
 > 2. $\mc{A}$ makes a series of queries to the challenger, which is one of the following two types.
 > 	- *Encryption*: Send $(m_{i_,0}, m_{i, 1})$ and receive $c'_i \la E(pk, m_{i, b})$.
 > 	- *Decryption*: Send $c_i$ and receive $m'_i \la D(sk, c_i)$.
 > 	- Note that $\mc{A}$ is not allowed to make a decryption query for any $c_i'$.
-> 3. $\mc{A}$ outputs a pair of messages $(m_0^ * , m_1^*)$.
-> 4. The challenger generates $c^* \la E(pk, m_b^*)$ and gives it to $\mc{A}$.
-> 5. $\mc{A}$ is allowed to keep making queries, but not allowed to make a decryption query for $c^*$.
+> 3. $\mc{A}$ outputs a pair of messages $(m_0^\ast , m_1^\ast)$.
+> 4. The challenger generates $c^\ast \la E(pk, m_b^\ast)$ and gives it to $\mc{A}$.
+> 5. $\mc{A}$ is allowed to keep making queries, but not allowed to make a decryption query for $c^\ast$.
 > 6. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
-> 
+>
 > Let $W_b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. Then the **CCA advantage with respect to $\mc{E}$** is defined as
-> 
+>
 > $$
 > \rm{Adv}_{\rm{CCA}}[\mc{A}, \mc{E}] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert.
 > $$
-> 
+>
 > If the CCA advantage is negligible for all efficient adversaries $\mc{A}$, then $\mc{E}$ is **semantically secure against a chosen ciphertext attack**, or simply **CCA secure**.
 
 Note that encryption queries are not strictly required, since in public-key schemes, the adversary can encrypt any messages on its own. We can consider a restricted security game, where an adversary makes only a single encryption query.
@@ -176,7 +176,7 @@ Similarly, 1CCA security implies CCA security, as in the above theorem. So to sh
 
 ### Active Adversaries in Symmetric vs Public Key
 
-In symmetric key encryption, we studied [authenticated encryption (AE)](../2023-09-26-cca-security-authenticated-encryption/#authenticated-encryption-(ae)), which required the scheme to be CPA secure and provide ciphertext integrity. In symmetric key settings, AE implied CCA.
+In symmetric key encryption, we studied [authenticated encryption (AE)](./2023-09-26-cca-security-authenticated-encryption.md#authenticated-encryption-(ae)), which required the scheme to be CPA secure and provide ciphertext integrity. In symmetric key settings, AE implied CCA.
 
 However in public-key schemes, adversaries can always create new ciphertexts using the public key, which makes the original definition of ciphertext integrity unusable. Thus we directly require CCA security.
 
@@ -195,7 +195,7 @@ where $E_S$ is the symmetric encryption algorithm, $E$ is the public-key encrypt
 We can use public-key schemes for KEM, but there are dedicated constructions for KEM which are more efficient. The dedicated algorithms does the key generation and encryption in one-shot.
 
 > **Definition.** A KEM $\mc{E}_\rm{KEM}$ consists of a triple of algorithms $(G, E_\rm{KEM}, D_\rm{KEM})$.
-> 
+>
 > - The key generation algorithm generates $(pk, sk) \la G()$.
 > - The encapsulation algorithm generates $(k, c_\rm{KEM}) \la E_\rm{KEM}(pk)$.
 > - The decapsulation algorithm generates $k \la D_\rm{KEM}(sk, c_\rm{KEM})$.
@@ -213,7 +213,7 @@ Read more about this in Exercise 11.9.[^1]
 We introduce a public-key encryption scheme based on the hardness of discrete logarithms.
 
 > **Definition.** Suppose we have two parties Alice and Bob. Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$, let $\mc{E}_S = (E_S, D_S)$ be a symmetric cipher.
-> 
+>
 > 1. Alice chooses $sk = \alpha \la \Z_q$, computes $pk = g^\alpha$ and sends $pk$ to Bob.
 > 2. Bob also chooses $\beta \la \Z_q$ and computes $k = h^\beta = g^{\alpha\beta}$.
 > 3. Bob sends $\big( g^\beta, E_S(k, m) \big)$ to Alice.
@@ -228,9 +228,9 @@ As a concrete example, set $E_S(k, m) = k \cdot m$ and $D_S(k, c) = k^{-1} \cdot
 ### Security of ElGamal Encryption
 
 > **Theorem.** If the DDH assumption holds on $G$, and the symmetric cipher $\mc{E}_S = (E_S, D_S)$ is semantically secure, then the ElGamal encryption scheme $\mc{E}_\rm{EG}$ is semantically secure.
-> 
+>
 > For any SS adversary $\mc{A}$ of $\mc{E}_\rm{EG}$, there exist a DDH adversary $\mc{B}$, and an SS adversary $\mc{C}$ for $\mc{E}_S$ such that
-> 
+>
 > $$
 > \Adv[SS]{\mc{A}, \mc{E}_\rm{EG}} \leq 2 \cdot \Adv[DDH]{\mc{B}, G} + \Adv[SS]{\mc{C}, \mc{E}_S}.
 > $$
@@ -271,18 +271,18 @@ Since the hashed ElGamal scheme is semantically secure, it is automatically CPA 
 ### Interactive Computational Diffie-Hellman Problem (ICDH)
 
 > **Definition.** Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$. Let $\mc{A}$ be a given adversary.
-> 
+>
 > 1. The challenger chooses $\alpha, \beta \la \Z_q$ and sends $g^\alpha, g^\beta$ to the adversary.
 > 2. The adversary makes a sequence of **DH-decision oracle queries** to the challenger.
 > 	- Each query has the form $(v, w) \in G^2$, challenger replies with $1$ if $v^\alpha = w$, replies $0$ otherwise.
 > 3. The adversary calculates and outputs some $w \in G$.
-> 
+>
 > We define the **advantage in solving the interactive computational Diffie-Hellman problem for $G$** as
-> 
+>
 > $$
 > \Adv[ICDH]{\mc{A}, G} = \Pr[w = g^{\alpha\beta}].
 > $$
-> 
+>
 > We say that the **interactive computational Diffie-Hellman (ICDH) assumption** holds for $G$ if for any efficient adversary $\mc{A}$, $\Adv[ICDH]{\mc{A}, G}$ is negligible.
 
 This is also known as **gap-CDH**. Intuitively, it says that even if we have a DDH solver, CDH is still hard.
@@ -339,7 +339,7 @@ Textbook RSA is not secure, but it is a **one-way trapdoor function**.
 A **one-way function** is a function that is computationally hard to invert. But we sometimes need to invert the functions, so we need functions that have a **trapdoor**. A trapdoor is a secret door that allows efficient inversion, but without the trapdoor, the function must be still hard to invert.
 
 > **Definition.** Let $\mc{X}$ and $\mc{Y}$ be finite sets. A **trapdoor function scheme** $\mc{T} = (G, F, I)$ defined over $(\mc{X}, \mc{Y})$ is a triple of algorithms.
-> 
+>
 > - $G$ is a probabilistic key generation algorithm that outputs $(pk, sk)$, where $pk$ is the public key and $sk$ is the secret key.
 > - $F$ is a deterministic algorithm that outputs $y \la F(pk, x)$ for $x \in \mc{X}$.
 > - $I$ is a deterministic algorithm that outputs $x \la I(sk, y)$ for $y \in \mc{Y}$.
@@ -349,17 +349,17 @@ The correctness property says that for any $(pk, sk) \la G()$ and $x \in \mc{X}$
 One-wayness is defined as a security game.
 
 > **Definition.** Given a trapdoor function scheme $\mc{T} = (G, F, I)$ and an adversary $\mc{A}$, define a security game as follows.
-> 
+>
 > 1. The challenger computes $(pk, sk) \la G()$, $x \la \mc{X}$ and $y \la F(pk, x)$.
 > 2. The challenger sends $pk$ and $y$ to the adversary.
 > 3. The adversary computes and outputs $x' \in \mc{X}$.
-> 
+>
 > $\mc{A}$ wins if $\mc{A}$ inverts the function. The advantage is defined as
-> 
+>
 > $$
 > \Adv[OW]{\mc{A}, \mc{T}} = \Pr[x = x'].
 > $$
-> 
+>
 > If the advantage is negligible for any efficient adversary $\mc{A}$, then $\mc{T}$ is **one-way**.
 
 A one-way trapdoor function is not an encryption. The algorithm is deterministic, so it is not CPA secure. Never encrypt with trapdoor functions.
@@ -391,18 +391,18 @@ The RSA assumption says that the RSA problem is hard, which implies that RSA is 
 ### The RSA Problem
 
 > **Definition.** Let $\mc{T}_\rm{RSA} = (G, F, I)$ the RSA trapdoor function scheme. Given an adversary $\mc{A}$,
-> 
+>
 > 1. The challenger chooses $(pk, sk) \la G()$ and $x \la \Z_N$.
 > 	- $pk = (N, e)$, $sk = (N, d)$.
 > 2. The challenger computes $y \la x^e \bmod N$ and sends $pk$ and $y$ to the adversary.
 > 3. The adversary computes and outputs $x' \in \Z_N$.
-> 
+>
 > The adversary wins if $x = x'$. The advantage is defined as
-> 
+>
 > $$
 > \rm{Adv}_{\rm{RSA}}[\mc{A}, \mc{T_\rm{RSA}}] = \Pr[x = x'].
 > $$
-> 
+>
 > We say that the **RSA assumption** holds if the advantage is negligible for any efficient $\mc{A}$.
 
 ## RSA Public Key Encryption (ISO Standard)
