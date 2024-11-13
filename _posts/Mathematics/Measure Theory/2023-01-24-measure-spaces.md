@@ -2,11 +2,16 @@
 share: true
 toc: true
 math: true
-categories: [Mathematics, Measure Theory]
-tags: [math, analysis, measure-theory]
-title: "03. Measure Spaces"
-date: "2023-01-24"
-github_title: "2023-01-24-measure-spaces"
+categories:
+  - Mathematics
+  - Measure Theory
+tags:
+  - math
+  - analysis
+  - measure-theory
+title: 03. Measure Spaces
+date: 2023-01-24
+github_title: 2023-01-24-measure-spaces
 image:
   path: /assets/img/posts/Mathematics/Measure Theory/mt-03.png
 attachment:
@@ -17,15 +22,15 @@ attachment:
 
 Construction of measure 증명에서 추가로 참고할 내용입니다.
 
-![mt-03.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-03.png)
+![mt-03.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-03.png)
 
 **명제.** $A$가 열린집합이면 $A \in \mathfrak{M}(\mu)$ 이다. 또한 $A^C \in \mathfrak{M}(\mu)$ 이므로, $F$가 닫힌집합이면 $F \in \mathfrak{M}(\mu)$ 이다.
 
-**증명.** 중심이 $x\in \mathbb{R}^p$ 이고 반지름이 $r$인 열린 box를 $I(x, r)$이라 두자. $I(x, r)$은 명백히 $\mathfrak{M} _ F(\mu)$의 원소이다. 이제
+**증명.** 중심이 $x\in \mathbb{R}^p$ 이고 반지름이 $r$인 열린 box를 $I(x, r)$이라 두자. $I(x, r)$은 명백히 $\mathfrak{M}_F(\mu)$의 원소이다. 이제
 
 $$A = \bigcup_ {\substack{x \in \mathbb{Q}^p, \; r \in \mathbb{Q}\\ I(x, r)\subseteq A}} I(x, r)$$
 
-로 적을 수 있으므로 $A$는 $\mathfrak{M} _ F(\mu)$의 원소들의 countable union이 되어 $A \in \mathfrak{M}(\mu)$ 이다. 이제 $\mathfrak{M}(\mu)$가 $\sigma$-algebra이므로 $A^C\in \mathfrak{M}(\mu)$ 이고, 이로부터 임의의 닫힌집합 $F$도 $\mathfrak{M}(\mu)$의 원소임을 알 수 있다.
+로 적을 수 있으므로 $A$는 $\mathfrak{M}_F(\mu)$의 원소들의 countable union이 되어 $A \in \mathfrak{M}(\mu)$ 이다. 이제 $\mathfrak{M}(\mu)$가 $\sigma$-algebra이므로 $A^C\in \mathfrak{M}(\mu)$ 이고, 이로부터 임의의 닫힌집합 $F$도 $\mathfrak{M}(\mu)$의 원소임을 알 수 있다.
 
 **명제.** $A \in \mathfrak{M}(\mu)$ 이면 임의의 $\epsilon > 0$ 에 대하여
 
@@ -35,13 +40,13 @@ $$F \subseteq A \subseteq G, \quad \mu\left( G \setminus A \right) < \epsilon, \
 
 이는 곧 정의역을 $\mathfrak{M}(\mu)$로 줄였음에도 $\mu$가 여전히 $\mathfrak{M}(\mu)$ 위에서 regular라는 뜻입니다.
 
-**증명.** $A = \bigcup_ {n=1}^\infty A_n$ ($A_n \in \mathfrak{M} _ F(\mu)$) 로 두고 $\epsilon > 0$ 을 고정하자. 각 $n \in \mathbb{N}$ 에 대하여 열린집합 $B_ {n, k} \in \Sigma$ 를 잡아 $A_n \subseteq\bigcup_ {k=1}^\infty B_ {n, k}$ 와
+**증명.** $A = \bigcup_ {n=1}^\infty A_n$ ($A_n \in \mathfrak{M}_F(\mu)$) 로 두고 $\epsilon > 0$ 을 고정하자. 각 $n \in \mathbb{N}$ 에 대하여 열린집합 $B_ {n, k} \in \Sigma$ 를 잡아 $A_n \subseteq\bigcup_ {k=1}^\infty B_ {n, k}$ 와
 
 $$\mu\left( \bigcup_ {k=1}^{\infty} B_ {n, k} \right) \leq \sum_ {k=1}^{\infty} \mu\left( B_ {n, k} \right) < \mu\left( A_n \right) + 2^{-n}\epsilon$$
 
 을 만족하도록 할 수 있다.[^1]
 
-이제 열린집합을 잡아보자. $G_n = \bigcup_ {k=1}^{\infty} B_ {n, k}$ 으로 두고 $G = \bigcup_ {n=1}^{\infty} G_n$ 로 잡는다. $A_n \in \mathfrak{M} _ F(\mu)$ 이므로 $\mu\left( A_n \right) < \infty$ 이고, 다음이 성립한다.
+이제 열린집합을 잡아보자. $G_n = \bigcup_ {k=1}^{\infty} B_ {n, k}$ 으로 두고 $G = \bigcup_ {n=1}^{\infty} G_n$ 로 잡는다. $A_n \in \mathfrak{M}_F(\mu)$ 이므로 $\mu\left( A_n \right) < \infty$ 이고, 다음이 성립한다.
 
 $$\begin{aligned}        \mu\left( G \setminus A \right) & = \mu\left( \bigcup_ {n=1}^{\infty} G_n \setminus\bigcup_ {n=1}^{\infty} A_n \right) \leq \mu\left( \bigcup_ {n=1}^{\infty} G_n \setminus A_n \right) \\ &\leq \sum_ {n=1}^{\infty} \mu\left( G_n \setminus A_n \right) \leq \sum_ {n=1}^{\infty} 2^{-n}\epsilon = \epsilon.    \end{aligned}$$
 
