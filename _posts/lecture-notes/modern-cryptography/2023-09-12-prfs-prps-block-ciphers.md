@@ -227,7 +227,7 @@ These 4 modules are all invertible!
 
 For DES, the S-box is the non-linear part. If the S-box is linear, then the entire DES cipher would be linear.
 
-Specifically, there would be a fixed binary matrix $B _ 1 \in \mathbb{Z} _ 2^{64 \times 64}$ and $B _ 2 \in \mathbb{Z} _ 2^{64 \times (48 \times 16)}$ such that
+Specifically, there would be a fixed binary matrix $B_1 \in \mathbb{Z}_2^{64 \times 64}$ and $B_2 \in \mathbb{Z}_2^{64 \times (48 \times 16)}$ such that
 
 $$
 \mathrm{DES}(k, m) = B_1 m \oplus B_2 \mathbf{k}
