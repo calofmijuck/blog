@@ -1,18 +1,23 @@
 ---
 share: true
 toc: true
-categories: [Development, Kubernetes]
-tags: [kubernetes, sre, devops]
-title: "16. Advanced Scheduling"
-date: "2021-08-15"
-github_title: "2021-08-15-16-advanced-scheduling"
+categories:
+  - Development
+  - Kubernetes
+tags:
+  - kubernetes
+  - sre
+  - devops
+title: 16. Advanced Scheduling
+date: 2021-08-15
+github_title: 2021-08-15-16-advanced-scheduling
 image:
   path: /assets/img/posts/Development/Kubernetes/k8s-16.jpeg
 attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-16.jpeg](/assets/img/posts/Development/Kubernetes/k8s-16.jpeg) _A pod is only scheduled to a node if it tolerates the node’s taints. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-16)_
+![k8s-16.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-16.jpeg) _A pod is only scheduled to a node if it tolerates the node’s taints. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-16)_
 
 ### 주요 내용
 
