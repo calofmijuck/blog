@@ -94,10 +94,10 @@ Therefore, we need randomized encryption. We achieve randomness by drawing a ran
 
 Here is the construction in detail.
 
-> Let $F : \mathcal{K} \times \left\lbrace 0, 1 \right\rbrace^n \ra \left\lbrace 0, 1 \right\rbrace^n$ be a PRF.
-> - Encryption $E : \mathcal{K} \times \left\lbrace 0, 1 \right\rbrace^n \ra \left\lbrace 0, 1 \right\rbrace^{2n}$
+> Let $F : \mathcal{K} \times \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^n$ be a PRF.
+> - Encryption $E : \mathcal{K} \times \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^{2n}$
 > 	- Sample $r \leftarrow \left\lbrace 0, 1 \right\rbrace^n$ and return $c = (r, F(k, r) \oplus m)$.
-> - Decryption $D : \mathcal{K} \times \left\lbrace 0, 1 \right\rbrace^{2n} \ra \left\lbrace 0, 1 \right\rbrace^n$
+> - Decryption $D : \mathcal{K} \times \left\lbrace 0, 1 \right\rbrace^{2n} \rightarrow \left\lbrace 0, 1 \right\rbrace^n$
 > 	- Extract $(r, s)$ from $c$ and output $m = F(k, r) \oplus s$.
 
 A few notes:
@@ -126,7 +126,7 @@ There is a common proof template for constructions based on PRFs.
 
 ## Modes of Operation
 
-We learned how to encrypt a single block. How do we encrypt longer messages with a block cipher $E : \left\lbrace 0, 1 \right\rbrace^s \times \left\lbrace 0, 1 \right\rbrace^n \ra \left\lbrace 0, 1 \right\rbrace^n$?
+We learned how to encrypt a single block. How do we encrypt longer messages with a block cipher $E : \left\lbrace 0, 1 \right\rbrace^s \times \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^n$?
 
 There are many ways of processing multiple blocks, this is called the **mode of operation**.
 
@@ -144,7 +144,7 @@ Additional explanation available in [Modes of Operations (Internet Security)](..
 
 ![is-03-cbc-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-cbc-encryption.png)
 
-Let $X = \left\lbrace 0, 1 \right\rbrace^n$ and $E : \mathcal{K} \times X \ra X$ be a **PRP**.
+Let $X = \left\lbrace 0, 1 \right\rbrace^n$ and $E : \mathcal{K} \times X \rightarrow X$ be a **PRP**.
 
 - In CBC mode, a random **initial vector** (IV) is chosen and outputs the ciphertext.
 - Expansion ratio is $\frac{n+1}{n}$ where $n$ is the number of blocks.
@@ -152,7 +152,7 @@ Let $X = \left\lbrace 0, 1 \right\rbrace^n$ and $E : \mathcal{K} \times X \ra X$
 
 There is a security proof for CBC mode.
 
-> **Theorem.** Let $E : \mathcal{K} \times X \ra X$ be a secure PRP. Then CBC mode encryption $E : \mathcal{K} \times X^L \ra X^{L+1}$ is CPA-secure for any $L > 0$.
+> **Theorem.** Let $E : \mathcal{K} \times X \rightarrow X$ be a secure PRP. Then CBC mode encryption $E : \mathcal{K} \times X^L \rightarrow X^{L+1}$ is CPA-secure for any $L > 0$.
 >
 > For any $q$-query adversary $\mathcal{A}$, there exists a PRP adversary $\mathcal{B}$ such that
 >
@@ -195,7 +195,7 @@ Note that if $k_1$ is the same as the key used for encrypting messages, then thi
 
 ![is-03-ctr-encryption.png](../../../assets/img/posts/lecture-notes/internet-security/is-03-ctr-encryption.png)
 
-Let $F : \mathcal{K} \times X \ra X$ be a secure **PRF**.
+Let $F : \mathcal{K} \times X \rightarrow X$ be a secure **PRF**.
 
 - CTR mode also chooses a random IV and increments the IV for every encrypted block.
 - IVs should not be reused.
@@ -204,7 +204,7 @@ Let $F : \mathcal{K} \times X \ra X$ be a secure **PRF**.
 
 There is also a security proof for CTR mode.
 
-> **Theorem.** If $F : \mathcal{K} \times X \ra X$ is a secure PRF, then CTR mode encryption $E : \mathcal{K} \times X^L \ra X^{L+1}$ is CPA-secure.
+> **Theorem.** If $F : \mathcal{K} \times X \rightarrow X$ is a secure PRF, then CTR mode encryption $E : \mathcal{K} \times X^L \rightarrow X^{L+1}$ is CPA-secure.
 >
 > For any $q$-query adversary $\mathcal{A}$ against $E$, there exists a PRF adversary $\mathcal{B}$ such that
 >
