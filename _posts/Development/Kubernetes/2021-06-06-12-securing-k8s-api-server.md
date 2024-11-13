@@ -2,17 +2,18 @@
 share: true
 toc: true
 categories: [Development, Kubernetes]
+path: "_posts/development/kubernetes"
 tags: [kubernetes, sre, devops]
 title: "12. Securing the Kubernetes API Server"
 date: "2021-06-06"
 github_title: "2021-06-06-12-securing-k8s-api-server"
 image:
-  path: /assets/img/posts/Development/Kubernetes/k8s-12.jpeg
+  path: /assets/img/posts/development/kubernetes/k8s-12.jpeg
 attachment:
-  folder: assets/img/posts/Development/Kubernetes
+  folder: assets/img/posts/development/kubernetes
 ---
 
-![k8s-12.jpeg](/assets/img/posts/Development/Kubernetes/k8s-12.jpeg) _Roles grant permissions, whereas RoleBindings bind Roles to subjects (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-12)_
+![k8s-12.jpeg](/assets/img/posts/development/kubernetes/k8s-12.jpeg) _Roles grant permissions, whereas RoleBindings bind Roles to subjects (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-12)_
 
 ### 주요 내용
 

@@ -2,17 +2,18 @@
 share: true
 toc: true
 categories: [Development, Kubernetes]
+path: "_posts/development/kubernetes"
 tags: [kubernetes, sre, devops, docker]
 title: "01. Introducing Kubernetes"
 date: "2021-02-28"
 github_title: "2021-02-28-01-introducing-k8s"
 image:
-  path: /assets/img/posts/Development/Kubernetes/k8s-01.jpeg
+  path: /assets/img/posts/development/kubernetes/k8s-01.jpeg
 attachment:
-  folder: assets/img/posts/Development/Kubernetes
+  folder: assets/img/posts/development/kubernetes
 ---
 
-![k8s-01.jpeg](/assets/img/posts/Development/Kubernetes/k8s-01.jpeg) _Overview of Kubernetes Architecture (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-1)_
+![k8s-01.jpeg](/assets/img/posts/development/kubernetes/k8s-01.jpeg) _Overview of Kubernetes Architecture (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-1)_
 
 기존에는 소프트웨어가 커다란 덩어리였지만 최근에는 독립적으로 작동하는 작은 **마이크로서비스**(microservice)로 나뉘고 있다. 이들은 독립적으로 동작하기 때문에, 개발하고 배포하거나 스케일링을 따로 해줄 수 있다는 장점이 있으며, 이 장점은 빠르게 변화하는 소프트웨어의 요구사항을 반영하기에 적합하다.
 
@@ -81,7 +82,7 @@ attachment:
 
 VM은 독자적인 운영체제를 사용하기 때문에 시스템 프로세스가 필요하고 이는 추가적인 리소스의 소모로 이어진다. (윈도우 VM에 RAM 4GB씩 준다고 생각하면 몇 개를 띄울 수 있을지...)
 
-반면 컨테이너는 호스트 머신에서 돌아가는 프로세스이기 때문에 추가적인 시스템 프로세스가 필요 없어서 애플리케이션이 필요한 리소스만 소모하게 된다. VM에 비해 훨씬 가볍기 때문에 한 머신에서 여러 컨테이너를 돌릴 수 있게 된다. 
+반면 컨테이너는 호스트 머신에서 돌아가는 프로세스이기 때문에 추가적인 시스템 프로세스가 필요 없어서 애플리케이션이 필요한 리소스만 소모하게 된다. VM에 비해 훨씬 가볍기 때문에 한 머신에서 여러 컨테이너를 돌릴 수 있게 된다.
 
 VM을 사용하게 되면 hypervisor 가 하드웨어 자원을 가상 자원(virtual resource)으로 나누어 각 VM안의 OS가 사용할 수 있게 해준다. VM 안에서 돌아가는 애플리케이션은 VM의 OS에 system call 을 하게 되고, VM의 커널은 hypervisor를 통해 호스트의 CPU에서 명령을 수행하게 된다.
 
@@ -165,7 +166,7 @@ VM은 자체적으로 OS를 가지고 있기 때문에 VM을 사용하게 되면
 
 - **스케쥴러**: 애플리케이션 배포시 워커 노드에 서비스를 할당한다.
 
-- **Controller Manager**: 클러스터 수준의 기능을 담당한다. 컴포넌트를 복제하거나 워커 노드 개수를 관리하거나, 노드 에러를 처리하는 등 작업을 담당한다. 
+- **Controller Manager**: 클러스터 수준의 기능을 담당한다. 컴포넌트를 복제하거나 워커 노드 개수를 관리하거나, 노드 에러를 처리하는 등 작업을 담당한다.
 
 - **etcd**: 클러스터의 설정을 저장하는 persistent 분산 데이터 스토어이다.
 
