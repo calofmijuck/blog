@@ -1,18 +1,23 @@
 ---
 share: true
 toc: true
-categories: [Development, Kubernetes]
-tags: [kubernetes, sre, devops]
-title: "15. Automatic Scaling of Pods and Cluster Nodes"
-date: "2021-07-18"
-github_title: "2021-07-18-15-autoscaling"
+categories:
+  - Development
+  - Kubernetes
+tags:
+  - kubernetes
+  - sre
+  - devops
+title: 15. Automatic Scaling of Pods and Cluster Nodes
+date: 2021-07-18
+github_title: 2021-07-18-15-autoscaling
 image:
   path: /assets/img/posts/Development/Kubernetes/k8s-15.jpeg
 attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-15.jpeg](/assets/img/posts/Development/Kubernetes/k8s-15.jpeg) _How the autoscaler obtains metrics and rescales the target deployment (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-15)_
+![k8s-15.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-15.jpeg) _How the autoscaler obtains metrics and rescales the target deployment (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-15)_
 
 ### 주요 내용
 
