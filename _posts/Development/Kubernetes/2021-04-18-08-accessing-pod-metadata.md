@@ -1,18 +1,23 @@
 ---
 share: true
 toc: true
-categories: [Development, Kubernetes]
-tags: [kubernetes, sre, devops]
-title: "08. Accessing Pod Metadata and Other Resources from Applications"
-date: "2021-04-18"
-github_title: "2021-04-18-08-accessing-pod-metadata"
+categories:
+  - Development
+  - Kubernetes
+tags:
+  - kubernetes
+  - sre
+  - devops
+title: 08. Accessing Pod Metadata and Other Resources from Applications
+date: 2021-04-18
+github_title: 2021-04-18-08-accessing-pod-metadata
 image:
   path: /assets/img/posts/Development/Kubernetes/k8s-08.jpeg
 attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-08.jpeg](/assets/img/posts/Development/Kubernetes/k8s-08.jpeg) _Using the files from the default-token Secret to talk to the API server (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-8)_
+![k8s-08.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-08.jpeg) _Using the files from the default-token Secret to talk to the API server (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-8)_
 
 ### 주요 내용
 
