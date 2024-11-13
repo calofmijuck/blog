@@ -59,7 +59,7 @@ Let $\Pi = (S, V)$ be a MAC scheme defined over $(\mathcal{K}, \mathcal{M}, \mat
 > 
 > If $\Pi$ is a secure MAC and $H$ is collision resistant, then $\Pi'$ is a secure MAC.
 > 
-> For any efficient adversary $\mathcal{A}$ attacking $\Pi'$, there exist a MAC adversary $\mathcal{B} _ \mathrm{MAC}$ attacking $\Pi$ and an adversary $\mathcal{B} _ \mathrm{CR}$ attacking $H$ such that
+> For any efficient adversary $\mathcal{A}$ attacking $\Pi'$, there exist a MAC adversary $\mathcal{B}_\mathrm{MAC}$ attacking $\Pi$ and an adversary $\mathcal{B}_\mathrm{CR}$ attacking $H$ such that
 > 
 > $$
 > \mathrm{Adv}_{\mathrm{MAC}}[\mathcal{A}, \Pi'] \leq \mathrm{Adv}_{\mathrm{MAC}}[\mathcal{B}_\mathrm{MAC}, \Pi] + \mathrm{Adv}_{\mathrm{CR}}[\mathcal{B}_\mathrm{CR}, H].
@@ -140,7 +140,7 @@ Suppose that $t_{u-1} \neq t_{v-1}'$ and $m_u \neq m_v'$. Then this is a collisi
 
 Now we have $t_{u-1} = t_{u-1}'$, which implies $h(t_{u-2}, m_{u-1}) = h(t_{u-2}', m_{u-1}')$. We can now repeat the same process until the first block. If $\mathcal{B}$ did not find any collision then it means that $m_i = m_i'$ for all $i$, so $m = m'$. This is a contradiction, so $\mathcal{B}$ must have found a collision.
 
-By the above argument, we see that $\mathrm{Adv} _ {\mathrm{CR}}[\mathcal{A}, H] = \mathrm{Adv} _ {\mathrm{CR}}[\mathcal{B}, h]$.
+By the above argument, we see that $\mathrm{Adv}_{\mathrm{CR}}[\mathcal{A}, H] = \mathrm{Adv}_{\mathrm{CR}}[\mathcal{B}, h]$.
 
 ### Attacking Merkle-Damgård Hash Functions
 
@@ -150,7 +150,7 @@ See Joux's attack.[^2]
 
 Now we only have to build a collision resistant compression function. We can build these functions from either a block cipher, or by using number theoretic primitives.
 
-Number theoretic primitives will be shown after we learn some number theory.[^3] An example is shown in [collision resistance using DL problem (Modern Cryptography)](../2023-10-03-key-exchange/#collision-resistance-based-on-dl-problem).
+Number theoretic primitives will be shown after we learn some number theory.[^3] An example is shown in [collision resistance using DL problem (Modern Cryptography)](./2023-10-03-key-exchange.md#collision-resistance-based-on-dl-problem).
 
 ![mc-06-davies-meyer.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-06-davies-meyer.png)
 
@@ -195,7 +195,7 @@ We needed a complicated construction for MACs that work on long messages. We mig
 
 Here are a few approaches. Suppose that a compression function $h$ is given and $H$ is a Merkle-Damgård function derived from $h$.
 
-Recall that [we can construct a MAC scheme from a PRF](../2023-09-21-macs/#mac-constructions-from-prfs), so either we want a secure PRF or a secure MAC scheme.
+Recall that [we can construct a MAC scheme from a PRF](./2023-09-21-macs.md#mac-constructions-from-prfs), so either we want a secure PRF or a secure MAC scheme.
 
 #### Prepending the Key
 
