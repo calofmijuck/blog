@@ -65,12 +65,12 @@ To implement the above protocol, we need two functions $E$ and $F$ that satisfy 
 
 Let $p$ be a large prime, and let $q$ be another large prime dividing $p - 1$. We typically use very large random primes, $p$ is about $2048$ bits long, and $q$ is about $256$ bits long.
 
-All arithmetic will be done in $\mathbb{Z}_p$. We also consider $\mathbb{Z} _ p^ *$ , the **unit group** of $\mathbb{Z} _ p$. Since $\mathbb{Z} _ p$ is a field, $\mathbb{Z} _ p^ * = \mathbb{Z} _ p \setminus \left\lbrace 0 \right\rbrace$, meaning that $\mathbb{Z} _ p^ *$ has order $p-1$.
+All arithmetic will be done in $\mathbb{Z}_p$. We also consider $\mathbb{Z}_p^\ast$ , the **unit group** of $\mathbb{Z}_p$. Since $\mathbb{Z}_p$ is a field, $\mathbb{Z}_p^\ast = \mathbb{Z}_p \setminus \left\lbrace 0 \right\rbrace$, meaning that $\mathbb{Z}_p^\ast$ has order $p-1$.
 
-Since $q$ is a prime dividing $p - 1$, $\mathbb{Z}_p^*$ has an element $g$ of order $q$.[^1] Let
+Since $q$ is a prime dividing $p - 1$, $\mathbb{Z}_p^\ast$ has an element $g$ of order $q$.[^1] Let
 
 $$
-G = \left\langle g \right\rangle = \left\lbrace 1, g, g^2, \dots, g^{q-1} \right\rbrace \leq \mathbb{Z}_p^*.
+G = \left\langle g \right\rangle = \left\lbrace 1, g, g^2, \dots, g^{q-1} \right\rbrace \leq \mathbb{Z}_p^\ast.
 $$
 
 We assume that the description of $p$, $q$ and $g$ are generated at the setup and shared by all parties. Now the actual protocol goes like this.
@@ -100,7 +100,7 @@ We have used $E(x) = g^x$ in the above implementation. This function is called t
 
 We required that $E$ must be a one-way function for the protocol to work. So it must be hard to compute the discrete logarithm function. There are some problems related to the discrete logarithm, which are used as assumptions in the security proof. They are formalized as a security game, as usual.
 
-$G = \left\langle g \right\rangle \leq \mathbb{Z} _ p^{ * }$ will be a *cyclic group* of order $q$ and $g$ is given as a generator. Note that $g$ and $q$ are also given to the adversary.
+$G = \left\langle g \right\rangle \leq \mathbb{Z}_p^\ast$ will be a *cyclic group* of order $q$ and $g$ is given as a generator. Note that $g$ and $q$ are also given to the adversary.
 
 ### Discrete Logarithm Problem (DL)
 
@@ -182,7 +182,7 @@ If we used the DL assumption and it turns out to be false, there will be an effi
 
 Suppose we want something like a secret group chat, where there are $N$ ($\geq 3$) people and they need to generate a shared secret key. It is known that $N$-party Diffie-Hellman is possible in $N-1$ rounds. Here's how it goes. The indices are all in modulo $N$.
 
-Each party $i$ chooses $\alpha _ i \leftarrow \mathbb{Z} _ q$, and computes $g^{\alpha _ i}$. The parties communicate in a circular form, and passes the computed value to the $(i+1)$-th party. In the next round, the $i$-th party receives $g^{\alpha _ {i-1}}$ and computes $g^{\alpha _ {i-1}\alpha _ i}$ and passes it to the next party. After $N-1$ rounds, all parties have the shared key $g^{\alpha _ 1\cdots\alpha _ N}$.
+Each party $i$ chooses $\alpha_i \leftarrow \mathbb{Z}_q$, and computes $g^{\alpha_i}$. The parties communicate in a circular form, and passes the computed value to the $(i+1)$-th party. In the next round, the $i$-th party receives $g^{\alpha_{i-1}}$ and computes $g^{\alpha_{i-1}\alpha_i}$ and passes it to the next party. After $N-1$ rounds, all parties have the shared key $g^{\alpha_1\cdots\alpha_N}$.
 
 Taking $\mathcal{O}(N)$ steps is impractical in the real world, due to many communications that the above algorithm requires. Researchers are looking for methods to generate a shared key in a single round. It has been solved for $N=3$ using bilinear pairings, but for $N \geq 4$ it is an open problem.
 
@@ -241,5 +241,5 @@ It is unknown whether we can get a better gap (than quadratic) using a general s
 
 To get exponential gaps, we need number theory.
 
-[^1]: By Cauchy's theorem, or use the fact that $\mathbb{Z}_p^*$ is commutative. Finite commutative groups have a subgroup of every order that divides the order of the group.
+[^1]: By Cauchy's theorem, or use the fact that $\mathbb{Z}_p^\ast$ is commutative. Finite commutative groups have a subgroup of every order that divides the order of the group.
 [^2]: R. Impagliazzo and S. Rudich. Limits on the provable consequences of one-way permutations. In Proceedings of the Symposium on Theory of Computing (STOC), pages 44–61, 1989.
