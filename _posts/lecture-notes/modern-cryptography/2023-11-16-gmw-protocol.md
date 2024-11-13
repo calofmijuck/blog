@@ -19,7 +19,7 @@ attachment:
   folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
-There are two types of MPC protocols, **generic** and **specific**. Generic protocols can compute arbitrary functions. [Garbled circuits](./2023-11-14-garbled-circuits.md#garbled-circuits) were generic protocols, since it can be used to compute any boolean circuits. In contrast, the [summation protocol](./2023-11-09-secure-mpc.md#example-secure-summation) is a specific protocol that can only be used to compute a specific function. Note that generic protocols are not necessarily better, since specific protocols are much more efficient.
+There are two types of MPC protocols, **generic** and **specific**. Generic protocols can compute arbitrary functions. [Garbled circuits](../2023-11-14-garbled-circuits/#garbled-circuits) were generic protocols, since it can be used to compute any boolean circuits. In contrast, the [summation protocol](../2023-11-09-secure-mpc/#example-secure-summation) is a specific protocol that can only be used to compute a specific function. Note that generic protocols are not necessarily better, since specific protocols are much more efficient.
 
 ## GMW Protocol
 
@@ -39,7 +39,7 @@ The protocol can be broken down into $3$ phases.
 Suppose that we have $n$ parties $P _ 1, \dots, P _ n$ with inputs $x _ 1, \dots, x _ n \in \braces{0, 1}$. The inputs are bits but they can be generalized to inputs over $\Z _ q$ where $q$ is prime.
 
 > Each party $P _ i$ shares its input with other parties as follows.
-> 
+>
 > 1. Choose random $r _ {i, j} \la \braces{0, 1}$ for all $j \neq i$ and send $r _ {i, j}$ to $P _ j$.
 > 2. Set $r _ {i, i} = x _ i + \sum _ {i \neq j} r _ {i, j}$.
 
@@ -84,7 +84,7 @@ $$
 The first term can be computed internally by each party. The problem is the second term. $P _ i$ doesn't know the values of $a _ j$ and $b _ j$. Therefore, we need some kind of interaction between $P _ i$ and $P _ j$, but no information should be revealed. We can use an OT for this.
 
 > For every pair of parties $(P _ i, P _ j)$, perform the following.
-> 
+>
 > 1. $P _ i$ chooses a random bit $s _ {i, j}$ and computes all possible values of $a _ ib _ j + a _ jb _ i + s _ {i, j}$. These values are used in the OT.
 > 2. $P _ i$ and $P _ j$ run a $1$-out-of-$4$ OT.
 > 3. $P _ i$ keeps $s _ {i, j}$ and $P _ j$ receives $a _ ib _ j + a _ jb _ i + s _ {i, j}$.
@@ -132,7 +132,7 @@ We see that the distribution of the values inside the simulator is identical to 
 When Beaver triples are shared, $[x] = (x _ 1, x _ 2)$ and $[y] = (y _ 1, y _ 2)$ are chosen so that
 
 $$
- 
+
 \tag{$\ast$}
 z = z _ 1 + z _ 2 = (x _ 1 + x _ 2)(y _ 1 + y _ 2) = x _ 1y _ 1 + x _ 1y _ 2 + x _ 2y _ 1 + x _ 2y _ 2.
 $$
@@ -193,7 +193,7 @@ Also note that $u _ i, v _ i$ does not reveal any information about $x _ i, y _ 
 
 **Beaver triples are to be used only once!** If $u _ 1 = a _ 1 + x _ 1$ and $u _ 1' = a _ 1' + x _ 1$, then $u _ 1 + u _ 1' = a _ 1 + a _ 1'$, revealing information about $a _ 1 + a _ 1'$.
 
-Thus, before the online phase, a huge amount of Beaver triples are shared to speed up the computation. This can be done efficiently using [OT extension](2023-11-16-gmw-protocol.md#ot-extension) described below.
+Thus, before the online phase, a huge amount of Beaver triples are shared to speed up the computation. This can be done efficiently using [OT extension](../2023-11-16-gmw-protocol/#ot-extension) described below.
 
 ## Comparison of Yao and GMW
 
@@ -222,7 +222,7 @@ This protocol will extend $n$ OTs to $m$ OTs, where $m \gg n$.
 	- After the protocol, the receiver will get $x _ i^{\sigma _ i}$ for $i = 1, \dots, m$.
 
 > **First phase.**
-> 
+>
 > 1. The receiver samples $n$ random strings $T _ 1, \dots, T _ n \la \braces{0, 1}^m$ of length $m$.
 > 2. The receiver prepares pairs $\paren{T _ i, T _ i \oplus \sigma}$ for $i = 1, \dots, n$ and plays *sender in base OT*.
 > 3. The sender chooses random $s = (s _ 1, \dots, s _ n) \in \braces{0, 1}^n$.
@@ -253,7 +253,7 @@ T[j] \oplus s & (\sigma _ j = 1).
 $$
 
 > **Second phase.** To perform the $j$-th transfer $(j = 1, \dots, m)$,
-> 
+>
 > 1. The sender sends $y _ j^0 = H(j, Q[j]) \oplus x _ j^0$ and $y _ j^1 = H(j, Q[j] \oplus s) \oplus x _ j^1$.
 > 2. The receiver computes $H(j, T[j]) \oplus y _ j^{\sigma _ j}$.
 
@@ -281,7 +281,7 @@ As for the receiver, the values $(x _ j^0, x _ j^1)$ are masked by a hash functi
 
 The extension technique allows us to run $n$ base OT instances to obtain $m$ OT instances. For each of the $m$ OT transfers, only a few hash operations are required, resulting in very efficient OT.
 
-One may concern that we have to send a lot of information for each of the $n$ OT instances, since we have to send $m$ bit data for each OT. But this of not much concern. For example, if we used [OT based on ElGamal](./2023-11-09-secure-mpc.md#1-out-of-2-ot-construction-from-elgamal-encryption), we can choose primes large enough $> 2^m$ to handle $m$-bit data.
+One may concern that we have to send a lot of information for each of the $n$ OT instances, since we have to send $m$ bit data for each OT. But this of not much concern. For example, if we used [OT based on ElGamal](../2023-11-09-secure-mpc/#1-out-of-2-ot-construction-from-elgamal-encryption), we can choose primes large enough $> 2^m$ to handle $m$-bit data.
 
 Hence, with OT extensions, we can perform millions of OTs efficiently, which can be used especially for computing many Beaver triples during preprocessing.
 

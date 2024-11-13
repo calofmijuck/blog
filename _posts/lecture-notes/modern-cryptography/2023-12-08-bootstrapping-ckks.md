@@ -117,7 +117,7 @@ Designing an FHE scheme without the circular security assumption is currently an
 
 ## CKKS Scheme
 
-The [BGV scheme](./2023-11-23-bgv-scheme.md#the-bgv-scheme) operates on $\Z _ p$, so it doesn't work on real numbers. **Cheon-Kim-Kim-Song** (CKKS) scheme works on real numbers using approximate computation.
+The [BGV scheme](../2023-11-23-bgv-scheme/#the-bgv-scheme) operates on $\Z _ p$, so it doesn't work on real numbers. **Cheon-Kim-Kim-Song** (CKKS) scheme works on real numbers using approximate computation.
 
 ### Approximate Computation
 
@@ -209,7 +209,7 @@ so the decryption results in $\Delta\inv \cdot (\mu + \mu') \approx m + m'$.
 
 ### Multiplication in CKKS
 
-We also use [tensor products](./2023-11-23-bgv-scheme.md#tensor-product), and their properties.
+We also use [tensor products](../2023-11-23-bgv-scheme/#tensor-product), and their properties.
 
 > Let $\bf{c} = (b, \bf{a})$ and $\bf{c}' = (b', \bf{a}')$ be encryptions of $m, m' \in \R$. Then,
 > 
@@ -244,7 +244,7 @@ We have issues with multiplication, as we did in BGV.
 
 ### Dimension Reduction
 
-The relinearization procedure is almost the same as in [BGV relinearization](./2023-11-23-bgv-scheme.md#relinearization).
+The relinearization procedure is almost the same as in [BGV relinearization](../2023-11-23-bgv-scheme/#relinearization).
 
 For convenience, let $a _ {i, j} = a _ i a _ j'$.
 
@@ -288,7 +288,7 @@ Note that the proof is identical to that of BGV linearization, except for missin
 
 ### Scaling Factor Reduction
 
-In BGV, we used modulus switching for [noise reduction](./2023-11-23-bgv-scheme.md#noise-reduction). It was for reducing the error and preserving the message. We also use modulus switching here, but for a different purpose. The message can have small numerical errors, we just want to reduce the scaling factor. This operation is called **rescaling**.
+In BGV, we used modulus switching for [noise reduction](../2023-11-23-bgv-scheme/#noise-reduction). It was for reducing the error and preserving the message. We also use modulus switching here, but for a different purpose. The message can have small numerical errors, we just want to reduce the scaling factor. This operation is called **rescaling**.
 
 Given $\bf{c} = (b, \bf{a}) \in \Z _ q^{n+1}$ such that $b + \span{\bf{a}, \bf{s}} = \mu \pmod q$ and $\mu \approx \Delta^2 \cdot m$, we want to generate a new ciphertext of $m' \approx m$ that has a scaling factor reduced to $\Delta$. This can be done by dividing the ciphertext by $\Delta$ and then rounding it appropriately.
 
@@ -330,7 +330,7 @@ $$
 \Delta^{L+1} \ra \Delta^L \ra \cdots \ra \Delta.
 $$
 
-When we reach $q _ 0 = \Delta$, we cannot perform any multiplications, so we apply [bootstrapping](2023-12-08-bootstrapping-ckks.md#bootstrapping) here.
+When we reach $q _ 0 = \Delta$, we cannot perform any multiplications, so we apply [bootstrapping](../2023-12-08-bootstrapping-ckks/#bootstrapping) here.
 
 ### Multiplication in CKKS (Summary)
 

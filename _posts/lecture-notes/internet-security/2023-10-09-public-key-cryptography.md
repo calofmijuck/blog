@@ -15,7 +15,7 @@ date: 2023-10-09
 github_title: 2023-10-09-public-key-cryptography
 ---
 
-In symmetric key cryptography, we have a problem with key sharing and management. More info in the first few paragraphs of [Key Exchange (Modern Cryptography)](../modern-cryptography/2023-10-03-key-exchange.md).
+In symmetric key cryptography, we have a problem with key sharing and management. More info in the first few paragraphs of [Key Exchange (Modern Cryptography)](../../modern-cryptography/2023-10-03-key-exchange/).
 
 ## Public Key Cryptography
 
@@ -32,7 +32,7 @@ These keys are created to be used in **trapdoor one-way functions**.
 
 A **one-way function** is a function that is easy to compute, but hard to compute the pre-image of any output. Here are some common examples.
 
-- *Cryptographic hash functions*: [Hash Functions (Modern Cryptography)](../modern-cryptography/2023-09-28-hash-functions.md#collision-resistance).
+- *Cryptographic hash functions*: [Hash Functions (Modern Cryptography)](../../modern-cryptography/2023-09-28-hash-functions/#collision-resistance).
 - *Factoring a large integer*: It is easy to multiply to integers even if they're large, but factoring is very hard.
 - *Discrete logarithm problem*: It is easy to exponentiate a number, but it is hard to find the discrete logarithm.
 
@@ -87,7 +87,7 @@ Choose a large prime $p$ and a generator $g$ of $\mathbb{Z} _ p^\ast$. The descr
 > 3. Alice and Bob calculate $g^{xy} \bmod p$ separately.
 > 4. Eve can see $g^x \bmod p$, $g^y \bmod p$ but cannot calculate $g^{xy} \bmod p$.
 
-Refer to [Diffie-Hellman Key Exchange (Modern Cryptography)](../modern-cryptography/2023-10-03-key-exchange.md#diffie-hellman-key-exchange-(dhke)).
+Refer to [Diffie-Hellman Key Exchange (Modern Cryptography)](../../modern-cryptography/2023-10-03-key-exchange/#diffie-hellman-key-exchange-(dhke)).
 
 ## Message Integrity
 
