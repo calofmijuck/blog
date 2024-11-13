@@ -51,39 +51,39 @@ The following notion of security is only for an eavesdropping adversary.
 >
 > **Experiment** $b$.
 > 1. The challenger computes $(pk, sk) \la G()$ and sends $pk$ to the adversary.
-> 2. The adversary chooses $m_0, m_1 \in \mc{M}$ of the same length, and sends them to the challenger.
-> 3. The challenger computes $c \la E(pk, m_b)$ and sends $c$ to the adversary.
+> 2. The adversary chooses $m _ 0, m _ 1 \in \mc{M}$ of the same length, and sends them to the challenger.
+> 3. The challenger computes $c \la E(pk, m _ b)$ and sends $c$ to the adversary.
 > 4. $\mc{A}$ outputs a bit $b' \in \braces{0, 1}$.
 >
-> Let $W_b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. The **advantage** of $\mc{A}$ with respect to $\mc{E}$ is defined as
+> Let $W _ b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. The **advantage** of $\mc{A}$ with respect to $\mc{E}$ is defined as
 >
 > $$
-> \Adv[SS]{\mc{A}, \mc{E}} = \abs{\Pr[W_0] - \Pr[W_1]}.
+> \Adv[SS]{\mc{A}, \mc{E}} = \abs{\Pr[W _ 0] - \Pr[W _ 1]}.
 > $$
 >
-> $\mc{E}$ is **semantically secure** if $\rm{Adv}_{\rm{SS}}[\mc{A}, \mc{E}]$ is negligible for any efficient $\mc{A}$.
+> $\mc{E}$ is **semantically secure** if $\rm{Adv} _ {\rm{SS}}[\mc{A}, \mc{E}]$ is negligible for any efficient $\mc{A}$.
 
-Note that $pk$ is sent to the adversary, and adversary can encrypt any message! Thus, encryption must be randomized. Otherwise, the adversary can compute $E(pk, m_b)$ for each $b$ and compare with $c$ given from the challenger.
+Note that $pk$ is sent to the adversary, and adversary can encrypt any message! Thus, encryption must be randomized. Otherwise, the adversary can compute $E(pk, m _ b)$ for each $b$ and compare with $c$ given from the challenger.
 
 ### Semantic Security $\implies$ CPA
 
 For symmetric ciphers, semantic security (one-time) did not guarantee CPA security (many-time). But in public key encryption, semantic security implies CPA security. This is because *the attacker can encrypt any message using the public key*.
 
-First, we check the definition of CPA security for public key encryption. It is similar to that of symmetric ciphers, compare with [CPA Security for symmetric key encryption (Modern Cryptography)](./2023-09-19-symmetric-key-encryption.md#cpa-security).
+First, we check the definition of CPA security for public key encryption. It is similar to that of symmetric ciphers, compare with [CPA Security for symmetric key encryption (Modern Cryptography)](../2023-09-19-symmetric-key-encryption/#cpa-security).
 
 > **Definition.** For a given public-key encryption scheme $\mc{E} = (G, E, D)$ defined over $(\mc{M}, \mc{C})$ and given an adversary $\mc{A}$, define experiments 0 and 1.
 >
 > **Experiment $b$.**
 > 1. The challenger computes $(pk, sk) \la G()$ and sends $pk$ to the adversary.
 > 2. The adversary submits a sequence of queries to the challenger:
-> 	- The $i$-th query is a pair of messages $m_{i, 0}, m_{i, 1} \in \mc{M}$ of the same length.
-> 3. The challenger computes $c_i = E(pk, m_{i, b})$ and sends $c_i$ to the adversary.
+> 	- The $i$-th query is a pair of messages $m _ {i, 0}, m _ {i, 1} \in \mc{M}$ of the same length.
+> 3. The challenger computes $c _ i = E(pk, m _ {i, b})$ and sends $c _ i$ to the adversary.
 > 4. The adversary computes and outputs a bit $b' \in \braces{0, 1}$.
 >
-> Let $W_b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mc{E}$** is defined as
+> Let $W _ b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. Then the **CPA advantage with respect to $\mc{E}$** is defined as
 >
 > $$
-> \Adv[CPA]{\mc{A}, \mc{E}} = \abs{\Pr[W_0] - \Pr[W_1]}.
+> \Adv[CPA]{\mc{A}, \mc{E}} = \abs{\Pr[W _ 0] - \Pr[W _ 1]}.
 > $$
 >
 > If the CPA advantage is negligible for all efficient adversaries $\mc{A}$, then $\mc{E}$ is **semantically secure against chosen plaintext attack**, or simply **CPA secure**.
@@ -95,71 +95,71 @@ We formally prove the following theorem.
 > For any $q$-query CPA adversary $\mc{A}$, there exists an SS adversary $\mc{B}$ such that
 >
 > $$
-> \rm{Adv}_{\rm{CPA}}[\mc{A}, \mc{E}] = q \cdot \rm{Adv}_{\rm{SS}}[\mc{B}, \mc{E}].
+> \rm{Adv} _ {\rm{CPA}}[\mc{A}, \mc{E}] = q \cdot \rm{Adv} _ {\rm{SS}}[\mc{B}, \mc{E}].
 > $$
 
 *Proof*. The proof uses a hybrid argument. For $j = 0, \dots, q$, the *hybrid game* $j$ is played between $\mc{A}$ and a challenger that responds to the $q$ queries as follows:
 
-- On the $i$-th query $(m_{i,0}, m_{i, 1})$, respond with $c_i$ where
-	- $c_i \la E(pk, m_{i, 1})$ if $i \leq j$.
-	- $c_i \la E(pk, m_{i, 0})$ otherwise.
+- On the $i$-th query $(m _ {i,0}, m _ {i, 1})$, respond with $c _ i$ where
+	- $c _ i \la E(pk, m _ {i, 1})$ if $i \leq j$.
+	- $c _ i \la E(pk, m _ {i, 0})$ otherwise.
 
-So, the challenger in hybrid game $j$ encrypts $m_{i, 1}$ in the first $j$ queries, and encrypts $m_{i, 0}$ for the rest of the queries. If we define $p_j$ to be the probability that $\mc{A}$ outputs $1$ in hybrid game $j$, we have
+So, the challenger in hybrid game $j$ encrypts $m _ {i, 1}$ in the first $j$ queries, and encrypts $m _ {i, 0}$ for the rest of the queries. If we define $p _ j$ to be the probability that $\mc{A}$ outputs $1$ in hybrid game $j$, we have
 
 $$
-\Adv[CPA]{\mc{A}, \mc{E}} = \abs{p_q - p_0}
+\Adv[CPA]{\mc{A}, \mc{E}} = \abs{p _ q - p _ 0}
 $$
 
 since hybrid $q$ is precisely experiment $1$, hybrid $0$ is experiment $0$. With $\mc{A}$, we define $\mc{B}$ as follows.
 
 1. $\mc{B}$ randomly chooses $\omega \la \braces{1, \dots, q}$.
 2. $\mc{B}$ obtains $pk$ from the challenger, and forwards it to $\mc{A}$.
-3. For the $i$-th query $(m_{i, 0}, m_{i, 1})$ from $\mc{A}$, $\mc{B}$ responds as follows.
-	- If $i < \omega$, $c \la E(pk, m_{i, 1})$.
+3. For the $i$-th query $(m _ {i, 0}, m _ {i, 1})$ from $\mc{A}$, $\mc{B}$ responds as follows.
+	- If $i < \omega$, $c \la E(pk, m _ {i, 1})$.
 	- If $i = \omega$, forward query to the challenger and forward its response to $\mc{A}$.
-	- Otherwise, $c_i \la E(pk, m_{i, 0})$.
+	- Otherwise, $c _ i \la E(pk, m _ {i, 0})$.
 4. $\mc{B}$ outputs whatever $\mc{A}$ outputs.
 
-Note that $\mc{B}$ can encrypt queries on its own, since the public key is given. Define $W_b$ as the event that $\mc{B}$ outputs $1$ in experiment $b$ in the semantic security game. For $j = 1, \dots, q$, we have that
+Note that $\mc{B}$ can encrypt queries on its own, since the public key is given. Define $W _ b$ as the event that $\mc{B}$ outputs $1$ in experiment $b$ in the semantic security game. For $j = 1, \dots, q$, we have that
 
 $$
-\Pr[W_0 \mid \omega = j] = p_{j - 1}, \quad \Pr[W_1 \mid \omega = j] = p_j.
+\Pr[W _ 0 \mid \omega = j] = p _ {j - 1}, \quad \Pr[W _ 1 \mid \omega = j] = p _ j.
 $$
 
-In experiment $0$ with $\omega = j$, $\mc{A}$ receives encryptions of $m_{i, 1}$ in the first $j - 1$ queries and receives encryptions of $m_{i, 1}$ for the rest of the queries. The second equation follows similarly.
+In experiment $0$ with $\omega = j$, $\mc{A}$ receives encryptions of $m _ {i, 1}$ in the first $j - 1$ queries and receives encryptions of $m _ {i, 1}$ for the rest of the queries. The second equation follows similarly.
 
 Then the SS advantage can be calculated as
 
 $$
 \begin{aligned}
-\Adv[SS]{\mc{B}, \mc{E}} &= \abs{\Pr[W_0] - \Pr[W_1]} \\
-&= \frac{1}{q} \abs{\sum_{j=1}^q \Pr[W_0 \mid \omega = j] - \sum_{j = 1}^q \Pr[W_1 \mid \omega = j]} \\
-&= \frac{1}{q} \abs{\sum_{j=1}^q (p_{j-1} - p_j)} \\
+\Adv[SS]{\mc{B}, \mc{E}} &= \abs{\Pr[W _ 0] - \Pr[W _ 1]} \\
+&= \frac{1}{q} \abs{\sum _ {j=1}^q \Pr[W _ 0 \mid \omega = j] - \sum _ {j = 1}^q \Pr[W _ 1 \mid \omega = j]} \\
+&= \frac{1}{q} \abs{\sum _ {j=1}^q (p _ {j-1} - p _ j)} \\
 &= \frac{1}{q} \Adv[CPA]{\mc{A}, \mc{E}}.
 \end{aligned}
 $$
 
 ## CCA Security for Public Key Encryption
 
-We also define CCA security for public key encryption, which models a wide spectrum of real-world attacks. The definition is also very similar to that of symmetric ciphers, compare with [CCA security for symmetric ciphers (Modern Cryptography)](./2023-09-26-cca-security-authenticated-encryption.md#cca-security).
+We also define CCA security for public key encryption, which models a wide spectrum of real-world attacks. The definition is also very similar to that of symmetric ciphers, compare with [CCA security for symmetric ciphers (Modern Cryptography)](../2023-09-26-cca-security-authenticated-encryption/#cca-security).
 
 > **Definition.** Let $\mc{E} = (G, E, D)$ be a public-key encryption scheme over $(\mc{M}, \mc{C})$. Given an adversary $\mc{A}$, define experiments $0$ and $1$.
 >
 > **Experiment $b$.**
 > 1. The challenger computes $(pk, sk) \la G()$ and sends $pk$ to the adversary.
 > 2. $\mc{A}$ makes a series of queries to the challenger, which is one of the following two types.
-> 	- *Encryption*: Send $(m_{i_,0}, m_{i, 1})$ and receive $c'_i \la E(pk, m_{i, b})$.
-> 	- *Decryption*: Send $c_i$ and receive $m'_i \la D(sk, c_i)$.
-> 	- Note that $\mc{A}$ is not allowed to make a decryption query for any $c_i'$.
-> 3. $\mc{A}$ outputs a pair of messages $(m_0^\ast , m_1^\ast)$.
-> 4. The challenger generates $c^\ast \la E(pk, m_b^\ast)$ and gives it to $\mc{A}$.
+> 	- *Encryption*: Send $(m _ {i _ ,0}, m _ {i, 1})$ and receive $c' _ i \la E(pk, m _ {i, b})$.
+> 	- *Decryption*: Send $c _ i$ and receive $m' _ i \la D(sk, c _ i)$.
+> 	- Note that $\mc{A}$ is not allowed to make a decryption query for any $c _ i'$.
+> 3. $\mc{A}$ outputs a pair of messages $(m _ 0^\ast , m _ 1^\ast)$.
+> 4. The challenger generates $c^\ast \la E(pk, m _ b^\ast)$ and gives it to $\mc{A}$.
 > 5. $\mc{A}$ is allowed to keep making queries, but not allowed to make a decryption query for $c^\ast$.
 > 6. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
 >
-> Let $W_b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. Then the **CCA advantage with respect to $\mc{E}$** is defined as
+> Let $W _ b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. Then the **CCA advantage with respect to $\mc{E}$** is defined as
 >
 > $$
-> \rm{Adv}_{\rm{CCA}}[\mc{A}, \mc{E}] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert.
+> \rm{Adv} _ {\rm{CCA}}[\mc{A}, \mc{E}] = \left\lvert \Pr[W _ 0] - \Pr[W _ 1] \right\lvert.
 > $$
 >
 > If the CCA advantage is negligible for all efficient adversaries $\mc{A}$, then $\mc{E}$ is **semantically secure against a chosen ciphertext attack**, or simply **CCA secure**.
@@ -176,7 +176,7 @@ Similarly, 1CCA security implies CCA security, as in the above theorem. So to sh
 
 ### Active Adversaries in Symmetric vs Public Key
 
-In symmetric key encryption, we studied [authenticated encryption (AE)](./2023-09-26-cca-security-authenticated-encryption.md#authenticated-encryption-(ae)), which required the scheme to be CPA secure and provide ciphertext integrity. In symmetric key settings, AE implied CCA.
+In symmetric key encryption, we studied [authenticated encryption (AE)](../2023-09-26-cca-security-authenticated-encryption/#authenticated-encryption-(ae)), which required the scheme to be CPA secure and provide ciphertext integrity. In symmetric key settings, AE implied CCA.
 
 However in public-key schemes, adversaries can always create new ciphertexts using the public key, which makes the original definition of ciphertext integrity unusable. Thus we directly require CCA security.
 
@@ -187,24 +187,24 @@ Symmetric key encryptions are significantly faster than public key encryption, s
 Generate $(pk, sk)$ for the public key encryption, and generate a symmetric key $k$. For the message $m$, encrypt it as
 
 $$
-(c, c_S) \la \big( E(pk, k), E_S(k, m) \big)
+(c, c _ S) \la \big( E(pk, k), E _ S(k, m) \big)
 $$
 
-where $E_S$ is the symmetric encryption algorithm, $E$ is the public-key encryption algorithm. The receiver decrypts $c$ and recovers $k$ that can be used for decrypting $c_S$. This is a form of **hybrid encryption**. We are *encapsulating* the key $k$ inside a ciphertext, so we call this **key encapsulation mechanism** (KEM).
+where $E _ S$ is the symmetric encryption algorithm, $E$ is the public-key encryption algorithm. The receiver decrypts $c$ and recovers $k$ that can be used for decrypting $c _ S$. This is a form of **hybrid encryption**. We are *encapsulating* the key $k$ inside a ciphertext, so we call this **key encapsulation mechanism** (KEM).
 
 We can use public-key schemes for KEM, but there are dedicated constructions for KEM which are more efficient. The dedicated algorithms does the key generation and encryption in one-shot.
 
-> **Definition.** A KEM $\mc{E}_\rm{KEM}$ consists of a triple of algorithms $(G, E_\rm{KEM}, D_\rm{KEM})$.
+> **Definition.** A KEM $\mc{E} _ \rm{KEM}$ consists of a triple of algorithms $(G, E _ \rm{KEM}, D _ \rm{KEM})$.
 >
 > - The key generation algorithm generates $(pk, sk) \la G()$.
-> - The encapsulation algorithm generates $(k, c_\rm{KEM}) \la E_\rm{KEM}(pk)$.
-> - The decapsulation algorithm generates $k \la D_\rm{KEM}(sk, c_\rm{KEM})$.
+> - The encapsulation algorithm generates $(k, c _ \rm{KEM}) \la E _ \rm{KEM}(pk)$.
+> - The decapsulation algorithm generates $k \la D _ \rm{KEM}(sk, c _ \rm{KEM})$.
 
-Note that $E_\rm{KEM}$ only takes the public key as a parameter. The correctness condition is that for any $(pk, sk) \la G()$ and any $(k, c_\rm{KEM}) \la E_\rm{KEM}(pk)$, we must have $k \la D_\rm{KEM}(sk, c_\rm{KEM})$.
+Note that $E _ \rm{KEM}$ only takes the public key as a parameter. The correctness condition is that for any $(pk, sk) \la G()$ and any $(k, c _ \rm{KEM}) \la E _ \rm{KEM}(pk)$, we must have $k \la D _ \rm{KEM}(sk, c _ \rm{KEM})$.
 
 Using the KEM, the symmetric key is automatically encapsulated during encryption process.
 
-> **Definition.** A KEM scheme is secure if any efficient adversary cannot distinguish between $(c_\rm{KEM}, k_0)$ and $(c_\rm{KEM}, k_1)$, where $k_0$ is generated by $E(pk)$, and $k_1$ is chosen randomly from $\mc{K}$.
+> **Definition.** A KEM scheme is secure if any efficient adversary cannot distinguish between $(c _ \rm{KEM}, k _ 0)$ and $(c _ \rm{KEM}, k _ 1)$, where $k _ 0$ is generated by $E(pk)$, and $k _ 1$ is chosen randomly from $\mc{K}$.
 
 Read more about this in Exercise 11.9.[^1]
 
@@ -212,57 +212,57 @@ Read more about this in Exercise 11.9.[^1]
 
 We introduce a public-key encryption scheme based on the hardness of discrete logarithms.
 
-> **Definition.** Suppose we have two parties Alice and Bob. Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$, let $\mc{E}_S = (E_S, D_S)$ be a symmetric cipher.
+> **Definition.** Suppose we have two parties Alice and Bob. Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$, let $\mc{E} _ S = (E _ S, D _ S)$ be a symmetric cipher.
 >
-> 1. Alice chooses $sk = \alpha \la \Z_q$, computes $pk = g^\alpha$ and sends $pk$ to Bob.
-> 2. Bob also chooses $\beta \la \Z_q$ and computes $k = h^\beta = g^{\alpha\beta}$.
-> 3. Bob sends $\big( g^\beta, E_S(k, m) \big)$ to Alice.
-> 4. Alice computes $k = g^{\alpha\beta} = (g^\beta)^\alpha$ using $\alpha$ and recovers $m$ by decrypting $E_S(k, m)$.
+> 1. Alice chooses $sk = \alpha \la \Z _ q$, computes $pk = g^\alpha$ and sends $pk$ to Bob.
+> 2. Bob also chooses $\beta \la \Z _ q$ and computes $k = h^\beta = g^{\alpha\beta}$.
+> 3. Bob sends $\big( g^\beta, E _ S(k, m) \big)$ to Alice.
+> 4. Alice computes $k = g^{\alpha\beta} = (g^\beta)^\alpha$ using $\alpha$ and recovers $m$ by decrypting $E _ S(k, m)$.
 
-As a concrete example, set $E_S(k, m) = k \cdot m$ and $D_S(k, c) = k^{-1} \cdot c$. The correctness property automatically holds. Therefore,
+As a concrete example, set $E _ S(k, m) = k \cdot m$ and $D _ S(k, c) = k^{-1} \cdot c$. The correctness property automatically holds. Therefore,
 
-- $G$ outputs $sk = \alpha \la \Z_q$, $pk = h = g^\alpha$.
-- $E(pk, m) = (c_1, c_2) \la (g^\beta, h^\beta \cdot m)$ where $\beta \la \Z_q$.
-- $D(sk, c) = c_2 \cdot (c_1)^{-\alpha} = m$.
+- $G$ outputs $sk = \alpha \la \Z _ q$, $pk = h = g^\alpha$.
+- $E(pk, m) = (c _ 1, c _ 2) \la (g^\beta, h^\beta \cdot m)$ where $\beta \la \Z _ q$.
+- $D(sk, c) = c _ 2 \cdot (c _ 1)^{-\alpha} = m$.
 
 ### Security of ElGamal Encryption
 
-> **Theorem.** If the DDH assumption holds on $G$, and the symmetric cipher $\mc{E}_S = (E_S, D_S)$ is semantically secure, then the ElGamal encryption scheme $\mc{E}_\rm{EG}$ is semantically secure.
+> **Theorem.** If the DDH assumption holds on $G$, and the symmetric cipher $\mc{E} _ S = (E _ S, D _ S)$ is semantically secure, then the ElGamal encryption scheme $\mc{E} _ \rm{EG}$ is semantically secure.
 >
-> For any SS adversary $\mc{A}$ of $\mc{E}_\rm{EG}$, there exist a DDH adversary $\mc{B}$, and an SS adversary $\mc{C}$ for $\mc{E}_S$ such that
+> For any SS adversary $\mc{A}$ of $\mc{E} _ \rm{EG}$, there exist a DDH adversary $\mc{B}$, and an SS adversary $\mc{C}$ for $\mc{E} _ S$ such that
 >
 > $$
-> \Adv[SS]{\mc{A}, \mc{E}_\rm{EG}} \leq 2 \cdot \Adv[DDH]{\mc{B}, G} + \Adv[SS]{\mc{C}, \mc{E}_S}.
+> \Adv[SS]{\mc{A}, \mc{E} _ \rm{EG}} \leq 2 \cdot \Adv[DDH]{\mc{B}, G} + \Adv[SS]{\mc{C}, \mc{E} _ S}.
 > $$
 
-*Proof Idea*. For any $m_0, m_1 \in G$ and random $\gamma \la \Z_q$,
+*Proof Idea*. For any $m _ 0, m _ 1 \in G$ and random $\gamma \la \Z _ q$,
 
 $$
-E_S(g^{\alpha\beta}, m_0) \approx_c E_S(g^{\gamma}, m_0) \approx_c E_S(g^\gamma, m_1) \approx_c E_S(g^{\alpha\beta}, m_1).
+E _ S(g^{\alpha\beta}, m _ 0) \approx _ c E _ S(g^{\gamma}, m _ 0) \approx _ c E _ S(g^\gamma, m _ 1) \approx _ c E _ S(g^{\alpha\beta}, m _ 1).
 $$
 
-The first two and last two ciphertexts are computationally indistinguishable since the DDH problem is hard. The second and third ciphertexts are also indistinguishable since $\mc{E}_S$ is semantically secure.
+The first two and last two ciphertexts are computationally indistinguishable since the DDH problem is hard. The second and third ciphertexts are also indistinguishable since $\mc{E} _ S$ is semantically secure.
 
 *Proof*. Full proof in Theorem 11.5.[^1]
 
-Note that $\beta \la \Z_q$ must be chosen differently for each encrypted message. This is the randomness part of the encryption, since $pk = g^\alpha, sk =\alpha$ are fixed.
+Note that $\beta \la \Z _ q$ must be chosen differently for each encrypted message. This is the randomness part of the encryption, since $pk = g^\alpha, sk =\alpha$ are fixed.
 
 ### Hashed ElGamal Encryption
 
-**Hashed ElGamal encryption** scheme is a variant of the original ElGamal scheme, where we use a hash function $H : G \ra \mc{K}$, where $\mc{K}$ is the key space of $\mc{E}_S$.
+**Hashed ElGamal encryption** scheme is a variant of the original ElGamal scheme, where we use a hash function $H : G \ra \mc{K}$, where $\mc{K}$ is the key space of $\mc{E} _ S$.
 
 The only difference is that we use $H(g^{\alpha\beta})$ as the key.[^2]
 
-> 1. Alice chooses $sk = \alpha \la \Z_q$, computes $pk = g^\alpha$ and sends $pk$ to Bob.
-> 2. Bob also chooses $\beta \la \Z_q$ and computes $h^\beta = g^{\alpha\beta}$**, and sets $k = H(g^{\alpha\beta})$.**
-> 3. Bob sends $\big( g^\beta, E_S(k, m) \big)$ to Alice.
-> 4. Alice computes $g^{\alpha\beta} = (g^\beta)^\alpha$ using $\alpha$, **computes $k = H(g^{\alpha\beta})$** and recovers $m$ by decrypting $E_S(k, m)$.
+> 1. Alice chooses $sk = \alpha \la \Z _ q$, computes $pk = g^\alpha$ and sends $pk$ to Bob.
+> 2. Bob also chooses $\beta \la \Z _ q$ and computes $h^\beta = g^{\alpha\beta}$**, and sets $k = H(g^{\alpha\beta})$.**
+> 3. Bob sends $\big( g^\beta, E _ S(k, m) \big)$ to Alice.
+> 4. Alice computes $g^{\alpha\beta} = (g^\beta)^\alpha$ using $\alpha$, **computes $k = H(g^{\alpha\beta})$** and recovers $m$ by decrypting $E _ S(k, m)$.
 
 This is also semantically secure, under the random oracle model.
 
-> **Theorem.** Let $H : G \ra \mc{K}$ be modeled as a random oracle. If the CDH assumption holds on $G$ and $\mc{E}_S$ is semantically secure, then the hashed ElGamal scheme $\mc{E}_\rm{HEG}$ is semantically secure.
+> **Theorem.** Let $H : G \ra \mc{K}$ be modeled as a random oracle. If the CDH assumption holds on $G$ and $\mc{E} _ S$ is semantically secure, then the hashed ElGamal scheme $\mc{E} _ \rm{HEG}$ is semantically secure.
 
-*Proof Idea*. Given a ciphertext $\big( g^\beta, E_S(k, m) \big)$ with $k = H(g^{\alpha\beta})$, the adversary learns nothing about $k$ unless it constructs $g^{\alpha\beta}$. This is because we modeled $H$ as a random oracle. If the adversary learns about $k$, then this adversary breaks the CDH assumption for $G$. Thus, if CDH assumption holds for the adversary, $k$ is completely random, so the hashed ElGamal scheme is secure by the semantic security of $\mc{E}_S$.
+*Proof Idea*. Given a ciphertext $\big( g^\beta, E _ S(k, m) \big)$ with $k = H(g^{\alpha\beta})$, the adversary learns nothing about $k$ unless it constructs $g^{\alpha\beta}$. This is because we modeled $H$ as a random oracle. If the adversary learns about $k$, then this adversary breaks the CDH assumption for $G$. Thus, if CDH assumption holds for the adversary, $k$ is completely random, so the hashed ElGamal scheme is secure by the semantic security of $\mc{E} _ S$.
 
 *Proof*. Refer to Theorem 11.4.[^1]
 
@@ -272,7 +272,7 @@ Since the hashed ElGamal scheme is semantically secure, it is automatically CPA 
 
 > **Definition.** Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$. Let $\mc{A}$ be a given adversary.
 >
-> 1. The challenger chooses $\alpha, \beta \la \Z_q$ and sends $g^\alpha, g^\beta$ to the adversary.
+> 1. The challenger chooses $\alpha, \beta \la \Z _ q$ and sends $g^\alpha, g^\beta$ to the adversary.
 > 2. The adversary makes a sequence of **DH-decision oracle queries** to the challenger.
 > 	- Each query has the form $(v, w) \in G^2$, challenger replies with $1$ if $v^\alpha = w$, replies $0$ otherwise.
 > 3. The adversary calculates and outputs some $w \in G$.
@@ -289,7 +289,7 @@ This is also known as **gap-CDH**. Intuitively, it says that even if we have a D
 
 ### CCA Security of Hashed ElGamal
 
-> **Theorem.** If the gap-CDH assumption holds on $G$ and $\mc{E}_S$ provides AE and $H : G \ra \mc{K}$ is a random oracle, then the hashed ElGamal scheme is CCA secure.
+> **Theorem.** If the gap-CDH assumption holds on $G$ and $\mc{E} _ S$ provides AE and $H : G \ra \mc{K}$ is a random oracle, then the hashed ElGamal scheme is CCA secure.
 
 *Proof*. See Theorem 12.4.[^1] (very long)
 
@@ -320,15 +320,15 @@ Since $m^{p-1} = 1 \bmod p$, $m^{ed} = m \bmod N$ (holds trivially if $p \mid m$
 
 But this scheme is not CPA secure, since it is deterministic and the ciphertext is malleable. For instance, one can choose two messages to be $1$ and $2$. Then the ciphertext is easily distinguishable.
 
-Also, ciphertext is malleable by the **homomorphic property**. If $c_1 = m_1^e \bmod N$ and $c_2 = m_2^e \bmod N$, then set $c =c_1c_2 = (m_1m_2)^e \bmod N$, which is an encryption of $m_1m_2$.
+Also, ciphertext is malleable by the **homomorphic property**. If $c _ 1 = m _ 1^e \bmod N$ and $c _ 2 = m _ 2^e \bmod N$, then set $c =c _ 1c _ 2 = (m _ 1m _ 2)^e \bmod N$, which is an encryption of $m _ 1m _ 2$.
 
 #### Attack on KEM
 
-Assume that the textbook RSA is used as KEM. Suppose that $k$ is $128$ bits, and the attacker sees $c = k^e \bmod N$. With high probability ($80\%$), $k = k_1 \cdot k_2$ for some $k_1, k_2 < 2^{64}$. Using the homomorphic property, $c = k_1^e k_2^e \bmod N$, so the following attack is possible.
+Assume that the textbook RSA is used as KEM. Suppose that $k$ is $128$ bits, and the attacker sees $c = k^e \bmod N$. With high probability ($80\%$), $k = k _ 1 \cdot k _ 2$ for some $k _ 1, k _ 2 < 2^{64}$. Using the homomorphic property, $c = k _ 1^e k _ 2^e \bmod N$, so the following attack is possible.
 
-1. Build a table of $c\cdot k_2^{-e}$ for $0 \leq k_2 < 2^{64}$.
-2. For each $1 \leq k_1 < 2^{64}$, compute $k_1^e$ to check if it is in the table.
-3. Output a match $(k_1, k_2)$.
+1. Build a table of $c\cdot k _ 2^{-e}$ for $0 \leq k _ 2 < 2^{64}$.
+2. For each $1 \leq k _ 1 < 2^{64}$, compute $k _ 1^e$ to check if it is in the table.
+3. Output a match $(k _ 1, k _ 2)$.
 
 The attack has complexity $\mc{O}(2^{n/2})$ where $n$ is the key length.
 
@@ -390,35 +390,35 @@ The RSA assumption says that the RSA problem is hard, which implies that RSA is 
 
 ### The RSA Problem
 
-> **Definition.** Let $\mc{T}_\rm{RSA} = (G, F, I)$ the RSA trapdoor function scheme. Given an adversary $\mc{A}$,
+> **Definition.** Let $\mc{T} _ \rm{RSA} = (G, F, I)$ the RSA trapdoor function scheme. Given an adversary $\mc{A}$,
 >
-> 1. The challenger chooses $(pk, sk) \la G()$ and $x \la \Z_N$.
+> 1. The challenger chooses $(pk, sk) \la G()$ and $x \la \Z _ N$.
 > 	- $pk = (N, e)$, $sk = (N, d)$.
 > 2. The challenger computes $y \la x^e \bmod N$ and sends $pk$ and $y$ to the adversary.
-> 3. The adversary computes and outputs $x' \in \Z_N$.
+> 3. The adversary computes and outputs $x' \in \Z _ N$.
 >
 > The adversary wins if $x = x'$. The advantage is defined as
 >
 > $$
-> \rm{Adv}_{\rm{RSA}}[\mc{A}, \mc{T_\rm{RSA}}] = \Pr[x = x'].
+> \rm{Adv} _ {\rm{RSA}}[\mc{A}, \mc{T _ \rm{RSA}}] = \Pr[x = x'].
 > $$
 >
 > We say that the **RSA assumption** holds if the advantage is negligible for any efficient $\mc{A}$.
 
 ## RSA Public Key Encryption (ISO Standard)
 
-- Let $(E_S, D_S)$ be a symmetric encryption scheme over $(\mc{K}, \mc{M}, \mc{C})$ that provides AE.
-- Let $H : \Z_N^{\ast} \ra \mc{K}$ be a hash function.
+- Let $(E _ S, D _ S)$ be a symmetric encryption scheme over $(\mc{K}, \mc{M}, \mc{C})$ that provides AE.
+- Let $H : \Z _ N^{\ast} \ra \mc{K}$ be a hash function.
 
 The RSA public key encryption is done as follows.
 
 - Key generation is the same.
 - Encryption
-	1. Choose random $x \la \Z_N^{\ast}$ and let $y = x^e \bmod N$.
-	2. Compute $c \la E_S(H(x), m)$.
+	1. Choose random $x \la \Z _ N^{\ast}$ and let $y = x^e \bmod N$.
+	2. Compute $c \la E _ S(H(x), m)$.
 	3. Output $c' = (y, c)$.
 - Decryption
-	- Output $D_S(H(y^d), c)$.
+	- Output $D _ S(H(y^d), c)$.
 
 This works because $x = y^d \bmod N$ and $H(y^d) = H(x)$. In short, this uses RSA trapdoor function as a **key exchange mechanism**, and the actual encryption is done by symmetric encryption.
 

@@ -23,7 +23,7 @@ attachment:
 
 > **Definition.** A **pseudorandom function** $F$ over $(\mathcal{K}, X, Y)$ is an efficiently computable algorithm $F : \mathcal{K} \times X \rightarrow Y$.
 
-We consider a *keyed function* $F : \mathcal{K} \times X \rightarrow Y$ where $\mathcal{K}$ denotes the key space. For $k \in \mathcal{K}$, $F_k(x) := F(k, x)$ is a function from $X$ to $Y$. Thus each key $k$ induces a distribution on functions $X \rightarrow Y$.
+We consider a *keyed function* $F : \mathcal{K} \times X \rightarrow Y$ where $\mathcal{K}$ denotes the key space. For $k \in \mathcal{K}$, $F _ k(x) := F(k, x)$ is a function from $X$ to $Y$. Thus each key $k$ induces a distribution on functions $X \rightarrow Y$.
 
 Note that $\left\lvert \mathcal{F}[X, Y] \right\lvert = \left\lvert Y \right\lvert^{\left\lvert X \right\lvert}$, but the number of PRFs is at most $\left\lvert K \right\lvert$. In practice, $\left\lvert K \right\lvert$ is very small compared to $\left\lvert Y \right\lvert^{\left\lvert X \right\lvert}$. So PRFs are chosen from a smaller space, but they should behave in the same way a (truly) random function does.
 
@@ -33,43 +33,43 @@ Let $\mathcal{F}[X, Y]$ denote the set of all functions from $X$ to $Y$. A PRF $
 > 
 > **Experiment $b$**.
 > 1. The challenger selects $f \in \mathcal{F}[X, Y]$ as follows
-> 	- If $b = 0$, choose $k \leftarrow \mathcal{K}$ and set $f = F_k = F(k, \cdot)$.
+> 	- If $b = 0$, choose $k \leftarrow \mathcal{K}$ and set $f = F _ k = F(k, \cdot)$.
 > 	- If $b = 1$, choose $f \leftarrow \mathcal{F}[X, Y]$.
 > 2. The adversary sends a sequence of queries to the challenger.
-> 	- For $i = 1, \dots, q$, send $x_i \in X$ and receive $y_i = f(x_i) \in Y$.
+> 	- For $i = 1, \dots, q$, send $x _ i \in X$ and receive $y _ i = f(x _ i) \in Y$.
 > 3. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
 > 
-> Let $W_b$ be the event that $\mathcal{A}$ outputs 1 in experiment $b$. Then the **PRF-advantage** of $\mathcal{A}$ with respect to $F$ is defined as
+> Let $W _ b$ be the event that $\mathcal{A}$ outputs 1 in experiment $b$. Then the **PRF-advantage** of $\mathcal{A}$ with respect to $F$ is defined as
 > 
 > $$
-> \mathrm{Adv}_{\mathrm{PRF}}^q[\mathcal{A}, F] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert.
+> \mathrm{Adv} _ {\mathrm{PRF}}^q[\mathcal{A}, F] = \left\lvert \Pr[W _ 0] - \Pr[W _ 1] \right\lvert.
 > $$
 > 
-> A PRF $F$ is **secure** if $\mathrm{Adv}_{\mathrm{PRF}}^q[\mathcal{A}, F]$ is negligible for any efficient $\mathcal{A}$.
+> A PRF $F$ is **secure** if $\mathrm{Adv} _ {\mathrm{PRF}}^q[\mathcal{A}, F]$ is negligible for any efficient $\mathcal{A}$.
 
-In experiment $0$ above, the challenger returns $y_i = f(x_i)$. To answer the query $x_i$, the challenger would have to keep a lookup table for a random function $f \in \mathcal{F}[X, Y]$. Since $X$ and $Y$ are very large in practice, it is nearly impossible to create and manage such lookup tables.[^1] As a workaround, we can choose $y_i$ uniformly on each query $x_i$, assuming that $x_i$ wasn't queried before. This is possible since for any different inputs $x_i, x_j \in X$, $f(x_i)$ and $f(x_j)$ are random and independent.
+In experiment $0$ above, the challenger returns $y _ i = f(x _ i)$. To answer the query $x _ i$, the challenger would have to keep a lookup table for a random function $f \in \mathcal{F}[X, Y]$. Since $X$ and $Y$ are very large in practice, it is nearly impossible to create and manage such lookup tables.[^1] As a workaround, we can choose $y _ i$ uniformly on each query $x _ i$, assuming that $x _ i$ wasn't queried before. This is possible since for any different inputs $x _ i, x _ j \in X$, $f(x _ i)$ and $f(x _ j)$ are random and independent.
 
-Also, there are two ways that the adversary can query the challenger. The first method is the **adaptive** method, where the adversary queries each $x_i$ one by one. In this method, the adversary can *adaptively* choose the next query $x_{i+1}$ after receiving the result from the challenger.
+Also, there are two ways that the adversary can query the challenger. The first method is the **adaptive** method, where the adversary queries each $x _ i$ one by one. In this method, the adversary can *adaptively* choose the next query $x _ {i+1}$ after receiving the result from the challenger.
 
-The second method is querying all $x_i$ at once. We will consider the first method, since the adaptive method assumes greater attack power on the adversary.
+The second method is querying all $x _ i$ at once. We will consider the first method, since the adaptive method assumes greater attack power on the adversary.
 
 ### OTP as a PRF
 
-As an example, consider the one-time pad function $F(k, x) = k \oplus x$. This function satisfies the definitions of PRFs, but it is not a secure PRF. Consider an adversary $\mathcal{A}$ that outputs $1$ if and only if $y_1 \oplus y_2 = x_1 \oplus x_2$. In experiment $0$, $\mathcal{A}$ will always output $1$, but in experiment $1$, $\mathcal{A}$ will output $1$ with probability $2^{-n}$. Thus the advantage is $1 - 2^{-n}$, which is not negligible.
+As an example, consider the one-time pad function $F(k, x) = k \oplus x$. This function satisfies the definitions of PRFs, but it is not a secure PRF. Consider an adversary $\mathcal{A}$ that outputs $1$ if and only if $y _ 1 \oplus y _ 2 = x _ 1 \oplus x _ 2$. In experiment $0$, $\mathcal{A}$ will always output $1$, but in experiment $1$, $\mathcal{A}$ will output $1$ with probability $2^{-n}$. Thus the advantage is $1 - 2^{-n}$, which is not negligible.
 
 ### PRFs and PRGs
 
-It is easy to construct PRGs from PRFs. We can simply evaluate $F$ on some distinct inputs. For example, given a seed $s$, we evaluate $F_s$ and obtain
+It is easy to construct PRGs from PRFs. We can simply evaluate $F$ on some distinct inputs. For example, given a seed $s$, we evaluate $F _ s$ and obtain
 
 $$
-G(s) = F_s(1) \parallel F_s(2) \parallel \cdots \parallel F_s(n)
+G(s) = F _ s(1) \parallel F _ s(2) \parallel \cdots \parallel F _ s(n)
 $$
 
 for any $n \in \mathbb{N}$.[^2] In fact, we can show that $G$ is secure PRG if $F$ is a secure PRF.
 
 > **Theorem.** If $F$ is a secure length preserving PRF, then $G$ in the above definition is a secure PRG.
 
-*Proof*. Suppose that $\mathcal{A}$ is an efficient PRG adversary against $G$. We construct an efficient $n$-query PRF adversary $\mathcal{B}$, that queries the challenger at $1, \dots, n$ and receives $f(1), \dots, f(n)$. $\mathcal{B}$ passes $f(1) \parallel \cdots \parallel f(n)$ to $\mathcal{A}$, and $\mathcal{B}$ outputs the output of $\mathcal{A}$. Then we see that $\mathrm{Adv}_{\mathrm{PRG}}[\mathcal{A}, G] = \mathrm{Adv}_{\mathrm{PRF}}[\mathcal{B}, F]$. So if $F$ is secure, then $G$ is secure.
+*Proof*. Suppose that $\mathcal{A}$ is an efficient PRG adversary against $G$. We construct an efficient $n$-query PRF adversary $\mathcal{B}$, that queries the challenger at $1, \dots, n$ and receives $f(1), \dots, f(n)$. $\mathcal{B}$ passes $f(1) \parallel \cdots \parallel f(n)$ to $\mathcal{A}$, and $\mathcal{B}$ outputs the output of $\mathcal{A}$. Then we see that $\mathrm{Adv} _ {\mathrm{PRG}}[\mathcal{A}, G] = \mathrm{Adv} _ {\mathrm{PRF}}[\mathcal{B}, F]$. So if $F$ is secure, then $G$ is secure.
 
 As for the converse, a PRG $G$ gives a PRF $F$ with small input length. If $G : \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^{n 2^m}$, we can define a PRF $F : \left\lbrace 0, 1 \right\rbrace^n \times \left\lbrace 0, 1 \right\rbrace^m \rightarrow \left\lbrace 0, 1 \right\rbrace^n$ as follows: for a seed $s \in \left\lbrace 0, 1 \right\rbrace^n$, consider $G(s)$ as a $2^m \times n$ table and set $F(s, i)$ as the $i$-th row of $G(s)$.[^3] If $G$ is a secure PRG, then PRF $F$ is also secure.
 
@@ -85,33 +85,33 @@ Similarly, a PRP $E$ is **secure** if it is **indistinguishable from a random pe
 > 
 > **Experiment $b$**.
 > 1. The challenger selects $f \in \mathcal{P}[X]$ as follows
-> 	- If $b = 0$, choose $k \leftarrow \mathcal{K}$ and set $f = E_k = E(k, \cdot)$.
+> 	- If $b = 0$, choose $k \leftarrow \mathcal{K}$ and set $f = E _ k = E(k, \cdot)$.
 > 	- If $b = 1$, choose $f \leftarrow \mathcal{P}[X]$.
 > 2. The adversary sends a sequence of queries to the challenger.
-> 	- For $i = 1, \dots, q$, send $x_i \in X$ and receive $y_i = f(x_i) \in Y$.
+> 	- For $i = 1, \dots, q$, send $x _ i \in X$ and receive $y _ i = f(x _ i) \in Y$.
 > 3. The adversary computes and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
 > 
-> Let $W_b$ be the event that $\mathcal{A}$ outputs 1 in experiment $b$. Then the **PRP-advantage** of $\mathcal{A}$ with respect to $E$ is defined as
+> Let $W _ b$ be the event that $\mathcal{A}$ outputs 1 in experiment $b$. Then the **PRP-advantage** of $\mathcal{A}$ with respect to $E$ is defined as
 > 
 > $$
-> \mathrm{Adv}_{\mathrm{PRP}}^q[\mathcal{A}, E] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert.
+> \mathrm{Adv} _ {\mathrm{PRP}}^q[\mathcal{A}, E] = \left\lvert \Pr[W _ 0] - \Pr[W _ 1] \right\lvert.
 > $$
 > 
-> A PRP $E$ is **secure** if $\mathrm{Adv}_{\mathrm{PRP}}^q[\mathcal{A}, E]$ is negligible for any efficient $\mathcal{A}$.
+> A PRP $E$ is **secure** if $\mathrm{Adv} _ {\mathrm{PRP}}^q[\mathcal{A}, E]$ is negligible for any efficient $\mathcal{A}$.
 
 ### PRF Switching Lemma
 
-Suppose that $\left\lvert X \right\lvert$ is sufficiently large. Then for $q$ queries of any adversary $\mathcal{A}$, it is highly probable that $f(x_i)$ are all distinct, regardless of whether $f$ is a PRF or a PRP. Thus we have the following property of PRPs.
+Suppose that $\left\lvert X \right\lvert$ is sufficiently large. Then for $q$ queries of any adversary $\mathcal{A}$, it is highly probable that $f(x _ i)$ are all distinct, regardless of whether $f$ is a PRF or a PRP. Thus we have the following property of PRPs.
 
 > **Lemma.** If $E: \mathcal{K} \times X \rightarrow X$ is a secure PRP and $\left\lvert X \right\lvert$ is sufficiently large, then $E$ is also a secure PRF.
 > 
 > For any $q$-query adversary $\mathcal{A}$,
 > 
 > $$
-> \left\lvert \mathrm{Adv}_{\mathrm{PRF}}[\mathcal{A}, E] - \mathrm{Adv}_{\mathrm{PRP}}[\mathcal{A}, E] \right\lvert \leq \frac{q^2}{2\left\lvert X \right\lvert}.
+> \left\lvert \mathrm{Adv} _ {\mathrm{PRF}}[\mathcal{A}, E] - \mathrm{Adv} _ {\mathrm{PRP}}[\mathcal{A}, E] \right\lvert \leq \frac{q^2}{2\left\lvert X \right\lvert}.
 > $$
 
-This is a matter of *collisions* of $f(x_i)$, so we use the facts from the birthday problem.
+This is a matter of *collisions* of $f(x _ i)$, so we use the facts from the birthday problem.
 
 *Proof*. Appendix A.4.
 
@@ -123,7 +123,7 @@ A **block cipher** is actually a different name for PRPs. Since a PRP $E$ is a k
 
 Block ciphers commonly have the following form.
 - A key $k$ is chosen uniformly from $\left\lbrace 0, 1 \right\rbrace^s$.
-- The key $k$ goes through *key expansion* and generates $k_1, \dots, k_n$. These are called **round keys**, where $n$ is the number of rounds.
+- The key $k$ goes through *key expansion* and generates $k _ 1, \dots, k _ n$. These are called **round keys**, where $n$ is the number of rounds.
 - The plaintext goes through $n$ rounds, where in each round, a round function and the round key is applied to the input.
 - After $n$ rounds, the ciphertext is obtained.
 
@@ -139,27 +139,27 @@ Block ciphers commonly have the following form.
 
 ### Feistel Network
 
-Since block ciphers are PRPs, we have to build an invertible function. Suppose we are given **any** functions $F_1, \dots, F_d : \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^n$. Can we build an **invertible** function $F : \left\lbrace 0, 1 \right\rbrace^{2n} \rightarrow \left\lbrace 0, 1 \right\rbrace^{2n}$?
+Since block ciphers are PRPs, we have to build an invertible function. Suppose we are given **any** functions $F _ 1, \dots, F _ d : \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^n$. Can we build an **invertible** function $F : \left\lbrace 0, 1 \right\rbrace^{2n} \rightarrow \left\lbrace 0, 1 \right\rbrace^{2n}$?
 
 ![mc-02-feistel-network.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-feistel-network.png)
 
-It turns out the answer is yes. Given an $2n$-bit long input, $L_0$ and $R_0$ denote the left and right halves ($n$ bits) of the input, respectively. Define
+It turns out the answer is yes. Given an $2n$-bit long input, $L _ 0$ and $R _ 0$ denote the left and right halves ($n$ bits) of the input, respectively. Define
 
 $$
-L_i = R_{i-1}, \qquad R_i = F_i(R_{i-1}) \oplus L_{i-1}
+L _ i = R _ {i-1}, \qquad R _ i = F _ i(R _ {i-1}) \oplus L _ {i-1}
 $$
 
-for $i = 1, \dots, d$. Then we can restore $L_0$ and $R_0$ from $L_d$ and $R_d$ by applying the same operations in **reverse order**. It is easy to see that $R_{i-1}$ can be restored from $L_i$. As for $L_{i-1}$, we need a swap. Observe that
+for $i = 1, \dots, d$. Then we can restore $L _ 0$ and $R _ 0$ from $L _ d$ and $R _ d$ by applying the same operations in **reverse order**. It is easy to see that $R _ {i-1}$ can be restored from $L _ i$. As for $L _ {i-1}$, we need a swap. Observe that
 
 $$
-F_i(L_i) \oplus R_i = F_i(R_{i-1}) \oplus (F_i(R_{i-1}) \oplus L_{i-1}) = L_{i-1}.
+F _ i(L _ i) \oplus R _ i = F _ i(R _ {i-1}) \oplus (F _ i(R _ {i-1}) \oplus L _ {i-1}) = L _ {i-1}.
 $$
 
-Note that we did not require $F_i$ to be invertible. We can build invertible functions from arbitrary functions! These are called **Feistel networks**.
+Note that we did not require $F _ i$ to be invertible. We can build invertible functions from arbitrary functions! These are called **Feistel networks**.
 
-> **Theorem.** (Luby-Rackoff'85) If $F : K \times \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^n$ is a secure PRF, then the $3$-round Feistel using the functions $F_i=  F(k_i, \cdot)$ is a secure PRP.
+> **Theorem.** (Luby-Rackoff'85) If $F : K \times \left\lbrace 0, 1 \right\rbrace^n \rightarrow \left\lbrace 0, 1 \right\rbrace^n$ is a secure PRF, then the $3$-round Feistel using the functions $F _ i=  F(k _ i, \cdot)$ is a secure PRP.
 
-In DES, the function $F_i$ is the DES round function.
+In DES, the function $F _ i$ is the DES round function.
 
 ![mc-02-des-round.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-des-round.png)
 
@@ -227,15 +227,15 @@ These 4 modules are all invertible!
 
 For DES, the S-box is the non-linear part. If the S-box is linear, then the entire DES cipher would be linear.
 
-Specifically, there would be a fixed binary matrix $B_1 \in \mathbb{Z}_2^{64 \times 64}$ and $B_2 \in \mathbb{Z}_2^{64 \times (48 \times 16)}$ such that
+Specifically, there would be a fixed binary matrix $B _ 1 \in \mathbb{Z} _ 2^{64 \times 64}$ and $B _ 2 \in \mathbb{Z} _ 2^{64 \times (48 \times 16)}$ such that
 
 $$
-\mathrm{DES}(k, m) = B_1 m \oplus B_2 \mathbf{k}
+\mathrm{DES}(k, m) = B _ 1 m \oplus B _ 2 \mathbf{k}
 $$
 
-where $\mathbf{k} \in \mathbb{Z}_2^{48 \times 16}$ is a vector of round keys.
+where $\mathbf{k} \in \mathbb{Z} _ 2^{48 \times 16}$ is a vector of round keys.
 
-Then we can attack DES with the same idea as OTP. If $c_i = B_1 m_i \oplus B_2 \mathbf{k}$, then $c_1 \oplus c_2 = B_1 (m_1 \oplus m_2)$.
+Then we can attack DES with the same idea as OTP. If $c _ i = B _ 1 m _ i \oplus B _ 2 \mathbf{k}$, then $c _ 1 \oplus c _ 2 = B _ 1 (m _ 1 \oplus m _ 2)$.
 
 Choosing the S-boxes at random results in a insecure block cipher, with high probability.
 
@@ -246,18 +246,18 @@ For DES (and AES-128), it is known that *three pairs of plaintext, ciphertext bl
 If we were to find the key by brute force, DES is easy. We can strengthen the DES algorithm by using **nested ciphers**. The tradeoff here is that these are slower than the original DES.
 
 > Define
-> - (**2DES**) $2E: \mathcal{K}^2 \times \mathcal{M} \rightarrow \mathcal{M}$ as $2E((k_1, k_2), m) = E(k_1, E(k_2, m))$.
-> - (**3DES**) $3E: \mathcal{K}^3 \times \mathcal{M} \rightarrow \mathcal{M}$ as $3E((k_1, k_2, k_3), m) = E(k_1, D(k_2, E(k_3, m)))$.[^4]
+> - (**2DES**) $2E: \mathcal{K}^2 \times \mathcal{M} \rightarrow \mathcal{M}$ as $2E((k _ 1, k _ 2), m) = E(k _ 1, E(k _ 2, m))$.
+> - (**3DES**) $3E: \mathcal{K}^3 \times \mathcal{M} \rightarrow \mathcal{M}$ as $3E((k _ 1, k _ 2, k _ 3), m) = E(k _ 1, D(k _ 2, E(k _ 3, m)))$.[^4]
 
 Then the key space has increased (exponentially). As for 2DES, the key space is now $2^{112}$, so maybe nested ciphers increase the level of security.
 
 #### $2E$ is Insecure: Meet in the Middle
 
-Unfortunately, 2DES is only secure as DES, with the attack strategy called **meet in the middle**. The idea is that if $c = E(k_1, E(k_2, m))$, then $D(k_1, c) = E(k_2, m)$.
+Unfortunately, 2DES is only secure as DES, with the attack strategy called **meet in the middle**. The idea is that if $c = E(k _ 1, E(k _ 2, m))$, then $D(k _ 1, c) = E(k _ 2, m)$.
 
 ![mc-02-2des-mitm.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-02-2des-mitm.png)
 
-Since we have the plaintext and the ciphertext, we first build a table of $(k, E(k_2, m))$ over $k_2 \in \mathcal{K}$ and sort by $E(k_2, m)$. Next, we check if $D(k_1, c)$ is in the table for all $k_1 \in \mathcal{K}$.
+Since we have the plaintext and the ciphertext, we first build a table of $(k, E(k _ 2, m))$ over $k _ 2 \in \mathcal{K}$ and sort by $E(k _ 2, m)$. Next, we check if $D(k _ 1, c)$ is in the table for all $k _ 1 \in \mathcal{K}$.
 
 The complexity of this attack is shown as follows:
 - Space complexity: We must store $\left\lvert \mathcal{K} \right\lvert$ entries with approximately $\log \left\lvert \mathcal{M} \right\lvert$ bits. Thus we need $\left\lvert \mathcal{K} \right\lvert \log \left\lvert \mathcal{M} \right\lvert$ bits in total.
@@ -273,13 +273,13 @@ The above argument can be generalized for any scheme $(E, D)$. Thus, the $2E$ co
 
 There is another method called the **$EX$ construction** for block cipher $(E, D)$ defined over $(\mathcal{K}, \mathcal{X})$. The $EX$ construction uses a new block cipher defined as follows. Intuitively, it can be thought of as applying OTP before and after encryption.
 
-> Let $k_1 \in \mathcal{K}$ and $k_2, k_3 \in \mathcal{X}$.
-> - Encryption: $EX\left((k_1, k_2, k_3), m\right) = E(k_1, m \oplus k_2) \oplus k_3$.
-> - Decryption: $DX((k_1, k_2, k_3), c) = D(k_1, c \oplus k_3) \oplus k_2$.
+> Let $k _ 1 \in \mathcal{K}$ and $k _ 2, k _ 3 \in \mathcal{X}$.
+> - Encryption: $EX\left((k _ 1, k _ 2, k _ 3), m\right) = E(k _ 1, m \oplus k _ 2) \oplus k _ 3$.
+> - Decryption: $DX((k _ 1, k _ 2, k _ 3), c) = D(k _ 1, c \oplus k _ 3) \oplus k _ 2$.
 
 Then the new cipher $(EX, DX)$ has a key space $\mathcal{K} \times \mathcal{X}^2$, which is much larger than $\mathcal{K}$. Specifically for DESX, the key length would be $56 + 2 \times 64 = 184$ bits.
 
-As a side note, using $E(k_1, m) \oplus k_2$ or $E(k_1, m \oplus k_2)$ does not improve security, since it can be attacked with meet in the middle method. Similarly, DESX also has $184$ bit key space, but actual search space is about $56 + 64 = 120$ bits.
+As a side note, using $E(k _ 1, m) \oplus k _ 2$ or $E(k _ 1, m \oplus k _ 2)$ does not improve security, since it can be attacked with meet in the middle method. Similarly, DESX also has $184$ bit key space, but actual search space is about $56 + 64 = 120$ bits.
 
 ### Attacks on AES
 

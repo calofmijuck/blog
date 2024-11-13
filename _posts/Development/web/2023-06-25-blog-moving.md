@@ -1,16 +1,21 @@
 ---
 share: true
 toc: true
-categories: [Development, Web]
-tags: [development, web]
-title: "블로그 이주 이야기"
-date: "2023-06-25"
-github_title: "2023-06-25-blog-moving"
+categories:
+  - Development
+  - Web
+path: _posts/development/web
+tags:
+  - development
+  - web
+title: 블로그 이주 이야기
+date: 2023-06-25
+github_title: 2023-06-25-blog-moving
 image:
   path: /assets/img/posts/blog-logo.png
 ---
 
-![blog-logo.png](/assets/img/posts/blog-logo.png) _New blog logo_
+![blog-logo.png](../../../assets/img/posts/blog-logo.png) _New blog logo_
 
 오래 전, Github Pages가 불편하다는 이유로 티스토리로 옮겼었다.
 근데 어쩌다 보니 결국 다시 돌아오게 되었다.
@@ -57,15 +62,15 @@ image:
 
 마지막으로 Graph View가 좀 사기인 것 같다. Reddit에서 Obsidian에 수업 필기하는 사람들의 Graph View 결과를 몇 개 봤는데, 문서 간의 수많은 연결고리가 마치 지식이 서로 연결되어 있는 느낌을 줬다. 사실 처음으로 Obsidian을 접했을 때 해보고 싶었던 것이 있었다. 배우고 있는 과목의 내용을 잘 정리해서 서로 링크로 연결하여 그 과목에서 배운 내용에 대한 지도를 만드는 것이다. 기회가 된다면 꼭 한 번 해보고 그 결과물을 Graph View로 보고 싶다.
 
-아무튼, 종합하면 Notion보다는 Obsidian이 맞겠다는 판단을 하고 과감하게 Obsidian으로 옮겼다. 
+아무튼, 종합하면 Notion보다는 Obsidian이 맞겠다는 판단을 하고 과감하게 Obsidian으로 옮겼다.
 
-물론 이 결정을 한 시점은 시험기간이었음을 밝힌다.[^1] 
+물론 이 결정을 한 시점은 시험기간이었음을 밝힌다.[^1]
 
 ## Obsidian with Github Publisher Plugin
 
 Obsidian을 Github과 연동하기 위해 [Obsidian Github Publisher](https://github.com/ObsidianPublisher/obsidian-github-publisher) 플러그인을 사용할 수 있다.
 
-![github-publisher.png](/assets/img/posts/github-publisher.png){: .shadow } _플러그인 설정 화면: 어느 폴더에 어떤 이름으로 파일을 업로드할지 설정할 수 있다._
+![github-publisher.png](../../../assets/img/posts/github-publisher.png){: .shadow } _플러그인 설정 화면: 어느 폴더에 어떤 이름으로 파일을 업로드할지 설정할 수 있다._
 
 이 플러그인을 사용하면 Obsidian의 문서 중에서 `share: true` 로 마킹된 문서들을 레포에 저장할 수 있게 된다. 그렇다면 블로그 글을 Obsidian에서 작성하고, 플러그인을 이용해 레포에 push하게 되면, 자동으로 빌드/배포가 이뤄져서 블로그에 반영되는 것을 확인할 수 있을 것이다.
 

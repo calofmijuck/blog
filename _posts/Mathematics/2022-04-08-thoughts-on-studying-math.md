@@ -2,11 +2,15 @@
 share: true
 toc: true
 math: true
-categories: [Mathematics]
-tags: [math, study]
-title: "수학 공부에 대한 고찰"
-date: "2022-02-03"
-github_title: "2022-04-08-thoughts-on-studying-math"
+categories:
+  - Mathematics
+path: _posts/mathematics
+tags:
+  - math
+  - study
+title: 수학 공부에 대한 고찰
+date: 2022-02-03
+github_title: 2022-04-08-thoughts-on-studying-math
 ---
 
 과외돌이 수업을 위해 새로운 교재를 골라야 했다. 교재를 고민하던 도중 내가 생각하는 수학 공부 방법을 설명하기에 매우 좋은 예시가 생겨서 이렇게 글로 남기게 되었다.
@@ -19,13 +23,13 @@ github_title: "2022-04-08-thoughts-on-studying-math"
 
 딱히 특별한 내용은 없고 기본 개념 설명 되어있는 것 같아서 어디가 특별하냐고 했더니 예시로 한 부분을 보여줬는데, $x = a$ 에 대하여 대칭인 함수를 적분하는 방법, 점 대칭인 함수를 적분하는 방법에 대해 소개하고 있었다.
 
-1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 $x = m$ 에 대하여 대칭일 때, 
+1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 $x = m$ 에 대하여 대칭일 때,
 
-	$$\int_{m-a}^{m+a} f(x)\,dx = 2 \int_{m}^{m+a} f(x)\,dx.\quad (a \in \mathbb{R})$$
+	$$\int _ {m-a}^{m+a} f(x)\,dx = 2 \int _ {m}^{m+a} f(x)\,dx.\quad (a \in \mathbb{R})$$
 
-2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 점 $(m, n)$에 대하여 대칭일 때, 
+2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 점 $(m, n)$에 대하여 대칭일 때,
 
-	$$\int_{m-a}^{m+a} f(x)\,dx = 2an. \quad (a \in \mathbb{R})$$
+	$$\int _ {m-a}^{m+a} f(x)\,dx = 2an. \quad (a \in \mathbb{R})$$
 
 보자마자 막 엄청 특별한 내용은 아니라는 것을 깨달았고, 이런 내용은 특별하게 누가 정리해주지 않아도 공부를 지엽적으로 하지 않고 충분히 생각을 많이 하면 알 수 있다고 얘기했다. 그렇다고 모르는게 이상하다는 의미는 절대 아니다.
 
@@ -37,13 +41,13 @@ github_title: "2022-04-08-thoughts-on-studying-math"
 
 적분 파트에서 \[우함수와 기함수의 적분\]은 기본 개념으로 대부분의 책이 가르친다고 가정한다.
 
-1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$가 우함수일 때, 
+1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$가 우함수일 때,
 
-	$$\int_{-a}^{a} f(x)\,dx = 2 \int_{0}^{a} f(x)\,dx. \quad (a \in \mathbb{R})$$
+	$$\int _ {-a}^{a} f(x)\,dx = 2 \int _ {0}^{a} f(x)\,dx. \quad (a \in \mathbb{R})$$
 
-2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 기함수일 때, 
+2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 기함수일 때,
 
-	$$\int_{-a}^{a} f(x)\,dx = 0. \quad (a \in \mathbb{R})$$
+	$$\int _ {-a}^{a} f(x)\,dx = 0. \quad (a \in \mathbb{R})$$
 
 ### 개념 공부 하면서 스스로 일반화 해보기
 
@@ -83,9 +87,9 @@ github_title: "2022-04-08-thoughts-on-studying-math"
 
 Fourier Series를 바로 꺼냈다.
 
--   모든 주기함수를 삼각함수의 무한 합으로 나타낼 수 있다!
--   증명 과정에서 $\sin, \cos$ (주기함수이자 기함수, 우함수) 를 적분하는 아이디어를 사용
--   신호 처리 분야에서 굉장히 많이 쓰이는 내용이고, 이를 응용한 각종 Fourier Transform - DFT, FFT, QFT, STFT 등 - 은 공학 분야에서 이미 널리 쓰이는 중이다.
+- 모든 주기함수를 삼각함수의 무한 합으로 나타낼 수 있다!
+- 증명 과정에서 $\sin, \cos$ (주기함수이자 기함수, 우함수) 를 적분하는 아이디어를 사용
+- 신호 처리 분야에서 굉장히 많이 쓰이는 내용이고, 이를 응용한 각종 Fourier Transform - DFT, FFT, QFT, STFT 등 - 은 공학 분야에서 이미 널리 쓰이는 중이다.
 
 나는 그냥 공부가 좋아서 하기 때문에 어떤 개념이 현실적으로 유용한지에 대해서는 많은 고민을 해보지 않는 편이다. 그래서 이 개념은 대칭성을 가지는 함수의 적분을 계산할 때 단순히 계산의 편의를 위해 존재한다고 생각하고 있었다. 동생의 질문 덕분에 이 개념이 현실에서 어떻게 사용되고 있는지 나도 깨닫게 되었다.
 

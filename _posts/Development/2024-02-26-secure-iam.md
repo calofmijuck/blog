@@ -3,18 +3,19 @@ share: true
 pin: true
 categories:
   - Development
+path: _posts/development
 tags:
   - AWS
   - dev
 title: Secure IAM on AWS with Multi-Account Strategy
 date: 2024-02-26
 github_title: 2024-02-26-secure-iam
-image: /assets/img/posts/Development/separation-by-product.png
+image: /assets/img/posts/development/separation-by-product.png
 attachment:
-  folder: assets/img/posts/Development
+  folder: assets/img/posts/development
 ---
 
-![separation-by-product.png](../../assets/img/posts/Development/separation-by-product.png)
+![separation-by-product.png](../../assets/img/posts/development/separation-by-product.png)
 
 2024\. 2. B.S. Graduation Paper, Received Best Paper Award!
 

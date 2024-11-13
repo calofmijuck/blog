@@ -2,18 +2,24 @@
 share: true
 toc: true
 math: true
-categories: [Mathematics, Measure Theory]
-tags: [math, analysis, measure-theory]
-title: "01. Algebra of Sets"
-date: "2023-01-11"
-github_title: "2023-01-11-algebra-of-sets"
+categories:
+  - Mathematics
+  - Measure Theory
+path: _posts/mathematics/measure-theory
+tags:
+  - math
+  - analysis
+  - measure-theory
+title: 01. Algebra of Sets
+date: 2023-01-11
+github_title: 2023-01-11-algebra-of-sets
 image:
-  path: /assets/img/posts/Mathematics/Measure Theory/mt-01.png
+  path: /assets/img/posts/mathematics/measure-theory/mt-01.png
 attachment:
-  folder: assets/img/posts/Mathematics/Measure Theory
+  folder: assets/img/posts/mathematics/measure-theory
 ---
 
-![mt-01.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-01.png)
+![mt-01.png](../../../assets/img/posts/mathematics/measure-theory/mt-01.png)
 
 르벡 적분을 공부하기 위해서는 먼저 집합의 ‘길이’ 개념을 공부해야 합니다. 그리고 집합의 ‘길이’ 개념을 확립하기 위해서는 집합 간의 연산과 이에 대한 구조가 필요합니다.
 
@@ -65,19 +71,19 @@ Ring과 유사하지만 살짝 더 좋은 성질을 가진 구조를 가지고 �
 
 조금만 더 확장해서 countable한 연산에 대해서도 허용하고 싶습니다.
 
-**정의.** ($\sigma$-ring) $\mathcal{R}$이 ring일 때, $A_n \in \mathcal{R}$ ($n = 1, 2, \dots$) 에 대하여 $\displaystyle\bigcup_ {n=1}^\infty A_n \in \mathcal{R}$ 이 성립하면 $\mathcal{R}$을 **$\sigma$-ring**이라 한다.
+**정의.** ($\sigma$-ring) $\mathcal{R}$이 ring일 때, $A _ n \in \mathcal{R}$ ($n = 1, 2, \dots$) 에 대하여 $\displaystyle\bigcup _ {n=1}^\infty A _ n \in \mathcal{R}$ 이 성립하면 $\mathcal{R}$을 **$\sigma$-ring**이라 한다.
 
 Countable한 합집합을 해도 닫혀 있다는 뜻입니다. 조금 생각해보면 마찬가지로 교집합에 대해서도 성립함을 알 수 있습니다.
 
 **참고.** 다음 성질
 
-$$\bigcap_ {n=1}^\infty A_n = A_1 \setminus\bigcup_ {n=1}^\infty (A_1 \setminus A_n)$$
+$$\bigcap _ {n=1}^\infty A _ n = A _ 1 \setminus\bigcup _ {n=1}^\infty (A _ 1 \setminus A _ n)$$
 
-을 이용하면 $\mathcal{R}$이 $\sigma$-ring이고 $A_n \in \mathcal{R}$ 일 때 $\displaystyle\bigcap_ {n=1}^\infty A_n \in \mathcal{R}$ 임을 알 수 있다.
+을 이용하면 $\mathcal{R}$이 $\sigma$-ring이고 $A _ n \in \mathcal{R}$ 일 때 $\displaystyle\bigcap _ {n=1}^\infty A _ n \in \mathcal{R}$ 임을 알 수 있다.
 
 마찬가지로 algebra도 정의할 수 있습니다.
 
-**정의.** ($\sigma$-algebra) $\mathcal{F}$가 algebra on $X$일 때, $A_n \in \mathcal{F}$ ($n = 1, 2, \dots$) 에 대하여 $\displaystyle\bigcup_ {n=1}^\infty A_n \in \mathcal{F}$ 가 성립하면 $\mathcal{F}$를 **$\sigma$-algebra**라 한다.
+**정의.** ($\sigma$-algebra) $\mathcal{F}$가 algebra on $X$일 때, $A _ n \in \mathcal{F}$ ($n = 1, 2, \dots$) 에 대하여 $\displaystyle\bigcup _ {n=1}^\infty A _ n \in \mathcal{F}$ 가 성립하면 $\mathcal{F}$를 **$\sigma$-algebra**라 한다.
 
 $\sigma$-algebra는 당연히 $\sigma$-ring이기 때문에 countable한 교집합을 해도 닫혀 있습니다.
 
@@ -101,11 +107,11 @@ $\sigma$-algebra는 당연히 $\sigma$-ring이기 때문에 countable한 교집�
 
 	이면 $\phi$는 **additive**하다.
 
-2. 쌍마다 서로소인 집합 $A_i \in \mathcal{R}$ 에 대하여
+2. 쌍마다 서로소인 집합 $A _ i \in \mathcal{R}$ 에 대하여
 
-	$$\phi\left( \bigcup_ {i=1}^\infty A_i \right) = \sum_ {i=1}^\infty \phi(A_i)$$
+	$$\phi\left( \bigcup _ {i=1}^\infty A _ i \right) = \sum _ {i=1}^\infty \phi(A _ i)$$
 
-	이고 $\displaystyle\bigcup_ {i=1}^\infty A_i \in \mathcal{R}$ 이면[^1] $\phi$는 **countably additive** ($\sigma$-additive) 하다.
+	이고 $\displaystyle\bigcup _ {i=1}^\infty A _ i \in \mathcal{R}$ 이면[^1] $\phi$는 **countably additive** ($\sigma$-additive) 하다.
 
 이제 ‘길이’의 개념을 나타내는 함수를 정의합니다. 이 함수는 측도(measure)라고 합니다.
 
@@ -115,9 +121,9 @@ $\sigma$-algebra는 당연히 $\sigma$-ring이기 때문에 countable한 교집�
 
 **참고.**
 
-1. $\phi$가 additive이면 쌍마다 서로소인 $A_i \in \mathcal{R}$ 에 대하여 다음이 성립한다.
+1. $\phi$가 additive이면 쌍마다 서로소인 $A _ i \in \mathcal{R}$ 에 대하여 다음이 성립한다.
 
-	$$\phi\left( \bigcup_ {i=1}^n A_i \right) = \sum_ {i=1}^n \phi(A_i).$$
+	$$\phi\left( \bigcup _ {i=1}^n A _ i \right) = \sum _ {i=1}^n \phi(A _ i).$$
 
 	이 성질을 *finite additivity*라 부르고, $\phi$는 *finitely additive*하다고 한다.
 
@@ -129,7 +135,7 @@ $\phi(A) \in \mathbb{R}$ 인 $A \in \mathcal{R}$이 존재한다는 가정을 �
 
 1. $\mu$가 **finite** 하다. $\iff$모든 $X \in \mathcal{F}$ 에 대하여 $\mu(X) < \infty$ 이다.
 
-2. $\mu$가 **$\sigma$-finite** 하다. $\iff$집합열 $F_1 \subseteq F_2 \subseteq\cdots$ 가 존재하여 $\mu(F_i) < \infty$ 이고 $\displaystyle\bigcup_ {i=1}^\infty F_i = X$ 이다.
+2. $\mu$가 **$\sigma$-finite** 하다. $\iff$집합열 $F _ 1 \subseteq F _ 2 \subseteq\cdots$ 가 존재하여 $\mu(F _ i) < \infty$ 이고 $\displaystyle\bigcup _ {i=1}^\infty F _ i = X$ 이다.
 
 ## Basic Properties of Set Functions
 
@@ -143,57 +149,57 @@ $\phi$가 set function이라 하자.
 
 	가 성립한다.[^3]
 
-- $\phi$가 ring $\mathcal{R}$ 위에서 additive이면, $A_1 \subseteq A_2$ 인 $A_1, A_2 \in \mathcal{R}$ 에 대하여
+- $\phi$가 ring $\mathcal{R}$ 위에서 additive이면, $A _ 1 \subseteq A _ 2$ 인 $A _ 1, A _ 2 \in \mathcal{R}$ 에 대하여
 
-	$$\phi(A_2) = \phi(A_2 \setminus A_1) + \phi(A_1)$$
+	$$\phi(A _ 2) = \phi(A _ 2 \setminus A _ 1) + \phi(A _ 1)$$
 
 	가 성립한다. 따라서,
 
-	1. $\phi \geq 0$ 이면 $\phi(A_1) \leq \phi(A_2)$ 이다. (단조성)
+	1. $\phi \geq 0$ 이면 $\phi(A _ 1) \leq \phi(A _ 2)$ 이다. (단조성)
 
-	2. $\lvert \phi(A_1) \rvert < \infty$ 이면 $\phi(A_2 \setminus A_1) = \phi(A_2) - \phi(A_1)$ 이다.[^4]
+	2. $\lvert \phi(A _ 1) \rvert < \infty$ 이면 $\phi(A _ 2 \setminus A _ 1) = \phi(A _ 2) - \phi(A _ 1)$ 이다.[^4]
 
 - $\phi$가 additive이고 $\phi \geq 0$ 이면 $A, B \in \mathcal{R}$ 에 대하여
 
 	$$\phi(A\cup B) \leq \phi(A) + \phi(B)$$
 
-	가 성립한다. 귀납법을 적용하면, 모든 $A_i \in \mathcal{R}$에 대하여
+	가 성립한다. 귀납법을 적용하면, 모든 $A _ i \in \mathcal{R}$에 대하여
 
-	$$\phi\left( \bigcup_ {n=1}^m A_n \right) \leq \sum_ {n=1}^m \phi(A_n)$$
+	$$\phi\left( \bigcup _ {n=1}^m A _ n \right) \leq \sum _ {n=1}^m \phi(A _ n)$$
 
-	가 성립한다. 이 때 $A_i$가 반드시 쌍마다 서로소일 필요는 없다. 이 성질을 *finite subadditivity*라 한다.
+	가 성립한다. 이 때 $A _ i$가 반드시 쌍마다 서로소일 필요는 없다. 이 성질을 *finite subadditivity*라 한다.
 
 마지막으로 measure와 관련된 정리를 소개합니다.
 
-**정리.** $\mu$가 $\sigma$-algebra $\mathcal{F}$의 measure라 하자. $A_n \in \mathcal{F}$ 에 대하여 $A_1 \subseteq A_2 \subseteq\cdots$ 이면
+**정리.** $\mu$가 $\sigma$-algebra $\mathcal{F}$의 measure라 하자. $A _ n \in \mathcal{F}$ 에 대하여 $A _ 1 \subseteq A _ 2 \subseteq\cdots$ 이면
 
-$$\lim_ {n\rightarrow\infty} \mu(A_n) = \mu\left( \bigcup_ {n=1}^\infty A_n \right)$$
+$$\lim _ {n\rightarrow\infty} \mu(A _ n) = \mu\left( \bigcup _ {n=1}^\infty A _ n \right)$$
 
 이 성립한다.
 
-**증명.** $B_1 = A_1$, $n \geq 2$ 에 대해 $B_n = A_n \setminus A_ {n-1}$ 로 두자. $B_n$은 쌍마다 서로소임이 자명하다. 따라서,
+**증명.** $B _ 1 = A _ 1$, $n \geq 2$ 에 대해 $B _ n = A _ n \setminus A _ {n-1}$ 로 두자. $B _ n$은 쌍마다 서로소임이 자명하다. 따라서,
 
-$$\mu(A_n) = \mu\left( \bigcup_ {k=1}^n B_k \right) = \sum_ {k=1}^n \mu(B_k)$$
+$$\mu(A _ n) = \mu\left( \bigcup _ {k=1}^n B _ k \right) = \sum _ {k=1}^n \mu(B _ k)$$
 
 이고, measure의 countable additivity를 이용하여
 
-$$\lim_ {n\rightarrow\infty} \mu(A_n) = \lim_ {n\rightarrow\infty} \sum_ {k=1}^n \mu(B_k) = \sum_ {n=1}^\infty \mu(B_n) = \mu\left( \bigcup_ {n=1}^{\infty} B_n \right) = \mu\left( \bigcup_ {n=1}^\infty A_n \right)$$
+$$\lim _ {n\rightarrow\infty} \mu(A _ n) = \lim _ {n\rightarrow\infty} \sum _ {k=1}^n \mu(B _ k) = \sum _ {n=1}^\infty \mu(B _ n) = \mu\left( \bigcup _ {n=1}^{\infty} B _ n \right) = \mu\left( \bigcup _ {n=1}^\infty A _ n \right)$$
 
-임을 알 수 있다. 마지막 등호에서는 $\displaystyle\bigcup_ {n=1}^\infty A_n = \bigcup_ {n=1}^\infty B_n$ 임을 이용한다.
+임을 알 수 있다. 마지막 등호에서는 $\displaystyle\bigcup _ {n=1}^\infty A _ n = \bigcup _ {n=1}^\infty B _ n$ 임을 이용한다.
 
-왠지 위 조건을 뒤집어서 $A_1 \supseteq A_2 \supseteq \cdots$ 인 경우 교집합에 대해서도 성립하면 좋을 것 같습니다.
+왠지 위 조건을 뒤집어서 $A _ 1 \supseteq A _ 2 \supseteq \cdots$ 인 경우 교집합에 대해서도 성립하면 좋을 것 같습니다.
 
-$$\lim_ {n\rightarrow\infty} \mu(A_n) = \mu\left( \bigcap_ {n=1}^\infty A_n \right).$$
+$$\lim _ {n\rightarrow\infty} \mu(A _ n) = \mu\left( \bigcap _ {n=1}^\infty A _ n \right).$$
 
-하지만 안타깝게도 조건이 부족합니다. $\mu(A_1) < \infty$ 라는 추가 조건이 필요합니다. 반례는 $A_n = [n, \infty)$를 생각해보면 됩니다. 정리의 정확한 서술은 다음과 같습니다. 증명은 연습문제로 남깁니다.
+하지만 안타깝게도 조건이 부족합니다. $\mu(A _ 1) < \infty$ 라는 추가 조건이 필요합니다. 반례는 $A _ n = [n, \infty)$를 생각해보면 됩니다. 정리의 정확한 서술은 다음과 같습니다. 증명은 연습문제로 남깁니다.
 
-**정리.** $\mu$가 $\sigma$-algebra $\mathcal{F}$의 measure라 하자. $A_n \in \mathcal{F}$ 에 대하여 $A_1 \supseteq A_2 \supseteq \cdots$ 이고 $\mu(A_1) < \infty$ 이면
+**정리.** $\mu$가 $\sigma$-algebra $\mathcal{F}$의 measure라 하자. $A _ n \in \mathcal{F}$ 에 대하여 $A _ 1 \supseteq A _ 2 \supseteq \cdots$ 이고 $\mu(A _ 1) < \infty$ 이면
 
-$$\lim_ {n\rightarrow\infty} \mu(A_n) = \mu\left( \bigcap_ {n=1}^\infty A_n \right)$$
+$$\lim _ {n\rightarrow\infty} \mu(A _ n) = \mu\left( \bigcap _ {n=1}^\infty A _ n \right)$$
 
 이 성립한다.
 
-이 두 정리를 **continuity of measure**라고 합니다. 함수가 연속이면 극한이 함수 안으로 들어갈 수 있는 성질과 유사하여 이와 같은 이름이 붙었습니다. 어떤 책에서는 $A_1 \subseteq A_2 \subseteq\cdots$ 조건을 $A_n \nearrow \bigcup_n A_n$ 라 표현하기도 합니다. 그래서 이 조건에 대한 정리를 *continuity from below*라 하기도 합니다. 마찬가지로 $A_1 \supseteq A_2 \supseteq \cdots$ 조건을 $A_n \searrow \bigcap_n A_n$ 로 적고 이에 대한 정리를 *continuity from above*라 합니다.
+이 두 정리를 **continuity of measure**라고 합니다. 함수가 연속이면 극한이 함수 안으로 들어갈 수 있는 성질과 유사하여 이와 같은 이름이 붙었습니다. 어떤 책에서는 $A _ 1 \subseteq A _ 2 \subseteq\cdots$ 조건을 $A _ n \nearrow \bigcup _ n A _ n$ 라 표현하기도 합니다. 그래서 이 조건에 대한 정리를 *continuity from below*라 하기도 합니다. 마찬가지로 $A _ 1 \supseteq A _ 2 \supseteq \cdots$ 조건을 $A _ n \searrow \bigcap _ n A _ n$ 로 적고 이에 대한 정리를 *continuity from above*라 합니다.
 
 ---
 

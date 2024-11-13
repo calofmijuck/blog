@@ -56,10 +56,10 @@ For example, the shift cipher with $\mathcal{M}$ as the set of all two-letter ch
 
 The above definition is equivalent to the following.
 
-> **Definition**. An encryption scheme is **perfectly secret** if for any $m_1, m_2 \in \mathcal{M}$ and $c \in \mathcal{C}$, we have
+> **Definition**. An encryption scheme is **perfectly secret** if for any $m _ 1, m _ 2 \in \mathcal{M}$ and $c \in \mathcal{C}$, we have
 >
 > $$
-> \Pr[E(k, m_1) = c] = \Pr[E(k, m_2) = c]
+> \Pr[E(k, m _ 1) = c] = \Pr[E(k, m _ 2) = c]
 > $$
 >
 > where the probability is taken over the random choice $k \leftarrow \mathcal{K}$.
@@ -101,9 +101,9 @@ $$
 
 $$
 \begin{align*}
-	\Pr[C = c] &= \sum_{m' \in \mathcal{M}} \Pr[C = c \mid M = m'] \cdot \Pr[M = m'] \\
-	&= \sum_{m' \in \mathcal{M}} \Pr[E(k, m') = c] \cdot \Pr[M = m'] \\
-	&= \sum_{m' \in \mathcal{M}} \Pr[E(k, m) = c] \cdot \Pr[M = m'] \\
+	\Pr[C = c] &= \sum _ {m' \in \mathcal{M}} \Pr[C = c \mid M = m'] \cdot \Pr[M = m'] \\
+	&= \sum _ {m' \in \mathcal{M}} \Pr[E(k, m') = c] \cdot \Pr[M = m'] \\
+	&= \sum _ {m' \in \mathcal{M}} \Pr[E(k, m) = c] \cdot \Pr[M = m'] \\
 	&= \Pr[E(k, m) = c] = \Pr[C = c \mid M = m].
 \end{align*}
 $$
@@ -141,8 +141,8 @@ since $K$ and $M$ are independent. Given any distribution on $\mathcal{M}$, we c
 
 $$
 \begin{align*}
-\Pr[C = c] &= \sum_{m \in \mathcal{M}} \Pr[C = c \mid M = m] \cdot \Pr[M = m] \\
-&= 2^{-n} \cdot \sum_{m \in \mathcal{M}} \Pr[M = m] = 2^{-n}.
+\Pr[C = c] &= \sum _ {m \in \mathcal{M}} \Pr[C = c \mid M = m] \cdot \Pr[M = m] \\
+&= 2^{-n} \cdot \sum _ {m \in \mathcal{M}} \Pr[M = m] = 2^{-n}.
 \end{align*}
 $$
 
@@ -162,13 +162,13 @@ Thus OTP satisfies the definition of perfect secrecy.
 
 The OTP is perfectly secure, but there are some drawbacks to using the OTP in practice.
 
-First of all, OTP is perfectly secure *only for one message*. Suppose that we reuse the key $k$ for two messages $m_1$, $m_2$. Then since $c_1 = m_1 \oplus k$, $c_2 = m_2 \oplus k$, we have the following relation
+First of all, OTP is perfectly secure *only for one message*. Suppose that we reuse the key $k$ for two messages $m _ 1$, $m _ 2$. Then since $c _ 1 = m _ 1 \oplus k$, $c _ 2 = m _ 2 \oplus k$, we have the following relation
 
 $$
-c_1 \oplus c_2 = (m_1 \oplus k) \oplus (m_2 \oplus k) = m_1 \oplus m_2.
+c _ 1 \oplus c _ 2 = (m _ 1 \oplus k) \oplus (m _ 2 \oplus k) = m _ 1 \oplus m _ 2.
 $$
 
-Since the adversary can see the ciphertext, this kind of relation leaks some information about $m_1$ or $m_2$. For example, the adversary can learn exactly where the two messages differ. So if the key is reused, the scheme cannot be perfectly secret.
+Since the adversary can see the ciphertext, this kind of relation leaks some information about $m _ 1$ or $m _ 2$. For example, the adversary can learn exactly where the two messages differ. So if the key is reused, the scheme cannot be perfectly secret.
 
 Also, the key is (at least) as long as the message. This is why OTP is rarely used today. When sending a long message, two parties must communicate a very long key that is as long as the message, *every single time*! This makes it hard to manage the key.
 
@@ -223,7 +223,7 @@ The following is evident from the definition.
 > **Lemma.** A function $f : \mathbb{N} \rightarrow \mathbb{R}$ is negligible if and only if for all $c > 0$,
 >
 > $$
-> \lim_{n \rightarrow \infty} f(n) n^c = 0.
+> \lim _ {n \rightarrow \infty} f(n) n^c = 0.
 > $$
 
 In practice, about $2^{-30}$ is non-negligible since it is likely to happen over $1$ GB of data. Meanwhile, $2^{-80}$, $2^{-128}$ are negligible since it is very unlikely to happen over the life of a key.
@@ -269,7 +269,7 @@ Let $G : \lbrace 0, 1 \rbrace^s \rightarrow \lbrace 0, 1 \rbrace^n$ be a PRG and
 > **Definition.** The **PRG advantage** is defined as
 >
 > $$
-> \mathrm{Adv}_\mathrm{PRG}[\mathcal{A} , G] = \left\lvert \Pr_{k \leftarrow \left\lbrace 0, 1 \right\rbrace^s}[\mathcal{A}(G(k)) = 1] - \Pr_{r \leftarrow \left\lbrace 0, 1 \right\rbrace^n}[\mathcal{A}(r) = 1] \right\rvert.
+> \mathrm{Adv} _ \mathrm{PRG}[\mathcal{A} , G] = \left\lvert \Pr _ {k \leftarrow \left\lbrace 0, 1 \right\rbrace^s}[\mathcal{A}(G(k)) = 1] - \Pr _ {r \leftarrow \left\lbrace 0, 1 \right\rbrace^n}[\mathcal{A}(r) = 1] \right\rvert.
 > $$
 
 Intuitively, the **advantage** calculates how well $\mathcal{A}$ distinguishes $G(k)$ from truly random bit strings. Recall that $\mathcal{A}$ will output $1$ if it thinks that the given bit string is random. The first probability term is the case when $\mathcal{A}$ is given a pseudorandom string, but $\mathcal{A}$ decides that the string is random. (incorrect) The second probability term is the case when $\mathcal{A}$ is given a random string and it decides that it is indeed random. (correct) Therefore,
@@ -281,7 +281,7 @@ Intuitively, the **advantage** calculates how well $\mathcal{A}$ distinguishes $
 
 Now we can define the security of PRGs.
 
-> **Definition.** $G : \lbrace 0, 1 \rbrace^s \rightarrow \lbrace 0, 1 \rbrace^n$ is a **secure PRG** if for any efficient statistical test $\mathcal{A}$, $\mathrm{Adv}_\mathrm{PRG}[\mathcal{A}, G]$ is negligible.
+> **Definition.** $G : \lbrace 0, 1 \rbrace^s \rightarrow \lbrace 0, 1 \rbrace^n$ is a **secure PRG** if for any efficient statistical test $\mathcal{A}$, $\mathrm{Adv} _ \mathrm{PRG}[\mathcal{A}, G]$ is negligible.
 
 There are no provably secure PRGs, but we have heuristic candidates, meaning that no such efficient $\mathcal{A}$ has been found.
 
@@ -291,7 +291,7 @@ We can deduce that if a PRG is predictable, then it is insecure.
 
 > **Theorem.** Let $G$ be a PRG. If $G$ is predictable, then it is insecure.
 
-*Proof*. Let $\mathcal{A}$ be an efficient adversary (next bit predictor) that predicts $G$. Suppose that $i$ is the index chosen by $\mathcal{A}$. With $\mathcal{A}$, we construct a statistical test $\mathcal{B}$ such that $\mathrm{Adv}_\mathrm{PRG}[\mathcal{B}, G]$ is non-negligible.
+*Proof*. Let $\mathcal{A}$ be an efficient adversary (next bit predictor) that predicts $G$. Suppose that $i$ is the index chosen by $\mathcal{A}$. With $\mathcal{A}$, we construct a statistical test $\mathcal{B}$ such that $\mathrm{Adv} _ \mathrm{PRG}[\mathcal{B}, G]$ is non-negligible.
 
 ![mc-01-prg-game.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-01-prg-game.png)
 
@@ -301,10 +301,10 @@ We can deduce that if a PRG is predictable, then it is insecure.
 2. $\mathcal{B}$ gives $x[0..i-1]$ to $\mathcal{A}$, then $\mathcal{A}$ will do some calculation and return $y$.
 3. $\mathcal{B}$ compares $x[i]$ with $y$, and returns $1$ if $x[i] = y$, $0$ otherwise.
 
-Let $W_b$ be the event that $\mathcal{B}$ outputs $1$ in experiment $b$. For $b = 0$, $\mathcal{B}$ outputs $1$ if $\mathcal{A}$ correctly guesses $x[i]$, which happens with probability $\frac{1}{2} + \epsilon$ for non-negligible $\epsilon$. As for $b = 1$, the received string is truly random. Then the values of $x[i]$ and $y$ are independent so $\Pr[W_1] = \frac{1}{2}$. Therefore,
+Let $W _ b$ be the event that $\mathcal{B}$ outputs $1$ in experiment $b$. For $b = 0$, $\mathcal{B}$ outputs $1$ if $\mathcal{A}$ correctly guesses $x[i]$, which happens with probability $\frac{1}{2} + \epsilon$ for non-negligible $\epsilon$. As for $b = 1$, the received string is truly random. Then the values of $x[i]$ and $y$ are independent so $\Pr[W _ 1] = \frac{1}{2}$. Therefore,
 
 $$
-\mathrm{Adv}_\mathrm{PRG}[\mathcal{B}, G] = \lvert \Pr[W_0] - \Pr[W_1] \rvert = \left\lvert \frac{1}{2} + \epsilon - \frac{1}{2} \right\rvert = \epsilon,
+\mathrm{Adv} _ \mathrm{PRG}[\mathcal{B}, G] = \lvert \Pr[W _ 0] - \Pr[W _ 1] \rvert = \left\lvert \frac{1}{2} + \epsilon - \frac{1}{2} \right\rvert = \epsilon,
 $$
 
 and the advantage is non-negligible.
@@ -324,14 +324,14 @@ To motivate the definition of semantic security, we consider a **security game f
 > **Definition.** Let $\mathcal{E} = (G, E, D)$ be a cipher defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$. For a given adversary $\mathcal{A}$, we define two experiments $0$ and $1$. For $b \in \lbrace 0, 1 \rbrace$, define experiment $b$ as follows:
 >
 > **Experiment** $b$.
-> 1. The adversary computes $m_0, m_1 \in \mathcal{M}$ and sends them to the challenger.
-> 2. The challenger computes $k \leftarrow \mathcal{K}$, $c \leftarrow E(k, m_b)$ and sends $c$ to the adversary.
+> 1. The adversary computes $m _ 0, m _ 1 \in \mathcal{M}$ and sends them to the challenger.
+> 2. The challenger computes $k \leftarrow \mathcal{K}$, $c \leftarrow E(k, m _ b)$ and sends $c$ to the adversary.
 > 3. The adversary outputs a bit $b' \in \lbrace 0, 1 \rbrace$.
 >
-> Let $W_b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. i.e, the event that $\mathcal{A}(\mathrm{EXP}(b)) = 1$. Now define the **semantic security advantage** of $\mathcal{A}$ with respect to $\mathcal{E}$ as
+> Let $W _ b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. i.e, the event that $\mathcal{A}(\mathrm{EXP}(b)) = 1$. Now define the **semantic security advantage** of $\mathcal{A}$ with respect to $\mathcal{E}$ as
 >
 > $$
-> \mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}] = \lvert \Pr [W_0] - \Pr[W_1] \rvert.
+> \mathrm{Adv} _ \mathrm{SS}[\mathcal{A}, \mathcal{E}] = \lvert \Pr [W _ 0] - \Pr[W _ 1] \rvert.
 > $$
 
 As we understood the advantage of PRG, semantic security advantage can be understood the same way. If the advantage is closer to $1$, the better the adversary distinguishes the two experiments.
@@ -340,19 +340,19 @@ As we understood the advantage of PRG, semantic security advantage can be unders
 
 In the same way, we can define a security game for distinguishing two distributions.
 
-> **Definition.** Let $P_0$, $P_1$ be two distributions over a set $\mathcal{S}$. For any given efficient adversary $\mathcal{A}$, define experiments $0$ and $1$.
+> **Definition.** Let $P _ 0$, $P _ 1$ be two distributions over a set $\mathcal{S}$. For any given efficient adversary $\mathcal{A}$, define experiments $0$ and $1$.
 >
 > **Experiment $b$.**
-> 1. The challenger computes $x \leftarrow P_b$ and sends $x$ to the adversary.
+> 1. The challenger computes $x \leftarrow P _ b$ and sends $x$ to the adversary.
 > 2. The adversary computes and outputs a bit $b' \in \lbrace 0, 1 \rbrace$.
 >
-> Let $W_b$ the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the advantage is defined as
+> Let $W _ b$ the event that $\mathcal{A}$ outputs $1$ in experiment $b$. Then the advantage is defined as
 >
 >  $$
->  \mathrm{Adv}[\mathcal{A}] = \lvert \Pr[W_0] - \Pr[W_1] \rvert
+>  \mathrm{Adv}[\mathcal{A}] = \lvert \Pr[W _ 0] - \Pr[W _ 1] \rvert
 >  $$
 >
-> If the advantage is negligible, we say that $P_0$ and $P_1$ are **computationally indistinguishable**, and write $P_0 \approx_c P_1$.
+> If the advantage is negligible, we say that $P _ 0$ and $P _ 1$ are **computationally indistinguishable**, and write $P _ 0 \approx _ c P _ 1$.
 
 As an example, a PRG $G$ is secure if the two distributions $G(k)$ over $k \leftarrow \lbrace 0, 1 \rbrace^s$ and $r \leftarrow \lbrace 0, 1 \rbrace^n$ are *computationally indistinguishable*.
 
@@ -360,14 +360,14 @@ As an example, a PRG $G$ is secure if the two distributions $G(k)$ over $k \left
 
 So now we can define a semantically secure encryption scheme.
 
-> **Definition.** An encryption scheme $\mathcal{E}$ is **semantically secure** if for any efficient adversary $\mathcal{A}$, its advantage $\mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}]$ is negligible.
+> **Definition.** An encryption scheme $\mathcal{E}$ is **semantically secure** if for any efficient adversary $\mathcal{A}$, its advantage $\mathrm{Adv} _ \mathrm{SS}[\mathcal{A}, \mathcal{E}]$ is negligible.
 
-It means that the adversary cannot distinguish whether the received message is an encryption of $m_0$ or $m_1$, even though it knows what the original messages were in the first place!
+It means that the adversary cannot distinguish whether the received message is an encryption of $m _ 0$ or $m _ 1$, even though it knows what the original messages were in the first place!
 
-Using the notion of computational indistinguishability, $\mathcal{E}$ is semantically secure if for any $m_0, m_1 \in \mathcal{M}$, the distribution of ciphertexts of $m_0$ and $m_1$ with respect to $k \leftarrow \mathcal{K}$ is computationally indistinguishable.
+Using the notion of computational indistinguishability, $\mathcal{E}$ is semantically secure if for any $m _ 0, m _ 1 \in \mathcal{M}$, the distribution of ciphertexts of $m _ 0$ and $m _ 1$ with respect to $k \leftarrow \mathcal{K}$ is computationally indistinguishable.
 
 $$
-E(K, m_0) \approx_c E(K, m_1)
+E(K, m _ 0) \approx _ c E(K, m _ 1)
 $$
 
 ## Semantic Security of the Stream Cipher
@@ -376,47 +376,47 @@ $$
 
 *Proof*. Let $\mathcal{A}$ be an efficient adversary that breaks the semantic security of $\mathcal{E}$. We will use $\mathcal{A}$ to construct a statistical test $\mathcal{B}$ that breaks the security of the PRG.
 
-Since $\mathcal{A}$ can break the semantic security of the stream cipher, for $m_0, m_1 \in \mathcal{M}$ chosen by $\mathcal{A}$, it can distinguish $m_0 \oplus G(k)$ and $m_1 \oplus G(k)$. Let $W_b$ be the event that $\mathcal{A}$ returns $1$ for $m_b \oplus G(k)$. The advantage $\mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}] = \lvert \Pr[W_0] - \Pr[W_1] \rvert$ is non-negligible.
+Since $\mathcal{A}$ can break the semantic security of the stream cipher, for $m _ 0, m _ 1 \in \mathcal{M}$ chosen by $\mathcal{A}$, it can distinguish $m _ 0 \oplus G(k)$ and $m _ 1 \oplus G(k)$. Let $W _ b$ be the event that $\mathcal{A}$ returns $1$ for $m _ b \oplus G(k)$. The advantage $\mathrm{Adv} _ \mathrm{SS}[\mathcal{A}, \mathcal{E}] = \lvert \Pr[W _ 0] - \Pr[W _ 1] \rvert$ is non-negligible.
 
 Define two new experiments as follows:
-1. The adversary $\mathcal{A}$ gives two messages $m_0, m_1 \in \mathcal{M}$.
+1. The adversary $\mathcal{A}$ gives two messages $m _ 0, m _ 1 \in \mathcal{M}$.
 2. The challenger draws a random string $r \leftarrow \lbrace 0, 1 \rbrace^n$.
-3. In experiment $b$, return $m_b \oplus r$.
+3. In experiment $b$, return $m _ b \oplus r$.
 4. $\mathcal{A}$ will return $b' \in \lbrace 0, 1 \rbrace$.
 
-Let $W'_b$ be the event that $\mathcal{A}$ returns $1$ for $m_b \oplus r$. Then, by triangle inequality,
+Let $W' _ b$ be the event that $\mathcal{A}$ returns $1$ for $m _ b \oplus r$. Then, by triangle inequality,
 
 $$
 \tag{2}
 \begin{align*}
-\mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}] &= \lvert \Pr[W_0] - \Pr[W_1] \rvert \\
-&\leq \lvert \Pr[W_0] - \Pr[W_0'] \rvert + \lvert \Pr[W_0'] - \Pr[W_1'] \rvert \\
-&\qquad + \lvert \Pr[W_1'] - \Pr[W_1] \rvert \\
-&= \lvert \Pr[W_0] - \Pr[W_0'] \rvert + \lvert \Pr[W_1'] - \Pr[W_1] \rvert.
+\mathrm{Adv} _ \mathrm{SS}[\mathcal{A}, \mathcal{E}] &= \lvert \Pr[W _ 0] - \Pr[W _ 1] \rvert \\
+&\leq \lvert \Pr[W _ 0] - \Pr[W _ 0'] \rvert + \lvert \Pr[W _ 0'] - \Pr[W _ 1'] \rvert \\
+&\qquad + \lvert \Pr[W _ 1'] - \Pr[W _ 1] \rvert \\
+&= \lvert \Pr[W _ 0] - \Pr[W _ 0'] \rvert + \lvert \Pr[W _ 1'] - \Pr[W _ 1] \rvert.
 \end{align*}
 $$
 
-The last equality holds since OTP is perfectly secure and thus $\lvert \Pr[W_0'] - \Pr[W_1'] \rvert = 0$. Since $\mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}]$ is non-negligible, at least one of the terms on the right hand side should also be non-negligible.
+The last equality holds since OTP is perfectly secure and thus $\lvert \Pr[W _ 0'] - \Pr[W _ 1'] \rvert = 0$. Since $\mathrm{Adv} _ \mathrm{SS}[\mathcal{A}, \mathcal{E}]$ is non-negligible, at least one of the terms on the right hand side should also be non-negligible.
 
-Without loss of generality, assume that $\lvert \Pr[W_0] - \Pr[W_0'] \rvert$ is non-negligible. This implies that $\mathcal{A}$ can distinguish $m_0 \oplus G(k)$ from $m_0 \oplus r$. Using this fact, we can construct a statistical test $\mathcal{B}$ for the PRG as follows.
+Without loss of generality, assume that $\lvert \Pr[W _ 0] - \Pr[W _ 0'] \rvert$ is non-negligible. This implies that $\mathcal{A}$ can distinguish $m _ 0 \oplus G(k)$ from $m _ 0 \oplus r$. Using this fact, we can construct a statistical test $\mathcal{B}$ for the PRG as follows.
 
 1. Challenger PRG gives a bit string $x$.
 	- In experiment $0$, challenger gives pseudorandom string $G(k)$.
 	- In experiment $1$, challenger gives truly random string $r$.
-2. Invoke $\mathcal{A}$, then $\mathcal{A}$ will send two messages $m_0, m_1 \in \mathcal{M}$.
-3. Compute $c = m_0 \oplus x$ and return $c$ to $\mathcal{A}$.
+2. Invoke $\mathcal{A}$, then $\mathcal{A}$ will send two messages $m _ 0, m _ 1 \in \mathcal{M}$.
+3. Compute $c = m _ 0 \oplus x$ and return $c$ to $\mathcal{A}$.
 4. $\mathcal{A}$ will return $b'$, and return $b'$ directly to challenger PRG.
 
-Let $Y_b$ the event that $\mathcal{B}$ returns $1$ on experiment $b$. Then, we directly see that
+Let $Y _ b$ the event that $\mathcal{B}$ returns $1$ on experiment $b$. Then, we directly see that
 
 $$
-\Pr[Y_0] = \Pr[W_0], \qquad \Pr[Y_1] = \Pr[W_0'].
+\Pr[Y _ 0] = \Pr[W _ 0], \qquad \Pr[Y _ 1] = \Pr[W _ 0'].
 $$
 
 Therefore, the PRG advantage of $\mathcal{B}$ is
 
 $$
-\mathrm{Adv}_\mathrm{PRG}[\mathcal{B}, G] = \lvert \Pr[Y_0] - \Pr[Y_1] \rvert = \lvert \Pr[W_0] - \Pr[W_0'] \rvert,
+\mathrm{Adv} _ \mathrm{PRG}[\mathcal{B}, G] = \lvert \Pr[Y _ 0] - \Pr[Y _ 1] \rvert = \lvert \Pr[W _ 0] - \Pr[W _ 0'] \rvert,
 $$
 
 which is non-negligible, so it breaks the security of the PRG.
@@ -424,7 +424,7 @@ which is non-negligible, so it breaks the security of the PRG.
 > **Corollary.** For any adversary $\mathcal{A}$ for the stream cipher $\mathcal{E}$, there exists an adversary $\mathcal{B}$ for a PRG $G$ such that
 >
 > $$
-> \mathrm{Adv}_\mathrm{SS}[\mathcal{A}, \mathcal{E}] \leq 2 \cdot \mathrm{Adv}_\mathrm{PRG}[\mathcal{B}, G].
+> \mathrm{Adv} _ \mathrm{SS}[\mathcal{A}, \mathcal{E}] \leq 2 \cdot \mathrm{Adv} _ \mathrm{PRG}[\mathcal{B}, G].
 > $$
 
 *Proof*. Use equation $(2)$ in the above proof.

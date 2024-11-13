@@ -107,7 +107,7 @@ allows us to reduce the size of the numbers before exponentiation.
 
 ## Modular Arithmetic
 
-For modulus $n$, **modular arithmetic** is operation on $\mathbb{Z}_n$.
+For modulus $n$, **modular arithmetic** is operation on $\mathbb{Z} _ n$.
 
 ### Residue Classes
 
@@ -136,10 +136,10 @@ Thus, $R$ is an **equivalence relation** and each residue class $[k]$ is an **eq
 We write the set of residue classes modulo $n$ as
 
 $$
-\mathbb{Z}_n = \left\lbrace \overline{0}, \overline{1}, \overline{2}, \dots, \overline{n-1} \right\rbrace.
+\mathbb{Z} _ n = \left\lbrace \overline{0}, \overline{1}, \overline{2}, \dots, \overline{n-1} \right\rbrace.
 $$
 
-Note that $\mathbb{Z}_n$ is closed under addition and multiplication.
+Note that $\mathbb{Z} _ n$ is closed under addition and multiplication.
 
 ### Identity
 
@@ -149,7 +149,7 @@ Note that $\mathbb{Z}_n$ is closed under addition and multiplication.
 > \forall a \in S,\, a * e = e * a = a.
 > $$
 
-In $\mathbb{Z}_n$, the additive identity is $0$, the multiplicative identity is $1$.
+In $\mathbb{Z} _ n$, the additive identity is $0$, the multiplicative identity is $1$.
 
 ### Inverse
 
@@ -169,7 +169,7 @@ $$
 
 The inverse exists if and only if $\gcd(a, n) = 1$.
 
-> **Lemma**. For $n \geq 2$ and $a \in \mathbb{Z}$, its inverse $a^{-1} \in \mathbb{Z}_n$ exists if and only if $\gcd(a, n) = 1$.
+> **Lemma**. For $n \geq 2$ and $a \in \mathbb{Z}$, its inverse $a^{-1} \in \mathbb{Z} _ n$ exists if and only if $\gcd(a, n) = 1$.
 
 *Proof*. We use the extended Euclidean algorithm. There exists $u, v \in \mathbb{Z}$ such that
 
@@ -223,7 +223,7 @@ Basically, we use the Euclidean algorithm and solve for the remainder (which is 
 
 #### Calculating Modular Multiplicative Inverse
 
-We can use the extended Euclidean algorithm to find modular inverses. Suppose we want to calculate $a^{-1}$ in $\mathbb{Z}_n$. We assume that the inverse exist, so $\gcd(a, n) = 1$.
+We can use the extended Euclidean algorithm to find modular inverses. Suppose we want to calculate $a^{-1}$ in $\mathbb{Z} _ n$. We assume that the inverse exist, so $\gcd(a, n) = 1$.
 
 Therefore, we use the extended Euclidean algorithm and find $x, y \in \mathbb{Z}$ such that
 
@@ -231,7 +231,7 @@ $$
 ax + ny = 1.
 $$
 
-Then $ax \equiv 1 - ny \equiv 1 \pmod n$, thus $x$ is the inverse of $a$ in $\mathbb{Z}_n$.
+Then $ax \equiv 1 - ny \equiv 1 \pmod n$, thus $x$ is the inverse of $a$ in $\mathbb{Z} _ n$.
 
 [^1]: Note that in C standards, `(a / b) * b + (a % b) == a`.
 [^2]: $a$ and $b$ are in the same coset of $\mathbb{Z}/n\mathbb{Z}$.

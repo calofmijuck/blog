@@ -88,17 +88,17 @@ To attack this scheme, we use frequency analysis. Calculate the frequency of eac
 #### Vigenère Cipher
 
 - A polyalphabetic substitution
-- Given a key length $m$, take key $k = (k_1, k_2, \dots, k_m)$.
+- Given a key length $m$, take key $k = (k _ 1, k _ 2, \dots, k _ m)$.
 - For the $i$-th letter $x$, set $j = i \bmod m$.
-- Encryption is done by replacing $x$ by $x + k_{j}$.
-- Decryption is done by replacing $x$ by $x - k_j$.
+- Encryption is done by replacing $x$ by $x + k _ {j}$.
+- Decryption is done by replacing $x$ by $x - k _ j$.
 
 To attack this scheme, find the key length by [*index of coincidence*](https://en.wikipedia.org/wiki/Index_of_coincidence). Then use frequency analysis.
 
 #### Hill Cipher
 
 - A polyalphabetic substitution
-- A key is a *invertible* matrix $K = (k_{ij})_{m \times m}$ where $k_{ij} \in \mathbb{Z}_{26}$.
+- A key is a *invertible* matrix $K = (k _ {ij}) _ {m \times m}$ where $k _ {ij} \in \mathbb{Z} _ {26}$.
 - Encryption/decryption is done by multiplying $K$ or $K^{-1}$.
 
 This scheme is vulnerable to known plaintext attack, since the equation can be solved for $K$.
@@ -191,7 +191,7 @@ Let $m \in \left\lbrace 0, 1 \right\rbrace^n$ be the message to encrypt. Then ch
 - Encryption: $E(k, m) = k \oplus m$.
 - Decryption: $D(k, c) = k \oplus c$.
 
-This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#one-time-pad-(otp)).
+This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/#one-time-pad-(otp)).
 
 ## Perfect Secrecy
 
@@ -201,10 +201,10 @@ This scheme is **provably secure**. See also [one-time pad (Modern Cryptography)
 > \Pr[\mathcal{M} = m \mid \mathcal{C} = c] = \Pr[\mathcal{M} = m].
 > $$
 >
-> Or equivalently, for all $m_0, m_1 \in \mathcal{M}$, $c \in \mathcal{C}$,
+> Or equivalently, for all $m _ 0, m _ 1 \in \mathcal{M}$, $c \in \mathcal{C}$,
 >
 > $$
-> \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c]
+> \Pr[E(k, m _ 0) = c] = \Pr[E(k, m _ 1) = c]
 > $$ 
 >
 > where $k$ is chosen uniformly in $\mathcal{K}$.
@@ -223,19 +223,19 @@ since for each $m$ and $c$, $k$ is determined uniquely.
 
 > **Theorem.** If $(E, D)$ is perfectly secure, $\lvert \mathcal{K} \rvert \geq \lvert \mathcal{M} \rvert$.
 
-*Proof*. Assume not, then we can find some message $m_0 \in \mathcal{M}$ such that $m_0$ is not a decryption of some $c \in \mathcal{C}$. This is because the decryption algorithm $D$ is deterministic and $\lvert \mathcal{K} \rvert < \lvert \mathcal{M} \rvert$.
+*Proof*. Assume not, then we can find some message $m _ 0 \in \mathcal{M}$ such that $m _ 0$ is not a decryption of some $c \in \mathcal{C}$. This is because the decryption algorithm $D$ is deterministic and $\lvert \mathcal{K} \rvert < \lvert \mathcal{M} \rvert$.
 
-For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../modern-cryptography/2023-09-07-otp-stream-cipher-prgs.md#shannon's-theorem).
+For the proof in detail, check [Shannon's Theorem (Modern Cryptography)](../../modern-cryptography/2023-09-07-otp-stream-cipher-prgs/#shannon's-theorem).
 
 ### Two-Time Pad is Insecure
 
-It is not secure to use the same key twice. If for the key $k$ and two messages $m_1$, $m_2$,
+It is not secure to use the same key twice. If for the key $k$ and two messages $m _ 1$, $m _ 2$,
 
 $$
-c_1 \oplus c_2 = (k \oplus m_1) \oplus (k \oplus m_2) = m_1 \oplus m_2.
+c _ 1 \oplus c _ 2 = (k \oplus m _ 1) \oplus (k \oplus m _ 2) = m _ 1 \oplus m _ 2.
 $$
 
-So some information is leaked, even though we cannot actually recover $m_i$ from the above equation.
+So some information is leaked, even though we cannot actually recover $m _ i$ from the above equation.
 
 ## Two Types of Symmetric Ciphers
 
@@ -278,9 +278,9 @@ To alleviate this problem, we can combine multiple LFSRs with a $k$-input binary
 	- Not for attacks, but for error correction
 - Initialization vector (IV): $24$ bit
 - Key: $104$ bit number to build the keystream
-- IV and the key is used to build the keystream $k_s$
+- IV and the key is used to build the keystream $k _ s$
 	- IV + Key is $128$ bits
-- Encryption: $c = k_s \oplus (m \parallel \mathrm{CRC}(m))$
+- Encryption: $c = k _ s \oplus (m \parallel \mathrm{CRC}(m))$
 
 #### Encryption Process
 
@@ -313,7 +313,7 @@ To alleviate this problem, we can combine multiple LFSRs with a $k$-input binary
 - The key is fixed, and the period of IV is $2^{24}$.
 - Same IV leads to same key stream.
 - So if the adversary takes two frames with the same IV to obtain the XOR of two plaintext messages.
-	- $c_1 \oplus c_2 = (p_1 \oplus k_s) \oplus (p_2 \oplus k_s) = p_1 \oplus p_2$
+	- $c _ 1 \oplus c _ 2 = (p _ 1 \oplus k _ s) \oplus (p _ 2 \oplus k _ s) = p _ 1 \oplus p _ 2$
 - Since network traffic contents are predictable, messages can be recovered.
 	- We are in the link layer, so HTTP, IP, TCP headers will be contained in the encrypted payload.
 	- The header formats are usually known.
@@ -326,12 +326,12 @@ Given a bit string (defined in the specification), the sender performs long divi
 
 - CRC is actually a linear function.
 	- $\mathrm{CRC}(x \oplus y) = \mathrm{CRC}(x) \oplus \mathrm{CRC}(y)$.
-	- The remainder of $x \oplus y$ is equal to the sum of the remainders of $x$ and $y$, since $\oplus$ is effectively an addition over $\mathbb{Z}_2$.
+	- The remainder of $x \oplus y$ is equal to the sum of the remainders of $x$ and $y$, since $\oplus$ is effectively an addition over $\mathbb{Z} _ 2$.
 - CRC function doesn't have a key, so it is forgeable.
 - **RC4 is transparent to XOR**, and messages can be modified.
-	- Let $c = k_s \oplus (m \parallel \mathrm{CRC}(m))$.
+	- Let $c = k _ s \oplus (m \parallel \mathrm{CRC}(m))$.
 	- If we XOR $(x \parallel \mathrm{CRC}(x))$, where $x$ is some malicious message.
-	- $c \oplus (x \parallel \mathrm{CRC}(x)) = k_s \oplus (m\oplus x \parallel \mathrm{CRC}(m\oplus x))$.
+	- $c \oplus (x \parallel \mathrm{CRC}(x)) = k _ s \oplus (m\oplus x \parallel \mathrm{CRC}(m\oplus x))$.
 	- The receiver will decrypt and get $(m\oplus x \parallel \mathrm{CRC}(m\oplus x))$.
 	- CRC check by the receiver will succeed.
 

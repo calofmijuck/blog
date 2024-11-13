@@ -28,8 +28,8 @@ Some notations first:
 - $\mathcal{M}$ is the plaintext space (messages)
 - $\mathcal{K}$ is the key space
 - $\mathcal{C}$ is the ciphertext space
-- $E: \mathcal{K} \times \mathcal{M} \rightarrow \mathcal{C}$ is the encryption algorithm (sometimes $\mathsf{Enc}_k$)
-- $D:\mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M}$ is the decryption algorithm (sometimes $\mathsf{Dec}_k$)
+- $E: \mathcal{K} \times \mathcal{M} \rightarrow \mathcal{C}$ is the encryption algorithm (sometimes $\mathsf{Enc} _ k$)
+- $D:\mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M}$ is the decryption algorithm (sometimes $\mathsf{Dec} _ k$)
 
 In a **symmetric cipher**, a key $k \in \mathcal{K}$ is used both for encryption and decryption, giving the following correctness requirement.
 
@@ -40,7 +40,7 @@ $$\forall k \in \mathcal{K},\, \forall m \in \mathcal{M},\, D(k, E(k, m)) = m$$
 Let $\Sigma$ be the set of lowercase english alphabets.
 
 - $\mathcal{M} = \mathcal{C} = \Sigma^\ast$, where $\Sigma^\ast$ is the [Kleene star](https://en.wikipedia.org/wiki/Kleene_star).
-- $\mathcal{K} = \mathbb{Z}_{26}$ (Caesar used $3 \in \mathcal{K}$)
+- $\mathcal{K} = \mathbb{Z} _ {26}$ (Caesar used $3 \in \mathcal{K}$)
 - $E(k, x) = x + k \pmod{26}$ for each letter $x$ of $m \in \mathcal{M}$.
 - $D(k, y) = y - k \pmod{26}$ for each letter $y$ of $c \in \mathcal{C}$.
 
@@ -50,13 +50,13 @@ This scheme is not safe since we can try all $26$ keys and find the sentence tha
 
 Guessing the key and checking the plaintext is hard to automate, since computers don't know what sentences make sense.[^1] In some cases, the message may be invalid in normal English, while the plaintext characters follow the same distribution.
 
-Let $p_i \in [0, 1]$ be the frequency of the $i$-th letter in normal English text. Then it is known that
+Let $p _ i \in [0, 1]$ be the frequency of the $i$-th letter in normal English text. Then it is known that
 
-$$ \sum_{i=0}^{25} p_i^2 \approx 0.065$$
+$$ \sum _ {i=0}^{25} p _ i^2 \approx 0.065$$
 
-Now, let $q_i \in [0, 1]$ be the frequency of the $i$-th letter in the given ciphertext. For the key $k \in \mathcal{K}$, $p_i \approx q_{i+k}$ for all $i$, since the $i$-th letter is mapped to the $(i + k)$-th letter. (Addition is done modulo $26$). So for each index $j \in [0, 25]$, we compute
+Now, let $q _ i \in [0, 1]$ be the frequency of the $i$-th letter in the given ciphertext. For the key $k \in \mathcal{K}$, $p _ i \approx q _ {i+k}$ for all $i$, since the $i$-th letter is mapped to the $(i + k)$-th letter. (Addition is done modulo $26$). So for each index $j \in [0, 25]$, we compute
 
-$$\sum_{i=0}^{25} p_i q_{i+j}$$
+$$\sum _ {i=0}^{25} p _ i q _ {i+j}$$
 
 and choose $j$ that gives the closest value to $0.065$.
 

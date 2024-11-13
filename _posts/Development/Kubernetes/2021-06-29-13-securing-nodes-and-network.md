@@ -2,17 +2,18 @@
 share: true
 toc: true
 categories: [Development, Kubernetes]
+path: "_posts/development/kubernetes"
 tags: [kubernetes, sre, devops]
 title: "13. Securing Cluster Nodes and the Network"
 date: "2021-06-29"
 github_title: "2021-06-29-13-securing-nodes-and-network"
 image:
-  path: /assets/img/posts/Development/Kubernetes/k8s-13.jpeg
+  path: /assets/img/posts/development/kubernetes/k8s-13.jpeg
 attachment:
-  folder: assets/img/posts/Development/Kubernetes
+  folder: assets/img/posts/development/kubernetes
 ---
 
-![k8s-13.jpeg](/assets/img/posts/Development/Kubernetes/k8s-13.jpeg) _A pod with hostNetwork: true uses the node's network interfaces instead of its own. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-13)_
+![k8s-13.jpeg](/assets/img/posts/development/kubernetes/k8s-13.jpeg) _A pod with hostNetwork: true uses the node's network interfaces instead of its own. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-13)_
 
 ### 주요 내용
 

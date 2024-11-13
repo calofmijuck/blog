@@ -2,17 +2,18 @@
 share: true
 toc: true
 categories: [Development, Kubernetes]
+path: "_posts/development/kubernetes"
 tags: [kubernetes, sre, devops]
 title: "04. Replication and Other Controllers: Deploying Managed Pods"
 date: "2021-03-21"
 github_title: "2021-03-21-04-replication-and-controllers"
 image:
-  path: /assets/img/posts/Development/Kubernetes/k8s-04.jpeg
+  path: /assets/img/posts/development/kubernetes/k8s-04.jpeg
 attachment:
-  folder: assets/img/posts/Development/Kubernetes
+  folder: assets/img/posts/development/kubernetes
 ---
 
-![k8s-04.jpeg](/assets/img/posts/Development/Kubernetes/k8s-04.jpeg) _ReplicationController recreating pods. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-4)_
+![k8s-04.jpeg](/assets/img/posts/development/kubernetes/k8s-04.jpeg) _ReplicationController recreating pods. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-4)_
 
 3장에서는 pod 를 직접 관리하는 방법에 대해 살펴봤다. 하지만 실무에서는 pod 의 관리가 자동으로 되길 원한다. 이를 위해 ReplicationController 나 Deployment 를 사용한다.
 

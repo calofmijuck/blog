@@ -29,12 +29,12 @@ But *cryptographic hash functions* are different. They should *avoid* collisions
 
 Intuitively, a function $H$ is collision resistant if it is computationally infeasible to find a collision for $H$. Formally, this can be defined also in the form of a security game.
 
-> **Definition.** Let $H$ be a hash function defined over $(\mathcal{M}, \mathcal{T})$. Given an adversary $\mathcal{A}$, the adversary outputs two messages $m_0, m_1 \in \mathcal{M}$.
+> **Definition.** Let $H$ be a hash function defined over $(\mathcal{M}, \mathcal{T})$. Given an adversary $\mathcal{A}$, the adversary outputs two messages $m _ 0, m _ 1 \in \mathcal{M}$.
 > 
-> $\mathcal{A}$ wins the game if $H(m_0) = H(m_1)$ and $m_0 \neq m_1$. The **advantage** of $\mathcal{A}$ with respect to $H$ is defined as the probability that $\mathcal{A}$ wins the game.
+> $\mathcal{A}$ wins the game if $H(m _ 0) = H(m _ 1)$ and $m _ 0 \neq m _ 1$. The **advantage** of $\mathcal{A}$ with respect to $H$ is defined as the probability that $\mathcal{A}$ wins the game.
 > 
 > $$
-> \mathrm{Adv}_{\mathrm{CR}}[\mathcal{A}, H] = \Pr[H(m_0) = H(m_1) \wedge m_0 \neq m_1].
+> \mathrm{Adv} _ {\mathrm{CR}}[\mathcal{A}, H] = \Pr[H(m _ 0) = H(m _ 1) \wedge m _ 0 \neq m _ 1].
 > $$
 > 
 > If the advantage is negligible for any efficient adversary $\mathcal{A}$, then the hash function $H$ is **collision resistant**.
@@ -59,10 +59,10 @@ Let $\Pi = (S, V)$ be a MAC scheme defined over $(\mathcal{K}, \mathcal{M}, \mat
 > 
 > If $\Pi$ is a secure MAC and $H$ is collision resistant, then $\Pi'$ is a secure MAC.
 > 
-> For any efficient adversary $\mathcal{A}$ attacking $\Pi'$, there exist a MAC adversary $\mathcal{B}_\mathrm{MAC}$ attacking $\Pi$ and an adversary $\mathcal{B}_\mathrm{CR}$ attacking $H$ such that
+> For any efficient adversary $\mathcal{A}$ attacking $\Pi'$, there exist a MAC adversary $\mathcal{B} _ \mathrm{MAC}$ attacking $\Pi$ and an adversary $\mathcal{B} _ \mathrm{CR}$ attacking $H$ such that
 > 
 > $$
-> \mathrm{Adv}_{\mathrm{MAC}}[\mathcal{A}, \Pi'] \leq \mathrm{Adv}_{\mathrm{MAC}}[\mathcal{B}_\mathrm{MAC}, \Pi] + \mathrm{Adv}_{\mathrm{CR}}[\mathcal{B}_\mathrm{CR}, H].
+> \mathrm{Adv} _ {\mathrm{MAC}}[\mathcal{A}, \Pi'] \leq \mathrm{Adv} _ {\mathrm{MAC}}[\mathcal{B} _ \mathrm{MAC}, \Pi] + \mathrm{Adv} _ {\mathrm{CR}}[\mathcal{B} _ \mathrm{CR}, H].
 > $$
 
 *Proof*. See Theorem 8.1.[^2]
@@ -83,8 +83,8 @@ Actually, the attacker doesn't have to hash that many messages. This is because 
 
 Let $N$ be the size of the hash space. (If the hash is $n$ bits, then $N = 2^n$)
 
-> 1. Sample $s$ uniform random messages $m_1, \dots, m_s \in \mathcal{M}$.
-> 2. Compute $x_i \leftarrow H(m_i)$.
+> 1. Sample $s$ uniform random messages $m _ 1, \dots, m _ s \in \mathcal{M}$.
+> 2. Compute $x _ i \leftarrow H(m _ i)$.
 > 3. Find and output a collision if it exists.
 
 > **Lemma.** The above algorithm will output a collision with probability at least $1/2$ when $s \geq 1.2\sqrt{N}$.
@@ -92,7 +92,7 @@ Let $N$ be the size of the hash space. (If the hash is $n$ bits, then $N = 2^n$)
 *Proof*. We show that the probability of no collisions is less than $1/2$. The probability that there is no collision is
 
 $$
-\prod_{i=1}^{s-1}\left( 1-\frac{i}{N} \right) \leq \prod_{i=1}^{s-1} \exp\left( -\frac{i}{N} \right) = \exp\left( -\frac{s(s-1)}{2N} \right).
+\prod _ {i=1}^{s-1}\left( 1-\frac{i}{N} \right) \leq \prod _ {i=1}^{s-1} \exp\left( -\frac{i}{N} \right) = \exp\left( -\frac{s(s-1)}{2N} \right).
 $$
 
 So solving $\exp\left( -s(s-1)/2N \right) < 1/2$ for $s$ gives approximately $s \geq \sqrt{(2\log2)N} \approx 1.17 \sqrt{N}$.
@@ -113,13 +113,13 @@ The Merkle-Damgård transform gives as a way to extend our input domain of the h
 > 
 > 1. Given an input $m \in \left\lbrace 0, 1 \right\rbrace^{\leq L}$, pad $m$ so that the length of $m$ is a multiple of $l$.
 > 	- The padding block $\mathrm{PB}$ must contain an encoding of the input message length. i.e, it is of the form $100\dots00\parallel\left\lvert m \right\lvert$.
-> 2. Then partition the input into $l$-bit blocks so that $m' = m_1 \parallel m_2 \parallel \cdots \parallel m_s$.
-> 3. Set $t_0 \leftarrow \mathrm{IV} \in \left\lbrace 0, 1 \right\rbrace^n$.
-> 4. For $i = 1, \dots, s$, calculate $t_i \leftarrow h(t_{i-1}, m_i)$.
-> 5. Return $t_s$.
+> 2. Then partition the input into $l$-bit blocks so that $m' = m _ 1 \parallel m _ 2 \parallel \cdots \parallel m _ s$.
+> 3. Set $t _ 0 \leftarrow \mathrm{IV} \in \left\lbrace 0, 1 \right\rbrace^n$.
+> 4. For $i = 1, \dots, s$, calculate $t _ i \leftarrow h(t _ {i-1}, m _ i)$.
+> 5. Return $t _ s$.
 
 - The function $h$ is called the **compression function**.
-- The $t_i$ values are called **chaining values**.
+- The $t _ i$ values are called **chaining values**.
 - Note that because of the padding block can be at most $l$-bits, the maximum message length is $2^l$, but usually $l = 64$, so it is enough.
 - $\mathrm{IV}$ is fixed to some value, and is usually set to some complicated string.
 - We included the length of the message in the padding. This will be used in the security proof.
@@ -130,17 +130,17 @@ The Merkle-Damgård construction is secure.
 
 *Proof*. We show by contradiction. Suppose that an adversary $\mathcal{A}$ of $H$ found a collision for $H$. Let $H(m) = H(m')$ for $m \neq m'$. Now we construct an adversary $\mathcal{B}$ of $h$. $\mathcal{B}$ will examine $m$ and $m'$ and work its way backwards.
 
-Suppose that $m = m_1\cdots m_u$ and $m' = m_1'\cdots m_v'$. Let the chaining values be $t_i = h(t_{i-1},m_i)$ and $t_i' = h(t_{i-1}', m_i')$. Then since $H(m) = H(m')$, the very last iteration should give the same output.
+Suppose that $m = m _ 1\cdots m _ u$ and $m' = m _ 1'\cdots m _ v'$. Let the chaining values be $t _ i = h(t _ {i-1},m _ i)$ and $t _ i' = h(t _ {i-1}', m _ i')$. Then since $H(m) = H(m')$, the very last iteration should give the same output.
 
 $$
-h(t_{u-1},m_u) = h(t_{v-1}', m_v').
+h(t _ {u-1},m _ u) = h(t _ {v-1}', m _ v').
 $$
 
-Suppose that $t_{u-1} \neq t_{v-1}'$ and $m_u \neq m_v'$. Then this is a collision for $h$, so $\mathcal{B}$ returns this collision, and we are done. So suppose otherwise. Then $t_{u-1} = t_{v-1}'$ and $m_u = m_v'$. But because the last block contains the padding, the padding values must be the same, which means that the length of these two messages must have been the same, so $u = v$.
+Suppose that $t _ {u-1} \neq t _ {v-1}'$ and $m _ u \neq m _ v'$. Then this is a collision for $h$, so $\mathcal{B}$ returns this collision, and we are done. So suppose otherwise. Then $t _ {u-1} = t _ {v-1}'$ and $m _ u = m _ v'$. But because the last block contains the padding, the padding values must be the same, which means that the length of these two messages must have been the same, so $u = v$.
 
-Now we have $t_{u-1} = t_{u-1}'$, which implies $h(t_{u-2}, m_{u-1}) = h(t_{u-2}', m_{u-1}')$. We can now repeat the same process until the first block. If $\mathcal{B}$ did not find any collision then it means that $m_i = m_i'$ for all $i$, so $m = m'$. This is a contradiction, so $\mathcal{B}$ must have found a collision.
+Now we have $t _ {u-1} = t _ {u-1}'$, which implies $h(t _ {u-2}, m _ {u-1}) = h(t _ {u-2}', m _ {u-1}')$. We can now repeat the same process until the first block. If $\mathcal{B}$ did not find any collision then it means that $m _ i = m _ i'$ for all $i$, so $m = m'$. This is a contradiction, so $\mathcal{B}$ must have found a collision.
 
-By the above argument, we see that $\mathrm{Adv}_{\mathrm{CR}}[\mathcal{A}, H] = \mathrm{Adv}_{\mathrm{CR}}[\mathcal{B}, h]$.
+By the above argument, we see that $\mathrm{Adv} _ {\mathrm{CR}}[\mathcal{A}, H] = \mathrm{Adv} _ {\mathrm{CR}}[\mathcal{B}, h]$.
 
 ### Attacking Merkle-Damgård Hash Functions
 
@@ -150,7 +150,7 @@ See Joux's attack.[^2]
 
 Now we only have to build a collision resistant compression function. We can build these functions from either a block cipher, or by using number theoretic primitives.
 
-Number theoretic primitives will be shown after we learn some number theory.[^3] An example is shown in [collision resistance using DL problem (Modern Cryptography)](./2023-10-03-key-exchange.md#collision-resistance-based-on-dl-problem).
+Number theoretic primitives will be shown after we learn some number theory.[^3] An example is shown in [collision resistance using DL problem (Modern Cryptography)](../2023-10-03-key-exchange/#collision-resistance-based-on-dl-problem).
 
 ![mc-06-davies-meyer.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-06-davies-meyer.png)
 
@@ -169,7 +169,7 @@ Due to the birthday attack, we see that this bound is the best possible.
 There are other constructions of $h$ using the block cipher. But some of them are totally insecure. These are some insecure functions.
 
 $$
-h_1(x, y) = E(y, x) \oplus y, \quad h_2(x, y) = E(x, x \oplus y) \oplus x.
+h _ 1(x, y) = E(y, x) \oplus y, \quad h _ 2(x, y) = E(x, x \oplus y) \oplus x.
 $$
 
 Also, just using $E(y, x)$ is insecure.
@@ -195,7 +195,7 @@ We needed a complicated construction for MACs that work on long messages. We mig
 
 Here are a few approaches. Suppose that a compression function $h$ is given and $H$ is a Merkle-Damgård function derived from $h$.
 
-Recall that [we can construct a MAC scheme from a PRF](./2023-09-21-macs.md#mac-constructions-from-prfs), so either we want a secure PRF or a secure MAC scheme.
+Recall that [we can construct a MAC scheme from a PRF](../2023-09-21-macs/#mac-constructions-from-prfs), so either we want a secure PRF or a secure MAC scheme.
 
 #### Prepending the Key
 
@@ -211,7 +211,7 @@ Define $S(k, m) = H(k \parallel M \parallel k)$. This can be proven to be a secu
 
 #### Two-Key Nest
 
-Define $S((k_1,k_2), m) = H(k_2 \parallel H(k_1 \parallel m))$. This can also be proven to be a secure PRF under reasonable assumptions. See Section 8.7.1.[^2]
+Define $S((k _ 1,k _ 2), m) = H(k _ 2 \parallel H(k _ 1 \parallel m))$. This can also be proven to be a secure PRF under reasonable assumptions. See Section 8.7.1.[^2]
 
 This can be thought of as blocking the length extension attack from prepending the key method.
 
@@ -219,19 +219,19 @@ This can be thought of as blocking the length extension attack from prepending t
 
 ![mc-06-hmac.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-06-hmac.png)
 
-This is a variant of the two-key nest, but the difference is that the keys $k_1', k_2'$ are not independent. Choose a key $k \leftarrow \mathcal{K}$, and set
+This is a variant of the two-key nest, but the difference is that the keys $k _ 1', k _ 2'$ are not independent. Choose a key $k \leftarrow \mathcal{K}$, and set
 
 $$
-k_1 = k \oplus \texttt{ipad}, \quad k_2 = k\oplus \texttt{opad}
+k _ 1 = k \oplus \texttt{ipad}, \quad k _ 2 = k\oplus \texttt{opad}
 $$
 
 where $\texttt{ipad} = \texttt{0x363636}...$ and $\texttt{opad} = \texttt{0x5C5C5C}...$. Then
 
 $$
-\mathrm{HMAC}(k, m) = H(k_2 \parallel H(k_1 \parallel m)).
+\mathrm{HMAC}(k, m) = H(k _ 2 \parallel H(k _ 1 \parallel m)).
 $$
 
-The security proof given for two-key nest does not apply here, since $k_1$ and $k_2$ are not independent. With stronger assumptions on $h$, then we almost get an optimal security bound.
+The security proof given for two-key nest does not apply here, since $k _ 1$ and $k _ 2$ are not independent. With stronger assumptions on $h$, then we almost get an optimal security bound.
 
 ## The Random Oracle Model
 

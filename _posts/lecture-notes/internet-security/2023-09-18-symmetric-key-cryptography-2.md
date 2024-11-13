@@ -48,18 +48,18 @@ attachment:
 
 ### Encryption
 
-1. From the $56$-bit key, generate $16$ different $48$ bit keys $k_1, \dots, k_{16}$.
+1. From the $56$-bit key, generate $16$ different $48$ bit keys $k _ 1, \dots, k _ {16}$.
 2. The plaintext message goes through an initial permutation.
-3. The output goes through $16$ rounds, and key $k_i$ is used in round $i$.
+3. The output goes through $16$ rounds, and key $k _ i$ is used in round $i$.
 4. After $16$ rounds, split the output into two $32$ bit halves and swap them.
 5. The output goes through the inverse of the permutation from Step 1.
 
-Let $L_{i-1} \parallel R_{i-1}$ be the output of round $i-1$, where $L_{i-1}$ and $R_{i-1}$ are $32$ bit halves. Also let $f$ be the Feistel function.[^1]
+Let $L _ {i-1} \parallel R _ {i-1}$ be the output of round $i-1$, where $L _ {i-1}$ and $R _ {i-1}$ are $32$ bit halves. Also let $f$ be the Feistel function.[^1]
 
 In each round $i$, the following operation is performed:
 
 $$
-L_i = R_{i - 1}, \qquad R_i = L_{i-1} \oplus f(k_i, R_{i-1}).
+L _ i = R _ {i - 1}, \qquad R _ i = L _ {i-1} \oplus f(k _ i, R _ {i-1}).
 $$
 
 #### The Feistel Function
@@ -85,22 +85,22 @@ The Feistel function is **not invertible.**
 Let $f$ be the Feistel function. We can define each round as a function $F$,
 
 $$
-F(L_i \parallel R_i) = R_i \parallel L_i \oplus f(R_i).
+F(L _ i \parallel R _ i) = R _ i \parallel L _ i \oplus f(R _ i).
 $$
 
 Consider a function $G$, defined as
 
 $$
-G(L_i \parallel R_i) = R_i \oplus f(L_i) \parallel L_i.
+G(L _ i \parallel R _ i) = R _ i \oplus f(L _ i) \parallel L _ i.
 $$
 
 Then, we see that
 
 $$
 \begin{align*}
-G(F(L_i \parallel R_i)) &= G(R_i \parallel L_i \oplus f(R_i)) \\
-&= (L_i \oplus f(R_i)) \oplus f(R_i) \parallel R_i \\
-&= L_i \parallel R_i.
+G(F(L _ i \parallel R _ i)) &= G(R _ i \parallel L _ i \oplus f(R _ i)) \\
+&= (L _ i \oplus f(R _ i)) \oplus f(R _ i) \parallel R _ i \\
+&= L _ i \parallel R _ i.
 \end{align*}
 $$
 
@@ -109,10 +109,10 @@ Thus $F$ and $G$ are inverses of each other, thus $f$ doesn't have to be inverti
 Also, note that
 
 $$
-G(L_i \parallel R_i) = F(L_i \oplus f(R_i) \parallel R_i).
+G(L _ i \parallel R _ i) = F(L _ i \oplus f(R _ i) \parallel R _ i).
 $$
 
-Notice that evaluating $G$ is equivalent to evaluating $F$ on a encrypted block, with their upper/lower $32$ bit halves swapped. We get $L_i \oplus f(R_i) \parallel R_i$ exactly when we swap each halves of $F(L_i \parallel R_i)$. Thus, we can use the same hardware for encryption and decryption, which is the reason for swapping each $32$ bit halves.
+Notice that evaluating $G$ is equivalent to evaluating $F$ on a encrypted block, with their upper/lower $32$ bit halves swapped. We get $L _ i \oplus f(R _ i) \parallel R _ i$ exactly when we swap each halves of $F(L _ i \parallel R _ i)$. Thus, we can use the same hardware for encryption and decryption, which is the reason for swapping each $32$ bit halves.
 
 ## Advanced Encryption Standard (AES)
 
@@ -207,13 +207,13 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- **Each previous cipher block is chained with current block**
 	- Initialization vector is used
 - Encryption
-	- Let $c_0$ be the initialization vector.
-	- $c_i = E(k, p_i \oplus c_{i - 1})$, where $p_i$ is the $i$-th plaintext block.
-	- The ciphertext is $(c_0, c_1, \dots)$.
+	- Let $c _ 0$ be the initialization vector.
+	- $c _ i = E(k, p _ i \oplus c _ {i - 1})$, where $p _ i$ is the $i$-th plaintext block.
+	- The ciphertext is $(c _ 0, c _ 1, \dots)$.
 - Decryption
-	- The first block $c_0$ contains the initialization vector.
-	- $p_i = c_{i - 1} \oplus D(k, c_i)$.
-	- The plaintext is $(p_1, p_2, \dots)$.
+	- The first block $c _ 0$ contains the initialization vector.
+	- $p _ i = c _ {i - 1} \oplus D(k, c _ i)$.
+	- The plaintext is $(p _ 1, p _ 2, \dots)$.
 - Used for bulk data encryption, authentication
 - Advantages
 	- Parallelism in decryption.
@@ -239,13 +239,13 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- **IV changes should be unpredictable**
 - On IV reuse, same message will generate the same ciphertext if key isn't changed
 - If IV is predictable, CBC is vulnerable to chosen plaintext attacks.
-	- Suppose Eve obtains $(\mathrm{IV}_1, E_k(\mathrm{IV}_1 \oplus m))$.
-	- Define Eve's new message $m' = \mathrm{IV}_{2} \oplus \mathrm{IV}_{1} \oplus g$, where
-		- $\mathrm{IV}_2$ is the guess of the next IV, and
+	- Suppose Eve obtains $(\mathrm{IV} _ 1, E _ k(\mathrm{IV} _ 1 \oplus m))$.
+	- Define Eve's new message $m' = \mathrm{IV} _ {2} \oplus \mathrm{IV} _ {1} \oplus g$, where
+		- $\mathrm{IV} _ 2$ is the guess of the next IV, and
 		- $g$ is a guess of Alice's original message $m$.
 	- Eve requests an encryption of $m'$
-		- $c' = E_k(\mathrm{IV}_2 \oplus m') = E_k(\mathrm{IV}_\mathrm{1} \oplus g)$.
-	- Then Eve can compare $c'$ and the original $c = E_k(\mathrm{IV}_\mathrm{1} \oplus m)$ to recover $m$.
+		- $c' = E _ k(\mathrm{IV} _ 2 \oplus m') = E _ k(\mathrm{IV} _ \mathrm{1} \oplus g)$.
+	- Then Eve can compare $c'$ and the original $c = E _ k(\mathrm{IV} _ \mathrm{1} \oplus m)$ to recover $m$.
 	- Useful when there are not many cases for $m$ (or most of the message is already known).
 
 ### Cipher Feedback Mode (CFB)
@@ -260,13 +260,13 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- Same requirements on the IV as CBC mode.
 	- Should be randomized, and should not be predictable.
 - Encryption
-	- Let $c_0$ be the initialization vector.
-	- $c_i = p_i \oplus E(k, c_{i - 1})$, where $p_i$ is the $i$-th plaintext block.
-	- The ciphertext is $(c_0, c_1, \dots)$.
+	- Let $c _ 0$ be the initialization vector.
+	- $c _ i = p _ i \oplus E(k, c _ {i - 1})$, where $p _ i$ is the $i$-th plaintext block.
+	- The ciphertext is $(c _ 0, c _ 1, \dots)$.
 - Decryption
-	- The first block $c_0$ contains the initialization vector.
-	- $p_i = c_i \oplus E(k, c_{i - 1})$. The same module is used for decryption!
-	- The plaintext is $(p_1, p_2, \dots)$.
+	- The first block $c _ 0$ contains the initialization vector.
+	- $p _ i = c _ i \oplus E(k, c _ {i - 1})$. The same module is used for decryption!
+	- The plaintext is $(p _ 1, p _ 2, \dots)$.
 - Advantages
 	- Appropriate when data arrives in bits/bytes (similar to stream cipher)
 	- Only encryption module is needed.
@@ -294,15 +294,15 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- Encryption/decryption are both parallelizable after key stream is calculated.
 	- Key stream generation cannot be parallelized.
 - Encryption
-	- Let $s_0$ be the initialization vector.
-	- $s_i = E(k, s_{i - 1})$ where $s_i$ is the $i$-th key stream.
-	- $c_i = p_i \oplus s_i$.
-	- The ciphertext is $(s_0, c_1, \dots)$.
+	- Let $s _ 0$ be the initialization vector.
+	- $s _ i = E(k, s _ {i - 1})$ where $s _ i$ is the $i$-th key stream.
+	- $c _ i = p _ i \oplus s _ i$.
+	- The ciphertext is $(s _ 0, c _ 1, \dots)$.
 - Decryption
-	- The first block $s_0$ contains the initialization vector.
-	- $s_i = E(k, s_{i - 1})$. The same module is used for decryption.
-	- $p_i = c_i \oplus s_i$.
-	- The plaintext is $(p_1, p_2, \dots)$.
+	- The first block $s _ 0$ contains the initialization vector.
+	- $s _ i = E(k, s _ {i - 1})$. The same module is used for decryption.
+	- $p _ i = c _ i \oplus s _ i$.
+	- The plaintext is $(p _ 1, p _ 2, \dots)$.
 - Note: IV and successive encryptions act as an OTP generator.
 - Advantages
 	- There is no error propagation. $1$ bit error in ciphertext only affects $1$ bit in the plaintext.
@@ -311,8 +311,8 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- Only encryption module is needed.
 - Limitations
 	- Key streams should not have repetitions.
-		- We would have $c_i \oplus c_j = p_i \oplus p_j$.
-		- Size of each $s_i$ should be large enough.
+		- We would have $c _ i \oplus c _ j = p _ i \oplus p _ j$.
+		- Size of each $s _ i$ should be large enough.
 	- If attacker knows the plaintext and ciphertext, plaintext can be modified.
 		- Same as in OTP.
 
@@ -325,9 +325,9 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 	- Highly parallelizable.
 	- Can decrypt from any arbitrary position.
 - Counter should not be repeated for the same key.
-	- Suppose that the same counter $ctr$ is used for encrypting $m_0$ and $m_1$.
-	- Encryption results are: $(ctr, E(k, ctr) \oplus m_0), (ctr, E(k, ctr) \oplus m_1)$.
-	- Then the attacker can obtain $m_0 \oplus m_1$.
+	- Suppose that the same counter $ctr$ is used for encrypting $m _ 0$ and $m _ 1$.
+	- Encryption results are: $(ctr, E(k, ctr) \oplus m _ 0), (ctr, E(k, ctr) \oplus m _ 1)$.
+	- Then the attacker can obtain $m _ 0 \oplus m _ 1$.
 
 ## Modes of Operations Summary
 

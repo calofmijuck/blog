@@ -2,17 +2,18 @@
 share: true
 toc: true
 categories: [Development, Kubernetes]
+path: "_posts/development/kubernetes"
 tags: [kubernetes, sre, devops]
 title: "08. Accessing Pod Metadata and Other Resources from Applications"
 date: "2021-04-18"
 github_title: "2021-04-18-08-accessing-pod-metadata"
 image:
-  path: /assets/img/posts/Development/Kubernetes/k8s-08.jpeg
+  path: /assets/img/posts/development/kubernetes/k8s-08.jpeg
 attachment:
-  folder: assets/img/posts/Development/Kubernetes
+  folder: assets/img/posts/development/kubernetes
 ---
 
-![k8s-08.jpeg](/assets/img/posts/Development/Kubernetes/k8s-08.jpeg) _Using the files from the default-token Secret to talk to the API server (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-8)_
+![k8s-08.jpeg](/assets/img/posts/development/kubernetes/k8s-08.jpeg) _Using the files from the default-token Secret to talk to the API server (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-8)_
 
 ### 주요 내용
 
@@ -138,7 +139,7 @@ spec:
   volumes:
   - name: downward
     downwardAPI:
-      items:                        # 설정한 경로의 파일에 필요한 정보가 저장된다 
+      items:                        # 설정한 경로의 파일에 필요한 정보가 저장된다
       - path: "podName"
         fieldRef:
           fieldPath: metadata.name
@@ -217,7 +218,7 @@ API 서버는 HTTPS 를 사용하므로, 인증 없이는 직접 요청을 보�
 `kubectl proxy` 를 이용하면 로컬에서 HTTP 요청을 받아서 Kubernetes API 서버로 요청을 전달해 주고, 인증도 알아서 처리해준다. 더불어 매 요청마다 서버의 인증서를 확인하여 MITM attack 을 막고 실제 서버와 통신할 수 있도록 해준다.
 
 ```
-$ kubectl proxy                       
+$ kubectl proxy
 Starting to serve on 127.0.0.1:8001
 ```
 
@@ -380,13 +381,13 @@ root@curl:/# curl https://kubernetes -k
   "kind": "Status",
   "apiVersion": "v1",
   "metadata": {
-    
+
   },
   "status": "Failure",
   "message": "forbidden: User \"system:anonymous\" cannot get path \"/\"",
   "reason": "Forbidden",
   "details": {
-    
+
   },
   "code": 403
 }
@@ -404,13 +405,13 @@ root@curl:/# curl --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt 
   "kind": "Status",
   "apiVersion": "v1",
   "metadata": {
-    
+
   },
   "status": "Failure",
   "message": "forbidden: User \"system:anonymous\" cannot get path \"/\"",
   "reason": "Forbidden",
   "details": {
-    
+
   },
   "code": 403
 }
@@ -434,13 +435,13 @@ $ curl -H "Authorization: Bearer $TOKEN" https://kubernetes
 ```
 
 > Role-based access control ([RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)) 이 실행되고 있는 클러스터에서는 위 `curl` 에서 에러가 난다. 일단 테스트를 위해서 임시적으로
-> 
+>
 > ```bash
 > kubectl create clusterrolebinding permissive-binding \
 > --clusterrole=cluster-admin \
 > --group=system:serviceaccounts
 > ```
-> 
+>
 > 를 입력하여 모든 serviceaccounts 에 admin 권한을 줄 수 있다 ㅋㅋㅋ;
 
 #### 현재 pod 의 namespace 가져오기

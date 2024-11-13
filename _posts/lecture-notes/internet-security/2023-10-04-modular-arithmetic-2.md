@@ -90,7 +90,7 @@ For even better (maybe faster) results, we need the help of elementary number th
 > a^{p-1} \equiv 1 \pmod p.
 > $$
 
-*Proof*. (Using group theory) The statement can be rewritten as follows. For $a \neq 0$ in $\mathbb{Z}_p$, $a^{p-1} = 1$ in $\mathbb{Z}_p$. Since $\mathbb{Z}_p^\ast$ is a (multiplicative) group of order $p-1$, the order of $a$ should divide $p-1$. Therefore, $a^{p-1} = 1$ in $\mathbb{Z}_p$.
+*Proof*. (Using group theory) The statement can be rewritten as follows. For $a \neq 0$ in $\mathbb{Z} _ p$, $a^{p-1} = 1$ in $\mathbb{Z} _ p$. Since $\mathbb{Z} _ p^\ast$ is a (multiplicative) group of order $p-1$, the order of $a$ should divide $p-1$. Therefore, $a^{p-1} = 1$ in $\mathbb{Z} _ p$.
 
 Here is an elementary proof not using group theory.
 
@@ -117,7 +117,7 @@ For direct calculation, we use the following formula.
 > **Lemma.** For $n \in \mathbb{N}$, the following holds.
 >
 > $$
-> \phi(n) = n \cdot \prod_{p \mid n} \left( 1 - \frac{1}{p} \right)
+> \phi(n) = n \cdot \prod _ {p \mid n} \left( 1 - \frac{1}{p} \right)
 > $$
 >
 > where $p$ is a prime number dividing $n$.
@@ -131,31 +131,31 @@ So to calculate $\phi(n)$, we need to **factorize** $n$. From the formula above,
 
 ### Reduced Set of Residues
 
-Let $n \in \mathbb{N}$. The **complete set of residues** was denoted $\mathbb{Z}_n$ and
+Let $n \in \mathbb{N}$. The **complete set of residues** was denoted $\mathbb{Z} _ n$ and
 
 $$
-\mathbb{Z}_n = \left\lbrace 0, 1, \dots, n-1 \right\rbrace.
+\mathbb{Z} _ n = \left\lbrace 0, 1, \dots, n-1 \right\rbrace.
 $$
 
 We also often use the **reduced set of residues**.
 
-> **Definition.** The **reduced set of residues** is the set of residues that are relatively prime to $n$. We denote this set as $\mathbb{Z}_n^\ast$.
+> **Definition.** The **reduced set of residues** is the set of residues that are relatively prime to $n$. We denote this set as $\mathbb{Z} _ n^\ast$.
 >
 > $$
-> \mathbb{Z}_n^\ast = \left\lbrace a \in \mathbb{Z}_n \setminus \left\lbrace 0 \right\rbrace : \gcd(a, n) = 1 \right\rbrace.
+> \mathbb{Z} _ n^\ast = \left\lbrace a \in \mathbb{Z} _ n \setminus \left\lbrace 0 \right\rbrace : \gcd(a, n) = 1 \right\rbrace.
 > $$
 
 Then by definition, we have the following result.
 
-> **Lemma.** $\left\lvert \mathbb{Z}_n^\ast \right\lvert = \phi(n)$.
+> **Lemma.** $\left\lvert \mathbb{Z} _ n^\ast \right\lvert = \phi(n)$.
 
-We can also show that $\mathbb{Z}_n^\ast$ is a multiplicative group.
+We can also show that $\mathbb{Z} _ n^\ast$ is a multiplicative group.
 
-> **Lemma.** $\mathbb{Z}_n^\ast$ is a multiplicative group.
+> **Lemma.** $\mathbb{Z} _ n^\ast$ is a multiplicative group.
 
-*Proof*. Let $a, b \in \mathbb{Z}_n^\ast$. We must check if $ab \in \mathbb{Z}_n^\ast$. Since $\gcd(a, n) = \gcd(b, n) = 1$, $\gcd(ab, n) = 1$. This is because if $d = \gcd(ab, n) > 1$, then a prime factor $p$ of $d$ must divide $a$ or $b$ and also $n$. Then $\gcd(a, n) \geq p$ or $\gcd(b, n) \geq p$, which is a contradiction. Thus $ab \in \mathbb{Z}_n^\ast$.
+*Proof*. Let $a, b \in \mathbb{Z} _ n^\ast$. We must check if $ab \in \mathbb{Z} _ n^\ast$. Since $\gcd(a, n) = \gcd(b, n) = 1$, $\gcd(ab, n) = 1$. This is because if $d = \gcd(ab, n) > 1$, then a prime factor $p$ of $d$ must divide $a$ or $b$ and also $n$. Then $\gcd(a, n) \geq p$ or $\gcd(b, n) \geq p$, which is a contradiction. Thus $ab \in \mathbb{Z} _ n^\ast$.
 
-Associativity holds trivially, as a subset of $\mathbb{Z}_n$. We also have an identity element $1$, and inverse of $a \in \mathbb{Z}_n^\ast$ exists since $\gcd(a, n) = 1$.
+Associativity holds trivially, as a subset of $\mathbb{Z} _ n$. We also have an identity element $1$, and inverse of $a \in \mathbb{Z} _ n^\ast$ exists since $\gcd(a, n) = 1$.
 
 Now we can prove Euler's generalization.
 
@@ -167,13 +167,13 @@ Now we can prove Euler's generalization.
 > a^{\phi(n)} \equiv 1 \pmod n.
 > $$
 
-*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z}_n^\ast$. Then $a^{\left\lvert \mathbb{Z}_n^\ast \right\lvert} = 1$ in $\mathbb{Z}_n$. By the above lemma, we have the desired result.
+*Proof*. Since $\gcd(a, n) = 1$, $a \in \mathbb{Z} _ n^\ast$. Then $a^{\left\lvert \mathbb{Z} _ n^\ast \right\lvert} = 1$ in $\mathbb{Z} _ n$. By the above lemma, we have the desired result.
 
-*Proof*. (Elementary) Set $f : \mathbb{Z}_n^\ast \rightarrow \mathbb{Z}_n^\ast$ as $x \mapsto ax \bmod n$, then the rest of the reasoning follows similarly as in the proof of Fermat's little theorem.
+*Proof*. (Elementary) Set $f : \mathbb{Z} _ n^\ast \rightarrow \mathbb{Z} _ n^\ast$ as $x \mapsto ax \bmod n$, then the rest of the reasoning follows similarly as in the proof of Fermat's little theorem.
 
 Using the above result, we remark an important result that will be used in RSA.
 
-> **Lemma.** Let $n \in \mathbb{N}$. For $a, b \in \mathbb{Z}$ and $x \in \mathbb{Z}_n^\ast$, if $a \equiv b \pmod{\phi(n)}$, then $x^a \equiv x^b \pmod n$.
+> **Lemma.** Let $n \in \mathbb{N}$. For $a, b \in \mathbb{Z}$ and $x \in \mathbb{Z} _ n^\ast$, if $a \equiv b \pmod{\phi(n)}$, then $x^a \equiv x^b \pmod n$.
 
 *Proof*. $a = b + k\phi(n)$ for some $k \in \mathbb{Z}$. Then
 
@@ -192,44 +192,44 @@ by Euler's generalization.
 > - $(\mathsf{G3})$ $G$ has an **identity** element $e$ such that $e * a = a * e = a$ for all $a \in G$.
 > - $(\mathsf{G4})$ There is an **inverse** for every element of $G$. For each $a \in G$, there exists $x \in G$ such that $a * x = x * a = e$. We write $x = a^{-1}$ in this case.
 
-$\mathbb{Z}_n$ is an additive group, and $\mathbb{Z}_n^\ast$ is a multiplicative group.
+$\mathbb{Z} _ n$ is an additive group, and $\mathbb{Z} _ n^\ast$ is a multiplicative group.
 
 ## Chinese Remainder Theorem (CRT)
 
-> **Theorem.** Let $n_1, \dots, n_k$ be integers greater than $1$, and let $N = n_1n_2\cdots n_k$. If $n_i$ are pairwise relatively prime, then the system of equations $x \equiv a_i \pmod {n_i}$ has a unique solution modulo $N$.
+> **Theorem.** Let $n _ 1, \dots, n _ k$ be integers greater than $1$, and let $N = n _ 1n _ 2\cdots n _ k$. If $n _ i$ are pairwise relatively prime, then the system of equations $x \equiv a _ i \pmod {n _ i}$ has a unique solution modulo $N$.
 >
 > *(Abstract Algebra)* The map
 >
 > $$
-> x \bmod N \mapsto (x \bmod n_1, \dots, x \bmod n_k)
+> x \bmod N \mapsto (x \bmod n _ 1, \dots, x \bmod n _ k)
 > $$
 >
 >  defines a ring isomorphism
 >
 > $$
->  \mathbb{Z}_N \simeq \mathbb{Z}_{n_1} \times \mathbb{Z}_{n_2} \times \cdots \times \mathbb{Z}_{n_k}.
+>  \mathbb{Z} _ N \simeq \mathbb{Z} _ {n _ 1} \times \mathbb{Z} _ {n _ 2} \times \cdots \times \mathbb{Z} _ {n _ k}.
 > $$
 
-*Proof*. (**Existence**) Let $N_i = N/n_i$. Then $\gcd(N_i, n_i) = 1$. By the extended Euclidean algorithm, there exist integers $M_i, m_i$ such that $M_iN_i + m_in_i= 1$. Now set
+*Proof*. (**Existence**) Let $N _ i = N/n _ i$. Then $\gcd(N _ i, n _ i) = 1$. By the extended Euclidean algorithm, there exist integers $M _ i, m _ i$ such that $M _ iN _ i + m _ in _ i= 1$. Now set
 
 $$
-x = \sum_{i=1}^k a_i M_i N_i.
+x = \sum _ {i=1}^k a _ i M _ i N _ i.
 $$
 
-Then $x \equiv a_iM_iN_i \equiv a_i(1 - m_in_i) \equiv a_i \pmod {n_i}$ for all $i = 1, \dots, k$.
+Then $x \equiv a _ iM _ iN _ i \equiv a _ i(1 - m _ in _ i) \equiv a _ i \pmod {n _ i}$ for all $i = 1, \dots, k$.
 
-(**Uniqueness**) Suppose that we have two distinct solutions $x, y$ modulo $N$. $x, y$ are solutions to $x \equiv a_i \pmod {n_i}$, so $n_i \mid (x - y)$ for all $i$. Therefore we have
+(**Uniqueness**) Suppose that we have two distinct solutions $x, y$ modulo $N$. $x, y$ are solutions to $x \equiv a _ i \pmod {n _ i}$, so $n _ i \mid (x - y)$ for all $i$. Therefore we have
 
 $$
-\mathrm{lcm}(n_1, \dots, n_k) \mid (x - y).
+\mathrm{lcm}(n _ 1, \dots, n _ k) \mid (x - y).
 $$
 
-But $n_i$ are pairwise relatively prime, so $\mathrm{lcm}(n_1, \dots, n_k) = N$ and $N \mid (x-y)$. Hence $x \equiv y \pmod N$.
+But $n _ i$ are pairwise relatively prime, so $\mathrm{lcm}(n _ 1, \dots, n _ k) = N$ and $N \mid (x-y)$. Hence $x \equiv y \pmod N$.
 
 *Proof*. (**Abstract Algebra**) The above uniqueness proof shows that the map
 
 $$
-x \bmod N \mapsto (x \bmod n_1, \dots, x \bmod n_k)
+x \bmod N \mapsto (x \bmod n _ 1, \dots, x \bmod n _ k)
 $$
 
 is injective. By pigeonhole principle, this map must also be surjective. This map is also a ring homomorphism, by the properties of modular arithmetic. We have a ring isomorphism.
@@ -260,19 +260,19 @@ int chinese_remainder_theorem(vector<int>& remainder, vector<int>& modulus) {
 }
 ```
 
-The `modular_inverse` function uses the extended Euclidean algorithm to find $M_i$ in the proof. For large moduli and many equations, $N_i = N / n_i$ results in a very large number, which is hard to handle (if your language has integer overflow) and takes longer to compute.
+The `modular_inverse` function uses the extended Euclidean algorithm to find $M _ i$ in the proof. For large moduli and many equations, $N _ i = N / n _ i$ results in a very large number, which is hard to handle (if your language has integer overflow) and takes longer to compute.
 
 A better way is to construct the solution **inductively**. Find a solution for the first two equations,
 
 $$
 \begin{array}{c}
-x \equiv a_1 \pmod{n_1} \\
-x \equiv a_2 \pmod{n_2}
-\end{array} \implies x \equiv a_{1, 2} \pmod{n_1n_2}
+x \equiv a _ 1 \pmod{n _ 1} \\
+x \equiv a _ 2 \pmod{n _ 2}
+\end{array} \implies x \equiv a _ {1, 2} \pmod{n _ 1n _ 2}
 $$
 
-and using the result, add the next equation $x \equiv a_3 \pmod{n_3}$ and find a solution.[^1]
+and using the result, add the next equation $x \equiv a _ 3 \pmod{n _ 3}$ and find a solution.[^1]
 
-Lastly, the ring isomorphism actually tells us a lot and is quite effective for computation. Since the two rings are *isomorphic*, operations in $\mathbb{Z}_N$ can be done independently in each $\mathbb{Z}_{n_i}$ and then merged back to $\mathbb{Z}_N$. $N$ was a large number, so computations can be much faster in $\mathbb{Z}_{n_i}$. Specifically, we will see how this fact is used for computations in RSA.
+Lastly, the ring isomorphism actually tells us a lot and is quite effective for computation. Since the two rings are *isomorphic*, operations in $\mathbb{Z} _ N$ can be done independently in each $\mathbb{Z} _ {n _ i}$ and then merged back to $\mathbb{Z} _ N$. $N$ was a large number, so computations can be much faster in $\mathbb{Z} _ {n _ i}$. Specifically, we will see how this fact is used for computations in RSA.
 
 [^1]: I have an implementation in my repository. [Link](https://github.com/calofmijuck/BOJ/blob/4b29e0c7f487aac3186661176d2795f85f0ab21b/Codes/23000/23062.cpp#L38).

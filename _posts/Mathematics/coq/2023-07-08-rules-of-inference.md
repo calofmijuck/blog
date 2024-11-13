@@ -5,6 +5,7 @@ math: true
 categories:
   - Mathematics
   - Coq
+path: _posts/mathematics/coq
 tags:
   - math
   - coq

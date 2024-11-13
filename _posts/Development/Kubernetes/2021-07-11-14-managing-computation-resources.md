@@ -2,17 +2,18 @@
 share: true
 toc: true
 categories: [Development, Kubernetes]
+path: "_posts/development/kubernetes"
 tags: [kubernetes, sre, devops]
 title: "14. Managing Pods' Computational Resources"
 date: "2021-07-11"
 github_title: "2021-07-11-14-managing-computation-resources"
 image:
-  path: /assets/img/posts/Development/Kubernetes/k8s-14.jpeg
+  path: /assets/img/posts/development/kubernetes/k8s-14.jpeg
 attachment:
-  folder: assets/img/posts/Development/Kubernetes
+  folder: assets/img/posts/development/kubernetes
 ---
 
-![k8s-14.jpeg](/assets/img/posts/Development/Kubernetes/k8s-14.jpeg) _The Scheduler only cares about requests, not actual usage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-14)_
+![k8s-14.jpeg](/assets/img/posts/development/kubernetes/k8s-14.jpeg) _The Scheduler only cares about requests, not actual usage. (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-14)_
 
 ### 주요 내용
 

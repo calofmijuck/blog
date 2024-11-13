@@ -65,20 +65,20 @@ To implement the above protocol, we need two functions $E$ and $F$ that satisfy 
 
 Let $p$ be a large prime, and let $q$ be another large prime dividing $p - 1$. We typically use very large random primes, $p$ is about $2048$ bits long, and $q$ is about $256$ bits long.
 
-All arithmetic will be done in $\mathbb{Z}_p$. We also consider $\mathbb{Z}_p^\ast$ , the **unit group** of $\mathbb{Z}_p$. Since $\mathbb{Z}_p$ is a field, $\mathbb{Z}_p^\ast = \mathbb{Z}_p \setminus \left\lbrace 0 \right\rbrace$, meaning that $\mathbb{Z}_p^\ast$ has order $p-1$.
+All arithmetic will be done in $\mathbb{Z} _ p$. We also consider $\mathbb{Z} _ p^\ast$ , the **unit group** of $\mathbb{Z} _ p$. Since $\mathbb{Z} _ p$ is a field, $\mathbb{Z} _ p^\ast = \mathbb{Z} _ p \setminus \left\lbrace 0 \right\rbrace$, meaning that $\mathbb{Z} _ p^\ast$ has order $p-1$.
 
-Since $q$ is a prime dividing $p - 1$, $\mathbb{Z}_p^\ast$ has an element $g$ of order $q$.[^1] Let
+Since $q$ is a prime dividing $p - 1$, $\mathbb{Z} _ p^\ast$ has an element $g$ of order $q$.[^1] Let
 
 $$
-G = \left\langle g \right\rangle = \left\lbrace 1, g, g^2, \dots, g^{q-1} \right\rbrace \leq \mathbb{Z}_p^\ast.
+G = \left\langle g \right\rangle = \left\lbrace 1, g, g^2, \dots, g^{q-1} \right\rbrace \leq \mathbb{Z} _ p^\ast.
 $$
 
 We assume that the description of $p$, $q$ and $g$ are generated at the setup and shared by all parties. Now the actual protocol goes like this.
 
 ![mc-07-dhke.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-07-dhke.png)
 
-> 1. Alice chooses $\alpha \leftarrow \mathbb{Z}_q$ and computes $g^\alpha$.
-> 2. Bob chooses $\beta \leftarrow \mathbb{Z}_q$ and computes $g^\beta$.
+> 1. Alice chooses $\alpha \leftarrow \mathbb{Z} _ q$ and computes $g^\alpha$.
+> 2. Bob chooses $\beta \leftarrow \mathbb{Z} _ q$ and computes $g^\beta$.
 > 3. Alice and Bob exchange $g^\alpha$ and $g^\beta$ over an insecure channel.
 > 4. Using $\alpha$ and $g^\beta$, Alice computes $g^{\alpha\beta}$.
 > 5. Using $\beta$ and $g^\alpha$, Bob computes $g^{\alpha\beta}$.
@@ -90,32 +90,32 @@ It works!
 
 The protocol is secure if and only if the following holds.
 
-> Let $\alpha, \beta \leftarrow \mathbb{Z}_q$. Given $g^\alpha, g^\beta \in G$, it is hard to compute $g^{\alpha\beta} \in G$.
+> Let $\alpha, \beta \leftarrow \mathbb{Z} _ q$. Given $g^\alpha, g^\beta \in G$, it is hard to compute $g^{\alpha\beta} \in G$.
 
 This is called the **computational Diffie-Hellman assumption**. As we will see below, this is not as strong as the discrete logarithm assumption. But in the real world, CDH assumption is reasonable enough for groups where the DL assumption holds.
 
 ## Discrete Logarithm and Related Assumptions
 
-We have used $E(x) = g^x$ in the above implementation. This function is called the **discrete exponentiation function**. This function is actually a *group isomorphism*, so it has an inverse function called the **discrete logarithm function**. The name comes from the fact that if $u = g^x$, then it can be written as '$x = \log_g u$'.
+We have used $E(x) = g^x$ in the above implementation. This function is called the **discrete exponentiation function**. This function is actually a *group isomorphism*, so it has an inverse function called the **discrete logarithm function**. The name comes from the fact that if $u = g^x$, then it can be written as '$x = \log _ g u$'.
 
 We required that $E$ must be a one-way function for the protocol to work. So it must be hard to compute the discrete logarithm function. There are some problems related to the discrete logarithm, which are used as assumptions in the security proof. They are formalized as a security game, as usual.
 
-$G = \left\langle g \right\rangle \leq \mathbb{Z}_p^\ast$ will be a *cyclic group* of order $q$ and $g$ is given as a generator. Note that $g$ and $q$ are also given to the adversary.
+$G = \left\langle g \right\rangle \leq \mathbb{Z} _ p^\ast$ will be a *cyclic group* of order $q$ and $g$ is given as a generator. Note that $g$ and $q$ are also given to the adversary.
 
 ### Discrete Logarithm Problem (DL)
 
 > **Definition.** Let $\mathcal{A}$ be a given adversary.
 > 
-> 1. The challenger chooses $\alpha \leftarrow \mathbb{Z}_q$ and sends $u = g^\alpha$ to the adversary.
-> 2. The adversary calculates and outputs some $\alpha' \in \mathbb{Z}_q$.
+> 1. The challenger chooses $\alpha \leftarrow \mathbb{Z} _ q$ and sends $u = g^\alpha$ to the adversary.
+> 2. The adversary calculates and outputs some $\alpha' \in \mathbb{Z} _ q$.
 > 
 > We define the **advantage in solving the discrete logarithm problem for $G$** as
 > 
 > $$
-> \mathrm{Adv}_{\mathrm{DL}}[\mathcal{A}, G] = \Pr[\alpha = \alpha'].
+> \mathrm{Adv} _ {\mathrm{DL}}[\mathcal{A}, G] = \Pr[\alpha = \alpha'].
 > $$
 > 
-> We say that the **discrete logarithm (DL) assumption** holds for $G$ if for any efficient adversary $\mathcal{A}$, $\mathrm{Adv}_{\mathrm{DL}}[\mathcal{A}, G]$ is negligible.
+> We say that the **discrete logarithm (DL) assumption** holds for $G$ if for any efficient adversary $\mathcal{A}$, $\mathrm{Adv} _ {\mathrm{DL}}[\mathcal{A}, G]$ is negligible.
 
 So if we assume the DL assumption, it means that DL problem is **hard**. i.e, no efficient adversary can effectively solve the DL problem for $G$.
 
@@ -123,16 +123,16 @@ So if we assume the DL assumption, it means that DL problem is **hard**. i.e, no
 
 > **Definition.** Let $\mathcal{A}$ be a given adversary.
 > 
-> 1. The challenger chooses $\alpha, \beta \leftarrow \mathbb{Z}_q$ and sends $g^\alpha, g^\beta$ to the adversary.
+> 1. The challenger chooses $\alpha, \beta \leftarrow \mathbb{Z} _ q$ and sends $g^\alpha, g^\beta$ to the adversary.
 > 2. The adversary calculates and outputs some $w \in G$.
 > 
 > We define the **advantage in solving the computational Diffie-Hellman problem for $G$** as
 > 
 > $$
-> \mathrm{Adv}_{\mathrm{CDH}}[\mathcal{A}, G] = \Pr[w = g^{\alpha\beta}].
+> \mathrm{Adv} _ {\mathrm{CDH}}[\mathcal{A}, G] = \Pr[w = g^{\alpha\beta}].
 > $$
 > 
-> We say that the **computational Diffie-Hellman (CDH) assumption** holds for $G$ if for any efficient adversary $\mathcal{A}$, $\mathrm{Adv}_{\mathrm{CDH}}[\mathcal{A}, G]$ is negligible.
+> We say that the **computational Diffie-Hellman (CDH) assumption** holds for $G$ if for any efficient adversary $\mathcal{A}$, $\mathrm{Adv} _ {\mathrm{CDH}}[\mathcal{A}, G]$ is negligible.
 
 An interesting property here is that given $(g^\alpha, g^\beta)$, it is hard to determine if $w$ is a solution to the problem. ($w \overset{?}{=} g^{\alpha\beta}$)
 
@@ -143,24 +143,24 @@ Since recognizing a solution to the CDH problem is hard, we have another assumpt
 > **Definition.** Let $\mathcal{A}$ be a given adversary. We define two experiments 0 and 1.
 > 
 > **Experiment $b$**.
-> 1. The challenger chooses $\alpha, \beta, \gamma \leftarrow \mathbb{Z}_q$ and computes the following.
+> 1. The challenger chooses $\alpha, \beta, \gamma \leftarrow \mathbb{Z} _ q$ and computes the following.
 > 
 > 	$$
-> 	u = g^\alpha, \quad v = g^\beta, \quad w_0 = g^{\alpha\beta}, \quad w_1 = g^\gamma.
+> 	u = g^\alpha, \quad v = g^\beta, \quad w _ 0 = g^{\alpha\beta}, \quad w _ 1 = g^\gamma.
 > 	$$
 > 
-> 2. The challenger sends the triple $(u, v, w_b)$ to the adversary.
+> 2. The challenger sends the triple $(u, v, w _ b)$ to the adversary.
 > 3. The adversary calculates and outputs a bit $b' \in \left\lbrace 0, 1 \right\rbrace$.
 > 
-> Let $W_b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. We define the **advantage in solving the decisional Diffie-Hellman problem for $G$** as
+> Let $W _ b$ be the event that $\mathcal{A}$ outputs $1$ in experiment $b$. We define the **advantage in solving the decisional Diffie-Hellman problem for $G$** as
 > 
 > $$
-> \mathrm{Adv}_{\mathrm{DDH}}[\mathcal{A}, G] = \left\lvert \Pr[W_0] - \Pr[W_1] \right\lvert.
+> \mathrm{Adv} _ {\mathrm{DDH}}[\mathcal{A}, G] = \left\lvert \Pr[W _ 0] - \Pr[W _ 1] \right\lvert.
 > $$
 > 
-> We say that the **decisional Diffie-Hellman (DDH) assumption** holds for $G$ if for any efficient adversary $\mathcal{A}$, $\mathrm{Adv}_{\mathrm{DDH}}[\mathcal{A}, G]$ is negligible.
+> We say that the **decisional Diffie-Hellman (DDH) assumption** holds for $G$ if for any efficient adversary $\mathcal{A}$, $\mathrm{Adv} _ {\mathrm{DDH}}[\mathcal{A}, G]$ is negligible.
 
-For $\alpha, \beta, \gamma \in \mathbb{Z}_q$, the triple $(g^\alpha, g^\beta, g^\gamma)$ is called a **DH-triple** if $\gamma = \alpha\beta$. So the assumption is saying that no efficient adversary can distinguish DH-triples from non DH-triples.
+For $\alpha, \beta, \gamma \in \mathbb{Z} _ q$, the triple $(g^\alpha, g^\beta, g^\gamma)$ is called a **DH-triple** if $\gamma = \alpha\beta$. So the assumption is saying that no efficient adversary can distinguish DH-triples from non DH-triples.
 
 ### Relations Between Problems
 
@@ -182,7 +182,7 @@ If we used the DL assumption and it turns out to be false, there will be an effi
 
 Suppose we want something like a secret group chat, where there are $N$ ($\geq 3$) people and they need to generate a shared secret key. It is known that $N$-party Diffie-Hellman is possible in $N-1$ rounds. Here's how it goes. The indices are all in modulo $N$.
 
-Each party $i$ chooses $\alpha_i \leftarrow \mathbb{Z}_q$, and computes $g^{\alpha_i}$. The parties communicate in a circular form, and passes the computed value to the $(i+1)$-th party. In the next round, the $i$-th party receives $g^{\alpha_{i-1}}$ and computes $g^{\alpha_{i-1}\alpha_i}$ and passes it to the next party. After $N-1$ rounds, all parties have the shared key $g^{\alpha_1\cdots\alpha_N}$.
+Each party $i$ chooses $\alpha _ i \leftarrow \mathbb{Z} _ q$, and computes $g^{\alpha _ i}$. The parties communicate in a circular form, and passes the computed value to the $(i+1)$-th party. In the next round, the $i$-th party receives $g^{\alpha _ {i-1}}$ and computes $g^{\alpha _ {i-1}\alpha _ i}$ and passes it to the next party. After $N-1$ rounds, all parties have the shared key $g^{\alpha _ 1\cdots\alpha _ N}$.
 
 Taking $\mathcal{O}(N)$ steps is impractical in the real world, due to many communications that the above algorithm requires. Researchers are looking for methods to generate a shared key in a single round. It has been solved for $N=3$ using bilinear pairings, but for $N \geq 4$ it is an open problem.
 
@@ -196,7 +196,7 @@ The adversary will impersonate Bob when communicating with Alice, and will do th
 
 ## Collision Resistance Based on DL Problem
 
-Suppose that the DL problem is hard on the group $G = \left\langle g \right\rangle$, with prime order $q$. Choose an element $h \in G$, and define a hash function $H : \mathbb{Z}_q \times \mathbb{Z}_q \rightarrow G$ as
+Suppose that the DL problem is hard on the group $G = \left\langle g \right\rangle$, with prime order $q$. Choose an element $h \in G$, and define a hash function $H : \mathbb{Z} _ q \times \mathbb{Z} _ q \rightarrow G$ as
 
 $$
 H(\alpha, \beta) = g^\alpha h^\beta.
@@ -215,19 +215,19 @@ The idea was to use *puzzles*, which are problems that can be solved with some e
 ![mc-07-merkle-puzzles.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-07-merkle-puzzles.png)
 
 > Let $\mathcal{E} = (E, D)$ be a block cipher defined over $(\mathcal{K}, \mathcal{M})$.
-> 1. Alice chooses random pairs $(k_i, s_i) \leftarrow \mathcal{K} \times \mathcal{M}$ for $i = 1, \dots, L$.
-> 2. Alice constructs $L$ puzzles, defined as a triple $(E(k_i, s_i), E(k_i, i), E(k_i, 0))$.
+> 1. Alice chooses random pairs $(k _ i, s _ i) \leftarrow \mathcal{K} \times \mathcal{M}$ for $i = 1, \dots, L$.
+> 2. Alice constructs $L$ puzzles, defined as a triple $(E(k _ i, s _ i), E(k _ i, i), E(k _ i, 0))$.
 > 3. Alice randomly shuffles these puzzles and sends them to Bob.
-> 4. Bob picks a random puzzle $(c_1, c_2, c_3)$ and solves the puzzle by **brute force**, trying all $k \in \mathcal{K}$ until some $D(k, c_3) = 0$ is found.
+> 4. Bob picks a random puzzle $(c _ 1, c _ 2, c _ 3)$ and solves the puzzle by **brute force**, trying all $k \in \mathcal{K}$ until some $D(k, c _ 3) = 0$ is found.
 > 	- If Bob finds two different keys, he indicates Alice that the protocol failed and they start over.
-> 5. Bob computes $l = D(k, c_2)$ and $s = D(k, c_1)$, sends $l$ to Alice.
-> 6. Alice will locate the $l$-th puzzle and set $s = s_l$.
+> 5. Bob computes $l = D(k, c _ 2)$ and $s = D(k, c _ 1)$, sends $l$ to Alice.
+> 6. Alice will locate the $l$-th puzzle and set $s = s _ l$.
 
 If successful, Alice and Bob can agree on a secret message $s \in \mathcal{M}$. It can be seen that Alice has to do $\mathcal{O}(L)$, Bob has to do $\mathcal{O}(\left\lvert \mathcal{K} \right\lvert)$ amount of work.
 
 For block ciphers, we commonly set $\mathcal{K}$ large enough so that brute force attacks are infeasible. So for Merkle puzzles, we reduce the key space. For example, if we were to use AES-128 as $\mathcal{E}$, then we can set the first $96$ bits of the key as $0$. Then the search space would be reduced to $2^{32}$, which is feasible for Bob.
 
-Now consider the adversary who obtains all puzzles $P_i$ and the value $l$. To obtain the secret message $s_l$, adversary has to locate the puzzle $P_l$. But since the puzzles are in random order, the adversary has to solve all puzzles until he finds $P_l$. Thus, the adversary must spend time $\mathcal{O}(L\left\lvert \mathcal{K} \right\lvert)$ to obtain $s$. So we have a quadratic gap here.
+Now consider the adversary who obtains all puzzles $P _ i$ and the value $l$. To obtain the secret message $s _ l$, adversary has to locate the puzzle $P _ l$. But since the puzzles are in random order, the adversary has to solve all puzzles until he finds $P _ l$. Thus, the adversary must spend time $\mathcal{O}(L\left\lvert \mathcal{K} \right\lvert)$ to obtain $s$. So we have a quadratic gap here.
 
 ### Performance Issues
 
@@ -241,5 +241,5 @@ It is unknown whether we can get a better gap (than quadratic) using a general s
 
 To get exponential gaps, we need number theory.
 
-[^1]: By Cauchy's theorem, or use the fact that $\mathbb{Z}_p^\ast$ is commutative. Finite commutative groups have a subgroup of every order that divides the order of the group.
+[^1]: By Cauchy's theorem, or use the fact that $\mathbb{Z} _ p^\ast$ is commutative. Finite commutative groups have a subgroup of every order that divides the order of the group.
 [^2]: R. Impagliazzo and S. Rudich. Limits on the provable consequences of one-way permutations. In Proceedings of the Symposium on Theory of Computing (STOC), pages 44–61, 1989.

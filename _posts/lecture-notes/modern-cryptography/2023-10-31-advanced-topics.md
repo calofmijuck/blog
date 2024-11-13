@@ -54,10 +54,10 @@ Suppose Alice wants to commit a message $m$. She computes $(c, o) \la C(m)$, and
 
 The scheme must satisfy the following properties. First, the commitment must open to a single message. This is called the **binding** property. Next, the commitment must not reveal any information about the message. This is called the **hiding** property.
 
-> **Definition.** A commitment scheme $\mc{C} = (C, V)$ is **binding** if for every efficient adversary $\mc{A}$ that outputs a $5$-tuple $(c, m_1, o_1, m_2, o_2)$, the probability
+> **Definition.** A commitment scheme $\mc{C} = (C, V)$ is **binding** if for every efficient adversary $\mc{A}$ that outputs a $5$-tuple $(c, m _ 1, o _ 1, m _ 2, o _ 2)$, the probability
 > 
 > $$
-> \Pr[m_1 \neq m_2 \land V(m_1, c, o_1) = V(m_2, c, o_2) = \texttt{{accept}}]
+> \Pr[m _ 1 \neq m _ 2 \land V(m _ 1, c, o _ 1) = V(m _ 2, c, o _ 2) = \texttt{{accept}}]
 > $$
 > 
 > is negligible.
@@ -67,14 +67,14 @@ The hiding property is defined as a security game.
 > **Definition.** Let $\mc{C} = (C, V)$ be a commitment scheme. Given an adversary $\mc{A}$, define two experiments.
 > 
 > **Experiment $b$**.
-> 1. $\mc{A}$ sends $m_0, m_1 \in \mc{M}$ to the challenger.
-> 2. The challenger computes $(c, o) \la C(m_b)$ and sends $c$ to $\mc{A}$.
+> 1. $\mc{A}$ sends $m _ 0, m _ 1 \in \mc{M}$ to the challenger.
+> 2. The challenger computes $(c, o) \la C(m _ b)$ and sends $c$ to $\mc{A}$.
 > 3. $\mc{A}$ computes and outputs $b' \in \braces{0, 1}$.
 > 
-> Let $W_b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. The **advantage** of $\mc{A}$ with respect to $\mc{C}$ is defined as
+> Let $W _ b$ be the event that $\mc{A}$ outputs $1$ in experiment $b$. The **advantage** of $\mc{A}$ with respect to $\mc{C}$ is defined as
 > 
 > $$
-> \Adv{\mc{A}, \mc{C}} = \abs{\Pr[W_0] - \Pr[W_1]}.
+> \Adv{\mc{A}, \mc{C}} = \abs{\Pr[W _ 0] - \Pr[W _ 1]}.
 > $$
 > 
 > If the advantage is negligible for all efficient adversaries $\mc{A}$, then the commitment scheme $\mc{C}$ has the **hiding** property.
@@ -98,24 +98,24 @@ However, it may be feasible to find another $k' \in \mc{K}'$ such that $D(k, c) 
 
 To commit a bit, we can use a secure PRG. The following is due to Naor.
 
-> Let $G : \mc{S} \ra \mc{R}$ be a secure PRG where $\left\lvert \mc{R} \right\lvert \geq \left\lvert \mc{S} \right\lvert^3$ and $\mc{R} = \braces{0, 1}^n$. Suppose that Bob wants to commit a bit $b_0 \in \braces{0, 1}$.
+> Let $G : \mc{S} \ra \mc{R}$ be a secure PRG where $\left\lvert \mc{R} \right\lvert \geq \left\lvert \mc{S} \right\lvert^3$ and $\mc{R} = \braces{0, 1}^n$. Suppose that Bob wants to commit a bit $b _ 0 \in \braces{0, 1}$.
 > 
 > 1. Alice chooses a random $r \in \mc{R}$ and sends it to Bob.
-> 2. Bob chooses a random $s \in \mc{S}$ and computes $c \la C(s, r, b_0)$, where
+> 2. Bob chooses a random $s \in \mc{S}$ and computes $c \la C(s, r, b _ 0)$, where
 > 
 > 	$$
-> 	C(s, r, b_0) = \begin{cases} G(s) & (b_0 = 0) \\ G(s) \oplus r & (b_0 = 1). \end{cases}
+> 	C(s, r, b _ 0) = \begin{cases} G(s) & (b _ 0 = 0) \\ G(s) \oplus r & (b _ 0 = 1). \end{cases}
 > 	$$
 > 
 > 	Then Bob outputs $(c, s)$ as the commitment and the opening string.
-> 3. During opening, Bob sends $(b_0, s)$ to Alice.
-> 4. Alice accepts if and only if $C(s, r, b_0) = c$.
+> 3. During opening, Bob sends $(b _ 0, s)$ to Alice.
+> 4. Alice accepts if and only if $C(s, r, b _ 0) = c$.
 
-Correctness is obvious, since Alice recomputes $C(s, r, b_0)$.
+Correctness is obvious, since Alice recomputes $C(s, r, b _ 0)$.
 
 The hiding property follows since $G(s)$ and $G(s) \oplus r$ are indistinguishable if $G$ is a secure PRG.
 
-The binding property follows if $1 / \left\lvert \mc{S} \right\lvert$ is negligible. For Bob to open $c$ as both $0$ and $1$, he must find two seeds $s_0, s_1 \in \mc{S}$ such that $c = G(s_0) = G(s_1) \oplus r$. Then $r = G(s_0) \oplus G(s_1)$. There are at most $\left\lvert \mc{S} \right\lvert^2$ possible $r \in \mc{R}$ values that this can happen. The probability that Alice chooses such $r$ is
+The binding property follows if $1 / \left\lvert \mc{S} \right\lvert$ is negligible. For Bob to open $c$ as both $0$ and $1$, he must find two seeds $s _ 0, s _ 1 \in \mc{S}$ such that $c = G(s _ 0) = G(s _ 1) \oplus r$. Then $r = G(s _ 0) \oplus G(s _ 1)$. There are at most $\left\lvert \mc{S} \right\lvert^2$ possible $r \in \mc{R}$ values that this can happen. The probability that Alice chooses such $r$ is
 
 $$
 \left\lvert \mc{S} \right\lvert^2 / \left\lvert \mc{R} \right\lvert \leq \left\lvert \mc{S} \right\lvert^2 / \left\lvert \mc{S} \right\lvert^3 = 1 / \left\lvert \mc{S} \right\lvert
@@ -129,30 +129,30 @@ The downside of the above protocol is that it has to be interactive.
 
 A bit commitment scheme can be used for a **coin flipping protocol**. Suppose that Alice and Bob are flipping coins, when they are physically distant from each other.
 
-> 1. Bob chooses a random bit $b_0 \la \braces{0, 1}$.
+> 1. Bob chooses a random bit $b _ 0 \la \braces{0, 1}$.
 > 2. Execute the commitment protocol.
-> 	- Alice obtains a commitment string $c$ of $b_0$.
+> 	- Alice obtains a commitment string $c$ of $b _ 0$.
 > 	- Bob keeps an opening string $o$.
-> 3. Alice chooses a random bit $b_1 \la \braces{0, 1}$, and sends it to Bob.
-> 4. Bob reveals $b_0$ and $s$ to Alice, she verifies that $c$ is valid.
-> 5. The final outcome is $b = b_0 \oplus b_1$.
+> 3. Alice chooses a random bit $b _ 1 \la \braces{0, 1}$, and sends it to Bob.
+> 4. Bob reveals $b _ 0$ and $s$ to Alice, she verifies that $c$ is valid.
+> 5. The final outcome is $b = b _ 0 \oplus b _ 1$.
 
-After step $2$, Alice has no information about $b_0$ because of the hiding property. Her choice of $b_1$ is unbiased, and cannot affect the final outcome. Next, in step $4$, $b_0$ cannot be manipulated by the binding property.
+After step $2$, Alice has no information about $b _ 0$ because of the hiding property. Her choice of $b _ 1$ is unbiased, and cannot affect the final outcome. Next, in step $4$, $b _ 0$ cannot be manipulated by the binding property.
 
-Thus, $b_0$ and $b_1$ are both random, so $b$ is either $0$ or $1$ each with probability $1/2$.[^1]
+Thus, $b _ 0$ and $b _ 1$ are both random, so $b$ is either $0$ or $1$ each with probability $1/2$.[^1]
 
 ### Commitment Scheme from Hashing
 
-> Let $H : \mc{X} \ra \mc{Y}$ be a collision resistant hash function, where $\mc{X} = \mc{M} \times \mc{R}$. $\mc{M}$ is the message space, and $\mc{R}$ is a finite nonce space. For $m \in \mc{M}$, the derived commitment scheme $\mc{C}_H = (C, V)$ is defined as follows.
+> Let $H : \mc{X} \ra \mc{Y}$ be a collision resistant hash function, where $\mc{X} = \mc{M} \times \mc{R}$. $\mc{M}$ is the message space, and $\mc{R}$ is a finite nonce space. For $m \in \mc{M}$, the derived commitment scheme $\mc{C} _ H = (C, V)$ is defined as follows.
 > 
 > - $C(m)$: choose random $o \la \mc{R}$, set $c = H(m, o)$ and output $(c, o)$.
 > - $V(m, c, o)$: output $\texttt{accept}$ if and only if $c = H(m, o)$.
 
 Correctness is obvious.
 
-The binding property follows since $H$ is collision resistant. If it is easy to find a $5$-tuple $(c, m_1, o_1, m_2, o_2)$ such that $c = H(m_1, o_1) = H(m_2, o_2)$, $H$ is not collision resistant.
+The binding property follows since $H$ is collision resistant. If it is easy to find a $5$-tuple $(c, m _ 1, o _ 1, m _ 2, o _ 2)$ such that $c = H(m _ 1, o _ 1) = H(m _ 2, o _ 2)$, $H$ is not collision resistant.
 
-The hiding property follows if $H$ is modeled as a random oracle, or has a property called **input hiding**. For adversarially chosen $m_1, m_2 \in \mc{M}$ and random $o \la \mc{R}$, the distributions of $H(m_1, o)$ and $H(m_2, o)$ are computationally indistinguishable.
+The hiding property follows if $H$ is modeled as a random oracle, or has a property called **input hiding**. For adversarially chosen $m _ 1, m _ 2 \in \mc{M}$ and random $o \la \mc{R}$, the distributions of $H(m _ 1, o)$ and $H(m _ 2, o)$ are computationally indistinguishable.
 
 Additionally, this scheme is **non-malleable** if $H$ is modeled as a random oracle and $\mc{Y}$ is sufficiently large.[^2]
 
@@ -160,14 +160,14 @@ Additionally, this scheme is **non-malleable** if $H$ is modeled as a random ora
 
 > Let $G = \left\langle g \right\rangle$ be a cyclic group of prime order $q$. Let $h$ be chosen randomly from $G$.
 > 
-> - $C(m)$: choose random $o \la \mathbb{Z}_q$ and $c \la g^m h^o$ and return $(c, o)$.
+> - $C(m)$: choose random $o \la \mathbb{Z} _ q$ and $c \la g^m h^o$ and return $(c, o)$.
 > - $V(m, c, o)$: output $\texttt{accept}$ if and only if $c = g^m h^o$.
 
 Correctness is obvious.
 
-The binding property follows from the DL assumption. If an adversary finds $m_1, m_2$, $o_1, o_2$ such that $c = g^{m_1} h^{o_1} = g^{m_2} h^{o_2}$, then $h = g^{(m_2 - m_1)/(o_1 - o_2)}$, solving the discrete logarithm problem for $h$.
+The binding property follows from the DL assumption. If an adversary finds $m _ 1, m _ 2$, $o _ 1, o _ 2$ such that $c = g^{m _ 1} h^{o _ 1} = g^{m _ 2} h^{o _ 2}$, then $h = g^{(m _ 2 - m _ 1)/(o _ 1 - o _ 2)}$, solving the discrete logarithm problem for $h$.
 
-The hiding property follows since $h$ is uniform in $G$ and $o$ is also uniform in $\mathbb{Z}_q$. Then $g^m h^o$ is uniform in $G$, not revealing any information.
+The hiding property follows since $h$ is uniform in $G$ and $o$ is also uniform in $\mathbb{Z} _ q$. Then $g^m h^o$ is uniform in $G$, not revealing any information.
 
 ## Post Quantum Cryptography
 
@@ -193,7 +193,7 @@ But factorization and discrete logarithms are not safe. The core idea is that a 
 
 ### Quantum Factorization
 
-Let $n \in \mathbb{Z}$ and $0\neq g \in \mathbb{Z}_n$. Let $\gamma_g : \mathbb{Z} \ra \mathbb{Z}_n$ be defined as $\gamma_g(\alpha) = g^\alpha$. This function is periodic, since $g^{\phi(n)} = 1$ by Euler's generalization. Also, the order of $g$ will certainly divide the period.
+Let $n \in \mathbb{Z}$ and $0\neq g \in \mathbb{Z} _ n$. Let $\gamma _ g : \mathbb{Z} \ra \mathbb{Z} _ n$ be defined as $\gamma _ g(\alpha) = g^\alpha$. This function is periodic, since $g^{\phi(n)} = 1$ by Euler's generalization. Also, the order of $g$ will certainly divide the period.
 
 Thus, find a period $p$, and let $t$ be the smallest positive integer such that $g^{p/2^t} \neq 1$. Then $\gcd(n, g^{p/2^t} - 1)$ is a non-trivial factor of $n$ with probability about $1/2$ over the choice of $g$. See Exercise 16.10.[^3]
 
@@ -218,5 +218,5 @@ This period can be found in $\mc{O}(\log^3 q)$ time. The DL assumption is false 
 (Detailed explanation to be added...)
 
 [^1]: There is one caveat. Bob gets to know the final result before Alice. If the outcome is not what he desired, he could abort the protocol in some way, like sending an invalid $c$, and go over the whole process again.
-[^2]: A commitment scheme is **malleable** if a commitment $c = (c_1, c_2)$ of a message $m$ can be transformed into a commitment $c' = (c_1, c_2 + \delta)$ of a message $m + \delta$.
+[^2]: A commitment scheme is **malleable** if a commitment $c = (c _ 1, c _ 2)$ of a message $m$ can be transformed into a commitment $c' = (c _ 1, c _ 2 + \delta)$ of a message $m + \delta$.
 [^3]: A Graduate Course in Applied Cryptography.

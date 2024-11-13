@@ -2,17 +2,18 @@
 share: true
 toc: true
 categories: [Development, Kubernetes]
+path: "_posts/development/kubernetes"
 tags: [kubernetes, sre, devops]
 title: "07. ConfigMaps and Secrets: Configuring Applications"
 date: "2021-04-18"
 github_title: "2021-04-18-07-configmaps-and-secrets"
 image:
-  path: /assets/img/posts/Development/Kubernetes/k8s-07.jpeg
+  path: /assets/img/posts/development/kubernetes/k8s-07.jpeg
 attachment:
-  folder: assets/img/posts/Development/Kubernetes
+  folder: assets/img/posts/development/kubernetes
 ---
 
-![k8s-07.jpeg](/assets/img/posts/Development/Kubernetes/k8s-07.jpeg) _Combining a ConfigMap and a Secret to run your fortune-https pod (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-7)_
+![k8s-07.jpeg](/assets/img/posts/development/kubernetes/k8s-07.jpeg) _Combining a ConfigMap and a Secret to run your fortune-https pod (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-7)_
 
 거의 대부분의 앱은 설정(configuration)이 필요하다. 개발 서버, 배포 서버의 설정 사항 (접속하려는 DB 서버 주소 등)이 다를 수도 있고, 클라우드 등에 접속하기 위한 access key 가 필요하거나, 데이터를 암호화하는 encryption key 도 설정해야하는 경우가 있다. 이러한 경우에 해당 값들을 도커 이미지 자체에 넣어버리면 보안 상 취약하고, 또 설정 사항을 변경하는 경우 이미지를 다시 빌드해야하는 등 불편함이 따른다.
 

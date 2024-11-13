@@ -2,6 +2,7 @@
 share: true
 categories:
   - Articles
+path: _posts/articles
 tags:
   - research
   - career

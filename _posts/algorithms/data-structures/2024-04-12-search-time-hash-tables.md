@@ -5,6 +5,7 @@ math: true
 categories:
   - Algorithms
   - Data Structures
+path: _posts/algorithms/data-structures
 tags:
   - algorithms
   - data-structures
@@ -41,14 +42,14 @@ These results imply that the `search` operation takes almost constant time.
 The probability of collision is $\frac{1}{m}$, since the hash function is uniform by assumption. If $x$ was inserted as the $i$-th element, the number of elements to search equals
 
 $$
-1 + \sum_{j = i + 1}^n \frac{1}{m}.
+1 + \sum _ {j = i + 1}^n \frac{1}{m}.
 $$
 
 The additional $1$ comes from searching $x$ itself. Averaging over all $i$ gives the final result.
 
 $$
 \begin{aligned}
-\frac{1}{n}\sum_{i=1}^n \paren{1 + \sum_{j=i+1}^n \frac{1}{m}} &= 1 + \frac{1}{mn} \sum_{i=1}^n \sum_{j=i+1}^n 1 \\
+\frac{1}{n}\sum _ {i=1}^n \paren{1 + \sum _ {j=i+1}^n \frac{1}{m}} &= 1 + \frac{1}{mn} \sum _ {i=1}^n \sum _ {j=i+1}^n 1 \\
 &= 1 + \frac{1}{mn}\paren{n^2 - \frac{n(n+1)}{2}} \\
 &= 1 + \frac{n(n-1)}{2mn} \\
 &= 1+ \frac{(n-1)\alpha}{2n} = 1+ \frac{\alpha}{2} - \frac{\alpha}{2n}.
@@ -66,7 +67,7 @@ For open addressing, we first assume that $\alpha < 1$. The case $\alpha = 1$ wi
 *Proof*. Let the random variable $X$ be the number of probes made in an unsuccessful search. We want to find $\bf{E}[X]$, so we use the identity
 
 $$
-\bf{E}[X] = \sum_{i \geq 1} \Pr[X \geq i].
+\bf{E}[X] = \sum _ {i \geq 1} \Pr[X \geq i].
 $$
 
 We want to find a bound for $\Pr[X \geq i]$. For $X \geq i$ to happen, $i - 1$ probes must fail, i.e., it must probe to an occupied bucket. On the $j$-th probe, there are $m - j + 1$ buckets left to be probed, and $n - j + 1$ elements not probed yet. Thus the $j$-th probe fails with probability $\frac{n - j + 1}{m - j + 1} < \frac{n}{m}$. Therefore,
@@ -81,7 +82,7 @@ $$
 Now we have
 
 $$
-\bf{E}[X] = \sum_{i \geq 1} \Pr[X \geq i] \leq \sum_{i\geq 1} \alpha^{i-1} = \frac{1}{1 - \alpha}.
+\bf{E}[X] = \sum _ {i \geq 1} \Pr[X \geq i] \leq \sum _ {i\geq 1} \alpha^{i-1} = \frac{1}{1 - \alpha}.
 $$
 
 ### Successful Search
@@ -90,12 +91,12 @@ $$
 
 *Proof*. On a successful search, the sequence of probes is exactly the same as the sequence of probes when that element was inserted.
 
-Suppose that an element $x$ was the $i$-th inserted element. At the moment of insertion, the load factor is ${} \alpha_i = (i-1)/m {}$. By the above theorem, the expected number of probes must have been ${} 1/(1 -\alpha_i) = \frac{m}{m-(i-1)} {}$. Averaging this over all $i$ gives
+Suppose that an element $x$ was the $i$-th inserted element. At the moment of insertion, the load factor is ${} \alpha _ i = (i-1)/m {}$. By the above theorem, the expected number of probes must have been ${} 1/(1 -\alpha _ i) = \frac{m}{m-(i-1)} {}$. Averaging this over all $i$ gives
 
 $$
 \begin{aligned}
-\frac{1}{n} \sum_{i=1}^n \frac{m}{m - (i - 1)} &= \frac{m}{n} \sum_{i=0}^{n-1} \frac{1}{m - i} \\
-&\leq \frac{1}{\alpha} \int_{m-n}^m \frac{1}{x}\,dx \\
+\frac{1}{n} \sum _ {i=1}^n \frac{m}{m - (i - 1)} &= \frac{m}{n} \sum _ {i=0}^{n-1} \frac{1}{m - i} \\
+&\leq \frac{1}{\alpha} \int _ {m-n}^m \frac{1}{x}\,dx \\
 &= \frac{1}{\alpha} \log \frac{1}{1-\alpha}.
 \end{aligned}
 $$
@@ -107,7 +108,7 @@ First of all, on an unsuccessful search, all $m$ buckets should be probed.
 On a successful search, set $m = n$ on the above argument, then the average number of probes is
 
 $$
-\frac{1}{m} \sum_{i=1}^m \frac{m}{m - (i - 1)} = \sum_{i=1}^m \frac{1}{i} = H_m,
+\frac{1}{m} \sum _ {i=1}^m \frac{m}{m - (i - 1)} = \sum _ {i=1}^m \frac{1}{i} = H _ m,
 $$
 
-where $H_m$ is the $m$-th harmonic number.
+where $H _ m$ is the $m$-th harmonic number.

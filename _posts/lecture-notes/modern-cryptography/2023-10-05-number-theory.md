@@ -22,15 +22,15 @@ github_title: 2023-10-05-number-theory
 
 Let $n$ be a positive integer and let $p$ be prime.
 
-> **Notation.** Let $\mathbb{Z}$ denote the set of integers. We will write $\mathbb{Z}_n = \left\lbrace 0, 1, \dots, n - 1 \right\rbrace$.
+> **Notation.** Let $\mathbb{Z}$ denote the set of integers. We will write $\mathbb{Z} _ n = \left\lbrace 0, 1, \dots, n - 1 \right\rbrace$.
 
 > **Definition.** Let $x, y \in \mathbb{Z}$. $\gcd(x, y)$ is the **greatest common divisor** of $x, y$. $x$ and $y$ are relatively prime if $\gcd(x, y) = 1$.
 
-> **Definition.** The **multiplicative inverse** of $x \in \mathbb{Z}_n$ is an element $y \in \mathbb{Z}_n$ such that $xy = 1$ in $\mathbb{Z}_n$.
+> **Definition.** The **multiplicative inverse** of $x \in \mathbb{Z} _ n$ is an element $y \in \mathbb{Z} _ n$ such that $xy = 1$ in $\mathbb{Z} _ n$.
 
-> **Lemma.** $x \in \mathbb{Z}_n$ has a multiplicative inverse if and only if $\gcd(x, n) = 1$.
+> **Lemma.** $x \in \mathbb{Z} _ n$ has a multiplicative inverse if and only if $\gcd(x, n) = 1$.
 
-> **Definition.** $\mathbb{Z}_n^\ast$ is the set of invertible elements in $\mathbb{Z}_n$. i.e, $\mathbb{Z}_n^\ast = \left\lbrace x \in \mathbb{Z}_n : \gcd(x, n) = 1 \right\rbrace$.
+> **Definition.** $\mathbb{Z} _ n^\ast$ is the set of invertible elements in $\mathbb{Z} _ n$. i.e, $\mathbb{Z} _ n^\ast = \left\lbrace x \in \mathbb{Z} _ n : \gcd(x, n) = 1 \right\rbrace$.
 
 > **Lemma.** (Extended Euclidean Algorithm) For $x, y \in \mathbb{Z}$, there exists $a, b \in \mathbb{Z}$ such that $ax + by = \gcd(x, y)$.
 
@@ -58,21 +58,21 @@ Let $G$ be a group.
 
 > **Definition.** $G$ is **cyclic** if there exists $g \in G$ such that $G = \left\langle g \right\rangle$.
 
-> **Theorem.** $\mathbb{Z}_p^\ast$ is cyclic.
+> **Theorem.** $\mathbb{Z} _ p^\ast$ is cyclic.
 
-*Proof*. $\mathbb{Z}_p$ is a finite field, so $\mathbb{Z}_p^\ast = \mathbb{Z}_p \setminus \left\lbrace 0 \right\rbrace$ is cyclic.
+*Proof*. $\mathbb{Z} _ p$ is a finite field, so $\mathbb{Z} _ p^\ast = \mathbb{Z} _ p \setminus \left\lbrace 0 \right\rbrace$ is cyclic.
 
 > **Theorem.** If $G$ is a finite group, then $g^{\left\lvert G \right\lvert} = 1$ for all $g \in G$. i.e, $\left\lvert g \right\lvert \mid \left\lvert G \right\lvert$.
 
 *Proof*. Consider $\left\langle g \right\rangle \leq G$, then the result follows from Lagrange's theorem.
 
-> **Corollary.** (Fermat's Little Theorem) If $x \in \mathbb{Z}_p^\ast$, $x^{p-1} = 1$.
+> **Corollary.** (Fermat's Little Theorem) If $x \in \mathbb{Z} _ p^\ast$, $x^{p-1} = 1$.
 
-*Proof*. $\mathbb{Z}_p^\ast$ has $p-1$ elements.
+*Proof*. $\mathbb{Z} _ p^\ast$ has $p-1$ elements.
 
-> **Corollary.** (Euler's Generalization) If $x \in \mathbb{Z}_n^\ast$, $x^{\phi(n)} = 1$.
+> **Corollary.** (Euler's Generalization) If $x \in \mathbb{Z} _ n^\ast$, $x^{\phi(n)} = 1$.
 
-*Proof*. $\mathbb{Z}_n^\ast$ has $\phi(n)$ elements, where $\phi(n)$ is the Euler's totient function.
+*Proof*. $\mathbb{Z} _ n^\ast$ has $\phi(n)$ elements, where $\phi(n)$ is the Euler's totient function.
 
 ---
 
@@ -82,7 +82,7 @@ There are group-specific algorithms that exploit the algebraic features of the g
 
 ## Baby Step Giant Step Method (BSGS)
 
-Let $G = \left\langle g \right\rangle$, where $g \in G$ has order $q$. $q$ need not be prime for this method. We are given $u = g^\alpha$, $g$, and $q$. Our task is to find $\alpha \in \mathbb{Z}_q$.
+Let $G = \left\langle g \right\rangle$, where $g \in G$ has order $q$. $q$ need not be prime for this method. We are given $u = g^\alpha$, $g$, and $q$. Our task is to find $\alpha \in \mathbb{Z} _ q$.
 
 Set $m = \left\lceil \sqrt{q} \right\rceil$. $\alpha$ is currently unknown, but by the division algorithm, there exists integers $i,j$ such that $\alpha = i \cdot m + j$ and $0\leq i, j < m$. Then $u = g^\alpha = g^{i\cdot m + j} = g^{im} \cdot g^j$. Therefore,
 
@@ -108,35 +108,35 @@ Let $G$ be a cyclic group of composite order $n$. First, we start with a simple 
 
 Let $G = \left\langle g \right\rangle$ be a cyclic group of order $q^e$.[^1] ($q > 1$, $e \geq 1$) We are given $g,q, e$ and $u = g^\alpha$ and we will find $\alpha$. ($0 \leq \alpha < q^e)$
 
-For each $f = 0, \dots, e$, define $g_f = g^{(q^f)}$. Then
+For each $f = 0, \dots, e$, define $g _ f = g^{(q^f)}$. Then
 
 $$
-(g_f)^{(q^{e-f})} = g^{(q^f) \cdot (q^{e-f})} = g^{(q^e)} = 1.
+(g _ f)^{(q^{e-f})} = g^{(q^f) \cdot (q^{e-f})} = g^{(q^e)} = 1.
 $$
 
-So $g_f$ generates a cyclic subgroup of order $q^{e-f}$. In particular, $g_{e-1}$ generates a cyclic subgroup of order $q$. Using this fact, we will reduce the given problem into a discrete logarithm problem on a group having smaller order $q$.
+So $g _ f$ generates a cyclic subgroup of order $q^{e-f}$. In particular, $g _ {e-1}$ generates a cyclic subgroup of order $q$. Using this fact, we will reduce the given problem into a discrete logarithm problem on a group having smaller order $q$.
 
-We proceed with recursion on $e$. If $e = 1$, then $\alpha \in \mathbb{Z}_q$, so we have nothing to do. Suppose $e > 1$. Choose $f$ so that $1 \leq f \leq e-1$. We can write $\alpha = i\cdot q^f + j$, where $0 \leq i < q^{e-f}$ and $0 \leq j < g^f$. Then
-
-$$
-u = g^\alpha = g^{i \cdot q^f + j} = (g_f)^i \cdot g^j.
-$$
-
-Since $g_f$ has order $q^{e-f}$, exponentiate both sides by $q^{e-f}$ to get
+We proceed with recursion on $e$. If $e = 1$, then $\alpha \in \mathbb{Z} _ q$, so we have nothing to do. Suppose $e > 1$. Choose $f$ so that $1 \leq f \leq e-1$. We can write $\alpha = i\cdot q^f + j$, where $0 \leq i < q^{e-f}$ and $0 \leq j < g^f$. Then
 
 $$
-u^{(q^{e-f})} = (g_f)^{q^{e-f} \cdot i} \cdot g^{q^{e-f} \cdot j} = (g_{e-f})^j.
+u = g^\alpha = g^{i \cdot q^f + j} = (g _ f)^i \cdot g^j.
 $$
 
-Now the problem has been reduced to a discrete logarithm problem with base $g_{e-f}$, which has order $q^f$. We can compute $j$ using algorithms for discrete logarithms.
+Since $g _ f$ has order $q^{e-f}$, exponentiate both sides by $q^{e-f}$ to get
+
+$$
+u^{(q^{e-f})} = (g _ f)^{q^{e-f} \cdot i} \cdot g^{q^{e-f} \cdot j} = (g _ {e-f})^j.
+$$
+
+Now the problem has been reduced to a discrete logarithm problem with base $g _ {e-f}$, which has order $q^f$. We can compute $j$ using algorithms for discrete logarithms.
 
 After finding $j$, we have
 
 $$
-u/g^j = (g_f)^i
+u/g^j = (g _ f)^i
 $$
 
-which is also a discrete logarithm problem with base $g_f$, which has order $q^{e-f}$. We can compute $i$ that satisfies this equation. Finally, we can compute $\alpha = i \cdot q^f + j$. We have reduced a discrete logarithm problem into two smaller discrete logarithm problems.
+which is also a discrete logarithm problem with base $g _ f$, which has order $q^{e-f}$. We can compute $i$ that satisfies this equation. Finally, we can compute $\alpha = i \cdot q^f + j$. We have reduced a discrete logarithm problem into two smaller discrete logarithm problems.
 
 To get the best running time, choose $f \approx e/2$. Let $T(e)$ be the running time, then
 
@@ -147,23 +147,23 @@ $$
 The $\mathcal{O}(e\log q)$ term comes from exponentiating both sides by $q^{e-f}$. Solving this recurrence gives
 
 $$
-T(e) = \mathcal{O}(e \cdot T_{\mathrm{base}} + e\log e \log q),
+T(e) = \mathcal{O}(e \cdot T _ {\mathrm{base}} + e\log e \log q),
 $$
 
-where $T_\mathrm{base}$ is the complexity of the algorithm for the base case $e = 1$. $T_\mathrm{base}$ is usually the dominant term, since the best known algorithm takes $\mathcal{O}(\sqrt{q})$.
+where $T _ \mathrm{base}$ is the complexity of the algorithm for the base case $e = 1$. $T _ \mathrm{base}$ is usually the dominant term, since the best known algorithm takes $\mathcal{O}(\sqrt{q})$.
 
 Thus, computing the discrete logarithm in $G$ is only as hard as computing it in the subgroup of prime order.
 
 ### General Case: Pohlig-Hellman Algorithm
 
-Let $G = \left\langle g \right\rangle$ be a cyclic group of order $n = q_1^{e_1}\cdots q_r^{e_r}$, where the factorization of $n$ into distinct primes $q_i$ is given. We want to find $\alpha$ such that $g^\alpha = u$.
+Let $G = \left\langle g \right\rangle$ be a cyclic group of order $n = q _ 1^{e _ 1}\cdots q _ r^{e _ r}$, where the factorization of $n$ into distinct primes $q _ i$ is given. We want to find $\alpha$ such that $g^\alpha = u$.
 
-For $i = 1, \dots, r$, define $q_i^\ast = n / q_i^{e_i}$. Then $u^{q_i^\ast} = (g^{q_i^\ast})^\alpha$, where $g^{q_i^\ast}$ will have order $q_i^{e_i}$ in $G$. Now compute $\alpha_i$ using the algorithm for the prime power case.
+For $i = 1, \dots, r$, define $q _ i^\ast = n / q _ i^{e _ i}$. Then $u^{q _ i^\ast} = (g^{q _ i^\ast})^\alpha$, where $g^{q _ i^\ast}$ will have order $q _ i^{e _ i}$ in $G$. Now compute $\alpha _ i$ using the algorithm for the prime power case.
 
-Then for all $i$, we have $\alpha \equiv \alpha_i \pmod{q_i^{e_i}}$. We can now use the Chinese remainder theorem to recover $\alpha$. Let $q_r$ be the largest prime, then the running time is bounded by
+Then for all $i$, we have $\alpha \equiv \alpha _ i \pmod{q _ i^{e _ i}}$. We can now use the Chinese remainder theorem to recover $\alpha$. Let $q _ r$ be the largest prime, then the running time is bounded by
 
 $$
-\sum_{i=1}^r \mathcal{O}(e_i T(q_i) + e_i \log e_i \log q_i) = \mathcal{O}(T(q_r) \log n + \log n \log \log n)
+\sum _ {i=1}^r \mathcal{O}(e _ i T(q _ i) + e _ i \log e _ i \log q _ i) = \mathcal{O}(T(q _ r) \log n + \log n \log \log n)
 $$
 
 group operations. Thus, we can conclude the following.
@@ -173,17 +173,17 @@ group operations. Thus, we can conclude the following.
 ### Consequences
 
 - For a group with order $n = 2^k$, the Pohlig-Hellman algorithm will easily compute the discrete logarithm, since the largest prime factor is $2$. The DL assumption is false for this group.
-- For primes of the form $p = 2^k + 1$, the group $\mathbb{Z}_p^\ast$ has order $2^k$, so the DL assumption is also false for these primes.
+- For primes of the form $p = 2^k + 1$, the group $\mathbb{Z} _ p^\ast$ has order $2^k$, so the DL assumption is also false for these primes.
 - In general, $G$ must have at least one large prime factor for the DL assumption to be true.
 - By the Pohlig-Hellman algorithm, discrete logarithms in groups of composite order is a little harder than groups of prime order. So we often use a prime order group.
 
 ## Information Leakage in Groups of Composite Order
 
-Let $G = \left\langle g \right\rangle$ be a cyclic group of composite order $n$. We suppose that $n = n_1n_2$, where $n_1$ is a small prime factor.
+Let $G = \left\langle g \right\rangle$ be a cyclic group of composite order $n$. We suppose that $n = n _ 1n _ 2$, where $n _ 1$ is a small prime factor.
 
-By the Pohlig-Hellman algorithm, the adversary can compute $\alpha_1 \equiv \alpha \pmod {n_1}$ by computing the discrete logarithm of $u^{n_2}$ with base $g^{n_2}$.
+By the Pohlig-Hellman algorithm, the adversary can compute $\alpha _ 1 \equiv \alpha \pmod {n _ 1}$ by computing the discrete logarithm of $u^{n _ 2}$ with base $g^{n _ 2}$.
 
-Consider $n_1 = 2$. Then the adversary knows whether $\alpha$ is even or not.
+Consider $n _ 1 = 2$. Then the adversary knows whether $\alpha$ is even or not.
 
 > **Lemma.** $\alpha$ is even if and only if $u^{n/2} = 1$.
 
@@ -191,7 +191,7 @@ Consider $n_1 = 2$. Then the adversary knows whether $\alpha$ is even or not.
 
 This lemma can be used to break the DDH assumption.
 
-> **Lemma.** Given $u = g^\alpha$ and $v = g^\beta$, $\alpha\beta \in \mathbb{Z}_n$ is even if and only if $u^{n/2} = 1$ or $v^{n/2} = 1$.
+> **Lemma.** Given $u = g^\alpha$ and $v = g^\beta$, $\alpha\beta \in \mathbb{Z} _ n$ is even if and only if $u^{n/2} = 1$ or $v^{n/2} = 1$.
 
 *Proof*. $\alpha\beta$ is even if and only if either $\alpha$ or $\beta$ is even. By the above lemma, this is equivalent to $u^{n/2} = 1$ or $v^{n/2} = 1$.
 
@@ -205,15 +205,15 @@ If $\gamma$ was chosen uniformly, then the adversary wins with probability $1/2$
 
 The above process can be generalized to any groups with small prime factor. See Exercise 16.2[^2] Thus, this is another reason we use groups of prime order.
 
-- DDH assumption does not hold in $\mathbb{Z}_p^\ast$, since its order $p-1$ is always even.
-- Instead, we use a prime order subgroup of $\mathbb{Z}_p^\ast$ or prime order elliptic curve group.
+- DDH assumption does not hold in $\mathbb{Z} _ p^\ast$, since its order $p-1$ is always even.
+- Instead, we use a prime order subgroup of $\mathbb{Z} _ p^\ast$ or prime order elliptic curve group.
 
 ## Summary of Discrete Logarithm Algorithms
 
 |Name|Time Complexity|Space Complexity|
 |:-:|:-:|:-:|
 |BSGS|$\mathcal{O}(\sqrt{q})$|$\mathcal{O}(\sqrt{q})$|
-|Pohlig-Hellman|$\mathcal{O}(\sqrt{q_\mathrm{max}}$|$\mathcal{O}(1)$|
+|Pohlig-Hellman|$\mathcal{O}(\sqrt{q _ \mathrm{max}}$|$\mathcal{O}(1)$|
 |Pollard's Rho|$\mathcal{O}(\sqrt{q})$|$\mathcal{O}(1)$|
 
 - In generic groups, solving the DLP requires $\Omega(\sqrt{q})$ operations.
@@ -222,14 +222,14 @@ The above process can be generalized to any groups with small prime factor. See 
 
 ## Candidates of Discrete Logarithm Groups
 
-We need groups of order prime, and we cannot use $\mathbb{Z}_p^\ast$ as itself. We have two candidates.
+We need groups of order prime, and we cannot use $\mathbb{Z} _ p^\ast$ as itself. We have two candidates.
 
-- Use a subgroup of $\mathbb{Z}_p^\ast$ having prime order $q$ such that $q \mid (p-1)$ as in Diffie-Hellman.
+- Use a subgroup of $\mathbb{Z} _ p^\ast$ having prime order $q$ such that $q \mid (p-1)$ as in Diffie-Hellman.
 - Elliptic curve group modulo $p$.
 
-### Reduced Residue Class $\mathbb{Z}_p^\ast$
+### Reduced Residue Class $\mathbb{Z} _ p^\ast$
 
-There are many specific algorithms for discrete logarithms on $\mathbb{Z}_p^\ast$.
+There are many specific algorithms for discrete logarithms on $\mathbb{Z} _ p^\ast$.
 
 - Index-calculus
 - Elliptic-curve method
@@ -248,9 +248,9 @@ Compare this with symmetric ciphers such as AES, where doubling the key size squ
 
 All sizes are in bits. Thus we need a very large prime, for example $p > 2^{2048}$, for security these days.
 
-### Elliptic Curve Group over $\mathbb{Z}_p$
+### Elliptic Curve Group over $\mathbb{Z} _ p$
 
-Currently, the best-known attacks are generic attacks, so we can use much smaller parameters than $\mathbb{Z}_p^\ast$. Often the groups have sizes about $2^{256}$, $2^{384}$, $2^{512}$.
+Currently, the best-known attacks are generic attacks, so we can use much smaller parameters than $\mathbb{Z} _ p^\ast$. Often the groups have sizes about $2^{256}$, $2^{384}$, $2^{512}$.
 
 [^1]: We didn't require $q$ to be prime!
 [^2]: A Graduate Course in Applied Cryptography
