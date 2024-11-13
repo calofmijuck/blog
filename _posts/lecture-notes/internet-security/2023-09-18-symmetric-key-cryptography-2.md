@@ -240,12 +240,12 @@ Since the same key is used for all blocks, once a mapping from plaintext to ciph
 - On IV reuse, same message will generate the same ciphertext if key isn't changed
 - If IV is predictable, CBC is vulnerable to chosen plaintext attacks.
 	- Suppose Eve obtains $(\mathrm{IV}_1, E_k(\mathrm{IV}_1 \oplus m))$.
-	- Define Eve's new message $m' = \mathrm{IV} _  {2} \oplus \mathrm{IV} _ {1} \oplus g$, where
-		- $\mathrm{IV} _ 2$ is the guess of the next IV, and
+	- Define Eve's new message $m' = \mathrm{IV}_{2} \oplus \mathrm{IV}_{1} \oplus g$, where
+		- $\mathrm{IV}_2$ is the guess of the next IV, and
 		- $g$ is a guess of Alice's original message $m$.
 	- Eve requests an encryption of $m'$
-		- $c' = E _ k(\mathrm{IV} _ 2 \oplus m') = E _ k(\mathrm{IV} _ \mathrm{1} \oplus g)$.
-	- Then Eve can compare $c'$ and the original $c = E _ k(\mathrm{IV} _ \mathrm{1} \oplus m)$ to recover $m$.
+		- $c' = E_k(\mathrm{IV}_2 \oplus m') = E_k(\mathrm{IV}_\mathrm{1} \oplus g)$.
+	- Then Eve can compare $c'$ and the original $c = E_k(\mathrm{IV}_\mathrm{1} \oplus m)$ to recover $m$.
 	- Useful when there are not many cases for $m$ (or most of the message is already known).
 
 ### Cipher Feedback Mode (CFB)

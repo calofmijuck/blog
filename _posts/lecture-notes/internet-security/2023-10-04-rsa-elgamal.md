@@ -138,36 +138,36 @@ So we don't actually need Euler's generalization for proving the correctness of 
 
 This is an inverse problem of exponentiation. The inverse of exponentials is logarithms, so we consider the **discrete logarithm of a number modulo $p$**.
 
-Given $y \equiv g^x \pmod p$ for some prime $p$, we want to find $x = \log_g y$. We set $g$ to be a generator of the group $\mathbb{Z}_p$ or $\mathbb{Z}_p^*$, since if $g$ is the generator, a solution always exists.
+Given $y \equiv g^x \pmod p$ for some prime $p$, we want to find $x = \log_g y$. We set $g$ to be a generator of the group $\mathbb{Z}_p$ or $\mathbb{Z}_p^\ast$, since if $g$ is the generator, a solution always exists.
 
-Read more in [discrete logarithm problem (Modern Cryptography)](../../modern-cryptography/2023-10-03-key-exchange/#discrete-logarithm-problem-(dl)).
+Read more in [discrete logarithm problem (Modern Cryptography)](../modern-cryptography/2023-10-03-key-exchange.md#discrete-logarithm-problem-(dl)).
 
 ## ElGamal Encryption
 
 This is an encryption scheme built upon the hardness of the DLP.
 
 > 1. Let $p$ be a large prime.
-> 2. Select a generator $g \in \mathbb{Z}_p^*$.
-> 3. Choose a private key $x \in \mathbb{Z}_p^*$.
+> 2. Select a generator $g \in \mathbb{Z}_p^\ast$.
+> 3. Choose a private key $x \in \mathbb{Z}_p^\ast$.
 > 4. Compute the public key $y = g^x \pmod p$.
 > 	- $p, g, y$ will be publicly known.
 > 	- $x$ is kept secret.
 
 ### ElGamal Encryption and Decryption
 
-Suppose we encrypt a message $m \in \mathbb{Z}_p^*$.
+Suppose we encrypt a message $m \in \mathbb{Z}_p^\ast$.
 
-> 1. The sender chooses a random $k \in \mathbb{Z}_p^*$, called *ephemeral key*.
+> 1. The sender chooses a random $k \in \mathbb{Z}_p^\ast$, called *ephemeral key*.
 > 2. Compute $c_1 = g^k \pmod p$ and $c_2 = my^k \pmod p$.
 > 3. $c_1, c_2$ are sent to the receiver.
-> 4. The receiver calculates $c_1^x \equiv g^{xk} \equiv y^k \pmod p$, and find the inverse $y^{-k} \in \mathbb{Z}_p^*$.
+> 4. The receiver calculates $c_1^x \equiv g^{xk} \equiv y^k \pmod p$, and find the inverse $y^{-k} \in \mathbb{Z}_p^\ast$.
 > 5. Then $c_2y^{-k} \equiv m \pmod p$, recovering the message.
 
 The attacker will see $g^k$. By the hardness of DLP, the attacker is unable to recover $k$ even if he knows $g$.
 
 #### Ephemeral Key Should Be Distinct
 
-If the same $k$ is used twice, the encryption is not secure. Suppose we encrypt two different messages $m_1, m_2 \in \mathbb{Z} _ p^{ * }$. The attacker will see $(g^k, m_1y^k)$ and $(g^k, m_2 y^k)$. Then since we are in a multiplicative group $\mathbb{Z} _ p^{ * }$, inverses exist. So
+If the same $k$ is used twice, the encryption is not secure. Suppose we encrypt two different messages $m_1, m_2 \in \mathbb{Z}_p^\ast$. The attacker will see $(g^k, m_1y^k)$ and $(g^k, m_2 y^k)$. Then since we are in a multiplicative group $\mathbb{Z}_p^\ast$, inverses exist. So
 
 $$
 m_1y^k \cdot (m_2 y^k)^{-1} \equiv m_1m_2^{-1} \equiv 1 \pmod p

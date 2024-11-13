@@ -2,18 +2,23 @@
 share: true
 toc: true
 math: true
-categories: [Mathematics, Measure Theory]
-tags: [math, analysis, measure-theory]
-title: "02. Construction of Measure"
-date: "2023-01-23"
-github_title: "2023-01-23-construction-of-measure"
+categories:
+  - Mathematics
+  - Measure Theory
+tags:
+  - math
+  - analysis
+  - measure-theory
+title: 02. Construction of Measure
+date: 2023-01-23
+github_title: 2023-01-23-construction-of-measure
 image:
   path: /assets/img/posts/Mathematics/Measure Theory/mt-02.png
 attachment:
   folder: assets/img/posts/Mathematics/Measure Theory
 ---
 
-![mt-02.png](/assets/img/posts/Mathematics/Measure%20Theory/mt-02.png)
+![mt-02.png](../../../assets/img/posts/Mathematics/Measure%20Theory/mt-02.png)
 
 이제 본격적으로 집합을 재보도록 하겠습니다. 우리가 잴 수 있는 집합들부터 시작합니다. $\mathbb{R}^p$에서 논의할 건데, 이제 여기서부터는 $\mathbb{R}$의 구간의 열림/닫힘을 모두 포괄하여 정의합니다. 즉, $\mathbb{R}$의 구간이라고 하면 $[a, b], (a, b), [a, b), (a, b]$ 네 가지 경우를 모두 포함합니다.
 
@@ -139,11 +144,11 @@ Countably additive 조건이 성립하는 집합들만 모아서 measure를 cons
 
 	$$\left.\begin{array}{c}d(A_1 \cup A_2, B_1 \cup B_2) \\d(A_1 \cap A_2, B_1 \cap B_2) \\d(A_1 \setminus A_2, B_1 \setminus B_2)\end{array}\right\rbrace\leq d(A_1, B_1) + d(A_2, B_2).$$
 
-**정의.** (Finitely $\mu$-measurable) 집합 $A_n \in \Sigma$ 이 존재하여 $A_n \rightarrow A$ 이면 $A$가 **finitely $\mu$-measurable**이라 한다. 그리고 finitely $\mu$-measurable한 집합의 모임을 $\mathfrak{M} _ F(\mu)$로 표기한다.
+**정의.** (Finitely $\mu$-measurable) 집합 $A_n \in \Sigma$ 이 존재하여 $A_n \rightarrow A$ 이면 $A$가 **finitely $\mu$-measurable**이라 한다. 그리고 finitely $\mu$-measurable한 집합의 모임을 $\mathfrak{M}_F(\mu)$로 표기한다.
 
 위 정의는 $\mu$라는 set function에 의해 $\mu^\ast (A_n \mathop{\mathrm{\triangle}}A) \rightarrow 0$ 이 되는 elementary set $A_n$이 존재한다는 의미입니다.
 
-**정의.** ($\mu$-measurable) $A_n \in \mathfrak{M} _ F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_ {n=1}^\infty A_n$ 이면 $A$가 **$\mu$-measurable**이라 한다. 그리고 $\mu$-measurable한 집합의 모임을 $\mathfrak{M}(\mu)$로 표기한다.
+**정의.** ($\mu$-measurable) $A_n \in \mathfrak{M}_F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_ {n=1}^\infty A_n$ 이면 $A$가 **$\mu$-measurable**이라 한다. 그리고 $\mu$-measurable한 집합의 모임을 $\mathfrak{M}(\mu)$로 표기한다.
 
 **참고.** $\mu^\ast(A) = d(A, \varnothing) \leq d(A, B) + \mu^\ast(B)$.
 
@@ -151,7 +156,7 @@ Countably additive 조건이 성립하는 집합들만 모아서 measure를 cons
 
 $$\lvert \mu^\ast(A) - \mu^\ast(B) \rvert \leq d(A, B).$$
 
-**따름정리.** $A \in \mathfrak{M} _ F(\mu)$ 이면 $\mu^\ast(A) < \infty$ 이다.
+**따름정리.** $A \in \mathfrak{M}_F(\mu)$ 이면 $\mu^\ast(A) < \infty$ 이다.
 
 **증명.** $A_n \in \Sigma$ 가 존재하여 $A_n \rightarrow A$ 이고, $N \in \mathbb{N}$ 이 존재하여
 
@@ -159,7 +164,7 @@ $$\mu^\ast(A) \leq d(A_N, A) + \mu^\ast(A_N) \leq 1 + \mu^\ast(A_N) < \infty$$
 
 이다.
 
-**따름정리.** $A_n \rightarrow A$ 이고 $A_n, A \in \mathfrak{M} _ F(\mu)$ 이면 $\mu^\ast(A_n)\rightarrow\mu^\ast(A) < \infty$ 이다.
+**따름정리.** $A_n \rightarrow A$ 이고 $A_n, A \in \mathfrak{M}_F(\mu)$ 이면 $\mu^\ast(A_n)\rightarrow\mu^\ast(A) < \infty$ 이다.
 
 **증명.** $\mu^\ast(A)$, $\mu^\ast(A_n)$가 유한하므로, $n \rightarrow\infty$ 일 때 $\lvert \mu^\ast(A_n) - \mu^\ast(A) \rvert \leq d(A_n, A) \rightarrow 0$ 이다.
 
@@ -171,15 +176,15 @@ $$\mu^\ast(A) \leq d(A_N, A) + \mu^\ast(A_N) \leq 1 + \mu^\ast(A_N) < \infty$$
 
 **증명.** $\mathfrak{M}(\mu)$가 $\sigma$-algebra이고 $\mu^\ast$가 $\mathfrak{M}(\mu)$에서 countably additive임을 보이면 충분하다.
 
-**(Step 0)** *$\mathfrak{M} _ F(\mu)$는 ring이다.*
+**(Step 0)** *$\mathfrak{M}_F(\mu)$는 ring이다.*
 
-$A, B \in \mathfrak{M} _ F(\mu)$ 라 하자. 그러면 $A_n, B_n \in \Sigma$ 이 존재하여 $A_n \rightarrow A$, $B_n \rightarrow B$ 이 된다. 그러면
+$A, B \in \mathfrak{M}_F(\mu)$ 라 하자. 그러면 $A_n, B_n \in \Sigma$ 이 존재하여 $A_n \rightarrow A$, $B_n \rightarrow B$ 이 된다. 그러면
 
 $$\left.\begin{array}{c}d(A_n \cup B_n, A \cup B) \\ d(A_n \cap B_n, A \cap B) \\ d(A_n \setminus B_n, A \setminus B)\end{array}\right\rbrace\leq d(A_n, A) + d(B_n, B) \rightarrow 0$$
 
-이므로 $A_n \cup B_n \rightarrow A \cup B, A_n \setminus B_n \rightarrow A\setminus B$ 이기 때문에 $\mathfrak{M} _ F(\mu)$는 ring이다.
+이므로 $A_n \cup B_n \rightarrow A \cup B, A_n \setminus B_n \rightarrow A\setminus B$ 이기 때문에 $\mathfrak{M}_F(\mu)$는 ring이다.
 
-**(Step 1)** *$\mu^\ast$는 $\mathfrak{M} _ F(\mu)$ 위에서 additive이다*.
+**(Step 1)** *$\mu^\ast$는 $\mathfrak{M}_F(\mu)$ 위에서 additive이다*.
 
 $\Sigma$ 위에서는 $\mu = \mu^\ast$ 이므로, 위 따름정리에 의해
 
@@ -191,17 +196,17 @@ $$\mu^\ast(A) + \mu^\ast(B) = \mu^\ast(A\cup B) + \mu^\ast(A \cap B)$$
 
 를 얻는다. $A \cap B = \varnothing$ 라는 조건이 추가되면 $\mu^\ast$가 additive임을 알 수 있다.
 
-**(Step 2)** *$\mathfrak{M} _ F(\mu) = \lbrace A \in \mathfrak{M}(\mu) : \mu^\ast(A) < \infty\rbrace$.*[^2]
+**(Step 2)** *$\mathfrak{M}_F(\mu) = \lbrace A \in \mathfrak{M}(\mu) : \mu^\ast(A) < \infty\rbrace$.*[^2]
 
-**Claim**. 쌍마다 서로소인 $\mathfrak{M} _ F(\mu)$의 원소들을 잡아 이들의 합집합으로 $A \in \mathfrak{M}(\mu)$ 를 표현할 수 있다.
+**Claim**. 쌍마다 서로소인 $\mathfrak{M}_F(\mu)$의 원소들을 잡아 이들의 합집합으로 $A \in \mathfrak{M}(\mu)$ 를 표현할 수 있다.
 
-**증명.** $A_n' \in \mathfrak{M} _ F(\mu)$ 에 대하여 $A = \bigcup A_n'$ 로 두자.
+**증명.** $A_n' \in \mathfrak{M}_F(\mu)$ 에 대하여 $A = \bigcup A_n'$ 로 두자.
 
 > $A_1 = A_1'$, $n \geq 2$ 이면 $A_n = A_n' \setminus(A_1'\cup \cdots \cup A_ {n-1}')$
 
-와 같이 정의하면 $A_n$이 쌍마다 서로소이고 $A_n \in \mathfrak{M} _ F(\mu)$ 임을 알 수 있다.
+와 같이 정의하면 $A_n$이 쌍마다 서로소이고 $A_n \in \mathfrak{M}_F(\mu)$ 임을 알 수 있다.
 
-위 사실을 이용하여 $A_n \in \mathfrak{M} _ F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_ {n=1}^\infty A_n$ 으로 두자.
+위 사실을 이용하여 $A_n \in \mathfrak{M}_F(\mu)$ 에 대하여 $A = \displaystyle\bigcup_ {n=1}^\infty A_n$ 으로 두자.
 
 1. Countable subadditivity에 의해 $\displaystyle\mu^\ast(A) \leq \sum_ {n=1}^{\infty} \mu^\ast (A_n)$ 가 성립한다.
 
@@ -215,7 +220,7 @@ $$\displaystyle d(A, B_n) = \mu^\ast\left( \bigcup_ {k=n+1}^\infty A_k \right) =
 
 임을 알 수 있다.
 
-$B_n \in \mathfrak{M} _ F(\mu)$ 이므로 $C_n \in \Sigma$ 를 잡아 각 $n \in \mathbb{N}$ 에 대하여 $d(B_n, C_n)$를 임의로 작게 만들 수 있다. 그러면 $d(A, C_n) \leq d(A, B_n) + d(B_n, C_n)$ 이므로 충분히 큰 $n$에 대하여 $d(A, C_n)$도 임의로 작게 만들 수 있다. 따라서 $C_n \rightarrow A$ 임을 알 수 있고 $A \in \mathfrak{M} _ F(\mu)$ 라는 결론을 내릴 수 있다.
+$B_n \in \mathfrak{M}_F(\mu)$ 이므로 $C_n \in \Sigma$ 를 잡아 각 $n \in \mathbb{N}$ 에 대하여 $d(B_n, C_n)$를 임의로 작게 만들 수 있다. 그러면 $d(A, C_n) \leq d(A, B_n) + d(B_n, C_n)$ 이므로 충분히 큰 $n$에 대하여 $d(A, C_n)$도 임의로 작게 만들 수 있다. 따라서 $C_n \rightarrow A$ 임을 알 수 있고 $A \in \mathfrak{M}_F(\mu)$ 라는 결론을 내릴 수 있다.
 
 **(Step 3)** *$\mu^\ast$는 $\mathfrak{M}(\mu)$ 위에서 countably additive이다.*
 
@@ -225,7 +230,7 @@ $$\mu^\ast\left( \bigcup_ {n=1}^\infty A_n \right) \geq \mu^\ast(A_m) = \infty =
 
 이므로 countable additivity가 성립한다.
 
-이제 모든 $n\in \mathbb{N}$ 에 대하여 $\mu^\ast(A_n) < \infty$ 이면, Step 2에 의해 $A_n \in \mathfrak{M} _ F(\mu)$ 이고
+이제 모든 $n\in \mathbb{N}$ 에 대하여 $\mu^\ast(A_n) < \infty$ 이면, Step 2에 의해 $A_n \in \mathfrak{M}_F(\mu)$ 이고
 
 $$\mu^\ast(A) = \mu^\ast\left( \bigcup_ {n=1}^\infty A_n \right) = \sum_ {n=1}^\infty \mu^\ast(A_n)$$
 
@@ -233,21 +238,21 @@ $$\mu^\ast(A) = \mu^\ast\left( \bigcup_ {n=1}^\infty A_n \right) = \sum_ {n=1}^\
 
 **(Step 4)** *$\mathfrak{M}(\mu)$는 $\sigma$-ring이다.*
 
-$A_n \in \mathfrak{M}(\mu)$ 이면 $B_ {n, k} \in \mathfrak{M} _ F(\mu)$ 가 존재하여 $\displaystyle A_n = \bigcup_k B_ {n,k}$ 이다. 그러면
+$A_n \in \mathfrak{M}(\mu)$ 이면 $B_ {n, k} \in \mathfrak{M}_F(\mu)$ 가 존재하여 $\displaystyle A_n = \bigcup_k B_ {n,k}$ 이다. 그러면
 
 $$\bigcup_n A_n = \bigcup_ {n, k} B_ {n, k} \in \mathfrak{M}(\mu)$$
 
 이다.
 
-$A, B \in \mathfrak{M}(\mu)$ 라 하면 $A_n, B_n \in \mathfrak{M} _ F(\mu)$ 에 대해 $\displaystyle A = \bigcup A_n$, $\displaystyle B = \bigcup B_n$ 이므로,
+$A, B \in \mathfrak{M}(\mu)$ 라 하면 $A_n, B_n \in \mathfrak{M}_F(\mu)$ 에 대해 $\displaystyle A = \bigcup A_n$, $\displaystyle B = \bigcup B_n$ 이므로,
 
 $$A \setminus B = \bigcup_ {n=1}^\infty \left( A_n \setminus B \right) = \bigcup_ {n=1}^\infty (A_n\setminus(A_n\cap B))$$
 
-임을 알 수 있다. 그러므로 $A_n \cap B \in \mathfrak{M} _ F(\mu)$ 인 것만 보이면 충분하다. 정의에 의해
+임을 알 수 있다. 그러므로 $A_n \cap B \in \mathfrak{M}_F(\mu)$ 인 것만 보이면 충분하다. 정의에 의해
 
 $$A_n \cap B = \bigcup_ {k=1}^\infty (A_n \cap B_k) \in \mathfrak{M}(\mu)$$
 
-이고 $\mu^\ast(A_n \cap B) \leq \mu^\ast(A_n) < \infty$ 이므로 $A_n\cap B \in \mathfrak{M} _ F(\mu)$ 이다. 따라서 $A \setminus B$ 가 $\mathfrak{M} _ F(\mu)$의 원소들의 countable 합집합으로 표현되므로 $A\setminus B \in \mathfrak{M}(\mu)$ 이다.
+이고 $\mu^\ast(A_n \cap B) \leq \mu^\ast(A_n) < \infty$ 이므로 $A_n\cap B \in \mathfrak{M}_F(\mu)$ 이다. 따라서 $A \setminus B$ 가 $\mathfrak{M}_F(\mu)$의 원소들의 countable 합집합으로 표현되므로 $A\setminus B \in \mathfrak{M}(\mu)$ 이다.
 
 따라서 $\mathfrak{M}(\mu)$는 $\sigma$-ring이고 $\sigma$-algebra이다.
 
@@ -257,5 +262,5 @@ $$A_n \cap B = \bigcup_ {k=1}^\infty (A_n \cap B_k) \in \mathfrak{M}(\mu)$$
 
 [^1]: $A$가 open이 아니면 자명하지 않은 명제입니다.
 [^2]: $A$가 $\mu$-measurable인데 $\mu^\ast(A) < \infty$이면 $A$는 finitely $\mu$-measurable이다.
-[^3]: $A$가 countable union of sets in $\mathfrak{M} _ F(\mu)$이므로 $\mu^\ast$도 각 set의 $\mu^\ast$의 합이 된다.
-[^4]: 아직 증명이 끝나지 않았습니다. $A_n$은 $\mathfrak{M}(\mu)$의 원소가 아니라 $\mathfrak{M} _ F(\mu)$의 원소입니다.
+[^3]: $A$가 countable union of sets in $\mathfrak{M}_F(\mu)$이므로 $\mu^\ast$도 각 set의 $\mu^\ast$의 합이 된다.
+[^4]: 아직 증명이 끝나지 않았습니다. $A_n$은 $\mathfrak{M}(\mu)$의 원소가 아니라 $\mathfrak{M}_F(\mu)$의 원소입니다.
