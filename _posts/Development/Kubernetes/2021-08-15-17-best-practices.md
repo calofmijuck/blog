@@ -1,18 +1,23 @@
 ---
 share: true
 toc: true
-categories: [Development, Kubernetes]
-tags: [kubernetes, sre, devops]
-title: "17. Best Practices for Developing Apps"
-date: "2021-08-15"
-github_title: "2021-08-15-17-best-practices"
+categories:
+  - Development
+  - Kubernetes
+tags:
+  - kubernetes
+  - sre
+  - devops
+title: 17. Best Practices for Developing Apps
+date: 2021-08-15
+github_title: 2021-08-15-17-best-practices
 image:
   path: /assets/img/posts/Development/Kubernetes/k8s-17.jpeg
 attachment:
   folder: assets/img/posts/Development/Kubernetes
 ---
 
-![k8s-17.jpeg](/assets/img/posts/Development/Kubernetes/k8s-17.jpeg) _Resources in a typical application (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-17)_
+![k8s-17.jpeg](../../../assets/img/posts/Development/Kubernetes/k8s-17.jpeg) _Resources in a typical application (출처: https://livebook.manning.com/book/kubernetes-in-action/chapter-17)_
 
 ### 주요 내용
 
