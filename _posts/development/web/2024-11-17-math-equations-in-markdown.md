@@ -37,7 +37,7 @@ attachment:
 
 - 절댓값 기호 `| ... |`는 마크다운 테이블로 먼저 해석된다.
 - `\{`와 `\}`는 `\\{`, `\\}`로 escape 해줘야 한다.
-- 아래 첨자를 위한 ` _ `, 또는 기호 `*`를 그냥 사용하면 마크다운의 기울임 표시와 충돌할 수 있다.
+- 아래 첨자를 위한 `_`, 또는 기호 `*`를 그냥 사용하면 마크다운의 기울임 표시와 충돌할 수 있다.
 
 ![broken-math-equations.png](../../../assets/img/posts/development/web/broken-math-equations.png)
 
