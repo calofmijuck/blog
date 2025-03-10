@@ -26,14 +26,21 @@ order: 4
 
 ## Experience
 
-**Undergraduate Research Intern**
+### Undergraduate Research Intern
 
-- [**Cryptography & Privacy Lab**](https://crypto.snu.ac.kr) (2024. 1 ~ 2024. 2)
-    - Implementation of BFV homomorphic encryption scheme and bootstrapping over large message space
-- [**Software Foundations Lab**](https://sf.snu.ac.kr) (2023. 7 ~ 2023. 10)
-    - Studies on verifying concurrency models and compilers with Coq
-- [**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr) (2023. 1 ~ 2023. 3)
-    - Experiments on efficient knowledge distillation with activation functions
+[**Cryptography & Privacy Lab**](https://crypto.snu.ac.kr) (2024. 1 ~ 2024. 2)
+
+- Implementation of BFV homomorphic encryption scheme and bootstrapping over large message space
+
+[**Software Foundations Lab**](https://sf.snu.ac.kr) (2023. 7 ~ 2023. 10)
+
+- Studies on verifying concurrency models and compilers with Coq
+
+[**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr) (2023. 1 ~ 2023. 3)
+
+- Experiments on efficient knowledge distillation with activation functions
+
+### Work Experience
 
 [**Scatterlab**](https://scatterlab.co.kr) (2020. 11 ~ 2022. 9)
 
@@ -48,7 +55,7 @@ order: 4
 ## Publications
 
 - **[ACCV'24]** Soosung Kim, Yeonhong Park, Hyunseung Lee, **Sungchan Yi**, and Jae W. Lee, "ReLUifying Smooth Functions: Low-Cost Knowledge Distillation to Obtain High-Performance ReLU Networks", *Asian Conference on Computer Vision (ACCV)*, Hanoi, Vietnam, December 2024. ([PDF](https://arc.snu.ac.kr/pubs/ACCV24_ReLU.pdf))
-- **Sungchan Yi**, "Secure IAM on AWS with Multi-Account Strategy", *Undergraduate Thesis*, December 2023. ([PDF](https://arxiv.org/pdf/2501.02203))
+- **Sungchan Yi**, "Secure IAM on AWS with Multi-Account Strategy", *Undergraduate Thesis*, December 2023. **Received best undergraduate paper award.** ([PDF](https://arxiv.org/pdf/2501.02203))
 
 ## Projects
 
@@ -61,7 +68,7 @@ order: 4
 
 ## Awards
 
-- **Undergraduate Best Paper Award**
+- **Best Undergraduate Paper Award**
     - Title: Secure IAM on AWS using Multi-Account Strategy
 - **Top Prize in HDCON 2021** (Hacking and Defense Contest)
     - Topic: Design and Operation of Secure Cloud Architectures
