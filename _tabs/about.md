@@ -16,7 +16,7 @@ order: 4
 
 - M.S. in Computer Science and Engineering at [Architecture and Code Optimization Lab](https://arc.snu.ac.kr)
 - **Advisor**: Professor Jae W. Lee
-- GPA: 4.0/4.3
+- GPA: 4.18/4.3
 
 **Seoul National University** (2017. 3 ~ 2024. 2)
 
