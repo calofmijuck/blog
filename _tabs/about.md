@@ -6,49 +6,57 @@ order: 4
 
 # Sungchan Yi
 
+- Last updated: 2025-07-18
 - Email: [calofmijuck at snu dot ac dot kr](mailto:calofmijuck@snu.ac.kr)
+- [CV (pdf)](https://zxcvber.com/files/cv-eng.pdf)
 
-**Research Interests**: Computer architecture and hardware-software co-design
+**Research Interests**: computer architecture, hardware-software co-design, security, formal verification
 
 ## Education
 
-**Seoul National University** (2024. 9 ~ Present)
+**Seoul National University** (Sept. 2024 ~ Present)
 
-- M.S. in Computer Science and Engineering at [Architecture and Code Optimization Lab](https://arc.snu.ac.kr)
+- M.S. Candidate in Computer Science and Engineering at [Architecture and Code Optimization Lab](https://arc.snu.ac.kr)
 - **Advisor**: Professor Jae W. Lee
 - GPA: 4.18/4.3
 
-**Seoul National University** (2017. 3 ~ 2024. 2)
+**Seoul National University** (Mar. 2017 ~ Feb. 2024)
 
-- B.S. in Computer Science and Engineering, Minor in Mathematics
+- B.S. in Computer Science and Engineering, Minor in Mathematical Sciences
 - GPA: 3.96/4.3 (Summa Cum Laude)
 
-## Experience
+## Research Experience
 
-### Undergraduate Researcher
+[**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr), *M.S. Candidate* (Mar. 2024 ~ Present)
 
-- [**Cryptography & Privacy Lab**](https://crypto.snu.ac.kr) (2024. 1 ~ 2024. 2)
+- Leading **Software Defined Manycores** project
 
-  - Implementation of BFV homomorphic encryption scheme and bootstrapping over large message space
+[**Cryptography & Privacy Lab**](https://crypto.snu.ac.kr), *Undergraduate Research Assistant* (Jan. 2024 ~ Feb. 2024)
 
-- [**Software Foundations Lab**](https://sf.snu.ac.kr) (2023. 7 ~ 2023. 10)
+- Implemented BFV homomorphic encryption scheme and its bootstrapping over a large message space
+- Analyzed automorphism group of the plaintext space and determined their effects on ciphertext
 
-  - Studies on verifying concurrency models and compilers with Coq
+[**Software Foundations Lab**](https://sf.snu.ac.kr), *Undergraduate Research Assistant* (Jul. 2023 ~ Oct. 2023)
 
-- [**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr) (2023. 1 ~ 2023. 3)
-  - Experiments on efficient knowledge distillation with activation functions
+- Implemented stack variable merging optimization that reduces memory allocation calls and tried to prove its correctness with Rocq theorem prover
 
-### Work Experience
+[**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr), *Undergraduate Research Assistant* (Jan. 2023 ~ Mar. 2023)
 
-- [**Scatterlab**](https://scatterlab.co.kr) (2020. 11 ~ 2022. 9)
+- Implemented a parametrized experiment framework to automate training and evaluation of various CNN models with different activation functions and their knowledge distillation based ReLUifications
+- Quantified benefits of ReLUification on sparsity-aware NPU for Samsung mobile SoC in terms of memory footprint and computation reduction
 
-  - Backend/Security/SRE Engineer
-  - Spring Boot (Java) Backend, Docker/Kubernetes, AWS Cloud Security and Operations
+## Work Experience
 
-- [**Logpresso**](https://logpresso.com/en) (2019. 7 ~ 2020. 10)
+[**Scatterlab**](https://scatterlab.co.kr), *Software Reliability / Security Engineer* (Nov. 2020 ~ Sept. 2022)
 
-  - Big Data Platform Engineer
-  - Java Backend, Data/Query Processing Interface Development
+- Spring Boot (Java) Backend, Docker/Kubernetes, AWS Cloud Security and Operations
+- Led cloud security project, co-worked with AWS to completely rebuild and secure the cloud infrastructure
+- Led software reliability team, cut server operation costs with spot instances and container orchestration
+
+[**Logpresso**](https://logpresso.com/en), *Big Data Platform Engineer* (Jul. 2019 ~ Oct. 2020)
+
+- Implemented loggers, parsers, and query commands that collect and analyze data from various sources, applied software-level optimizations to improve performance
+- Optimized distributed security operation system from pull to push architecture to reduce latency
 
 ## Publications
 
@@ -57,18 +65,43 @@ order: 4
 
 ## Honors & Awards
 
-- **Best Undergraduate Paper Award**
-  - Title: Secure IAM on AWS using Multi-Account Strategy
-- **Top Prize in HDCON 2021** (Hacking and Defense Contest)
-  - Topic: Design and Operation of Secure Cloud Architectures
-- **Kwanjeong Educational Foundation Scholarship**
-  - Full tuition and fees for 2 years of undergraduate studies
+**Best Undergraduate Paper Award**
+
+- Title: Secure IAM on AWS using Multi-Account Strategy
+
+**Top Prize in Hacking and Defense Contest 2021**
+
+- Awarded by Korea Internet & Security Agency (KISA)
+- Topic: Design and Operation of Secure Cloud Architectures
+
+**Kwanjeong Educational Foundation Scholarship**
+
+- Full tuition and fees for 2 years of undergraduate studies
+
+## Extracurricular Activities
+
+**Web Administrator of Architecture and Code Optimization Lab**
+
+- Responsible for maintaining the web infrastructure: website, cloud, accounts, wiki, etc.
+- Installation of convenient tools such as shared password manager and schedule notification system
+
+**Seoul National University College of Engineering Honor Society** (Mar. 2022 ~ Aug. 2023)
+
+- SNU Tomorrow’s Edge Membership (STEM)
+- **Web Administrator**: reduced cloud infrastructure costs by 50% and installed shared storage
+
+**Guardian**, Seoul National University Security Club (2018 ~ Present)
+
+- Former president of the club in 2019
+- Taught basic Linux, x86 assembly, and C programming to new members
+- Created 30 linux/x86 assembly wargame challenges for members to practice
 
 ## Technical Skills & Interests
 
 - **Programming Languages**: C/C++, Java, Python, Golang, Coq
 - **Architectural Simulators**: gem5
-- System/cloud security and cryptography
+- **DevOps**: Docker, Kubernetes, AWS
+- System/cloud security, cryptography
 - Compilers and formal verification
 - Mathematics in general, especially algebra and analysis
 
