@@ -141,6 +141,6 @@ The theorem wasn't so trivial after all, but I'm still happy to have resolved a 
 ## References
 
 - My notes taken from abstract algebra class
-- https://math.stackexchange.com/q/459815
-- https://math.stackexchange.com/q/3881641
-- https://math.stackexchange.com/a/4910312/329909
+- <https://math.stackexchange.com/q/459815>
+- <https://math.stackexchange.com/q/3881641>
+- <https://math.stackexchange.com/a/4910312/329909>
