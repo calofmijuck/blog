@@ -61,11 +61,11 @@ order: 4
 ## Publications
 
 - **[ACCV'24]** Soosung Kim, Yeonhong Park, Hyunseung Lee, **Sungchan Yi**, and Jae W. Lee, "ReLUifying Smooth Functions: Low-Cost Knowledge Distillation to Obtain High-Performance ReLU Networks", _Asian Conference on Computer Vision (ACCV)_, Hanoi, Vietnam, December 2024. ([PDF](https://arc.snu.ac.kr/pubs/ACCV24_ReLU.pdf))
-- **Sungchan Yi**, "Secure IAM on AWS with Multi-Account Strategy", _Undergraduate Thesis_, December 2023. **Received best undergraduate paper award.** ([PDF](https://arxiv.org/pdf/2501.02203))
+- **Sungchan Yi**, "Secure IAM on AWS with Multi-Account Strategy", _Undergraduate Thesis_, December 2023. **Outstanding Undergraduate Thesis Award.** ([PDF](https://arxiv.org/pdf/2501.02203))
 
 ## Honors & Awards
 
-**Best Undergraduate Paper Award**
+**Outstanding Undergraduate Thesis Award**
 
 - Title: Secure IAM on AWS using Multi-Account Strategy
 
