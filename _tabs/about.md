@@ -8,7 +8,6 @@ order: 4
 
 - Last updated: 2025-07-18
 - Email: [calofmijuck at snu dot ac dot kr](mailto:calofmijuck@snu.ac.kr)
-- [CV (pdf)](https://zxcvber.com/files/cv-eng.pdf)
 
 **Research Interests**: computer architecture, hardware-software co-design, security, formal verification
 
