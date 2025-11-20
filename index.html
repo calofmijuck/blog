@@ -1,4 +1,13 @@
 ---
-layout: home
-# Index page
+layout: page
+title: About
 ---
+
+{%- assign about_tab = site.tabs | where: "url", "/about/" | first -%}
+
+{%- if about_tab -%}
+	{{ about_tab.content }}
+{%- else -%}
+	<!-- Fallback: no about tab found -->
+	<h1>About</h1>
+{%- endif -%}
