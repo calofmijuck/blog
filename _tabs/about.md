@@ -59,7 +59,7 @@ order: 0
 
 ## Publications
 
-- **Sungchan Yi**, Keun Soo Lim, Hoyeon Jo, Sungjun Jung, Minwoo Kwak, Dongoh Kim, Luigi Cussigh, Seong Hoon Seo, Jinkyu Jeong, Jae W. Lee, "Software-Defined Manycores via Hardware-Managed Preemptive Coroutine Scheduling", _International Symposium on Computer Architecture (ISCA)_, 2026. (Under Review)
+- **Sungchan Yi**, Keun Soo Lim, Hoyeon Jo, Sungjun Jung, Minwoo Kwak, Dongoh Kim, Luigi Cussigh, Seong Hoon Seo, Jinkyu Jeong, Jae W. Lee, "Software-Defined Manycores via Hardware-Managed Preemptive Coroutine Scheduling", _International Symposium on Computer Architecture (ISCA)_, 2026. (Submitted)
 - **[ACCV'24]** Soosung Kim, Yeonhong Park, Hyunseung Lee, **Sungchan Yi**, and Jae W. Lee, "ReLUifying Smooth Functions: Low-Cost Knowledge Distillation to Obtain High-Performance ReLU Networks", _Asian Conference on Computer Vision (ACCV)_, Hanoi, Vietnam, December 2024. ([PDF](https://arc.snu.ac.kr/pubs/ACCV24_ReLU.pdf))
 - **Sungchan Yi**, "Secure IAM on AWS with Multi-Account Strategy", _Undergraduate Thesis_, December 2023. **Outstanding Undergraduate Thesis Award.** ([PDF](https://arxiv.org/pdf/2501.02203))
 
