@@ -29,6 +29,7 @@ order: 0
 [**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr), *M.S. Candidate* (Mar. 2024 ~ Present)
 
 - Leading **Software Defined Manycores** project
+- *More details in the CV*
 
 [**Cryptography & Privacy Lab**](https://crypto.snu.ac.kr), *Undergraduate Research Assistant* (Jan. 2024 ~ Feb. 2024)
 
