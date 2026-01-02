@@ -25,11 +25,11 @@ github_title: 2022-04-08-thoughts-on-studying-math
 
 1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 $x = m$ 에 대하여 대칭일 때,
 
-	$$\int _ {m-a}^{m+a} f(x)\,dx = 2 \int _ {m}^{m+a} f(x)\,dx.\quad (a \in \mathbb{R})$$
+	$$\int _ {m-a}^{m+a} f(x)\,dx = 2 \int_{m}^{m+a} f(x)\,dx.\quad (a \in \mathbb{R})$$
 
 2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 점 $(m, n)$에 대하여 대칭일 때,
 
-	$$\int _ {m-a}^{m+a} f(x)\,dx = 2an. \quad (a \in \mathbb{R})$$
+	$$\int_{m-a}^{m+a} f(x)\,dx = 2an. \quad (a \in \mathbb{R})$$
 
 보자마자 막 엄청 특별한 내용은 아니라는 것을 깨달았고, 이런 내용은 특별하게 누가 정리해주지 않아도 공부를 지엽적으로 하지 않고 충분히 생각을 많이 하면 알 수 있다고 얘기했다. 그렇다고 모르는게 이상하다는 의미는 절대 아니다.
 
@@ -43,11 +43,11 @@ github_title: 2022-04-08-thoughts-on-studying-math
 
 1. $\mathbb{R}$에서 정의된 연속함수 $f(x)$가 우함수일 때,
 
-	$$\int _ {-a}^{a} f(x)\,dx = 2 \int _ {0}^{a} f(x)\,dx. \quad (a \in \mathbb{R})$$
+	$$\int_{-a}^{a} f(x)\,dx = 2 \int_{0}^{a} f(x)\,dx. \quad (a \in \mathbb{R})$$
 
 2. $\mathbb{R}$에서 정의된 연속함수 $f(x)$의 그래프가 기함수일 때,
 
-	$$\int _ {-a}^{a} f(x)\,dx = 0. \quad (a \in \mathbb{R})$$
+	$$\int_{-a}^{a} f(x)\,dx = 0. \quad (a \in \mathbb{R})$$
 
 ### 개념 공부 하면서 스스로 일반화 해보기
 

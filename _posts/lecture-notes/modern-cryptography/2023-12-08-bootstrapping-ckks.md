@@ -40,18 +40,18 @@ Then $f(\bf{s}) = m$.
 Let $\bf{s}' \in \braces{0, 1}^n$ be a new secret key. Generate the **bootstrapping keys**
 
 $$
-BK = \braces{\bf{k} _ i} _ {i=1}^n, \qquad  \bf{k} _ i = E(\bf{s}', s _ i).
+BK = \braces{\bf{k} _ i}_{i=1}^n, \qquad  \bf{k}_i = E(\bf{s}', s_i).
 $$
 
 Then by the homomorphic property of $f$,
 
 $$
-f(\bf{k _ 1}, \bf{k} _ 2, \dots, \bf{k} _ n) = f\big( E(\bf{s}', s _ 1), \dots, E(\bf{s}', s _ n) \big) = E\big( \bf{s}', f(s _ 1, \dots, s _ n) \big) = E(\bf{s}', m).
+f(\bf{k_1}, \bf{k}_2, \dots, \bf{k}_n) = f\big( E(\bf{s}', s_1), \dots, E(\bf{s}', s_n) \big) = E\big( \bf{s}', f(s_1, \dots, s_n) \big) = E(\bf{s}', m).
 $$
 
 #### Example with BGV
 
-Technically, the expression $f(\bf{k _ 1}, \bf{k} _ 2, \dots, \bf{k} _ n)$ doesn't make sense, but it works. Consider a message $m$ encrypted with secret $\bf{s}$ in the BGV scheme.
+Technically, the expression $f(\bf{k_1}, \bf{k}_2, \dots, \bf{k}_n)$ doesn't make sense, but it works. Consider a message $m$ encrypted with secret $\bf{s}$ in the BGV scheme.
 
 $$
 \bf{c} = (b, \bf{a}), \quad b = -\span{\bf{a}, \bf{s}} + m + 2e \pmod q.
@@ -60,15 +60,15 @@ $$
 The decryption is $r = b + \span{\bf{a}, \bf{s}} \pmod q$, and then taking the least significant bit. Consider it as a function
 
 $$
-f(\bf{s}) = b + \span{\bf{a}, \bf{s}} = b + \sum _ {i=1}^n a _ is _ i.
+f(\bf{s}) = b + \span{\bf{a}, \bf{s}} = b + \sum_{i=1}^n a_is_i.
 $$
 
-For a new key $\bf{s}' = (s _ 1', \dots, s _ n')$, generate bootstrapping keys $\bf{k} _ i = E(\bf{s}', s _ i)$ and plugging it in forcefully gives
+For a new key $\bf{s}' = (s_1', \dots, s_n')$, generate bootstrapping keys $\bf{k}_i = E(\bf{s}', s_i)$ and plugging it in forcefully gives
 
 $$
 \begin{aligned}
-f(\bf{k} _ 1, \dots, \bf{k} _ n) &= b + \sum _ {i=1}^n a _ i E(\bf{s}', s _ i) = b + \sum _ {i=1}^n E(\bf{s}', a _ is _ i) \\
-&=b + E\paren{\bf{s}', \sum _ {i=1}^n a _ is _ i} = b + E\paren{\bf{s}', \span{\bf{a}, \bf{s}}}.
+f(\bf{k}_1, \dots, \bf{k}_n) &= b + \sum_{i=1}^n a_i E(\bf{s}', s_i) = b + \sum_{i=1}^n E(\bf{s}', a_is_i) \\
+&=b + E\paren{\bf{s}', \sum_{i=1}^n a_is_i} = b + E\paren{\bf{s}', \span{\bf{a}, \bf{s}}}.
 \end{aligned}
 $$
 
@@ -81,7 +81,7 @@ b' &=b -\span{\bf{a}', \bf{s}'} + \span{\bf{a}, \bf{s}} + 2e' \\
 \end{aligned}
 $$
 
-Indeed, decrypting $b'$ will give $m$. So we have $E(\bf{s}', m)$ from $f(\bf{k} _ 1, \dots, \bf{k} _ n)$.[^1]
+Indeed, decrypting $b'$ will give $m$. So we have $E(\bf{s}', m)$ from $f(\bf{k}_1, \dots, \bf{k}_n)$.[^1]
 
 ### Bootstrapping Procedure
 
@@ -89,13 +89,13 @@ Indeed, decrypting $b'$ will give $m$. So we have $E(\bf{s}', m)$ from $f(\bf{k}
 > 
 > **Bootstrapping Key Generation**
 > - Choose a new secret key $\bf{s}' \in \braces{0, 1}^n$.
-> - Generate *bootstrapping key* $BK = \braces{\bf{k} _ i} _ {i=1}^n$ where $\bf{k} _ i = E(\bf{s}', s _ i)$.
+> - Generate *bootstrapping key* $BK = \braces{\bf{k}_i}_{i=1}^n$ where $\bf{k}_i = E(\bf{s}', s_i)$.
 > 
 > **Bootstrapping**
 > - Generate a circuit representation $f : \braces{0, 1}^n \ra \braces{0, 1}$ of the decryption function $D(\cdot, \bf{c})$.
-> - Compute and output $\bf{c}' = f(\bf{k} _ 1, \dots, \bf{k} _ n)$.
+> - Compute and output $\bf{c}' = f(\bf{k}_1, \dots, \bf{k}_n)$.
 
-The bootstrapping procedure returns an encryption of $m$ under $\bf{s}'$, as shown above. The key idea here is that $\bf{k} _ i$ are *fresh* ciphertexts at level $L$. Even though a few levels are consumed during the evaluation of $f$, the resulting ciphertext $\bf{c}'$ is not at level $0$ anymore, allowing us to do more computation.
+The bootstrapping procedure returns an encryption of $m$ under $\bf{s}'$, as shown above. The key idea here is that $\bf{k}_i$ are *fresh* ciphertexts at level $L$. Even though a few levels are consumed during the evaluation of $f$, the resulting ciphertext $\bf{c}'$ is not at level $0$ anymore, allowing us to do more computation.
 
 > Suppose that the homomorphic evaluation of $f$ requires depth $d$, consuming $d$ levels. Then we say that the BGV scheme is **bootstrappable** if $d < L$. The output ciphertext $\bf{c}'$ will have level $l = L - d > 0$, which we call **remaining level**.
 
@@ -111,13 +111,13 @@ $$
 \bf{s} \ra \bf{s}' \ra \bf{s}'' \ra \cdots
 $$
 
-Currently, we set $\bf{s}' = \bf{s}$ and make the chain **circular**, so the bootstrapping keys are $E(\bf{s}, s _ i)$. $\bf{s}$ is being encrypted by itself. We wonder if this is secure, but there is no known proof for this. This is used as an assumption called the **circular security assumption**.
+Currently, we set $\bf{s}' = \bf{s}$ and make the chain **circular**, so the bootstrapping keys are $E(\bf{s}, s_i)$. $\bf{s}$ is being encrypted by itself. We wonder if this is secure, but there is no known proof for this. This is used as an assumption called the **circular security assumption**.
 
 Designing an FHE scheme without the circular security assumption is currently an open problem.
 
 ## CKKS Scheme
 
-The [BGV scheme](../2023-11-23-bgv-scheme/#the-bgv-scheme) operates on $\Z _ p$, so it doesn't work on real numbers. **Cheon-Kim-Kim-Song** (CKKS) scheme works on real numbers using approximate computation.
+The [BGV scheme](./2023-11-23-bgv-scheme.md#the-bgv-scheme) operates on $\Z_p$, so it doesn't work on real numbers. **Cheon-Kim-Kim-Song** (CKKS) scheme works on real numbers using approximate computation.
 
 ### Approximate Computation
 
@@ -129,7 +129,7 @@ $$
 
 Here, $2.9979$ is the **significand**, $10$ is the base and $8$ is the exponent. We also call $10^8$ the **scaling factor**.
 
-Floating point operations involve **rounding**, but rounding is not easy in homomorphic encryption. Using the BGV scheme on $\Z _ p$, there are $2$ methods to do this.
+Floating point operations involve **rounding**, but rounding is not easy in homomorphic encryption. Using the BGV scheme on $\Z_p$, there are $2$ methods to do this.
 
 - Bit-wise Encryption
 	- $32$-bit integer results in $32$ ciphertexts.
@@ -137,9 +137,9 @@ Floating point operations involve **rounding**, but rounding is not easy in homo
 	- Rounding is easy if done this way.
 	- But this is *extremely* inefficient. Huge number of gates are required, consumes a lot of levels.
 - Integer Encryption
-	- To encrypt the significant, use a modulus large enough, such as $p > 2^{32}$.
+	- To encrypt the significand, use a modulus large enough, such as $p > 2^{32}$.
 	- For multiplication, use $p > 2^{64}$.
-	- But rounding is hard in $\Z _ p$.
+	- But rounding is hard in $\Z_p$.
 
 So our wish is to design an HE scheme that natively supports rounding operation!
 
@@ -150,12 +150,12 @@ In the LWE problem, error was added for security. This can be exploited, since c
 > Let $n, q, \sigma$ be parameters for LWE and set a scaling factor $\Delta > 0$.
 > 
 > **Key Generation**
-> - A secret key is chosen as $\bf{s} = (s _ 1, \dots, s _ n) \in \braces{0, 1}^n$, with its linearization gadget.
+> - A secret key is chosen as $\bf{s} = (s_1, \dots, s_n) \in \braces{0, 1}^n$, with its linearization gadget.
 > 
 > **Encryption**: message $m \in \R$.
-> - Randomly sample $\bf{a} = (a _ 1, \dots, a _ n) \la \Z _ q^n$ and $e \la D _ \sigma$.
+> - Randomly sample $\bf{a} = (a_1, \dots, a_n) \la \Z_q^n$ and $e \la D_\sigma$.
 > - Compute $b = -\span{\bf{a}, \bf{s}} + \round{\Delta \cdot m} + e \pmod q$.
-> - Output ciphertext $\bf{c} = (b, \bf{a}) \in \Z _ q^{n+1}$.
+> - Output ciphertext $\bf{c} = (b, \bf{a}) \in \Z_q^{n+1}$.
 > 
 > **Decryption**
 > - Compute $\mu = b + \span{\bf{a}, \bf{s}} \pmod q$.
@@ -191,30 +191,30 @@ $$
 
 ### Addition in CKKS
 
-> Let $\bf{c} = (b, \bf{a})$ and $\bf{c}' = (b', \bf{a}')$ be encryptions of $m, m' \in \R$. Then, $\bf{c} _ \rm{add} = \bf{c} + \bf{c}'$ is an encryption of $m + m'$.
+> Let $\bf{c} = (b, \bf{a})$ and $\bf{c}' = (b', \bf{a}')$ be encryptions of $m, m' \in \R$. Then, $\bf{c}_\rm{add} = \bf{c} + \bf{c}'$ is an encryption of $m + m'$.
 
-*Proof*. Decrypt $\bf{c} _ \rm{add} = (b + b', \bf{a} + \bf{a}')$.
+*Proof*. Decrypt $\bf{c}_\rm{add} = (b + b', \bf{a} + \bf{a}')$.
 
 $$
-\mu _ \rm{add} = \mu + \mu' = (b + b') + \span{\bf{a} + \bf{a}', \bf{s}} \pmod q.
+\mu_\rm{add} = \mu + \mu' = (b + b') + \span{\bf{a} + \bf{a}', \bf{s}} \pmod q.
 $$
 
 If $\abs{\mu + \mu'} < q/2$, then
 
 $$
-\mu _ \rm{add} = \mu + \mu' = \Delta \cdot (m + m'),
+\mu_\rm{add} = \mu + \mu' = \Delta \cdot (m + m'),
 $$
 
 so the decryption results in $\Delta\inv \cdot (\mu + \mu') \approx m + m'$.
 
 ### Multiplication in CKKS
 
-We also use [tensor products](../2023-11-23-bgv-scheme/#tensor-product), and their properties.
+We also use [tensor products](./2023-11-23-bgv-scheme.md#tensor-product), and their properties.
 
 > Let $\bf{c} = (b, \bf{a})$ and $\bf{c}' = (b', \bf{a}')$ be encryptions of $m, m' \in \R$. Then,
 > 
 > $$
-> \bf{c} _ \rm{mul} = \bf{c} \otimes \bf{c}' = (bb', b\bf{a}' + b' \bf{a}, \bf{a} \otimes \bf{a}')
+> \bf{c}_\rm{mul} = \bf{c} \otimes \bf{c}' = (bb', b\bf{a}' + b' \bf{a}, \bf{a} \otimes \bf{a}')
 > $$
 > 
 > is an encryption of $mm'$ with $(1, \bf{s}, \bf{s} \otimes \bf{s})$.
@@ -223,18 +223,18 @@ We also use [tensor products](../2023-11-23-bgv-scheme/#tensor-product), and the
 
 $$
 \begin{aligned}
-\mu _ \rm{mul} &= \mu\mu' = (b + \span{\bf{a}, \bf{s}})(b' + \span{\bf{a}', \bf{s}}) \\
-&= bb' + \span{b\bf{a}' + b' \bf{a}, \bf{s}} + \span{\bf{a} \otimes \bf{a}', \bf{s} \otimes \bf{s}'} \pmod q
+\mu_\rm{mul} &= \mu\mu' = (b + \span{\bf{a}, \bf{s}})(b' + \span{\bf{a}', \bf{s}}) \\
+&= bb' + \span{b\bf{a}' + b' \bf{a}, \bf{s}} + \span{\bf{a} \otimes \bf{a}', \bf{s} \otimes \bf{s}} \pmod q
 \end{aligned}
 $$
 
 if $\abs{\mu\mu'} < q/2$. Then
 
 $$
-\mu _ \rm{mul} = \mu\mu' \approx (\Delta \cdot m) \cdot (\Delta \cdot m') = \Delta^2 \cdot mm'.
+\mu_\rm{mul} = \mu\mu' \approx (\Delta \cdot m) \cdot (\Delta \cdot m') = \Delta^2 \cdot mm'.
 $$
 
-So $mm' \approx \Delta^{-2} \cdot \mu _ \rm{mul}$.
+So $mm' \approx \Delta^{-2} \cdot \mu_\rm{mul}$.
 
 We have issues with multiplication, as we did in BGV.
 
@@ -244,58 +244,58 @@ We have issues with multiplication, as we did in BGV.
 
 ### Dimension Reduction
 
-The relinearization procedure is almost the same as in [BGV relinearization](../2023-11-23-bgv-scheme/#relinearization).
+The relinearization procedure is almost the same as in [BGV relinearization](./2023-11-23-bgv-scheme.md#relinearization).
 
-For convenience, let $a _ {i, j} = a _ i a _ j'$.
+For convenience, let $a_{i, j} = a_i a_j'$.
 
 > **Relinearization Keys**: for $1 \leq i, j \leq n$ and $0 \leq k < \ceil{\log q}$, perform the following.
-> - Sample $\bf{u} _ {i, j, k} \la \Z _ q^{n}$ and $e _ {i, j, k} \la D _ \sigma$.
-> - Compute $v _ {i, j, k} = -\span{\bf{u} _ {i, j, k}, \bf{s}} + 2^k \cdot s _ i s _ j + e _ {i, j, k} \pmod q$.
-> - Output $\bf{w} _ {i, j, k} = (v _ {i, j, k}, \bf{u} _ {i, j, k})$.
+> - Sample $\bf{u}_{i, j, k} \la \Z_q^{n}$ and $e_{i, j, k} \la D_\sigma$.
+> - Compute $v_{i, j, k} = -\span{\bf{u}_{i, j, k}, \bf{s}} + 2^k \cdot s_i s_j + e_{i, j, k} \pmod q$.
+> - Output $\bf{w}_{i, j, k} = (v_{i, j, k}, \bf{u}_{i, j, k})$.
 > 
-> **Linearization**: given $\bf{c} _ \rm{mul} = (bb', b\bf{a}' + b' \bf{a}, \bf{a} \otimes \bf{a}')$, $\bf{w} _ {i, j, k}$ for $1 \leq i, j \leq n$ and $0 \leq k < \ceil{\log q}$, output the following.
+> **Linearization**: given $\bf{c}_\rm{mul} = (bb', b\bf{a}' + b' \bf{a}, \bf{a} \otimes \bf{a}')$, $\bf{w}_{i, j, k}$ for $1 \leq i, j \leq n$ and $0 \leq k < \ceil{\log q}$, output the following.
 > 
 > $$
-> \bf{c} _ \rm{mul}^\ast = (b _ \rm{mul}^\ast, \bf{a} _ \rm{mul}^\ast) = (bb', b\bf{a}' + b'\bf{a}) + \sum _ {i=1}^n \sum _ {j=1}^n \sum _ {k=0}^{\ceil{\log q}} a _ {i, j}[k] \bf{w} _ {i, j, k} \pmod q.
+> \bf{c}_\rm{mul}^\ast = (b_\rm{mul}^\ast, \bf{a}_\rm{mul}^\ast) = (bb', b\bf{a}' + b'\bf{a}) + \sum_{i=1}^n \sum_{j=1}^n \sum_{k=0}^{\ceil{\log q}} a_{i, j}[k] \bf{w}_{i, j, k} \pmod q.
 > $$
 
 Correctness can be checked. The bounds for summations are omitted for brevity. They range from $1 \leq i, j \leq n$ and $0 \leq k < \ceil{\log q}$.
 
 $$
 \begin{aligned}
-b _ \rm{mul}^\ast + \span{\bf{a} _ \rm{mul}^\ast, \bf{s}} &= bb' + \sum _ {i, j, k} a _ {i, j}[k] \cdot v _ {i, j, k} + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum _ {i, j, k} a _ {i, j}[k] \cdot \span{\bf{u} _ {i, j, k}, \bf{s}} \\
-&= bb' + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum _ {i, j, k} a _ {i, j}[k] \cdot \paren{v _ {i, j, k} + \span{\bf{u} _ {i, j, k}, \bf{s}}} \\
-&= bb' + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum _ {i, j, k} a _ {i, j}[k] \paren{2^k \cdot s _ is _ j + e _ {i, j, k}} \\
-&= bb' + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum _ {i, j} a _ {i, j}s _ i s _ j + \sum _ {i, j, k} a _ {i, j}[k] \cdot e _ {i, j, k} \\
+b_\rm{mul}^\ast + \span{\bf{a}_\rm{mul}^\ast, \bf{s}} &= bb' + \sum_{i, j, k} a_{i, j}[k] \cdot v_{i, j, k} + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum_{i, j, k} a_{i, j}[k] \cdot \span{\bf{u}_{i, j, k}, \bf{s}} \\
+&= bb' + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum_{i, j, k} a_{i, j}[k] \cdot \paren{v_{i, j, k} + \span{\bf{u}_{i, j, k}, \bf{s}}} \\
+&= bb' + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum_{i, j, k} a_{i, j}[k] \paren{2^k \cdot s_is_j + e_{i, j, k}} \\
+&= bb' + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \sum_{i, j} a_{i, j}s_i s_j + \sum_{i, j, k} a_{i, j}[k] \cdot e_{i, j, k} \\
 &= bb' + \span{b\bf{a}' + b'\bf{a}, \bf{s}} + \span{\bf{a} \otimes \bf{a}', \bf{s} \otimes \bf{s}} + e\conj \\
-&= \mu _ \rm{mul} + e\conj\pmod q.
+&= \mu_\rm{mul} + e\conj\pmod q.
 \end{aligned}
 $$
 
 Since
 
 $$
-e\conj = \sum _ {i, j, k} a _ {i, j}[k] \cdot e _ {i, j, k} \ll q,
+e\conj = \sum_{i, j, k} a_{i, j}[k] \cdot e_{i, j, k} \ll q,
 $$
 
 we have
 
 $$
-\mu _ \rm{mul}^\ast = \mu _ \rm{mul} + e\conj \approx \mu\mu' \approx \Delta^2 \cdot mm'.
+\mu_\rm{mul}^\ast = \mu_\rm{mul} + e\conj \approx \mu\mu' \approx \Delta^2 \cdot mm'.
 $$
 
 Note that the proof is identical to that of BGV linearization, except for missing constant factor $2$ in the error.
 
 ### Scaling Factor Reduction
 
-In BGV, we used modulus switching for [noise reduction](../2023-11-23-bgv-scheme/#noise-reduction). It was for reducing the error and preserving the message. We also use modulus switching here, but for a different purpose. The message can have small numerical errors, we just want to reduce the scaling factor. This operation is called **rescaling**.
+In BGV, we used modulus switching for [noise reduction](./2023-11-23-bgv-scheme.md#noise-reduction). It was for reducing the error and preserving the message. We also use modulus switching here, but for a different purpose. The message can have small numerical errors, we just want to reduce the scaling factor. This operation is called **rescaling**.
 
-Given $\bf{c} = (b, \bf{a}) \in \Z _ q^{n+1}$ such that $b + \span{\bf{a}, \bf{s}} = \mu \pmod q$ and $\mu \approx \Delta^2 \cdot m$, we want to generate a new ciphertext of $m' \approx m$ that has a scaling factor reduced to $\Delta$. This can be done by dividing the ciphertext by $\Delta$ and then rounding it appropriately.
+Given $\bf{c} = (b, \bf{a}) \in \Z_q^{n+1}$ such that $b + \span{\bf{a}, \bf{s}} = \mu \pmod q$ and $\mu \approx \Delta^2 \cdot m$, we want to generate a new ciphertext of $m' \approx m$ that has a scaling factor reduced to $\Delta$. This can be done by dividing the ciphertext by $\Delta$ and then rounding it appropriately.
 
-> **Modulus Switching**: let $\bf{c} = (b, \bf{a}) \in \Z _ q^{n+1}$ be given.
+> **Modulus Switching**: let $\bf{c} = (b, \bf{a}) \in \Z_q^{n+1}$ be given.
 > 
 > - Let $q' = \Delta \inv \cdot q$.[^2]
-> - Output $\bf{c}' = \round{\Delta\inv \cdot \bf{c}} \in \Z _ {q'}^{n+1}$.
+> - Output $\bf{c}' = \round{\Delta\inv \cdot \bf{c}} \in \Z_{q'}^{n+1}$.
 
 Note that the modulus has been switched to $q'$. Constant multiplication and rounding is done component-wise on $\bf{c}$.
 
@@ -304,23 +304,23 @@ We check that $\bf{c}'$ has scaling factor $\Delta$. We know that $\mu' = b' + \
 Let $k \in \Z$ such that $b + \span{\bf{a}, \bf{s}} = \mu + kq$. By the choice of $b'$ and $\bf{a}'$, we have
 
 $$
-b' = \Delta\inv \cdot b + \epsilon _ 0, \quad a _ i' = \Delta\inv \cdot a _ i + \epsilon _ i
+b' = \Delta\inv \cdot b + \epsilon_0, \quad a_i' = \Delta\inv \cdot a_i + \epsilon_i
 $$
 
-for some $\epsilon _ i$ such that $\abs{\epsilon _ i} \leq 0.5$. So we have
+for some $\epsilon_i$ such that $\abs{\epsilon_i} \leq 0.5$. So we have
 
 $$
 \begin{aligned}
-\mu' &= \Delta\inv \cdot \paren{b + \sum _ {i=1}^n a _ i s _ i} + \epsilon _ 0 + \sum _ {i=1}^n \epsilon _ i s _ i \\
+\mu' &= \Delta\inv \cdot \paren{b + \sum_{i=1}^n a_i s_i} + \epsilon_0 + \sum_{i=1}^n \epsilon_i s_i \\
 &= \Delta\inv \cdot (\mu + kq) + \epsilon \approx \Delta \inv \cdot (\Delta^2 \cdot m) + kq' = \Delta \cdot m \pmod{q'},
 \end{aligned}
 $$
 
-since $\epsilon = \epsilon _ 0 + \sum _ {i=1}^n \epsilon _ i s _ i$ is small.
+since $\epsilon = \epsilon_0 + \sum_{i=1}^n \epsilon_i s_i$ is small.
 
 ### Modulus Chain
 
-Using modulus switching, we can set $q _ L = \Delta^{L+1}$ where $L$ is the maximal level for multiplication. After each multiplication, the modulus is switched to $q _ {k-1} = q _ k / \Delta$.
+Using modulus switching, we can set $q_L = \Delta^{L+1}$ where $L$ is the maximal level for multiplication. After each multiplication, the modulus is switched to $q_{k-1} = q_k / \Delta$.
 
 Multiplication increases the scaling factor to $\Delta^2$, and then rescaling operation reduces the scaling factor back to $\Delta$.
 
@@ -330,19 +330,19 @@ $$
 \Delta^{L+1} \ra \Delta^L \ra \cdots \ra \Delta.
 $$
 
-When we reach $q _ 0 = \Delta$, we cannot perform any multiplications, so we apply [bootstrapping](../2023-12-08-bootstrapping-ckks/#bootstrapping) here.
+When we reach $q_0 = \Delta$, we cannot perform any multiplications, so we apply [bootstrapping](2023-12-08-bootstrapping-ckks.md#bootstrapping) here.
 
 ### Multiplication in CKKS (Summary)
 
-- Set up a modulus chain $q _ k = \Delta^{k+1}$ for $k = 0, \dots, L$.
-- Given two ciphertexts $\bf{c} = (b, \bf{a}) \in \Z _ {q _ k}^{n+1}$ and $\bf{c}' = (b', \bf{a}') \in \Z _ {q _ k}^{n+1}$ with modulus $q _ k$ and **scaling factor** $\Delta$.
+- Set up a modulus chain $q_k = \Delta^{k+1}$ for $k = 0, \dots, L$.
+- Given two ciphertexts $\bf{c} = (b, \bf{a}) \in \Z_{q_k}^{n+1}$ and $\bf{c}' = (b', \bf{a}') \in \Z_{q_k}^{n+1}$ with modulus $q_k$ and **scaling factor** $\Delta$.
 
-- (**Tensor Product**) $\bf{c} _ \rm{mul} = \bf{c} \otimes \bf{c}' \pmod{q _ k}$.
+- (**Tensor Product**) $\bf{c}_\rm{mul} = \bf{c} \otimes \bf{c}' \pmod{q_k}$.
 	- Now we have $n^2$ dimensions and scaling factor $\Delta^2$.
 - (**Relinearization**)
 	- Back to $n$ dimensions and scaling factor $\Delta^2$.
 - (**Modulus Switching**; **Rescaling**)
-	- Modulus is switched to $q _ {k-1}$ and scaling factor is back to $\Delta$.
+	- Modulus is switched to $q_{k-1}$ and scaling factor is back to $\Delta$.
 
 [^1]: The noise hasn't gone away since we didn't *fully evaluate* the decryption circuit, which takes the remainders from dividing by $q$ and $2$.
 [^2]: No rounding...?
