@@ -382,3 +382,7 @@ Now we know why matrix multiplication is defined as "row times column". Tensor s
 - The above argument should be generalizable to rectangular matrices, although I haven't checked yet.
 - Now we know why matrix multiplication is defined in a strange way, but the question is now why tensors are defined in such a strange way, involving vector spaces and their duals.
 - (Not sure) Matrix transpose should be interpretable with tensors?
+
+## References
+
+- [Geometrical Anatomy of Theoretical Physics](https://youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic&si=dJj6nmoAc944YOgl), Lecture 8
