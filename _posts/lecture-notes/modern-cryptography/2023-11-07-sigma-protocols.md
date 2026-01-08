@@ -19,7 +19,7 @@ attachment:
   folder: assets/img/posts/lecture-notes/modern-cryptography
 ---
 
-The previous [3-coloring example](../2023-11-02-zkp-intro/#example-3-coloring) certainly works as a zero knowledge proof, but is quite slow, and requires a lot of interaction. There are efficient protocols for interactive proofs, we will study sigma protocols.
+The previous [3-coloring example](../2023-11-02-zkp-intro/#example-3-coloring) certainly works as a zero knowledge proof, but is quite slow, and requires a lot of interaction. We will now turn our attention to **sigma protocols**, which offer a more efficient framework for interactive proofs.
 
 ## Sigma Protocols
 
@@ -30,17 +30,17 @@ The previous [3-coloring example](../2023-11-02-zkp-intro/#example-3-coloring) c
 ![mc-13-sigma-protocol.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-13-sigma-protocol.png)
 
 > **Definition.** Let $\mc{R} \subset \mc{X} \times \mc{Y}$ be an effective relation. A **sigma protocol** for $\mc{R}$ is a pair of algorithms $(P, V)$ satisfying the following.
-> 
+>
 > - The **prover** $P$ is an interactive protocol algorithm, which takes $(x, y) \in \mc{R}$ as input.
 > - The **verifier** $V$ is an interactive protocol algorithm, which takes $y \in \mc{Y}$ as input, and outputs $\texttt{accept}$ or $\texttt{reject}$.
-> 
+>
 > The interaction goes as follows.[^1]
-> 
+>
 > 1. $P$ computes a **commitment** message $t$ and sends it to $V$.
 > 2. $V$ chooses a random **challenge** $c \la \mc{C}$ from a **challenge space** and sends it to $P$.
 > 3. $P$ computes a **response** $z$ and sends it to $V$.
 > 4. $V$ outputs either $\texttt{accept}$ or $\texttt{reject}$, computed strictly as a function of the statement $y$ and the **conversation** $(t, c, z)$.
-> 
+>
 > For all $(x, y) \in \mc{R}$, at the end of the interaction between $P(x, y)$ and $V(y)$, $V(y)$ always outputs $\texttt{accept}$.
 
 - The verifier is deterministic except for choosing a random challenge $c \la \mc{C}$.
@@ -52,12 +52,12 @@ The previous [3-coloring example](../2023-11-02-zkp-intro/#example-3-coloring) c
 The **soundness** property says that it is infeasible for any prover to make the verifier accept a statement that is false.
 
 > **Definition.** Let $\Pi = (P, V)$ be a sigma protocol for $\mc{R} \subset \mc{X}\times \mc{Y}$. For a given adversary $\mc{A}$, the security game goes as follows.
-> 
+>
 > 1. The adversary chooses a statement $y^{\ast} \in \mc{Y}$ and gives it to the challenger.
 > 2. The adversary interacts with the verifier $V(y^{\ast})$, where the challenger plays the role of verifier, and the adversary is a possibly *cheating* prover.
-> 
+>
 > The adversary wins if $V(y^{\ast})$ outputs $\texttt{accept}$ but $y^{\ast} \notin L _ \mc{R}$. The advantage of $\mc{A}$ with respect to $\Pi$ is denoted $\rm{Adv} _ {\rm{Snd}}[\mc{A}, \Pi]$ and defined as the probability that $\mc{A}$ wins the game.
-> 
+>
 > If the advantage is negligible for all efficient adversaries $\mc{A}$, then $\Pi$ is **sound**.
 
 ### Special Soundness
@@ -65,37 +65,37 @@ The **soundness** property says that it is infeasible for any prover to make the
 For sigma protocols, it suffices to require **special soundness**.
 
 > **Definition.** Let $(P, V)$ be a sigma protocol for $\mc{R} \subset \mc{X} \times \mc{Y}$. $(P, V)$ provides **special soundness** if there is an efficient deterministic algorithm $\rm{Ext}$, called a **knowledge extractor** with the following property.
-> 
+>
 > Given a statement $y \in \mc{Y}$ and two accepting conversations $(t, c, z)$ and $(t, c', z')$ with $c \neq c'$, $\rm{Ext}$ outputs a **witness** (proof) $x \in \mc{X}$ such that $(x, y) \in \mc{R}$.
 
 The extractor efficiently finds a proof $x$ for $y \in \mc{Y}$. This means, if a possibly cheating prover $P^{\ast}$ makes $V$ accept $y$ with non-negligible probability, then $P^{\ast}$ must have known a proof $x$ for $y$. **Thus $P^{\ast}$ isn't actually a dishonest prover, he already has a proof.**
 
-Note that the commitment $t$ is the same for the two accepting conversations. The challenge $c$ and $c'$ are chosen after the commitment, so if the prover can come up with $z$ and $z'$ so that $(t, c, z)$ and $(t, c', z')$ are accepting conversations for $y$, then the prover must have known $x$.
-
-We also require that the challenge space is large, the challenger shouldn't be accepted by luck.
+Note that the commitment $t$ is the same for the two accepting conversations. The challenges $c$ and $c'$ are chosen after the commitment, so if the prover can come up with $z$ and $z'$ so that $(t, c, z)$ and $(t, c', z')$ are accepting conversations for $y$, then the prover must have known $x$.
 
 ### Special Soundness $\implies$ Soundness
 
 > **Theorem.** Let $\Pi$ be a sigma protocol with a large challenge space. If $\Pi$ provides special soundness, then $\Pi$ is sound.
-> 
+>
 > For every efficient adversary $\mc{A}$,
-> 
+>
 > $$
 > \rm{Adv} _ {\rm{Snd}}[\mc{A}, \Pi] \leq \frac{1}{N}
 > $$
-> 
+>
 > where $N$ is the size of the challenge space.
 
 *Proof*. Suppose that $\mc{A}$ chooses a false statement $y^{\ast}$ and a commitment $t^{\ast}$. It suffices to show that there exists at most one challenge $c$ such that $(t^{\ast}, c, z)$ is an accepting conversation for some response $z$.
 
 If there were two such challenges $c, c'$, then there would be two accepting conversations for $y^{\ast}$, which are $(t^{\ast}, c, z)$ and $(t^{\ast}, c', z')$. Now by special soundness, there exists a witness $x$ for $y^{\ast}$, which is a contradiction.
 
+The challenge space must be large enough so that the challenger does not accept just by luck.
+
 ## Special Honest Verifier Zero Knowledge
 
 The conversation between $P$ and $V$ must not reveal anything.
 
 > **Definition.** Let $(P, V)$ be a sigma protocol for $\mc{R} \subset \mc{X} \times \mc{Y}$. $(P, V)$ is **special honest verifier zero knowledge** (special HVZK) if there exists an efficient probabilistic algorithm $\rm{Sim}$ (**simulator**) that satisfies the following.
-> 
+>
 > - For all inputs $(y, c) \in \mc{Y} \times \mc{C}$, $\rm{Sim}(y, c)$ outputs a pair $(t, z)$ such that $(t, c, z)$ is always an accepting conversation for $y$.
 > - For all $(x, y) \in \mc{R}$, let $c \la \mc{C}$ and $(t, z) \la \rm{Sim}(y, c)$. Then $(t, c, z)$ has the same distribution as the conversation between $P(x, y)$ and $V(y)$.
 
@@ -110,11 +110,11 @@ The Schnorr identification protocol is actually a sigma protocol. Refer to [Schn
 ![mc-10-schnorr-identification.png](../../../assets/img/posts/lecture-notes/modern-cryptography/mc-10-schnorr-identification.png)
 
 > The pair $(P, V)$ is a sigma protocol for the relation $\mc{R} \subset \mc{X} \times \mc{Y}$ where
-> 
+>
 > $$
 > \mc{X} = \bb{Z} _ q, \quad \mc{Y} = G, \quad \mc{R} = \left\lbrace (\alpha, u) \in \bb{Z} _ q \times G : g^\alpha = u \right\rbrace.
 > $$
-> 
+>
 > The challenge space $\mc{C}$ is a subset of $\bb{Z} _ q$.
 
 The protocol provides **special soundness**. If $(u _ t, c, \alpha _ z)$ and $(u _ t, c', \alpha _ z')$ are two accepting conversations with $c \neq c'$, then we have
@@ -288,7 +288,7 @@ $$
 Here, $b$ denotes the actual statement $y _ b$ to prove. For $y _ {1-b}$, we cheat.
 
 > $P$ is initialized with $\big( (b, x), (y _ 0, y _ 1) \big) \in \mc{R} _ \rm{OR}$ and $V$ is initialized with $(y _ 0, y _ 1) \in \mc{Y} _ 0 \times \mc{Y} _ 1$. Let $d = 1 - b$.
-> 
+>
 > 1. $P$ computes $c _ d \la \mc{C}$ and $(t _ d, z _ d) \la \rm{Sim} _ d(y _ d, c _ d)$.
 > 2. $P$ runs $P _ b(x, y _ b)$ to get a real commitment $t _ b$ and sends $(t _ 0, t _ 1)$ to $V$.
 > 3. $V$ computes challenge $c \la C$ and sends it to $P$.
@@ -364,10 +364,10 @@ Sigma protocols are interactive proof systems, but we can convert them into **no
 First, the definition of non-interactive proof systems.
 
 > **Definition.** Let $\mc{R} \subset \mc{X} \times \mc{Y}$ be an effective relation. A **non-interactive proof system** for $\mc{R}$ is a pair of algorithms $(G, V)$ satisfying the following.
-> 
+>
 > - $G$ is an efficient probabilistic algorithm that generates the proof as $\pi \la G(x, y)$ for $(x, y) \in \mc{R}$. $\pi$ belongs to some proof space $\mc{PS}$.
 > - $V$ is an efficient deterministic algorithm that verifies the proof as $V(y, \pi)$ where $y \in \mc{Y}$ and $\pi \in \mc{PS}$. $V$ outputs either $\texttt{accept}$ or $\texttt{reject}$. If $V$ outputs $\texttt{accept}$, $\pi$ is a **valid proof** for $y$.
-> 
+>
 > For all $(x, y) \in \mc{R}$, the output of $G(x, y)$ must be a valid proof for $y$.
 
 ### Non-interactive Soundness
@@ -375,9 +375,9 @@ First, the definition of non-interactive proof systems.
 Intuitively, it is hard to create a valid proof of a false statement.
 
 > **Definition.** Let $\Phi = (G, V)$ be a non-interactive proof system for $\mc{R} \subset \mc{X} \times \mc{Y}$ with proof space $\mc{PS}$. An adversary $\mc{A}$ outputs a statement $y^{\ast} \in \mc{Y}$ and a proof $\pi^{\ast} \in \mc{PS}$ to attack $\Phi$.
-> 
+>
 > The adversary wins if $V(y^{\ast}, \pi^{\ast}) = \texttt{accept}$ and $y^{\ast} \notin L _ \mc{R}$. The advantage of $\mc{A}$ with respect to $\Phi$ is defined as the probability that $\mc{A}$ wins, and is denoted as $\rm{Adv} _ {\rm{niSnd}}[\mc{A}, \Phi]$.
-> 
+>
 > If the advantage is negligible for all efficient adversaries $\mc{A}$, $\Phi$ is **sound**.
 
 ### Non-interactive Zero Knowledge
@@ -389,9 +389,9 @@ Omitted.
 The basic idea is **using a hash function to derive a challenge**, instead of a verifier. Now the only job of the verifier is checking the proof, requiring no interaction for the proof.
 
 > **Definition.** Let $\Pi = (P, V)$ be a sigma protocol for a relation $\mc{R} \subset \mc{X} \times \mc{Y}$. Suppose that conversations $(t, c, z) \in \mc{T} \times \mc{C} \times \mc{Z}$. Let $H : \mc{Y} \times \mc{T} \rightarrow \mc{C}$ be a hash function.
-> 
+>
 > Define the **Fiat-Shamir non-interactive proof system** $\Pi _ \rm{FS} = (G _ \rm{FS}, V _ \rm{FS})$ with proof space $\mc{PS} = \mc{T} \times \mc{Z}$ as follows.
-> 
+>
 > - For input $(x, y) \in \mc{R}$, $G _ \rm{FS}$ runs $P(x, y)$ to obtain a commitment $t \in \mc{T}$. Then computes the challenge $c = H(y, t)$, which is fed to $P(x, y)$, obtaining a response $z \in \mc{Z}$. $G _ \rm{FS}$ outputs $(t, z) \in \mc{T} \times \mc{Z}$.
 > - For input $\big( y, (t, z) \big) \in \mc{Y} \times (\mc{T} \times \mc{Z})$, $V _ \rm{FS}$ verifies that $(t, c, z)$ is an accepting conversation for $y$, where $c = H(y, t)$.
 
@@ -410,9 +410,9 @@ By modeling the hash function as a random oracle, we can show that:
 ### Soundness of the Fiat-Shamir Transform
 
 > **Theorem.** Let $\Pi$ be a sigma protocol for a relation $\mc{R} \subset \mc{X} \times \mc{Y}$, and let $\Pi _ \rm{FS}$ be the Fiat-Shamir non-interactive proof system derived from $\Pi$ with hash function $H$. If $\Pi$ is sound and $H$ is modeled as a random oracle, then $\Pi _ \rm{FS}$ is also sound.
-> 
+>
 > Let $\mc{A}$ be a $q$-query adversary attacking the soundness of $\Pi _ \rm{FS}$. There exists an adversary $\mc{B}$ attacking the soundness of $\Pi$ such that
-> 
+>
 > $$
 > \rm{Adv} _ {\rm{niSnd^{ro}}}[\mc{A}, \Pi _ \rm{FS}] \leq (q + 1) \rm{Adv} _ {\rm{Snd}}[\mc{B}, \Pi].
 > $$
@@ -434,7 +434,7 @@ We need $3$ building blocks.
 - A hash function $H : \mc{M} \times \mc{T} \rightarrow \mc{C}$, modeled as a random oracle.
 
 > **Definition.** The **Fiat-Shamir signature scheme** derived from $G$ and $(P, V)$ works as follows.
-> 
+>
 > - Key generation: invoke $G$ so that $(pk, sk) \la G()$.
 > 	- $pk = y \in \mc{Y}$ and $sk = (x, y) \in \mc{R}$.
 > - Sign: for message $m \in \mc{M}$
