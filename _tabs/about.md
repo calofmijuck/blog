@@ -6,18 +6,18 @@ order: 0
 
 # Sungchan Yi
 
-- Last updated: 2026-02-10
+- Last updated: 2026-07-31
 - Email: [calofmijuck at snu dot ac dot kr](mailto:calofmijuck@snu.ac.kr)
 
 **Research Interests**: computer architecture, hardware-software co-design, cryptography, formal verification
 
 ## Education
 
-**Seoul National University** (Sept. 2024 - Present)
+**Seoul National University** (Sept. 2024 - Aug. 2026)
 
 - M.S. Candidate in Computer Science and Engineering at [Architecture and Code Optimization Lab](https://arc.snu.ac.kr)
 - **Advisor**: Professor Jae W. Lee
-- GPA: 4.2/4.3
+- GPA: 4.21/4.3
 
 **Seoul National University** (Mar. 2017 - Feb. 2024)
 
@@ -26,9 +26,9 @@ order: 0
 
 ## Research Experience
 
-[**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr), *M.S. Candidate* (Mar. 2024 - Present)
+[**Architecture and Code Optimization Lab**](https://arc.snu.ac.kr), *M.S. Candidate* (Mar. 2024 - Aug. 2026)
 
-- Leading **Software Defined Manycores** project
+- Led **Software Defined Manycores** project
 - *More details in the CV*
 
 [**Cryptography & Privacy Lab**](https://crypto.snu.ac.kr), *Undergraduate Research Assistant* (Jan. 2024 - Feb. 2024)
@@ -90,7 +90,7 @@ order: 0
 - SNU Tomorrow’s Edge Membership (STEM)
 - **Web Administrator**: reduced cloud infrastructure costs by 50% and installed shared storage
 
-**Guardian**, Seoul National University Security Club (2018 - Present)
+**Guardian**, Seoul National University Security Club (2018 - 2026)
 
 - Former president of the club in 2019
 - Taught basic Linux, x86 assembly, and C programming to new members
